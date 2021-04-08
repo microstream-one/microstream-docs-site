@@ -7,7 +7,15 @@ content:
   - url: https://github.com/microstream-one/microstream.git
     branches: master
     start_path: docs/manual
+asciidoc:
+  attributes:
+    page-pagination: ''
+    source-language: asciidoc@
 ui: 
   bundle:
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/master/raw/build/ui-bundle.zip?job=bundle-stable
     snapshot: true
+  supplemental_files: ./supplemental-ui
+output:
+  dir: ./public
+ 

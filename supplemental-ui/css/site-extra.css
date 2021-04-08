@@ -1,0 +1,67 @@
+
+body {
+	font-family: "Whitney",sans-serif;
+}
+
+.navbar-brand .navbar-item.logo {
+  align-self: center;
+  padding: 0;
+  margin-left: 0.5em;
+  height: 1.5em;
+  width: 1.5em;
+}
+
+.navbar-brand .navbar-item.logo img {
+  width: inherit;
+}
+
+.navbar-brand .navbar-item.title {
+  align-self: center;
+  color: var(--navbar-font-color);
+  font-size: 1rem;
+  line-height: 1;
+  position: relative;
+  top: 0.06em; /* compensate for built-in line height in font */
+  letter-spacing: -0.02em;
+  padding: 0;
+  margin: 0 1rem;
+}
+
+@font-face {
+	font-family: 'Whitney';
+	src: url("../font/Whitney-Medium.eot");
+	src: url("../font/Whitney-Medium.eot?#iefix")
+		format("embedded-opentype"), url("../font/Whitney-Medium.woff2")
+		format("woff2"), url("../font/Whitney-Medium.woff") format("woff"),
+		url("../font/Whitney-Medium.ttf") format("truetype"),
+		url("../font/Whitney-Medium.svg#Whitney-Medium") format("svg");
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap
+}
+
+@font-face {
+	font-family: 'Whitney';
+	src: url("../font/Whitney-Bold.eot");
+	src: url("../font/Whitney-Bold.eot?#iefix") format("embedded-opentype"),
+		url("../font/Whitney-Bold.woff2") format("woff2"),
+		url("../font/Whitney-Bold.woff") format("woff"),
+		url("../font/Whitney-Bold.ttf") format("truetype"),
+		url("../font/Whitney-Bold.svg#Whitney-Bold") format("svg");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap
+}
+
+@font-face {
+	font-family: 'Whitney';
+	src: url("../font/Whitney-Book.eot");
+	src: url("../font/Whitney-Book.eot?#iefix") format("embedded-opentype"),
+		url("../font/Whitney-Book.woff2") format("woff2"),
+		url("../font/Whitney-Book.woff") format("woff"),
+		url("../font/Whitney-Book.ttf") format("truetype"),
+		url("../font/Whitney-Book.svg#Whitney-Book") format("svg");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap
+}
