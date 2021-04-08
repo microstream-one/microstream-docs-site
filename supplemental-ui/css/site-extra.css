@@ -3,12 +3,18 @@ body {
 	font-family: "Whitney",sans-serif;
 }
 
+.navbar {
+	background-color: #1A1722;
+	height: 2rem;
+}
+
+.navbar-item {
+	padding: 0px 8px;
+}
+
 .navbar-brand .navbar-item.logo {
   align-self: center;
   padding: 0;
-  margin-left: 0.5em;
-  height: 1.5em;
-  width: 1.5em;
 }
 
 .navbar-brand .navbar-item.logo img {
@@ -25,6 +31,10 @@ body {
   letter-spacing: -0.02em;
   padding: 0;
   margin: 0 1rem;
+}
+
+.doc h1 {
+	color: #0D99D9;
 }
 
 @font-face {
