@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SQLite :: MicroStream Reference Manual</title>
+    <link rel="canonical" href="https://manual.docs.microstream.one/microstream/storage/storage-targets/sql-databases/sqlite.html">
+    <link rel="prev" href="#storage:storage-targets/sql-databases/postresql.adoc">
+    <link rel="next" href="../blob-stores/aws-dynamodb.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://www.microstream.one/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://www.microstream.one/favicon-16x16.png">
+  <link rel="stylesheet" href="../../../../_/css/site-extra.css">    <script>var uiRootPath = '../../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item logo" title="MicroStream" href="https://manual.docs.microstream.one">
+      	<svg id="logo" width="163px" height="24px" viewBox="0 0 163 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <path fill="#0d99d9" d="M14.8961936,14.4016821 C15.3024975,14.2757764 15.8357461,14.293706 15.9517752,14.2992841 C36.1497297,15.2240536 29.2320515,-2.23341004 9.44242242,1.03057585 C37.8893573,-5.76195729 41.0763164,23.4513539 16.2549871,17.9927838 C12.7094294,17.1285766 13.8414205,15.1200618 14.1171411,14.8686488 C14.1171411,14.8686488 14.4005432,14.5546815 14.8961936,14.4016821 Z M20.7174575,8.9235886 C20.7170532,8.9235886 20.7170532,8.92319017 20.7166489,8.9223933 C20.7126061,8.92040112 20.7089676,8.91880738 20.705329,8.91641676 C20.646708,8.88254972 20.6099183,8.86103419 20.6034498,8.85824514 C20.6030455,8.85744827 20.6018327,8.85904201 20.6014284,8.85904201 C4.52149565,-0.316933953 0.171011504,20.8240684 21.6335617,22.3512728 C7.419797,20.3132737 6.17622398,7.27525979 18.9612542,11.2349146 L20.7744613,11.8752008 C21.3271155,12.0517079 21.6711599,12.0927468 21.8082117,12.1035045 C22.3491417,12.1449419 22.8965402,12.0098721 23.0542104,11.5819521 C23.4241289,10.5810814 21.2454505,9.23357164 20.7174575,8.9235886 Z M4.02341959,24 C3.86413228,23.7254777 3.66562956,23.4513539 3.465914,23.1373865 C2.86838445,22.1946875 2.47016617,21.2906367 2.15118726,20.1531026 C1.67292105,18.5816719 1.55365771,16.6970706 1.79218439,15.0084998 C2.2312352,11.8285839 3.66562956,9.51167981 5.81681683,7.47009489 C7.8083125,5.50660337 11.2350111,4.2495385 14.1434195,4.21049179 C16.9721843,4.17144508 19.6816857,5.07430056 21.8724926,6.68477797 C22.1510433,6.88120681 22.471235,7.15572906 22.7097617,7.31350963 C22.5900941,6.88120681 21.4746786,5.89946105 21.11608,5.58509522 C20.5969813,5.11414413 19.840973,4.52525605 19.2026109,4.17144508 C17.3303786,3.11160591 15.3384786,2.5223194 13.306959,2.44422599 L11.8725646,2.44422599 C9.84023642,2.56176454 7.84833647,3.15105106 6.09536748,4.21049179 C2.39011823,6.48755226 0.158478746,10.2193018 0,14.4204086 L0,15.3619123 C0.0396196865,16.1081825 0.119263342,16.9321477 0.318170339,17.7182615 C0.637553526,19.2888954 1.47401405,21.0165129 2.39011823,22.2727809 C2.70828857,22.6652401 3.6256056,23.8039696 4.02341959,24 L4.02341959,24 Z"></path>
+                <g class="text" transform="translate(40.000000, 6.000000)" fill="#ffffff">
+                    <path d="M118.896546,2.33080948 C119.549054,2.33080948 120.096498,2.38797851 120.540719,2.50419096 C120.983097,2.62040342 121.341608,2.80221968 121.614408,3.04963974 C121.887208,3.29612261 122.078905,3.61476966 122.191343,4.00276931 C122.303781,4.39170616 122.36,4.85843037 122.36,5.40294195 L122.36,10.3082322 C122.36,10.5294107 122.25217,10.64 122.037432,10.64 L120.606154,10.64 C120.391416,10.64 120.284508,10.5294107 120.284508,10.3082322 L120.284508,5.91840042 C120.284508,5.60537655 120.265154,5.34014974 120.225525,5.12365718 C120.187738,4.90716463 120.114008,4.73472034 120.0071,4.60913591 C119.899271,4.48261429 119.748125,4.39170616 119.553663,4.33641152 C119.3592,4.28111689 119.101146,4.25300097 118.7795,4.25300097 L116.207255,4.25300097 L116.207255,10.3082322 C116.207255,10.5294107 116.095739,10.64 115.871785,10.64 L114.439585,10.64 C114.224847,10.64 114.117939,10.5294107 114.117939,10.3082322 L114.117939,4.25300097 L111.634169,4.25300097 C111.321739,4.25300097 111.063685,4.28111689 110.859085,4.33641152 C110.654485,4.39170616 110.491358,4.48261429 110.369704,4.60913591 C110.24805,4.73472034 110.162339,4.90716463 110.113494,5.12365718 C110.065569,5.34014974 110.040685,5.60537655 110.040685,5.91840042 L110.040685,10.3082322 C110.040685,10.5294107 109.932856,10.64 109.71904,10.64 L108.28684,10.64 C108.062886,10.64 107.951369,10.5294107 107.951369,10.3082322 L107.951369,5.40294195 C107.951369,4.85843037 108.009432,4.39170616 108.126478,4.00276931 C108.243523,3.61476966 108.435221,3.29612261 108.703413,3.04963974 C108.971604,2.80221968 109.32735,2.62040342 109.77065,2.50419096 C110.21395,2.38797851 110.766923,2.33080948 111.429569,2.33080948 L118.896546,2.33080948 Z M103.428051,8.97553774 C103.583805,8.97553774 103.693478,8.93804985 103.75707,8.86119968 C103.81974,8.78622391 103.851997,8.6531419 103.851997,8.46101647 L103.851997,7.12832203 L98.5029059,7.12832203 C98.2015356,7.12832203 97.9895627,7.19205144 97.8679087,7.31763587 C97.7462546,7.44415749 97.6854276,7.62784815 97.6854276,7.87058222 L97.6854276,8.18829208 C97.6854276,8.46101647 97.7462546,8.65970228 97.8679087,8.78622391 C97.9895627,8.91274553 98.2015356,8.97553774 98.5029059,8.97553774 L103.428051,8.97553774 Z M102.463113,2.33080948 C103.116543,2.33080948 103.666751,2.38797851 104.115581,2.50419096 C104.563489,2.62040342 104.921078,2.80221968 105.18927,3.04963974 C105.45654,3.29612261 105.648237,3.61476966 105.766205,4.00276931 C105.883251,4.39170616 105.941313,4.85843037 105.941313,5.40294195 L105.941313,9.4291412 C105.941313,9.67187528 105.923802,9.87149828 105.889702,10.027073 C105.856524,10.1845222 105.79754,10.3082322 105.714594,10.3982031 C105.63257,10.4891112 105.521975,10.5528407 105.386497,10.587517 C105.250097,10.6221933 105.074067,10.64 104.860251,10.64 L97.9047735,10.64 C97.4762195,10.64 97.1177088,10.5978261 96.8301628,10.5125412 C96.5426169,10.426319 96.3112899,10.2969858 96.1361819,10.1254787 C95.9610738,9.95490883 95.8366549,9.7318559 95.7638468,9.45913151 C95.690117,9.18734431 95.6541738,8.86401127 95.6541738,8.49100678 L95.6541738,7.76467894 C95.6541738,7.45165507 95.690117,7.1714331 95.7638468,6.92401304 C95.8366549,6.67753017 95.9610738,6.46759799 96.1361819,6.2960909 C96.3112899,6.12458381 96.5426169,5.99618779 96.8301628,5.90996565 C97.1177088,5.8246807 97.4762195,5.78156963 97.9047735,5.78156963 L103.851997,5.78156963 L103.851997,5.49385008 C103.851997,5.2520532 103.827113,5.04493262 103.779189,4.87342553 C103.729421,4.70191844 103.647397,4.56321325 103.530351,4.45730996 C103.413305,4.35140668 103.252943,4.27268211 103.047421,4.22207346 C102.843743,4.17240201 102.580159,4.14709768 102.258513,4.14709768 L96.1500062,4.14709768 C95.9758197,4.14709768 95.887344,4.05618955 95.887344,3.87437329 L95.887344,2.60353387 C95.887344,2.42171761 95.9758197,2.33080948 96.1500062,2.33080948 L102.463113,2.33080948 Z M85.7089562,5.76657447 L91.6276095,5.76657447 C91.7935013,5.76657447 91.8764473,5.68035233 91.8764473,5.50884524 L91.8764473,4.87342553 C91.8764473,4.56040166 91.8128554,4.33828592 91.6856716,4.20707831 C91.5594095,4.07680789 91.3253176,4.01120409 90.9852393,4.01120409 L87.3171857,4.01120409 C86.6840318,4.01120409 86.2563994,4.11429578 86.0379751,4.32141637 C85.8195508,4.52759975 85.7089562,4.87342553 85.7089562,5.35795649 L85.7089562,5.76657447 Z M91.3944392,2.33080948 C91.8902716,2.33080948 92.3022364,2.37392055 92.6284904,2.4592055 C92.9547444,2.54449044 93.2127985,2.68694442 93.4035741,2.88281864 C93.5925065,3.07963005 93.7270633,3.33642209 93.8054011,3.65506914 C93.8828173,3.972779 93.9215254,4.35890425 93.9215254,4.81250771 L93.9215254,6.25016824 C93.9215254,6.57350128 93.854247,6.79842861 93.717847,6.92401304 C93.5805254,7.05053466 93.3713174,7.11332687 93.0893012,7.11332687 L85.7089562,7.11332687 L85.7089562,7.47695939 C85.7089562,7.95118119 85.8195508,8.29419537 86.0379751,8.50693914 C86.2563994,8.71780851 86.6840318,8.82371179 87.3171857,8.82371179 L93.4100255,8.82371179 C93.5860552,8.82371179 93.6736092,8.91461992 93.6736092,9.09643618 L93.6736092,10.3682128 C93.6736092,10.5500291 93.5860552,10.64 93.4100255,10.64 L87.1125858,10.64 C86.4499399,10.64 85.896967,10.5847054 85.4536671,10.4741161 C85.0103671,10.3625896 84.6546212,10.1845222 84.387351,9.93710209 C84.1191591,9.68874483 83.9265402,9.37197217 83.8094943,8.98303532 C83.6924484,8.59409848 83.6343862,8.12831146 83.6343862,7.58286268 L83.6343862,5.40294195 C83.6343862,4.85843037 83.6924484,4.39170616 83.8094943,4.00276931 C83.9265402,3.61476966 84.1191591,3.29612261 84.387351,3.04963974 C84.6546212,2.80221968 85.0103671,2.62040342 85.4536671,2.50419096 C85.896967,2.38797851 86.4499399,2.33080948 87.1125858,2.33080948 L91.3944392,2.33080948 Z M82.0335297,2.33080948 C82.2086378,2.33080948 82.2971134,2.42171761 82.2971134,2.60353387 L82.2971134,3.87437329 C82.2971134,4.05618955 82.2086378,4.14709768 82.0335297,4.14709768 L78.1470518,4.14709768 C77.8355437,4.14709768 77.5774897,4.1752136 77.3719681,4.22957104 C77.1673682,4.28486567 77.0042411,4.376711 76.8825871,4.50229543 C76.7609331,4.62881705 76.6761439,4.80032414 76.627298,5.0168167 C76.578452,5.23424645 76.5535682,5.49947327 76.5535682,5.81155994 L76.5535682,10.3082322 C76.5535682,10.5294107 76.4466601,10.64 76.232844,10.64 L74.8006441,10.64 C74.5757685,10.64 74.4642523,10.5294107 74.4642523,10.3082322 L74.4642523,5.40294195 C74.4642523,4.85843037 74.5223144,4.39170616 74.640282,4.00276931 C74.7573279,3.61476966 74.9490252,3.29612261 75.2162954,3.04963974 C75.4844873,2.80221968 75.8402332,2.62040342 76.2835331,2.50419096 C76.7268331,2.38797851 77.279806,2.33080948 77.9424518,2.33080948 L82.0335297,2.33080948 Z M67.8368721,2.33080948 L67.8368721,0.332705012 C67.8368721,0.110589272 67.9437802,-2.66453526e-15 68.158518,-2.66453526e-15 L69.6045421,-2.66453526e-15 C69.8192799,-2.66453526e-15 69.9271097,0.110589272 69.9271097,0.332705012 L69.9271097,2.33080948 L72.4836877,2.33080948 C72.6597174,2.33080948 72.7472714,2.42171761 72.7472714,2.60353387 L72.7472714,3.84438298 C72.7472714,4.02619924 72.6597174,4.11710737 72.4836877,4.11710737 L69.9271097,4.11710737 L69.9271097,7.62784815 C69.9271097,8.05239848 70.009134,8.36261076 70.1750258,8.55942218 C70.3409177,8.75623359 70.6671717,8.8546393 71.1547095,8.8546393 L72.5712417,8.8546393 C72.7472714,8.8546393 72.8348255,8.94461024 72.8348255,9.12736369 L72.8348255,10.3682128 C72.8348255,10.5500291 72.7472714,10.64 72.5712417,10.64 L70.8035717,10.64 C70.2192637,10.64 69.736334,10.5847054 69.3566259,10.4741161 C68.9769179,10.3625896 68.6727828,10.1863965 68.443299,9.94366247 C68.2147369,9.70186559 68.056218,9.38884172 67.968664,9.00552805 C67.8801883,8.62221439 67.8368721,8.16298776 67.8368721,7.62784815 L67.8368721,4.11710737 L66.4489101,4.11710737 C66.2728804,4.11710737 66.186248,4.02619924 66.186248,3.84438298 L66.186248,2.60353387 C66.186248,2.42171761 66.2728804,2.33080948 66.4489101,2.33080948 L67.8368721,2.33080948 Z M64.187251,0.838791509 C64.3853996,0.838791509 64.4840131,0.940946005 64.4840131,1.14712939 L64.4840131,2.47794944 C64.4840131,2.68225843 64.3853996,2.78535013 64.187251,2.78535013 L57.4142546,2.78535013 C57.1534357,2.78535013 56.9691114,2.85563992 56.86036,2.9952823 C56.7525303,3.13492469 56.6990763,3.32705012 56.6990763,3.5697842 L56.6990763,4.04494319 C56.6990763,4.56883643 56.9322465,4.83031445 57.4013519,4.83031445 L62.4702701,4.83031445 C63.25457,4.83031445 63.8444078,5.03743504 64.2416266,5.45261341 C64.6379239,5.86872897 64.8360725,6.46291201 64.8360725,7.2379741 L64.8360725,8.35886197 C64.8360725,9.03926715 64.642532,9.59033912 64.2545293,10.0102035 C63.8665267,10.4300678 63.2637862,10.64 62.4435431,10.64 L54.9544468,10.64 C54.7470819,10.64 54.6429387,10.5378455 54.6429387,10.3325993 L54.6429387,9.00177927 C54.6429387,8.79653307 54.7470819,8.69437858 54.9544468,8.69437858 L62.0509323,8.69437858 C62.3126728,8.69437858 62.4969971,8.62408879 62.6057485,8.4844464 C62.7135782,8.34480402 62.7679538,8.15267859 62.7679538,7.90994451 L62.7679538,7.33637981 C62.7679538,6.81342376 62.533862,6.55194574 62.0647566,6.55194574 L56.9958384,6.55194574 C56.2115385,6.55194574 55.6207791,6.34388796 55.2244819,5.92870959 C54.8281846,5.51353123 54.630036,4.91841099 54.630036,4.14428609 L54.630036,3.12086673 C54.630036,2.43952435 54.8235765,1.88938959 55.2115792,1.46952524 C55.5986602,1.04966088 56.2023223,0.838791509 57.0225654,0.838791509 L64.187251,0.838791509 Z M43.604678,7.204235 C43.604678,7.52756804 43.6295618,7.79466925 43.6774861,8.00741302 C43.726332,8.21828239 43.8120428,8.38697789 43.9336969,8.51349952 C44.0553509,8.64002114 44.2184779,8.73092927 44.4230779,8.78622391 C44.6276779,8.84151854 44.8857319,8.86963446 45.19724,8.86963446 L48.9233557,8.86963446 C49.2450016,8.86963446 49.5085853,8.84151854 49.7122637,8.78622391 C49.9177853,8.73092927 50.0809123,8.64002114 50.2016447,8.51349952 C50.3242204,8.38697789 50.4099312,8.21828239 50.4578555,8.00741302 C50.5067014,7.79466925 50.5315852,7.52756804 50.5315852,7.204235 L50.5315852,5.76657447 C50.5315852,5.4535506 50.5067014,5.19113538 50.4578555,4.97932881 C50.4099312,4.76752224 50.3242204,4.59507795 50.2016447,4.46480754 C50.0809123,4.33359993 49.9177853,4.2426918 49.7122637,4.19208315 C49.5085853,4.1414745 49.2450016,4.11710737 48.9233557,4.11710737 L45.19724,4.11710737 C44.8857319,4.11710737 44.6276779,4.1414745 44.4230779,4.19208315 C44.2184779,4.2426918 44.0553509,4.33359993 43.9336969,4.46480754 C43.8120428,4.59507795 43.726332,4.76752224 43.6774861,4.97932881 C43.6295618,5.19113538 43.604678,5.4535506 43.604678,5.76657447 L43.604678,7.204235 Z M49.1279557,2.33080948 C49.7804637,2.33080948 50.3315933,2.38797851 50.7795014,2.50419096 C51.2274094,2.62040342 51.5859202,2.80221968 51.854112,3.04963974 C52.1213823,3.29612261 52.3140012,3.61476966 52.4301255,4.00276931 C52.548093,4.39170616 52.6061552,4.85843037 52.6061552,5.40294195 L52.6061552,7.58286268 C52.6061552,8.12831146 52.548093,8.59409848 52.4301255,8.98303532 C52.3140012,9.37197217 52.1213823,9.68874483 51.854112,9.93710209 C51.5859202,10.1845222 51.2274094,10.3625896 50.7795014,10.4741161 C50.3315933,10.5847054 49.7804637,10.64 49.1279557,10.64 L44.9935616,10.64 C44.3299941,10.64 43.7779428,10.5847054 43.3337213,10.4741161 C42.8904213,10.3625896 42.5355971,10.1845222 42.2674052,9.93710209 C41.9992134,9.68874483 41.8075161,9.37197217 41.6904702,8.98303532 C41.5734242,8.59409848 41.5153621,8.12831146 41.5153621,7.58286268 L41.5153621,5.40294195 C41.5153621,4.85843037 41.5734242,4.39170616 41.6904702,4.00276931 C41.8075161,3.61476966 41.9992134,3.29612261 42.2674052,3.04963974 C42.5355971,2.80221968 42.8904213,2.62040342 43.3337213,2.50419096 C43.7779428,2.38797851 44.3299941,2.33080948 44.9935616,2.33080948 L49.1279557,2.33080948 Z M39.7246515,2.33080948 C39.898838,2.33080948 39.9882352,2.42171761 39.9882352,2.60353387 L39.9882352,3.87437329 C39.9882352,4.05618955 39.898838,4.14709768 39.7246515,4.14709768 L35.837252,4.14709768 C35.5257439,4.14709768 35.2676899,4.1752136 35.0621683,4.22957104 C34.85849,4.28486567 34.695363,4.376711 34.5737089,4.50229543 C34.4511333,4.62881705 34.3663441,4.80032414 34.3174982,5.0168167 C34.2686522,5.23424645 34.2446901,5.49947327 34.2446901,5.81155994 L34.2446901,10.3082322 C34.2446901,10.5294107 34.137782,10.64 33.9239658,10.64 L32.4908443,10.64 C32.2668903,10.64 32.1553741,10.5294107 32.1553741,10.3082322 L32.1553741,5.40294195 C32.1553741,4.85843037 32.2134363,4.39170616 32.3304822,4.00276931 C32.4475281,3.61476966 32.640147,3.29612261 32.9074173,3.04963974 C33.1756091,2.80221968 33.531355,2.62040342 33.974655,2.50419096 C34.4179549,2.38797851 34.9709278,2.33080948 35.632652,2.33080948 L39.7246515,2.33080948 Z M30.0577636,2.33080948 C30.2328717,2.33080948 30.3204257,2.42171761 30.3204257,2.60353387 L30.3204257,3.87437329 C30.3204257,4.05618955 30.2328717,4.14709768 30.0577636,4.14709768 L24.3879481,4.14709768 C24.0663022,4.14709768 23.8027185,4.1752136 23.5990401,4.22957104 C23.3944401,4.28486567 23.2331564,4.376711 23.1161104,4.50229543 C22.9990645,4.62881705 22.9170402,4.80032414 22.8681943,5.0168167 C22.8193483,5.23424645 22.7953862,5.49947327 22.7953862,5.81155994 L22.7953862,7.15924954 C22.7953862,7.48164538 22.8193483,7.74968378 22.8681943,7.96149035 C22.9170402,8.17329693 22.9990645,8.34292962 23.1161104,8.46851405 C23.2331564,8.59409848 23.3944401,8.68500661 23.5990401,8.74030124 C23.8027185,8.79653307 24.0663022,8.82371179 24.3879481,8.82371179 L30.0577636,8.82371179 C30.2328717,8.82371179 30.3204257,8.91461992 30.3204257,9.09643618 L30.3204257,10.3682128 C30.3204257,10.5500291 30.2328717,10.64 30.0577636,10.64 L24.1833481,10.64 C23.5207023,10.64 22.9677294,10.5847054 22.5244294,10.4741161 C22.0811295,10.3625896 21.7253836,10.1845222 21.4581134,9.93710209 C21.1899215,9.68874483 20.9982242,9.37197217 20.8811783,8.98303532 C20.7641324,8.59409848 20.7051486,8.12831146 20.7051486,7.58286268 L20.7051486,5.40294195 C20.7051486,4.85843037 20.7641324,4.39170616 20.8811783,4.00276931 C20.9982242,3.61476966 21.1899215,3.29612261 21.4581134,3.04963974 C21.7253836,2.80221968 22.0811295,2.62040342 22.5244294,2.50419096 C22.9677294,2.38797851 23.5207023,2.33080948 24.1833481,2.33080948 L30.0577636,2.33080948 Z M18.3891138,2.33080948 C18.6038516,2.33080948 18.7107597,2.44608474 18.7107597,2.67850965 L18.7107597,10.3082322 C18.7107597,10.5294107 18.6038516,10.64 18.3891138,10.64 L16.956914,10.64 C16.7421762,10.64 16.6352681,10.5294107 16.6352681,10.3082322 L16.6352681,2.67850965 C16.6352681,2.44608474 16.7421762,2.33080948 16.956914,2.33080948 L18.3891138,2.33080948 Z M2.67638883,0.838791509 C2.87453746,0.838791509 3.04595906,0.852849467 3.18973201,0.881902581 C3.33350496,0.9090813 3.46068873,0.962501541 3.56851845,1.0421633 C3.67634816,1.12182507 3.77311842,1.22866555 3.85882922,1.36455915 C3.94454002,1.49857835 4.03209406,1.67945741 4.12241297,1.90344755 L6.93520178,8.62408879 C6.9702234,8.70843654 7.03381528,8.74967321 7.12413419,8.74967321 L7.28541795,8.74967321 C7.37573686,8.74967321 7.43932874,8.70843654 7.47435036,8.62408879 L10.2871392,1.90344755 C10.3765365,1.67945741 10.4650121,1.49857835 10.5507229,1.36455915 C10.6364337,1.22866555 10.733204,1.12182507 10.8410337,1.0421633 C10.9488634,0.962501541 11.0723607,0.9090813 11.2124472,0.881902581 C11.3525336,0.852849467 11.5211904,0.838791509 11.719339,0.838791509 L13.1662847,0.838791509 C13.6344685,0.838791509 13.949663,0.948443583 14.1118684,1.16868493 C14.2740738,1.38705188 14.3551765,1.76286796 14.3551765,2.29519598 L14.3551765,10.3325993 C14.3551765,10.5378455 14.2519549,10.64 14.04459,10.64 L12.6667659,10.64 C12.4676956,10.64 12.3681605,10.5378455 12.3681605,10.3325993 L12.3681605,3.02339822 C12.3681605,2.9296785 12.3322173,2.88281864 12.2594092,2.88281864 L12.1386768,2.88281864 C12.0483579,2.88281864 11.9902957,2.92124372 11.9635687,2.9952823 L9.23188256,9.26888047 C9.12405284,9.52098652 9.01437989,9.73279309 8.90102044,9.90523738 C8.78858262,10.0786189 8.66692858,10.2201356 8.53605833,10.3325993 C8.40518808,10.445063 8.25772864,10.5237875 8.08999352,10.5706474 C7.92318003,10.6175073 7.72687465,10.64 7.50199901,10.64 L6.85409909,10.64 C6.62830182,10.64 6.43199644,10.6175073 6.26518295,10.5706474 C6.09836946,10.5237875 5.9499884,10.445063 5.81911815,10.3325993 C5.68916952,10.2201356 5.56659386,10.0786189 5.45415603,9.90523738 C5.34171821,9.73279309 5.23112363,9.52098652 5.12237229,9.26888047 L2.39252941,2.9952823 C2.36488077,2.92124372 2.30681861,2.88281864 2.21649971,2.88281864 L2.09484567,2.88281864 C2.02295919,2.88281864 1.98701595,2.9296785 1.98701595,3.02339822 L1.98701595,10.3325993 C1.98701595,10.5378455 1.88748083,10.64 1.68933221,10.64 L0.310586445,10.64 C0.103221608,10.64 -4.17443857e-14,10.5378455 -4.17443857e-14,10.3325993 L-4.17443857e-14,2.29519598 C-4.17443857e-14,1.76286796 0.081102692,1.38705188 0.243308076,1.16868493 C0.40551346,0.948443583 0.72531612,0.838791509 1.20271606,0.838791509 L2.67638883,0.838791509 L2.67638883,0.838791509 Z" id="Fill-2-Copy"></path>
+                </g>
+            </g>
+        </svg>
+      </a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://microstream.one/">MicroStream Home</a>
+        <a class="navbar-item" href="https://api.docs.microstream.one/">API Docs</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="microstream" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../../intro/welcome.html">MicroStream</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../../intro/welcome.html">Welcome</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../../intro/system-requirements.html">System Requirements</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../../intro/license.html">License</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../../intro/changelog.html">Changelog</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../../intro/installation.html">Installation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../index.html">Storage</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../getting-started.html">Getting Started</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../root-instances.html">Root Instances</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../configuration/index.html">Configuration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../configuration/properties.html">Properties</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../configuration/storage-files-and-directories.html">Storage Files and Directories</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../configuration/using-channels.html">Using Channels</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../configuration/housekeeping.html">Houskeeping</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Backup</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/backup/continuous-backup.html">Continous Backup</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/backup/full-backup.html">Full Backup</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../configuration/lock-file.html">Lock File</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../index.html">Storage Targets</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../local-file-system.html">Local File System</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">SQL Databases</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="mariadb.html">MariaDB</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="mysql.html">MySQL</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="oracle.html">Oracle</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="#storage:storage-targets/sql-databases/postresql.adoc">Postgres</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="4">
+    <a class="nav-link" href="sqlite.html">Sqlite</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Blob Stores</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">AWS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="5">
+    <a class="nav-link" href="../blob-stores/aws-dynamodb.html">DynamoDB</a>
+  </li>
+  <li class="nav-item" data-depth="5">
+    <a class="nav-link" href="../blob-stores/aws-s3.html">S3</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../blob-stores/azure-storage.html">Azure Storage</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../blob-stores/hazelcast.html">Hazelcast</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../blob-stores/kafka.html">Kafka</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../blob-stores/mongodb.html">MongoDB</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../blob-stores/oracle-cloud-object-storage.html">Oracle Cloud Object Storage</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../blob-stores/oracle-coherence.html">Oracle Coherence</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../blob-stores/oracle-nosql.html">Oracle NoSQL</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../blob-stores/redis.html">Redis</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../storing-data/index.html">Storing Data</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../storing-data/transactions.html">Convenience Methods and Explicit Storing (Transactions)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../storing-data/lazy-eager-full.html">Lazy and Eager Storing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../storing-data/transient-fields.html">Transient Fields</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../storing-data/best-practice.html">Best Practice</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../loading-data/index.html">Loading Data</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../loading-data/lazy-loading/index.html">Lazy Loading</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../loading-data/lazy-loading/touched-timestamp-null-safe-variant.html">Touched Timestamp, Null-Safe Variant</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../loading-data/lazy-loading/clearing-lazy-references.html">Clearing Lazy References</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../deleting-data.html">Deleting Data</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../queries.html">Queries</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../application-life-cycle.html">Application Life-Cycle</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../legacy-type-mapping/index.html">Legagy Type Mapping</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../legacy-type-mapping/user-interaction.html">User Interaction</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../import-export.html">Import / Export</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../housekeeping.html">Housekeeping</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Customizing</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../customizing/custom-type-handler.html">Custom Type Handler</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../customizing/custom-legacy-type-handler.html">Custom Legacy Type Handler</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../customizing/custom-class-loader.html">Custom Class Loader</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../customizing/custom-storing-behavior.html">Custom Storing Behavior</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../customizing/optional-storage-manager-reference-in-entities.html">Optional Storage Manager Reference in Entities</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../rest-interface/index.html">REST Interface</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../rest-interface/setup.html">Setup</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../rest-interface/rest-api.html">REST API</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../rest-interface/client-gui.html">Client GUI</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">FAQ</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../faq/data-model.html">Data Model</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../faq/data-management.html">Data Management</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../faq/file-storage.html">File Storage</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../faq/java-features.html">Java Features</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../faq/miscellaneous.html">Miscellaneous</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Addendum</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../addendum/supported-java-features.html">Supported Java Features</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../addendum/specialized-type-handlers.html">Specialized Type Handlers</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../addendum/examples-and-demo-projects.html">Examples and Demo Projects</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../../cache/index.html">Cache</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../cache/getting-started.html">Getting Started</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../../cache/configuration/index.html">Configuration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../cache/configuration/properties.html">Properties</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../cache/configuration/storage.html">Storage</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Use Cases</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../cache/use-cases/hibernate-second-level-cache.html">Hibernate Second Level Cache</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../cache/use-cases/spring-cache.html">Spring Cache</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Miscellaneous</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../../misc/layered-entities/index.html">Layered Entities</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../misc/layered-entities/configuration.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../misc/layered-entities/defining-entities.html">Defining Entities</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../misc/layered-entities/creating-entities.html">Creating Entities</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../misc/layered-entities/updating-entities.html">Updating Entities</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../misc/layered-entities/versioning.html">Versioning</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../misc/layered-entities/logging.html">Logging</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../misc/layered-entities/multiple-layers.html">Multiple Layers</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../../misc/wrapping/index.html">Wrapping</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../misc/wrapping/configuration.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../misc/wrapping/usage.html">Usage</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">MicroStream</span>
+    <span class="version">5.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../../intro/welcome.html">MicroStream</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../../intro/welcome.html">5.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../../intro/welcome.html">MicroStream</a></li>
+    <li><a href="../../index.html">Storage</a></li>
+    <li><a href="../index.html">Storage Targets</a></li>
+    <li>SQL Databases</li>
+    <li><a href="sqlite.html">Sqlite</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">SQLite</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+	&lt;groupId&gt;one.microstream&lt;/groupId&gt;
+	&lt;artifactId&gt;microstream-afs-sql&lt;/artifactId&gt;
+	&lt;version&gt;05.00.00-MS-GA&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+	&lt;groupId&gt;org.xerial&lt;/groupId&gt;
+	&lt;artifactId&gt;sqlite-jdbc&lt;/artifactId&gt;
+	&lt;version&gt;3.32.3&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">SQLiteDataSource dataSource = new SQLiteDataSource();
+dataSource.setUrl("jdbc:sqlite:microstreamdb");
+
+SqlFileSystem fileSystem = SqlFileSystem.New(
+	SqlConnector.Caching(
+		SqlProviderSqlite.New(dataSource)
+	)
+);
+
+EmbeddedStorage.start(fileSystem.ensureDirectoryPath("microstream_storage"));</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration"><a class="anchor" href="#_configuration"></a>Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When using <a href="../../configuration/index.html#external-configuration" class="page">external configuration</a> SQLite can be set as follows.
+Please note that you have to define a data source provider.</p>
+</div>
+<div class="listingblock">
+<div class="title">microstream-storage.properties</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">storage-filesystem.sql.sqlite.data-source-provider=com.sample.MyDataSourceProvider
+storage-filesystem.sql.sqlite.catalog=mycatalog
+storage-filesystem.sql.sqlite.schema=myschema</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">MyDataSourceProvider.java</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package com.sample;
+
+import one.microstream.afs.sql.SqlDataSourceProvider
+
+public class MyDataSourceProvider implements SqlDataSourceProvider
+{
+	public DataSource provideDataSource()
+	{
+		// TODO: return data source of your choice, e.g. from a connection pool
+	}
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="#storage:storage-targets/sql-databases/postresql.adoc">Postgres</a></span>
+  <span class="next"><a href="../blob-stores/aws-dynamodb.html">DynamoDB</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../../_/js/site.js"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
