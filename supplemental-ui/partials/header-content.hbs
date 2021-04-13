@@ -11,6 +11,11 @@
             </g>
         </svg>
       </a>
+      {{#if env.DOCSEARCH_ENABLED}}
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search" class="input-field">
+        </div>
+      {{/if}}
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>

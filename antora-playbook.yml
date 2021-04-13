@@ -4,8 +4,8 @@ site:
   robots: allow
 content:
   sources:
-  - url: C:/Users/FlorianHabermann/workspaces/microstream/microstream/
-    branches: docs
+  - url: https://github.com/microstream-one/microstream.git
+    branches: master
     start_path: docs/manual
 asciidoc:
   attributes:
