@@ -1,10 +1,10 @@
 site:
   title: MicroStream Reference Manual
-  url: https://manual.docs.microstream.one
+  url: https://docs.microstream.one/manual/
   robots: allow
 content:
   sources:
-  - url: https://github.com/microstream-one/microstream.git
+  - url: https://github.com/microstream-one/microstream-public.git
     branches: master
     start_path: docs
 asciidoc:
@@ -17,5 +17,5 @@ ui:
     snapshot: true
   supplemental_files: ./supplemental-ui
 output:
-  dir: ./build
+  dir: ./
  
