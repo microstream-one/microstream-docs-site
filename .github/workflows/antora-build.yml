@@ -7,6 +7,7 @@ jobs:
   antora:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
     - name: Antora Site with Lunr Search
       uses: ghost-420/antora-lunr-site-action@v1.0
       with:
