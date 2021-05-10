@@ -1,7 +1,7 @@
 name: Antora Site with Lunr Search
 
 on:
-  workflow_dispatch
+  workflow_dispatch:
 
 jobs:
   antora:
@@ -12,5 +12,6 @@ jobs:
       uses: ghost-420/antora-lunr-site-action@v1.0
       with:
         antora_playbook: antora-playbook.yml
+        site_sources_path: ${{github.workspace}}
       env:
         GIT_CREDENTIALS: ${{secrets.GIT_CREDENTIALS}}
