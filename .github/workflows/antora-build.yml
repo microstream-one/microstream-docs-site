@@ -12,6 +12,6 @@ jobs:
       uses: ghost-420/antora-lunr-site-action@v1.0
       with:
         antora_playbook: antora-playbook.yml
-        site_sources_path: ${{github.workspace}}
+        site_sources_path: ""
       env:
         GIT_CREDENTIALS: ${{secrets.GIT_CREDENTIALS}}
