@@ -18,10 +18,9 @@ jobs:
         site_sources_path: ""
       env:
         GIT_CREDENTIALS: ${{secrets.GIT_CREDENTIALS}}
-    - name: Push git subdirectory as branch
-      uses: s0/git-publish-subdir-action@v2.4.0
-      env:
-        REPO: self
-        BRANCH: site
-        FOLDER: site
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Deploy to site branch
+      uses: JamesIves/github-pages-deploy-action@4.1.2
+      with:
+        branch: site # The branch the action should deploy to.
+        folder: site # The folder the action should deploy.
+        token: ${{ secrets.GITHUB_TOKEN }}
