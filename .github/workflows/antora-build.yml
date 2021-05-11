@@ -23,4 +23,7 @@ jobs:
       with:
         branch: site # The branch the action should deploy to.
         folder: site # The folder the action should deploy.
+        clean-exclude: >
+          index.html
+          api/
         token: ${{ secrets.GITHUB_TOKEN }}
