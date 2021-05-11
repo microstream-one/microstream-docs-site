@@ -2,6 +2,9 @@ site:
   title: MicroStream Reference Manual
   url: https://docs.microstream.one/manual/
   robots: allow
+git:
+  credentials:
+    path: ./git/credentials
 content:
   sources:
   - url: https://github.com/microstream-one/microstream-public.git
