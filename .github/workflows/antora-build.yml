@@ -18,3 +18,10 @@ jobs:
         site_sources_path: ""
       env:
         GIT_CREDENTIALS: ${{secrets.GIT_CREDENTIALS}}
+    - name: Push git subdirectory as branch
+      uses: s0/git-publish-subdir-action@v2.4.0
+      env:
+        REPO: self
+        BRANCH: site
+        FOLDER: site
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
