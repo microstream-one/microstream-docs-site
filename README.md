@@ -5,4 +5,5 @@ The master branch contains the Antora playbook which builds the manual from the 
 The API docs are pushed to the site branch as well.
 
 Reference manual: https://docs.microstream.one/manual/
+
 API docs: https://docs.microstream.one/api/
