@@ -491,7 +491,7 @@
 <div class="listingblock">
 <div class="title">Java</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">EmbeddedStorageManager storageManager = Configuration.Default()
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">EmbeddedStorageManager storageManager = EmbeddedStorageConfigurationBuilder.New()
 	.setChannelCount(4)
 	.setChannelDirectoryPrefix("channel_")
 	.setDataFilePrefix("channel_")
@@ -504,20 +504,20 @@
 <div class="title">XML</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;properties&gt;
-	&lt;property name="channelCount" value="4" /&gt;
-	&lt;property name="channelDirectoryPrefix" value="channel_" /&gt;
-	&lt;property name="dataFilePrefix value="channel_" /&gt;
-	&lt;property name="dataFileSuffix" value=".dat" /&gt;
+	&lt;property name="channel-count" value="4" /&gt;
+	&lt;property name="channel-directory-prefix" value="channel_" /&gt;
+	&lt;property name="data-file-prefix value="channel_" /&gt;
+	&lt;property name="data-file-suffix" value=".dat" /&gt;
 &lt;/properties&gt;</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">INI</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">channelCount = 4
-channelDirectoryPrefix = prefix
-dataFilePrefix = channel_
-dataFileSuffix = .dat</code></pre>
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">channel-count = 4
+channel-directory-prefix = prefix
+data-file-prefix = channel_
+data-file-suffix = .dat</code></pre>
 </div>
 </div>
 <div class="paragraph">
