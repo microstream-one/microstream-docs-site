@@ -18,6 +18,8 @@ jobs:
         site_sources_path: ""
       env:
         GIT_CREDENTIALS: ${{secrets.GIT_CREDENTIALS}}
+    - name: Changed files
+      uses: tj-actions/changed-files@v8.4
     - name: Deploy to site branch
       uses: JamesIves/github-pages-deploy-action@4.1.2
       with:
