@@ -20,6 +20,8 @@ jobs:
         GIT_CREDENTIALS: ${{secrets.GIT_CREDENTIALS}}
     - name: Changed files
       uses: lots0logs/gh-action-get-changed-files@2.1.4
+      with:
+        token: ${{secrets.GIT_CREDENTIALS}}  
     - name: Deploy to site branch
       uses: JamesIves/github-pages-deploy-action@4.1.2
       with:
