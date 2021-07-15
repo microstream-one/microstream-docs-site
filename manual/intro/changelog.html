@@ -491,10 +491,13 @@ For detailed information, see the migration guide below.</p>
 </div>
 <div class="sect2">
 <h3 id="_migration_guide"><a class="anchor" href="#_migration_guide"></a><strong>Migration guide</strong></h3>
-<div class="sect3">
-<h4 id="_artifacts"><a class="anchor" href="#_artifacts"></a>Artifacts</h4>
 <div class="paragraph">
-<p>First you must adjust the artifacts:</p>
+<p>In order to fully support the Java Module System and adopt Maven naming standards we had to introduce some changes:</p>
+</div>
+<div class="sect3">
+<h4 id="_artifacts_and_packages"><a class="anchor" href="#_artifacts_and_packages"></a>Artifacts and Packages</h4>
+<div class="paragraph">
+<p>These are the changed <strong>artifacts</strong> and their <em>packages</em>.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -509,276 +512,289 @@ For detailed information, see the migration guide below.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">base</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-base, microstream-afs and microstream-afs-nio (AFS and AFS/NIO) was extracted from base module)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>base</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-base</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cache</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-cache</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">AFS and AFS/NIO were extracted from base module:</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cache.hibernate</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-cache-hibernate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>base</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-afs</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">communication</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-communication</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.afs</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.afs.types</em>, <em>one.microstream.afs.exceptions</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">communication.binary</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-communication-binary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>base</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-afs-nio</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filesystem.aws</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-aws-dynamodb and microstream-enterprise-afs-aws-s3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.afs.nio</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.afs.nio.types</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filesystem.azure</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-azure-storage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cache</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-cache</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filesystem.blobstore</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-blobstore</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.cache</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.cache.types</em>, <em>one.microstream.cache.exceptions</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filesystem.coherence</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-oracle-coherence</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cache.hibernate</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-cache-hibernate</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filesystem.hazelcast</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-hazelcast</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.cache.hibernate</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.cache.hibernate.types</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filesystem.jpa.hibernate</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-hibernate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>communication</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-communication</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filesystem.kafka</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-kafka</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.com</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.communication.types</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filesystem.mongodb</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-mongodb</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>communication.binary</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-communication-binary</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filesystem.oraclecloud</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-oraclecloud-objectstorage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.com.binary</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.communication.binary.types</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filesystem.oraclenosql</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-oracle-nosql</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">AWS was split into AWS-DynamoDB and AWS-S3:</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filesystem.redis</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-redis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>filesystem.aws</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-enterprise-afs-aws-dynamodb</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filesystem.sql</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-afs-sql and microstream-enterprise-afs-sql</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.afs.aws.dynamodb</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.enterprise.afs.aws.dynamodb.types</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">persistence</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-persistence</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>filesystem.aws</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-enterprise-afs-aws-s3</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">persistence.binary</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-persistence-binary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.afs.aws.s3</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.enterprise.afs.aws.s3.types</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">persistence.binary.jdk8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-persistence-binary-jdk8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>filesystem.azure</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-enterprise-afs-azure-storage</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">storage</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-storage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.afs.azure.storage</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.enterprise.afs.azure.storage.types</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">storage.embedded</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-storage-embedded</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>filesystem.blobstore</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-enterprise-afs-blobstore</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">storage.embedded.configuration</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-storage-embedded-configuration</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.afs.blobstore</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.enterprise.afs.blobstore.types</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">storage.restadapter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-storage-restadapter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>filesystem.coherence</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-enterprise-afs-oracle-coherence</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">storage.restclient</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-storage-restclient</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.afs.coherence</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.enterprise.afs.oracle.coherence.types</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">storage.restclient.app</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-storage-restclient-app</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>filesystem.hazelcast</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-enterprise-afs-hazelcast</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">storage.restclient.jersey</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-storage-restclient-jersey</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.afs.hazelcast</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.enterprise.afs.hazelcast.types</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">storage.restservice</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-storage-restservice</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>filesystem.jpa.hibernate</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-enterprise-afs-hibernate</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">storage.restservice.sparkjava</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-storage-restservice-sparkjava</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_packages"><a class="anchor" href="#_packages"></a>Packages</h4>
-<div class="paragraph">
-<p>These package names have changed:</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Old (&lt; 5) [artifact:package]</th>
-<th class="tableblock halign-left valign-top">New (&gt;= 5) [artifact:package]</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">base:one.microstream.afs</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-afs:one.microstream.afs.types,exceptions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.afs.jpa.hibernate</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.afs.hibernate.types</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">base:one.microstream.afs.nio</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-afs-nio:one.microstream.afs.nio.types</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>filesystem.kafka</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-enterprise-afs-kafka</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cache:one.microstream.cache</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-cache:one.microstream.cache.types,exceptions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.afs.kafka</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.enterprise.afs.kafka.types</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cache.hibernate:one.microstream.cache.hibernate</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-cache-hibernate:one.microstream.cache.hibernate.types</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>filesystem.mongodb</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-enterprise-afs-mongodb</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">communication:one.microstream.com</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-communication:one.microstream.communication.types</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.afs.mongodb</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.enterprise.afs.mongodb.types</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">communication.binary:one.microstream.com.binary</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-communication-binary:one.microstream.communication.binary.types</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>filesystem.oraclecloud</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-enterprise-afs-oraclecloud-objectstorage</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filesystem.aws:one.microstream.afs.aws.dynamodb</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-aws-dynamodb:one.microstream.enterprise.afs.aws.dynamodb.types</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.afs.oracle.cloud.objectstorage</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.enterprise.afs.oraclecloud.objectstorage.types</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filesystem.aws:one.microstream.afs.aws.s3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-aws-s3:one.microstream.enterprise.afs.aws.s3.types</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>filesystem.oraclenosql</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-enterprise-afs-oracle-nosql</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filesystem.azure:one.microstream.afs.azure.storage</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-azure-storage:one.microstream.enterprise.afs.azure.storage.types</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.afs.oracle.nosql</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.enterprise.afs.oracle.nosql.types</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filesystem.blobstore:one.microstream.afs.blobstore</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-blobstore:one.microstream.enterprise.afs.blobstore.types</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>filesystem.redis</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-enterprise-afs-redis</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filesystem.coherence:one.microstream.afs.coherence</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-oracle-coherence:one.microstream.enterprise.afs.oracle.coherence.types</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.afs.redis</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.enterprise.afs.redis.types</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filesystem.hazelcast:one.microstream.afs.hazelcast</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-hazelcast:one.microstream.enterprise.afs.hazelcast.types</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">SQL was split into SQL and Enterprise-SQL:</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filesystem.jpa.hibernate:one.microstream.afs.jpa.hibernate</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-hibernate:one.microstream.afs.hibernate.types</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>filesystem.sql</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-afs-sql</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filesystem.kafka:one.microstream.afs.kafka</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-kafka:one.microstream.enterprise.afs.kafka.types</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>on.microstream.afs.sql</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.afs.sql.types</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filesystem.mongodb:one.microstream.afs.mongodb</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-mongodb:one.microstream.enterprise.afs.mongodb.types</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>filesystem.sql</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-enterprise-afs-sql</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filesystem.oraclecloud:one.microstream.afs.oracle.cloud.objectstorage</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-oraclecloud-objectstorage:one.microstream.enterprise.afs.oraclecloud.objectstorage.types</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>on.microstream.afs.sql</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.enterprise.afs.sql.types</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filesystem.redis:one.microstream.afs.redis</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-redis:one.microstream.enterprise.afs.redis.types</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>persistence</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-persistence</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filesystem.sql</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-afs-sql:one.microstream.afs.sql.types and microstream-enterprise-afs-sql:one.microstream.enterprise.afs.sql.types</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>persistence.binary</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-persistence-binary</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">persistence.binary:one.microstream.collections</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">persistence-binary:one.microstream.persistence.binary.one.microstream.collections</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.collections</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.persistence.binary.one.microstream.collections</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">persistence.binary:one.microstream.entity</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">persistence-binary:one.microstream.persistence.binary.one.microstream.entity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.entity</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.persistence.binary.one.microstream.entity</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">persistence.binary:one.microstream.persistence.types</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">persistence-binary:one.microstream.persistence.binary.one.microstream.persistence.types</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.persistence.types</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.persistence.binary.one.microstream.persistence.types</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">persistence.binary:one.microstream.reference</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">persistence-binary:one.microstream.persistence.binary.one.microstream.reference</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.reference</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.persistence.binary.one.microstream.reference</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">persistence.binary:one.microstream.util</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">persistence-binary:one.microstream.persistence.binary.one.microstream.util</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.util</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.persistence.binary.one.microstream.util</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">persistence.binary:one.microstream.java.*</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">persistence-binary:one.microstream.persistence.binary.java.*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.java.*</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.persistence.binary.java.*</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">persistence.binary.jdk8:one.microstream.jdk8.java.util</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-persistence-binary-jdk8:one.microstream.persistence.binary.jdk8.java.util</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>persistence.binary.jdk8</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-persistence-binary-jdk8</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">persistence.binary.jdk8:one.microstream.memory.sun</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-persistence-binary-jdk8:one.microstream.persistence.binary.jdk8.types</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.jdk8.java.util</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.persistence.binary.jdk8.java.util</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">storage.embedded:one.microstream.storage.types</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-storage-embedded:one.microstream.storage.embedded.types</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.memory.sun</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.persistence.binary.jdk8.types</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">storage.embedded.configuration:one.microstream.storage.configuration</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-storage-embedded-configuration:one.microstream.storage.embedded.configuration.types</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>storage</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-storage</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">storage.restadapter:one.microstream.storage.restadapter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-storage-restadapter:one.microstream.storage.restadapter.types,exceptions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>storage.embedded</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-storage-embedded</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">storage.restclient:one.microstream.storage.restclient</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-storage-restclient:one.microstream.storage.restclient.types,exceptions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.storage.types</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.storage.embedded.types</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">storage.restclient.app:one.microstream.storage.restclient.app</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-storage-restclient-app:one.microstream.storage.restclient.app.types</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>storage.embedded.configuration</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-storage-embedded-configuration</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">storage.restclient.jersey:one.microstream.storage.restclient.jersey</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-storage-restclient-jersey:one.microstream.storage.restclient.jersey.types</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.storage.configuration</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.storage.embedded.configuration.types</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">storage.restservice:one.microstream.storage.restservice</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-storage-restservice:one.microstream.storage.restservice.types,exceptions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>storage.restadapter</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-storage-restadapter</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">storage.restservice.sparkjava:one.microstream.storage.restservice.sparkjava</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-storage-restservice-sparkjavaone.microstream.storage.restservice.sparkjava.types,exceptions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.storage.restadapter</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.storage.restadapter.types</em>, <em>one.microstream.storage.restadapter.exceptions</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>storage.restclient</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-storage-restclient</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.storage.restclient</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.storage.restclient.types</em>, <em>one.microstream.storage.restclient.exceptions</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>storage.restclient.app</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-storage-restclient-app</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.storage.restclient.app</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.storage.restclient.app.types</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>storage.restclient.jersey</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-storage-restclient-jersey</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.storage.restclient.jersey</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.storage.restclient.jersey.types</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>storage.restservice</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-storage-restservice</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.storage.restservice</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.storage.restservice.types</em>, <em>one.microstream.storage.restservice.exceptions</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>storage.restservice.sparkjava</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>microstream-storage-restservice-sparkjava</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.storage.restservice.sparkjava</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>one.microstream.storage.restservice.sparkjava.types</em>, <em>one.microstream.storage.restservice.sparkjava.exceptions</em></p></td>
 </tr>
 </tbody>
 </table>
