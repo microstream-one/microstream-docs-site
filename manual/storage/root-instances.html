@@ -197,6 +197,9 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="storing-data/best-practice.html">Best Practice</a>
   </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="storing-data/deep-copy.html">Deep Copy Utility</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
@@ -518,6 +521,45 @@ storageManager.setRoot("Hello World");
 
 // Store root
 storageManager.storeRoot();</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_shared_mutable_data"><a class="anchor" href="#_shared_mutable_data"></a>Shared Mutable Data</h3>
+<div class="paragraph">
+<p>If you are working with Microstream technology in a multi-threaded environment, there are a few things you need to pay extra attention to.</p>
+</div>
+<div class="sect3">
+<h4 id="_synchronize_access_to_shared_mutable_data"><a class="anchor" href="#_synchronize_access_to_shared_mutable_data"></a>Synchronize access to shared mutable data</h4>
+<div class="paragraph">
+<p>When using standard frameworks, you often work in a multi-threaded environment. If you are using the older JDBC approach, you create a copy of your data that you work with within a single thread, modify the data, and then save it back in a database trace. Microstream works with data directly, allowing it to achieve significantly better performance parameters. However, for developers, this means that any reading and writing to this shared object graph must be synchronized.</p>
+</div>
+<div class="paragraph">
+<p>To make it easier to use within your application, we have prepared a simple way for you to do so.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">XThreads.executeSynchronized(() -&gt; {
+    root.changeData();
+    storageManager.store(root);
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This approach will immediately provide you with several benefits:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Any changes to your object graph will be synchronized, every other thread will see the current value.</p>
+</li>
+<li>
+<p>Avoid Deadlocks</p>
+</li>
+<li>
+<p>In principle, you prevent the object graph from being modified at the same time it is saved.</p>
+</li>
+</ol>
+</div>
 </div>
 </div>
 </div>

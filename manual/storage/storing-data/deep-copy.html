@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Data Model :: MicroStream Reference Manual</title>
-    <link rel="canonical" href="https://docs.microstream.one/manual/storage/faq/data-model.html">
-    <link rel="prev" href="../rest-interface/client-gui.html">
-    <link rel="next" href="data-management.html">
+    <title>Use Data Copy :: MicroStream Reference Manual</title>
+    <link rel="canonical" href="https://docs.microstream.one/manual/storage/storing-data/deep-copy.html">
+    <link rel="prev" href="best-practice.html">
+    <link rel="next" href="../loading-data/index.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../../_/css/site.css">
   <link rel="icon" type="image/png" sizes="32x32" href="https://www.microstream.one/favicon-32x32.png">
@@ -183,22 +183,22 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../storing-data/index.html">Storing Data</a>
+    <a class="nav-link" href="index.html">Storing Data</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../storing-data/transactions.html">Convenience Methods and Explicit Storing (Transactions)</a>
+    <a class="nav-link" href="transactions.html">Convenience Methods and Explicit Storing (Transactions)</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../storing-data/lazy-eager-full.html">Lazy and Eager Storing</a>
+    <a class="nav-link" href="lazy-eager-full.html">Lazy and Eager Storing</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../storing-data/transient-fields.html">Transient Fields</a>
+    <a class="nav-link" href="transient-fields.html">Transient Fields</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../storing-data/best-practice.html">Best Practice</a>
+    <a class="nav-link" href="best-practice.html">Best Practice</a>
   </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../storing-data/deep-copy.html">Deep Copy Utility</a>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="deep-copy.html">Deep Copy Utility</a>
   </li>
 </ul>
   </li>
@@ -281,20 +281,20 @@
     <button class="nav-item-toggle"></button>
     <span class="nav-text">FAQ</span>
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="3">
-    <a class="nav-link" href="data-model.html">Data Model</a>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../faq/data-model.html">Data Model</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="data-management.html">Data Management</a>
+    <a class="nav-link" href="../faq/data-management.html">Data Management</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="file-storage.html">File Storage</a>
+    <a class="nav-link" href="../faq/file-storage.html">File Storage</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="java-features.html">Java Features</a>
+    <a class="nav-link" href="../faq/java-features.html">Java Features</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="miscellaneous.html">Miscellaneous</a>
+    <a class="nav-link" href="../faq/miscellaneous.html">Miscellaneous</a>
   </li>
 </ul>
   </li>
@@ -424,8 +424,8 @@
   <ul>
     <li><a href="../../intro/welcome.html">MicroStream Reference Manual</a></li>
     <li><a href="../index.html">Storage</a></li>
-    <li>FAQ</li>
-    <li><a href="data-model.html">Data Model</a></li>
+    <li><a href="index.html">Storing Data</a></li>
+    <li><a href="deep-copy.html">Deep Copy Utility</a></li>
   </ul>
 </nav>
 </div>
@@ -434,33 +434,117 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Data Model</h1>
-<div class="sect1">
-<h2 id="_do_i_have_to_adapt_my_object_model_to_microstream"><a class="anchor" href="#_do_i_have_to_adapt_my_object_model_to_microstream"></a>Do I have to adapt my object-model to MicroStream?</h2>
+<h1 class="page">Use Data Copy</h1>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>No.
-MicroStream allows you to store any Java object.
-Instances of any and all types can be handled, there are no special restrictions like having to implement an interface, using annotations or having a default constructor (see POJO).
-Only types bound to JVM-internals like Thread, IO-streams and the like are deliberately excluded from being persistable since they could not be properly recreated upon loading, but such instances should not be part of entity data models, anyway.</p>
+<p>If the application works in MVC frameworks, the work is often done by getting some data from a data source, modifying it,
+and then store it back in a data store. This style of work application always works with a copy of the data.
+Which allows it to use mutable data only within a single thread. The developer doesn&#8217;t have to worry about data
+synchronization and then store this data in a database transaction.
+This way of working is very practical, it does not require developers to have knowledge of multithreaded
+programming and thanks to this it is very widespread.</p>
+</div>
+<div class="paragraph">
+<p>Can similar technical work be used when working with MicroStream?</p>
+</div>
+<div class="paragraph">
+<p>Of course, elegantly, very simply and safely we can use the ObjectCopier utility to create a deep copy of our data,
+change it, and save it back.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_what_if_i_have_to_change_my_entity_classes"><a class="anchor" href="#_what_if_i_have_to_change_my_entity_classes"></a>What if I have to change my entity classes?</h2>
+<h2 id="_deep_copy_vs_shallow_copy"><a class="anchor" href="#_deep_copy_vs_shallow_copy"></a>Deep Copy vs Shallow Copy</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>During initialization, MicroStream automatically checks if your runtime entity classes are still matching the persistent data.
-Mismatches are automatically mapped when loading data based on predefined rules that you can extend and overwrite on a per-case basis if needed.</p>
+<p>Very simple idea, just create a purchase of actual data to work within the application and at the end
+save that data back. Unfortunately, it&#8217;s not that simple. If the standard copy function is called over an object in Java,
+it creates a copy of that object, but the other object&#8217;s references remain the same. This doesn&#8217;t help so much.
+Because usually, an application contains a more complex data structure than a single object. This approach is called shallow copy.
+More here: <a href="https://en.wikipedia.org/wiki/Object_copying" class="bare">https://en.wikipedia.org/wiki/Object_copying</a></p>
 </div>
 <div class="paragraph">
-<p>For more information, see <a href="../legacy-type-mapping/index.html" class="page">Legacy Type Mapping</a></p>
+<p>What is actually needed at this point is a deep copy. You need to create a complete copy of the complete subgraph from this object.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_deep_copy_utility_objectcopier"><a class="anchor" href="#_deep_copy_utility_objectcopier"></a>Deep Copy Utility (ObjectCopier)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>MicroStream provides the full support for a deep copy. However, the following conditions must be met:</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Data must be already saved and manage by MicroStream.</p>
+</li>
+<li>
+<p>There are no circular references. The Object Graph is a Tree. (From graph theory, object graph contains no circles.)</p>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If these two above conditions are met, ObjectCopier can be relatively easily called and a deep copy of the data will be created.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">        ObjectCopier objectCopier = ObjectCopier.New();
+
+        Customer customer = root.getCustomer(id);
+
+        Customer customerCopy = objectCopier.copy(customer);
+        customerCopy.addPurchase(purchase);
+
+        XThreads.executeSynchronized(() -&gt; {
+            root.setCustomer(id, customerCopy);
+            storage.store(root.getcusomers());
+        }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>What are the parts of this code?</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Just create an instance of ObjectCopier class due to factory method New();</p>
+</li>
+<li>
+<p>Get customer</p>
+</li>
+<li>
+<p>Make a deep copy of the customer object</p>
+</li>
+<li>
+<p>Modify this object graph</p>
+</li>
+<li>
+<p>In synchronized mode save this customer instead of the original customer and save it into a datastore</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This simple example written in pseudocode aims to demonstrate one of the many ways to solve
+working over a shared object graph in a multi-threaded environment.</p>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="../rest-interface/client-gui.html">Client GUI</a></span>
-  <span class="next"><a href="data-management.html">Data Management</a></span>
+  <span class="prev"><a href="best-practice.html">Best Practice</a></span>
+  <span class="next"><a href="../loading-data/index.html">Loading Data</a></span>
 </nav>
 </article>
   </div>
@@ -469,7 +553,7 @@ Mismatches are automatically mapped when loading data based on predefined rules 
 <script>
   window.antora = window.antora || {}
   window.antora.basePath = '../../..'
-  window.antora.pagePath = '/manual/storage/faq/data-model.html'
+  window.antora.pagePath = '/manual/storage/storing-data/deep-copy.html'
 </script>
 <script src="../../../_/js/site.js"></script>
 <script src="../../../_/js/vendor/lunr.js"></script>
