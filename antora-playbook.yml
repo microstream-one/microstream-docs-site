@@ -5,6 +5,9 @@ site:
 content:
   sources:
   - url: https://github.com/microstream-one/microstream-public.git
+    branches: release/5.0.0
+    start_path: docs
+  - url: https://github.com/microstream-one/microstream-public.git
     branches: master
     start_path: docs
 asciidoc:
