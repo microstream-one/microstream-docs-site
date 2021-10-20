@@ -354,6 +354,18 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../misc/integrations/index.html">Integrations</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../misc/integrations/spring-boot.html">Spring-Boot</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../misc/integrations/helidon.html">Helidon</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
     <a class="nav-link" href="../misc/layered-entities/index.html">Layered Entities</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
@@ -401,14 +413,17 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">MicroStream Reference Manual</span>
-    <span class="version">5.0</span>
+    <span class="version">6.0</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <a class="title" href="welcome.html">MicroStream Reference Manual</a>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="welcome.html">5.0</a>
+          <a href="welcome.html">6.0</a>
+        </li>
+        <li class="version">
+          <a href="../5.0/intro/welcome.html">5.0</a>
         </li>
       </ul>
     </li>
@@ -426,6 +441,13 @@
     <li><a href="changelog.html">Changelog</a></li>
   </ul>
 </nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">6.0</button>
+  <div class="version-menu">
+    <a class="version is-current" href="changelog.html">6.0</a>
+    <a class="version" href="../5.0/intro/changelog.html">5.0</a>
+  </div>
+</div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -434,13 +456,68 @@
 <article class="doc">
 <h1 class="page">Changelog</h1>
 <div class="sect1">
+<h2 id="_6_0"><a class="anchor" href="#_6_0"></a>6.0</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_features"><a class="anchor" href="#_features"></a><strong>Features</strong></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../misc/integrations/spring-boot.html" class="page">Spring Boot Integration</a></p>
+</li>
+<li>
+<p><a href="../storage/addendum/specialized-type-handlers.html#jdk17" class="page">Specialized type handlers for Java 17 collection</a></p>
+</li>
+<li>
+<p><a href="../storage/storing-data/deep-copy.html" class="page">Deep-copy utility</a></p>
+</li>
+<li>
+<p>Examples included in reactor build</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bugfixes"><a class="anchor" href="#_bugfixes"></a><strong>Bugfixes</strong></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed swallowed exceptions in storage channels <a href="https://github.com/microstream-one/microstream/issues/265">[265</a>]</p>
+</li>
+<li>
+<p>Fixed failing import with multiple channels <a href="https://github.com/microstream-one/microstream/issues/254">[254</a>]</p>
+</li>
+<li>
+<p>Fixed zero byte blocks in storage <a href="https://github.com/microstream-one/microstream/pull/255">[255</a>]</p>
+</li>
+<li>
+<p>Fixed faulty loading behaviour in persisted cache <a href="https://github.com/microstream-one/microstream/issues/226">[226</a>]</p>
+</li>
+<li>
+<p>Fixed possible deadlock in persistence manager <a href="https://github.com/microstream-one/microstream/pull/240">[240</a>]</p>
+</li>
+<li>
+<p>Fixed bug in type handler for PriorityQueue <a href="https://github.com/microstream-one/microstream/pull/234">[234</a>]</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_migration_guide"><a class="anchor" href="#_migration_guide"></a><strong>Migration guide</strong></h3>
+<div class="paragraph">
+<p>From version 5 no actions are necessary, for older versions see <a href="#5_0_migration-guide">below</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_5_0_2"><a class="anchor" href="#_5_0_2"></a>5.0.2</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Bugfix release.</p>
 </div>
 <div class="sect2">
-<h3 id="_bugfixes"><a class="anchor" href="#_bugfixes"></a><strong>Bugfixes</strong></h3>
+<h3 id="_bugfixes_2"><a class="anchor" href="#_bugfixes_2"></a><strong>Bugfixes</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -458,7 +535,7 @@
 <p>Bugfix release.</p>
 </div>
 <div class="sect2">
-<h3 id="_bugfixes_2"><a class="anchor" href="#_bugfixes_2"></a><strong>Bugfixes</strong></h3>
+<h3 id="_bugfixes_3"><a class="anchor" href="#_bugfixes_3"></a><strong>Bugfixes</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -478,7 +555,7 @@ But don&#8217;t worry. Just change the dependency configuration and organize som
 For detailed information, see the migration guide below.</p>
 </div>
 <div class="sect2">
-<h3 id="_features"><a class="anchor" href="#_features"></a><strong>Features</strong></h3>
+<h3 id="_features_2"><a class="anchor" href="#_features_2"></a><strong>Features</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -516,7 +593,7 @@ For detailed information, see the migration guide below.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_bugfixes_3"><a class="anchor" href="#_bugfixes_3"></a><strong>Bugfixes</strong></h3>
+<h3 id="_bugfixes_4"><a class="anchor" href="#_bugfixes_4"></a><strong>Bugfixes</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -526,7 +603,7 @@ For detailed information, see the migration guide below.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_migration_guide"><a class="anchor" href="#_migration_guide"></a><strong>Migration guide</strong></h3>
+<h3 id="5_0_migration-guide"><a class="anchor" href="#5_0_migration-guide"></a><strong>Migration guide</strong></h3>
 <div class="paragraph">
 <p>In order to fully support the Java Module System and adopt Maven naming standards we had to introduce some changes:</p>
 </div>
@@ -1023,7 +1100,7 @@ For detailed information, see the migration guide below.</p>
 <h2 id="_4_1"><a class="anchor" href="#_4_1"></a>4.1</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_features_2"><a class="anchor" href="#_features_2"></a><strong>Features</strong></h3>
+<h3 id="_features_3"><a class="anchor" href="#_features_3"></a><strong>Features</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1068,7 +1145,7 @@ in-memory file systems for unit testing</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_bugfixes_4"><a class="anchor" href="#_bugfixes_4"></a><strong>Bugfixes</strong></h3>
+<h3 id="_bugfixes_5"><a class="anchor" href="#_bugfixes_5"></a><strong>Bugfixes</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1081,9 +1158,9 @@ in-memory file systems for unit testing</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_migration_guide_2"><a class="anchor" href="#_migration_guide_2"></a><strong>Migration guide</strong></h3>
+<h3 id="4_1_migration-guide"><a class="anchor" href="#4_1_migration-guide"></a><strong>Migration guide</strong></h3>
 <div class="paragraph">
-<p>From 4.1 no actions are necessary, for older versions see below.</p>
+<p>From 4.1 no actions are necessary, for older versions see <a href="#4_0_migration-guide">below</a>.</p>
 </div>
 </div>
 </div>
@@ -1092,7 +1169,7 @@ in-memory file systems for unit testing</p>
 <h2 id="_4_0"><a class="anchor" href="#_4_0"></a>4.0</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_features_3"><a class="anchor" href="#_features_3"></a><strong>Features</strong></h3>
+<h3 id="_features_4"><a class="anchor" href="#_features_4"></a><strong>Features</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1105,7 +1182,7 @@ in-memory file systems for unit testing</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_bugfixes_5"><a class="anchor" href="#_bugfixes_5"></a><strong>Bugfixes</strong></h3>
+<h3 id="_bugfixes_6"><a class="anchor" href="#_bugfixes_6"></a><strong>Bugfixes</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1118,7 +1195,7 @@ in-memory file systems for unit testing</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_migration_guide_3"><a class="anchor" href="#_migration_guide_3"></a><strong>Migration guide</strong></h3>
+<h3 id="4_0_migration-guide"><a class="anchor" href="#4_0_migration-guide"></a><strong>Migration guide</strong></h3>
 <div class="paragraph">
 <p>All configuration code, which includes file paths, may be rewritten to use the new Abstract File System.<br>
 For example see <a href="../storage/configuration/storage-files-and-directories.html" class="page">Storage Files</a> or <a href="../storage/configuration/backup/continuous-backup.html" class="page">Backup</a>.</p>
@@ -1133,7 +1210,7 @@ For example see <a href="../storage/configuration/storage-files-and-directories.
 <p>Bugfix release for projects using an old non public version.</p>
 </div>
 <div class="sect2">
-<h3 id="_bugfixes_6"><a class="anchor" href="#_bugfixes_6"></a><strong>Bugfixes</strong></h3>
+<h3 id="_bugfixes_7"><a class="anchor" href="#_bugfixes_7"></a><strong>Bugfixes</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1148,7 +1225,7 @@ For example see <a href="../storage/configuration/storage-files-and-directories.
 <h2 id="_3_0"><a class="anchor" href="#_3_0"></a>3.0</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_features_4"><a class="anchor" href="#_features_4"></a><strong>Features</strong></h3>
+<h3 id="_features_5"><a class="anchor" href="#_features_5"></a><strong>Features</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1182,7 +1259,7 @@ legacy type mapping)</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_bugfixes_7"><a class="anchor" href="#_bugfixes_7"></a><strong>Bugfixes</strong></h3>
+<h3 id="_bugfixes_8"><a class="anchor" href="#_bugfixes_8"></a><strong>Bugfixes</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1216,9 +1293,9 @@ legacy type mapping)</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_migration_guide_4"><a class="anchor" href="#_migration_guide_4"></a><strong>Migration guide</strong></h3>
+<h3 id="3_0_migration-guide"><a class="anchor" href="#3_0_migration-guide"></a><strong>Migration guide</strong></h3>
 <div class="paragraph">
-<p>From 2.2 no actions are necessary, for older versions see below.</p>
+<p>From 2.2 no actions are necessary, for older versions see <a href="#2_2_migration-guide">below</a>.</p>
 </div>
 </div>
 </div>
@@ -1227,7 +1304,7 @@ legacy type mapping)</p>
 <h2 id="_2_2"><a class="anchor" href="#_2_2"></a>2.2</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_features_5"><a class="anchor" href="#_features_5"></a>Features</h3>
+<h3 id="_features_6"><a class="anchor" href="#_features_6"></a>Features</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1264,7 +1341,7 @@ See <a href="#2_2_migration-guide">Migration Guide</a> below on how to adjust ex
 </div>
 </div>
 <div class="sect2">
-<h3 id="_bugfixes_8"><a class="anchor" href="#_bugfixes_8"></a>Bugfixes</h3>
+<h3 id="_bugfixes_9"><a class="anchor" href="#_bugfixes_9"></a>Bugfixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1291,7 +1368,7 @@ Modern IDEs provide a functionality to "auto-import" missing types or automatica
 <h2 id="_2_1"><a class="anchor" href="#_2_1"></a>2.1</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_features_6"><a class="anchor" href="#_features_6"></a>Features</h3>
+<h3 id="_features_7"><a class="anchor" href="#_features_7"></a>Features</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1311,7 +1388,7 @@ See Migration guide below.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_bugfixes_9"><a class="anchor" href="#_bugfixes_9"></a>Bugfixes</h3>
+<h3 id="_bugfixes_10"><a class="anchor" href="#_bugfixes_10"></a>Bugfixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1343,7 +1420,7 @@ This can be customized by the new interface <code>StorageThreadNameProvider</cod
 </div>
 </div>
 <div class="sect2">
-<h3 id="_migration_guide_5"><a class="anchor" href="#_migration_guide_5"></a>Migration Guide</h3>
+<h3 id="_migration_guide_2"><a class="anchor" href="#_migration_guide_2"></a>Migration Guide</h3>
 <div class="paragraph">
 <p>In the directory of an existing storage, in the TypeDictionary file (default name "PersistenceTypeDictionary.ptd"), all occurrences of "one.microstream.persistence.lazy.Lazy" must be replaced with "one.microstream.persistence.lazy.Lazy$Default".</p>
 </div>

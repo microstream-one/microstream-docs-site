@@ -354,6 +354,18 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../misc/integrations/index.html">Integrations</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../misc/integrations/spring-boot.html">Spring-Boot</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../misc/integrations/helidon.html">Helidon</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
     <a class="nav-link" href="../misc/layered-entities/index.html">Layered Entities</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
@@ -401,14 +413,17 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">MicroStream Reference Manual</span>
-    <span class="version">5.0</span>
+    <span class="version">6.0</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <a class="title" href="welcome.html">MicroStream Reference Manual</a>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="welcome.html">5.0</a>
+          <a href="welcome.html">6.0</a>
+        </li>
+        <li class="version">
+          <a href="../5.0/intro/welcome.html">5.0</a>
         </li>
       </ul>
     </li>
@@ -426,6 +441,13 @@
     <li><a href="installation.html">Installation</a></li>
   </ul>
 </nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">6.0</button>
+  <div class="version-menu">
+    <a class="version is-current" href="installation.html">6.0</a>
+    <a class="version" href="../5.0/intro/installation.html">5.0</a>
+  </div>
+</div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -446,7 +468,7 @@
 	&lt;dependency&gt;
 		&lt;groupId&gt;one.microstream&lt;/groupId&gt;
 		&lt;artifactId&gt;microstream-storage-embedded&lt;/artifactId&gt;
-		&lt;version&gt;05.00.02-MS-GA&lt;/version&gt;
+		&lt;version&gt;06.00.00-MS-GA&lt;/version&gt;
 	&lt;/dependency&gt;
 &lt;/dependencies&gt;</code></pre>
 </div>
@@ -455,7 +477,7 @@
 <div class="title">Gradle (Groovy) [build.gradle]</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">dependencies {
-	implementation 'one.microstream:microstream-storage-embedded:05.00.02-MS-GA'
+	implementation 'one.microstream:microstream-storage-embedded:06.00.00-MS-GA'
 }</code></pre>
 </div>
 </div>
@@ -463,14 +485,14 @@
 <div class="title">Gradle (Kotlin) [build.gradle.kts]</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">dependencies {
-	implementation("one.microstream:microstream-storage-embedded:05.00.02-MS-GA")
+	implementation("one.microstream:microstream-storage-embedded:06.00.00-MS-GA")
 }</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Scala SBT [build.sbt]</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-scala hljs" data-lang="scala">libraryDependencies += "one.microstream" % "microstream-storage-embedded" % "05.00.02-MS-GA"</code></pre>
+<pre class="highlightjs highlight"><code class="language-scala hljs" data-lang="scala">libraryDependencies += "one.microstream" % "microstream-storage-embedded" % "06.00.00-MS-GA"</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -479,7 +501,7 @@
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependencies&gt;
 	&lt;dependency org="one.microstream"
 		name="microstream-storage-embedded"
-		rev="05.00.02-MS-GA" /&gt;
+		rev="06.00.00-MS-GA" /&gt;
 &lt;/dependencies&gt;</code></pre>
 </div>
 </div>
@@ -487,7 +509,7 @@
 <div class="title">Apache Buildr [Buildfile]</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-ruby hljs" data-lang="ruby">define 'my-app' do
-	compile.with 'one.microstream:microstream-storage-embedded:05.00.02-MS-GA'
+	compile.with 'one.microstream:microstream-storage-embedded:06.00.00-MS-GA'
 end</code></pre>
 </div>
 </div>
@@ -510,7 +532,7 @@ load("@rules_jvm_external//:defs.bzl", "maven_install")
 
 maven_install(
 	artifacts = [
-		"one.microstream:microstream-storage-embedded:05.00.02-MS-GA"
+		"one.microstream:microstream-storage-embedded:06.00.00-MS-GA"
 	],
 )</code></pre>
 </div>
@@ -520,7 +542,7 @@ maven_install(
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">maven_jar(
 	name = "microstream",
-	artifact = "one.microstream:microstream-storage-embedded:05.00.02-MS-GA"
+	artifact = "one.microstream:microstream-storage-embedded:06.00.00-MS-GA"
 )</code></pre>
 </div>
 </div>
@@ -528,7 +550,7 @@ maven_install(
 <p>or in our P2 Update Site:</p>
 </div>
 <div class="paragraph">
-<p><a href="https://repo.microstream.one/repository/update-site/05.00.02-MS-GA" class="bare">https://repo.microstream.one/repository/update-site/05.00.02-MS-GA</a></p>
+<p><a href="https://repo.microstream.one/repository/update-site/06.00.00-MS-GA" class="bare">https://repo.microstream.one/repository/update-site/06.00.00-MS-GA</a></p>
 </div>
 </div>
 </div>
@@ -656,6 +678,10 @@ From a technical point of view, storage as well as serialization is a process th
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../storage/addendum/specialized-type-handlers.html" class="page">Specialized type handlers</a> for JDK 8 collection types.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-persistence-binary-jdk17</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../storage/addendum/specialized-type-handlers.html#jdk17" class="page">Specialized type handlers</a> for immutable JDK 17 collection types.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">microstream-storage</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Basic framework to manage a graph of Java data persisted as binary data as a database. Can be used both to implement an embedded database solution (in the same process as the Java application) and a standalone or server-mode database solution (in a separate process). Other forms of persistence than binary data are deliberately not supported because they would not bring any noteworthy advantages but many disadvantages for the task.</p></td>
 </tr>
@@ -690,6 +716,10 @@ From a technical point of view, storage as well as serialization is a process th
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">microstream-storage-restservice-sparkjava</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">REST service implementation which utilizes SparkJava and provides REST endpoints.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-integrations-spring-boot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../misc/integrations/spring-boot.html" class="page">Spring Boot Integration</a></p></td>
 </tr>
 </tbody>
 </table>
