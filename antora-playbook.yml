@@ -8,7 +8,7 @@ content:
     branches: release/5.0.0
     start_path: docs
   - url: https://github.com/microstream-one/microstream-public.git
-    branches: master
+    branches: release/6.0.0
     start_path: docs
 asciidoc:
   attributes:
