@@ -362,9 +362,6 @@
     <a class="nav-link" href="../misc/logging/index.html">Logging</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../misc/serializer/index.html">Serializer</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="../misc/integrations/index.html">Integrations</a>
 <ul class="nav-list">
@@ -474,7 +471,8 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>MicroStream&#8217;s serialization engine, which is used by the storage and the cache, can be used standalone as well.</p>
+<p>MicroStream&#8217;s serialization engine, which is used by the storage and the cache, can be used standalone as well.
+It is usable as as replacement for the default Java serialization to convert objects to a binary format and vice versa. This API is part of the persistence-binary module:</p>
 </div>
 </div>
 </div>
@@ -499,7 +497,8 @@
 <h2 id="_usage"><a class="anchor" href="#_usage"></a>Usage</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can use any medium type, but for most purposes the byte array version should be sufficient, to transfer the serialized form over the transport layer of your choice.</p>
+<p>You can use any medium type, but for most purposes the byte array version should be sufficient, to transfer the serialized form over the transport layer of your choice.
+Simply create a serializer instance, optionally based on a foundation, and call the serialize and deserialize methods.</p>
 </div>
 <div class="listingblock">
 <div class="content">
