@@ -316,6 +316,9 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../serializer/index.html">Serializer</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="index.html">Cache</a>
 <ul class="nav-list">
@@ -349,9 +352,18 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../communication/index.html">Communication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Miscellaneous</span>
 <ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../misc/logging/index.html">Logging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../misc/serializer/index.html">Serializer</a>
+  </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="../misc/integrations/index.html">Integrations</a>
@@ -413,14 +425,17 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">MicroStream Reference Manual</span>
-    <span class="version">6.0</span>
+    <span class="version">7.0</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <a class="title" href="../intro/welcome.html">MicroStream Reference Manual</a>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="../intro/welcome.html">6.0</a>
+          <a href="../intro/welcome.html">7.0</a>
+        </li>
+        <li class="version">
+          <a href="../6.0/intro/welcome.html">6.0</a>
         </li>
         <li class="version">
           <a href="../5.0/intro/welcome.html">5.0</a>
@@ -443,9 +458,10 @@
   </ul>
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">6.0</button>
+  <button class="version-menu-toggle" title="Show other versions of page">7.0</button>
   <div class="version-menu">
-    <a class="version is-current" href="getting-started.html">6.0</a>
+    <a class="version is-current" href="getting-started.html">7.0</a>
+    <a class="version" href="../6.0/cache/getting-started.html">6.0</a>
     <a class="version" href="../5.0/cache/getting-started.html">5.0</a>
   </div>
 </div>
@@ -466,10 +482,13 @@
 	&lt;dependency&gt;
 		&lt;groupId&gt;one.microstream&lt;/groupId&gt;
 		&lt;artifactId&gt;microstream-cache&lt;/artifactId&gt;
-		&lt;version&gt;06.01.00-MS-GA&lt;/version&gt;
+		&lt;version&gt;07.00.00-MS-GA&lt;/version&gt;
 	&lt;/dependency&gt;
 &lt;/dependencies&gt;</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>The above dependency adds the JCache API and MicroStream Embedded storage as transient dependencies to your project.</p>
 </div>
 </div>
 </div>
@@ -480,8 +499,7 @@
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">CachingProvider provider     = Caching.getCachingProvider();
 CacheManager    cacheManager = provider.getCacheManager();
-MutableConfiguration&lt;Integer, String&gt; configuration = new MutableConfiguration&lt;&gt;()
-	.setTypes(Integer.class, String.class)
+MutableConfiguration&lt;Integer, String&gt; configuration = new MutableConfiguration&lt;Integer, String&gt;()
 	.setStoreByValue(false)
 	.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(Duration.ONE_MINUTE));
 Cache&lt;Integer, String&gt; cache = cacheManager.createCache("jCache", configuration);
@@ -529,7 +547,7 @@ This time we use a <code>EmbeddedStorageManager</code> as a backing store for th
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">EmbeddedStorageManager storageManager = EmbeddedStorage.start();
-CachingProvider provider     = (one.microstream.cache.CachingProvider)Caching.getCachingProvider();
+CachingProvider provider     = Caching.getCachingProvider();
 CacheManager    cacheManager = provider.getCacheManager();
 CacheConfiguration&lt;Integer, String&gt; configuration = CacheConfiguration
 	.Builder(Integer.class, String.class, "jCache", storageManager)

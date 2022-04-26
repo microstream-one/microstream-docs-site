@@ -316,6 +316,9 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../serializer/index.html">Serializer</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="../index.html">Cache</a>
 <ul class="nav-list">
@@ -349,9 +352,18 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../communication/index.html">Communication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Miscellaneous</span>
 <ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../misc/logging/index.html">Logging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../misc/serializer/index.html">Serializer</a>
+  </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="../../misc/integrations/index.html">Integrations</a>
@@ -413,14 +425,17 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">MicroStream Reference Manual</span>
-    <span class="version">6.0</span>
+    <span class="version">7.0</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <a class="title" href="../../intro/welcome.html">MicroStream Reference Manual</a>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="../../intro/welcome.html">6.0</a>
+          <a href="../../intro/welcome.html">7.0</a>
+        </li>
+        <li class="version">
+          <a href="../../6.0/intro/welcome.html">6.0</a>
         </li>
         <li class="version">
           <a href="../../5.0/intro/welcome.html">5.0</a>
@@ -444,9 +459,10 @@
   </ul>
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">6.0</button>
+  <button class="version-menu-toggle" title="Show other versions of page">7.0</button>
   <div class="version-menu">
-    <a class="version is-current" href="properties.html">6.0</a>
+    <a class="version is-current" href="properties.html">7.0</a>
+    <a class="version" href="../../6.0/cache/configuration/properties.html">6.0</a>
     <a class="version" href="../../5.0/cache/configuration/properties.html">5.0</a>
   </div>
 </div>
@@ -459,89 +475,103 @@
 <h1 class="page">Properties</h1>
 <div class="paragraph">
 <p>These are the available properties of the <code>CacheConfiguration</code> type.
-The names are used accordingly in the external configuration files.
+The property names are used in the external configuration files.
 They can be found as constants in <code>CacheConfigurationPropertyNames</code>.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 66.6667%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">keyType</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">key-type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fully Qualified Class Name</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Determines the required type of keys for the Cache.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">valueType</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">value-type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fully Qualified Class Name</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Determines the required type of values for the Cache.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">storageConfigurationResourceName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">storage-configuration-resource-name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">absolute or relative file name</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Path for the  <a href="../../storage/configuration/index.html#external-configuration" class="page">storage configuration</a> for the backing store.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cacheLoaderFactory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cache-loader-factory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fully Qualified Class Name of JCache factory implementation for a <code>javax.cache.integration.CacheLoader</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>A CacheLoader should be configured for "Read Through" caches to load values when a cache miss occurs.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cacheWriterFactory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cache-writer-factory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fully Qualified Class Name of JCache factory implementation for a <code>javax.cache.integration.CacheWriter</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>A CacheWriter is used for write-through to an external resource.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">expiryPolicyFactory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">expiry-policy-factory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fully Qualified Class Name of JCache factory implementation for a <code>javax.cache.expiry.ExpiryPolicy</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Determines when cache entries will expire based on creation, access and modification operations.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">evictionManagerFactory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">eviction-manager-factory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fully Qualified Class Name of JCache factory implementation for a <code>one.microstream.cache.types.EvictionManager</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Clears cache entries using a policy. Works interval-based or on entry creation.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">readThrough</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">read-through</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean parsed according to the <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html#parseBoolean-java.lang.String-">java.lang.Boolean.parseBoolean()</a> rules</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>When in "read-through" mode, cache misses that occur due to cache entries not existing as a result of performing a "get" will appropriately cause the configured CacheLoader to be invoked.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">writeThrough</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">write-through</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean parsed according to the <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html#parseBoolean-java.lang.String-">java.lang.Boolean.parseBoolean()</a> rules</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>When in "write-through" mode, cache updates that occur as a result of performing "put" operations will appropriately cause the configured CacheWriter to be invoked.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">storeByValue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">store-by-value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean parsed according to the <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html#parseBoolean-java.lang.String-">java.lang.Boolean.parseBoolean()</a> rules</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>When a cache is storeByValue, any mutation to the key or value does not affect the key of value stored in the cache.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">statisticsEnabled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">statistics-enabled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean parsed according to the <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html#parseBoolean-java.lang.String-">java.lang.Boolean.parseBoolean()</a> rules</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Checks whether statistics collection is enabled in this cache.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">managementEnabled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">management-enabled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean parsed according to the <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html#parseBoolean-java.lang.String-">java.lang.Boolean.parseBoolean()</a> rules</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Checks whether management is enabled on this cache.</p>
 </div></div></td>
