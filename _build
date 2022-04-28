@@ -1,3 +1,1 @@
-export DOCSEARCH_ENABLED=true
-export DOCSEARCH_ENGINE=lunr
-antora --fetch --generator antora-site-generator-lunr antora-playbook.yml
+antora --fetch antora-playbook.yml

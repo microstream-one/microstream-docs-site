@@ -24,4 +24,9 @@ ui:
   supplemental_files: ./supplemental-ui
 output:
   dir: ./site
+antora:
+  extensions:
+  - require: '@antora/lunr-extension'
+
+
  

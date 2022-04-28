@@ -11,10 +11,12 @@
             </g>
         </svg>
       </a>
-      {{#if env.DOCSEARCH_ENABLED}}
-        <div class="navbar-item">
-          <input id="search-input" type="text" placeholder="Search" class="input-field">
+	  {{#if env.SITE_SEARCH_PROVIDER}}
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs"{{#if page.home}} autofocus{{/if}}>
         </div>
+      </div>
       {{/if}}
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
