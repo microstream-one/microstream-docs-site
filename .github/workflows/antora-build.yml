@@ -14,10 +14,11 @@ jobs:
 
       - name: generate antora
         run: |
-          docker run --rm -i \
-            -u $(id -u)
-            -v $PWD:/antora:Z
+          docker run \
+            -u $(id -u) \
+            -v $PWD:/antora:Z \
             -w /workspace/source \
+            --rm -t \ 
            repo.microstream.one:18081/antora:0.1 \
            antora-playbook.yml
       - name: Deploy to site branch
