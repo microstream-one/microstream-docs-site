@@ -4,13 +4,13 @@ site:
   robots: allow
 content:
   sources:
-  - url: https://github.com/microstream-one/microstream-public.git
+  - url: https://github.com/microstream-one/microstream.git
     branches: release/5.0.0
     start_path: docs
-  - url: https://github.com/microstream-one/microstream-public.git
+  - url: https://github.com/microstream-one/microstream.git
     branches: release/6.0.0
     start_path: docs
-  - url: https://github.com/microstream-one/microstream-public.git
+  - url: https://github.com/microstream-one/microstream.git
     branches: release/7x
     start_path: docs
 asciidoc:
