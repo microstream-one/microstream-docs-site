@@ -6,8 +6,8 @@
     <title>Spring Boot Integration :: MicroStream Reference Manual</title>
     <link rel="canonical" href="https://docs.microstream.one/manual/misc/integrations/spring-boot.html">
     <link rel="prev" href="helidon.html">
-    <link rel="next" href="../layered-entities/index.html">
-    <meta name="generator" content="Antora 2.3.4">
+    <link rel="next" href="cdi.html">
+    <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../../../_/css/site.css">
   <link rel="icon" type="image/png" sizes="32x32" href="https://www.microstream.one/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://www.microstream.one/favicon-16x16.png">
@@ -27,9 +27,11 @@
             </g>
         </svg>
       </a>
-        <div class="navbar-item">
-          <input id="search-input" type="text" placeholder="Search" class="input-field">
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
         </div>
+      </div>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -371,6 +373,9 @@
   <li class="nav-item is-current-page" data-depth="3">
     <a class="nav-link" href="spring-boot.html">Spring-Boot</a>
   </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="cdi.html">CDI</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
@@ -463,13 +468,16 @@
     <a class="version is-missing" href="../../5.0/intro/welcome.html">5.0</a>
   </div>
 </div>
-</div>
+  <div class="edit-this-page"><a href="https://github.com/microstream-one/microstream/edit/release/7x/docs/modules/misc/pages/integrations/spring-boot.adoc">Edit this Page</a></div>
+  </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
 <h1 class="page">Spring Boot Integration</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="imageblock">
 <div class="content">
 <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Spring_Framework_Logo_2018.svg" alt="Spring Framework Logo 2018">
@@ -483,37 +491,194 @@ It is available within this artifact:</p>
 <div class="title">pom.xml</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependencies&gt;
-	&lt;dependency&gt;
-		&lt;groupId&gt;one.microstream&lt;/groupId&gt;
-		&lt;artifactId&gt;microstream-integrations-spring-boot&lt;/artifactId&gt;
-		&lt;version&gt;07.00.00-MS-GA&lt;/version&gt;
-	&lt;/dependency&gt;
+   &lt;dependency&gt;
+      &lt;groupId&gt;one.microstream&lt;/groupId&gt;
+      &lt;artifactId&gt;microstream-integrations-spring-boot&lt;/artifactId&gt;
+      &lt;version&gt;07.00.00-MS-GA&lt;/version&gt;
+   &lt;/dependency&gt;
 &lt;/dependencies&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>For more information consult the <a href="https://github.com/microstream-one/microstream/tree/master/integrations/spring-boot">readme</a> file.</p>
+<p>Official Spring Boot site: <a href="https://spring.io/projects/spring-boot" class="bare">https://spring.io/projects/spring-boot</a></p>
 </div>
 <div class="paragraph">
-<p>Official Spring Boot site: <a href="https://spring.io/projects/spring-boot" class="bare">https://spring.io/projects/spring-boot</a></p>
+<p>The integration requires Spring Boot 2.x (with version 2.1.0.RELEASE being the minimal supported one).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_breaking_changes"><a class="anchor" href="#_breaking_changes"></a>Breaking changes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Since version 8.0.0, the <em>StorageManager</em> that is instantiated by the integration is also started where the previous version of the integration did not start the manager.  You can have the old behaviour of a <em>StorageManager</em> that is not started by specifying the config value <code>one.microstream.auto-start=false</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration"><a class="anchor" href="#_configuration"></a>Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The configuration of the <em>StorageManager</em> can be done using key/value pairs that are provided by Spring Boot external Configuration.  The configuration keys must be prefixed by <code>one.microstream</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">one.microstream.storage-directory=/opt/data/microstream
+one.microstream.channel-count=2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The list of all MicroStream configuration properties and their meaning are listed on our <a href="../../storage/configuration/properties.html" class="xref page">documentation page</a>.</p>
+</div>
+<div class="paragraph">
+<p>The configuration values are handled using the <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config.typesafe-configuration-properties">typesafe configuration</a> approach, and you can read these values by accessing the <code>MicrostreamConfigurationProperties</code> Spring bean.</p>
+</div>
+<div class="paragraph">
+<p>You can either create a <em>StorageManager</em> yourself from an <code>EmbeddedStorageFoundation</code> Spring bean or access a fully configured one through the <code>StorageManager</code> Spring bean.  Be aware that since both share the same configuration values, if you create and start a <em>StorageManager</em> from <code>EmbeddedStorageFoundation</code>, it will conflict with the one from the <code>StorageManager</code> Spring bean. When you use the <code>EmbeddedStorageFoundation</code> Spring bean, don&#8217;t access the <code>StorageManager</code> bean.</p>
+</div>
+<div class="paragraph">
+<p>The <code>EmbeddedStorageFoundation</code> one is ideal if your Spring application is performing one-of tasks like for example Batch processing.  The other one is suited in most cases and the <em>StorageManager</em> can be customized and initialized before it is actually used.  Also, note that when using the feature of having the Root object as Spring Bean already creates and initializes the <em>StorageManager</em>.</p>
+</div>
+<div class="paragraph">
+<p>The <em>StorageManager</em> configuration can be customized by Spring beans that implement the interface <code>one.microstream.integrations.spring.boot.types.config.EmbeddedStorageFoundationCustomizer</code>.
+The <code>customize</code> method is called with an <code>EmbeddedStorageFoundation</code> which allows you to fully customize the <em>StorageManager</em> that will be created. You can for example, add the specific Type Handlers for JDK 8 as described on the <a href="https://docs.microstream.one/manual/storage/addendum/specialized-type-handlers.html">documentation</a>.</p>
+</div>
+<div class="paragraph">
+<p>After the <em>StorageManager</em> is created, the Spring beans that implement <code>one.microstream.integrations.spring.boot.types.config.StorageManagerInitializer</code> are called.
+You have the opportunity to perform actions on the <em>StorageManager</em> or root object.  Following rules apply to the <em>StorageManager</em> that is passed to the <code>initialize</code> method of the interface.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <em>StorageManager</em> is already started unless you specified the configuration value <code>one.microstream.auto-start=false</code>.</p>
+</li>
+<li>
+<p>If you have used the <code>@Storage</code> annotation on a class, the <em>StorageManager</em> is already associated with an instance of that class as the Root object.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_root_object"><a class="anchor" href="#_root_object"></a>Root object</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The root object can be indicated by using the <code>@Storage</code> annotation on the class. This annotation converts the POJO into a Spring bean (The annotation is a Spring Qualifier that makes the class also a <em>Component</em>).</p>
+</div>
+<div class="paragraph">
+<p>Besides converting it into a Spring bean, any field or setter injection within this class is also resolved. Please note that constructor injection is not supported and will result in an error indicating that the class has not a no-argument constructor.</p>
+</div>
+<div class="paragraph">
+<p>The integration also defines the instance of the class that is created as the root object (<code>StorageManager.setRoot()</code>) and stores the initial value (<code>StorageManager.storeRoot()</code>) when storageManager does not have a root object assigned yet (this happens only the very first time when you start up your application and the storage doesn&#8217;t contain any data yet)</p>
+</div>
+<div class="paragraph">
+<p>You can only annotate 1 class with the <code>@Storage</code>  annotation, if you have marked multiple, the creation of the Storage Spring bean will fail with a <em>BeansException</em>.</p>
+</div>
+<div class="paragraph">
+<p>When using the <code>@Storage</code> functionality, you as a developer should not change the root object of the <em>StorageManager</em> yourself anymore as that will lead to conflicts and mismatches between the Spring bean created for the Root object and your newly set instance on the <em>StorageManager</em>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_late_initialization"><a class="anchor" href="#_late_initialization"></a>Late initialization</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>By default, Spring creates all singleton beans at the start of the application. The Spring beans defined by the MicroStream integration, like <em>StorageManager</em> and <em>Storage</em> root bean, are singletons. So they are created at startup which means that for example when you are using a database as a storage target, the database must be available and accessible when the application starts up.</p>
+</div>
+<div class="paragraph">
+<p>When this is not desired, because the database might be only available when the user request arrives and not at application startup, you can use the <code>Provider</code> option.</p>
+</div>
+<div class="paragraph">
+<p>Add the Jakarta Inject dependency to your project</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">    &lt;dependency&gt;
+        &lt;groupId&gt;jakarta.inject&lt;/groupId&gt;
+        &lt;artifactId&gt;jakarta.inject-api&lt;/artifactId&gt;
+        &lt;version&gt;1.0&lt;/version&gt;
+    &lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And use injection based on the <em>Provider</em> and not the actual class itself.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    private final Provider&lt;StorageManager&gt; storageManagerProvider;
+
+    public UserRepository(Provider&lt;StorageManager&gt; storageManagerProvider) {
+
+        this.storageManagerProvider = storageManagerProvider;
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When you need to access the <em>StorageManager</em> Spring bean, you perform  <code>storageManagerProvider.get()</code> statement, and only at that point the <em>StorageManager</em> is created as a Spring bean. This allows you to delay the creation until the first user request.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_logging"><a class="anchor" href="#_logging"></a>Logging</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>MicroStream Spring module supports standard Spring logging, so you can add this into your config:&lt;br&gt;
+<code>logging.level.one.microstream=debug</code>
+to obtain all MicroStream configuration keys:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">2021-08-23 15:16:02.979 DEBUG 18469 --- [           main] o.m.spring.MicrostreamConfiguration      : Microstream configuration items:
+2021-08-23 15:16:02.979 DEBUG 18469 --- [           main] o.m.spring.MicrostreamConfiguration      : storage-filesystem.sql.postgres.password : xxxxx
+2021-08-23 15:16:02.994 DEBUG 18469 --- [           main] o.m.spring.MicrostreamConfiguration      : storage-filesystem.sql.postgres.data-source-provider : one.microstream.test.spring.MyDataSourceProvider
+2021-08-23 15:16:02.994 DEBUG 18469 --- [           main] o.m.spring.MicrostreamConfiguration      : storage-directory : microstream_storage
+2021-08-23 15:16:02.994 DEBUG 18469 --- [           main] o.m.spring.MicrostreamConfiguration      : storage-filesystem.sql.postgres.user : postgres</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Key values containing "password" are replaced by "xxxxx".</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_classloader_configuration"><a class="anchor" href="#_classloader_configuration"></a>Classloader configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you use another class loader, such as hot replace, you may get an exception:
+<code>one.microstream.exceptions.TypeCastException</code>&lt;br&gt;
+In this case, it is possible to force the use of the current thread&#8217;s class loader for MicroStream.&lt;br&gt;
+<code>one.microstream.use-current-thread-class-loader=false</code> &lt;br&gt;
+This value is not passed to the MicroStream framework but is set directly in this module.</p>
+</div>
+<div class="paragraph">
+<p>This configuration is only applied to the <em>StorageManager</em> Spring bean and not to the <em>EmbeddedStorageFoundation</em> Spring bean.</p>
+</div>
+</div>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="helidon.html">Helidon</a></span>
-  <span class="next"><a href="../layered-entities/index.html">Layered Entities</a></span>
+  <span class="next"><a href="cdi.html">CDI</a></span>
 </nav>
 </article>
   </div>
 </main>
 </div>
-<script>
-  window.antora = window.antora || {}
-  window.antora.basePath = '../../..'
-  window.antora.pagePath = '/manual/misc/integrations/spring-boot.html'
-</script>
-<script src="../../../_/js/site.js"></script>
-<script src="../../../_/js/vendor/lunr.js"></script>
-<script src="../../../_/js/vendor/search.js"></script>
-<script async src="../../../_/../search-index.js"></script>
+<footer class="footer">
+© 2022 MicroStream Software. All rights reserved.
+&nbsp;
+&nbsp;
+&nbsp;
+<a href="https://microstream.one/imprint/">Imprint</a>
+<span class="link-separator">&nbsp;&#124;&nbsp;</span>
+<a href="https://microstream.one/terms-of-use/">Terms of use</a>
+<span class="link-separator">&nbsp;&#124;&nbsp;</span>
+<a href="https://microstream.one/privacy/">Privacy</a>
+<span class="link-separator">&nbsp;&#124;&nbsp;</span>
+<a href="https://microstream.one/legal-notice/">Legal notice</a>
+</footer><script src="../../../_/js/site.js"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
   </body>
 </html>

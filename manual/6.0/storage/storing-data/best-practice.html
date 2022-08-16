@@ -7,7 +7,7 @@
     <link rel="canonical" href="https://docs.microstream.one/manual/storage/storing-data/best-practice.html">
     <link rel="prev" href="transient-fields.html">
     <link rel="next" href="deep-copy.html">
-    <meta name="generator" content="Antora 2.3.4">
+    <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../../../../_/css/site.css">
   <link rel="icon" type="image/png" sizes="32x32" href="https://www.microstream.one/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://www.microstream.one/favicon-16x16.png">
@@ -27,9 +27,11 @@
             </g>
         </svg>
       </a>
-        <div class="navbar-item">
-          <input id="search-input" type="text" placeholder="Search" class="input-field">
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
         </div>
+      </div>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -454,7 +456,8 @@
     <a class="version" href="../../../5.0/storage/storing-data/best-practice.html">5.0</a>
   </div>
 </div>
-</div>
+  <div class="edit-this-page"><a href="https://github.com/microstream-one/microstream/edit/release/6.0.0/docs/modules/storage/pages/storing-data/best-practice.adoc">Edit this Page</a></div>
+  </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
@@ -484,10 +487,10 @@ To allow such hidden objects to be stored after they have been modified you have
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Set the global storing strategy of the MicroStream instance to <a href="lazy-eager-full.html" class="page">eager storing</a> or</p>
+<p>Set the global storing strategy of the MicroStream instance to <a href="lazy-eager-full.html" class="xref page">eager storing</a> or</p>
 </li>
 <li>
-<p>Implement and set a custom <a href="../customizing/custom-storing-behavior.html" class="page"><code>PersistenceEagerStoringFieldEvaluator</code></a> for this field.</p>
+<p>Implement and set a custom <a href="../customizing/custom-storing-behavior.html" class="xref page"><code>PersistenceEagerStoringFieldEvaluator</code></a> for this field.</p>
 </li>
 </ol>
 </div>
@@ -511,7 +514,7 @@ To allow such hidden objects to be stored after they have been modified you have
 <p>To increase performance use immutable sub-graphs as often as possible.</p>
 </div>
 <div class="paragraph">
-<p>Storing those with the provided <a href="transactions.html" class="page">convenience storing methods</a> or using a thread local <a href="lazy-eager-full.html#eager-storing" class="page">storer</a> to insert those sub-graphs concurrently can give a great performance boost.</p>
+<p>Storing those with the provided <a href="transactions.html" class="xref page">convenience storing methods</a> or using a thread local <a href="lazy-eager-full.html#eager-storing" class="xref page">storer</a> to insert those sub-graphs concurrently can give a great performance boost.</p>
 </div>
 </div>
 </div>
@@ -523,15 +526,22 @@ To allow such hidden objects to be stored after they have been modified you have
   </div>
 </main>
 </div>
-<script>
-  window.antora = window.antora || {}
-  window.antora.basePath = '../../../..'
-  window.antora.pagePath = '/manual/6.0/storage/storing-data/best-practice.html'
-</script>
-<script src="../../../../_/js/site.js"></script>
-<script src="../../../../_/js/vendor/lunr.js"></script>
-<script src="../../../../_/js/vendor/search.js"></script>
-<script async src="../../../../_/../search-index.js"></script>
+<footer class="footer">
+© 2022 MicroStream Software. All rights reserved.
+&nbsp;
+&nbsp;
+&nbsp;
+<a href="https://microstream.one/imprint/">Imprint</a>
+<span class="link-separator">&nbsp;&#124;&nbsp;</span>
+<a href="https://microstream.one/terms-of-use/">Terms of use</a>
+<span class="link-separator">&nbsp;&#124;&nbsp;</span>
+<a href="https://microstream.one/privacy/">Privacy</a>
+<span class="link-separator">&nbsp;&#124;&nbsp;</span>
+<a href="https://microstream.one/legal-notice/">Legal notice</a>
+</footer><script src="../../../../_/js/site.js"></script>
 <script async src="../../../../_/js/vendor/highlight.js"></script>
+<script src="../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
+<script async src="../../../../search-index.js"></script>
   </body>
 </html>

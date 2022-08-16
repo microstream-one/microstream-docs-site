@@ -7,7 +7,7 @@
     <link rel="canonical" href="https://docs.microstream.one/manual/cache/configuration/storage.html">
     <link rel="prev" href="properties.html">
     <link rel="next" href="../use-cases/hibernate-second-level-cache.html">
-    <meta name="generator" content="Antora 2.3.4">
+    <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../../../_/css/site.css">
   <link rel="icon" type="image/png" sizes="32x32" href="https://www.microstream.one/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://www.microstream.one/favicon-16x16.png">
@@ -27,9 +27,11 @@
             </g>
         </svg>
       </a>
-        <div class="navbar-item">
-          <input id="search-input" type="text" placeholder="Search" class="input-field">
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
         </div>
+      </div>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -371,6 +373,9 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../../misc/integrations/spring-boot.html">Spring-Boot</a>
   </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../misc/integrations/cdi.html">CDI</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
@@ -463,7 +468,8 @@
     <a class="version" href="../../5.0/cache/configuration/storage.html">5.0</a>
   </div>
 </div>
-</div>
+  <div class="edit-this-page"><a href="https://github.com/microstream-one/microstream/edit/release/7x/docs/modules/cache/pages/configuration/storage.adoc">Edit this Page</a></div>
+  </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
@@ -489,7 +495,7 @@ Cache&lt;Integer, String&gt; cache = cacheManager.createCache("jCache", configur
 </div>
 </div>
 <div class="paragraph">
-<p>If you prefer an external configuration, you can link the <a href="../../storage/configuration/index.html#external-configuration" class="page">storage configuration</a>:</p>
+<p>If you prefer an external configuration, you can link the <a href="../../storage/configuration/index.html#external-configuration" class="xref page">storage configuration</a>:</p>
 </div>
 <div class="listingblock">
 <div class="title">cache-config.properties</div>
@@ -525,6 +531,26 @@ write-through = true
 storage.storage-directory = ~/cache-data
 storage.channel-count = 4</code></pre>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_cache_expiry_and_storagemanager"><a class="anchor" href="#_cache_expiry_and_storagemanager"></a>Cache expiry and StorageManager</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Since the validity of a Cache entry is only determined when the value is retrieved, the expiry durations are not always respected when using the <code>StorageManager</code> when the application is restarted. An example makes this clear.</p>
+</div>
+<div class="paragraph">
+<p>Suppose we have defined a cache where the <a href="https://github.com/jsr107/jsr107spec/blob/master/src/main/java/javax/cache/expiry/ExpiryPolicy.java">ExpiryPolicy</a> is set to 1 Minute.</p>
+</div>
+<div class="paragraph">
+<p>When we create an entry in this cache and we did not request the cache entry after the 1-minute expiry before we do shut down the application.</p>
+</div>
+<div class="paragraph">
+<p>When we start up the application again, When we request the cache entry, it is loaded from the MicroStream Storage Manager and 'created' with a new expiry of 1 minute.</p>
+</div>
+<div class="paragraph">
+<p>This means that even if the entry was already created more than 1 minute ago (even when we only take into consideration the application uptime), the entry is still returned to the calling code.</p>
 </div>
 </div>
 </div>
@@ -575,15 +601,22 @@ spring.jpa.properties.hibernate.cache.use_second_level_cache = true</code></pre>
   </div>
 </main>
 </div>
-<script>
-  window.antora = window.antora || {}
-  window.antora.basePath = '../../..'
-  window.antora.pagePath = '/manual/cache/configuration/storage.html'
-</script>
-<script src="../../../_/js/site.js"></script>
-<script src="../../../_/js/vendor/lunr.js"></script>
-<script src="../../../_/js/vendor/search.js"></script>
-<script async src="../../../_/../search-index.js"></script>
+<footer class="footer">
+© 2022 MicroStream Software. All rights reserved.
+&nbsp;
+&nbsp;
+&nbsp;
+<a href="https://microstream.one/imprint/">Imprint</a>
+<span class="link-separator">&nbsp;&#124;&nbsp;</span>
+<a href="https://microstream.one/terms-of-use/">Terms of use</a>
+<span class="link-separator">&nbsp;&#124;&nbsp;</span>
+<a href="https://microstream.one/privacy/">Privacy</a>
+<span class="link-separator">&nbsp;&#124;&nbsp;</span>
+<a href="https://microstream.one/legal-notice/">Legal notice</a>
+</footer><script src="../../../_/js/site.js"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
   </body>
 </html>

@@ -7,7 +7,7 @@
     <link rel="canonical" href="https://docs.microstream.one/manual/intro/changelog.html">
     <link rel="prev" href="system-requirements.html">
     <link rel="next" href="installation.html">
-    <meta name="generator" content="Antora 2.3.4">
+    <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../../_/css/site.css">
   <link rel="icon" type="image/png" sizes="32x32" href="https://www.microstream.one/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://www.microstream.one/favicon-16x16.png">
@@ -27,9 +27,11 @@
             </g>
         </svg>
       </a>
-        <div class="navbar-item">
-          <input id="search-input" type="text" placeholder="Search" class="input-field">
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
         </div>
+      </div>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -371,6 +373,9 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../misc/integrations/spring-boot.html">Spring-Boot</a>
   </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../misc/integrations/cdi.html">CDI</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
@@ -461,7 +466,8 @@
     <a class="version" href="../5.0/intro/changelog.html">5.0</a>
   </div>
 </div>
-</div>
+  <div class="edit-this-page"><a href="https://github.com/microstream-one/microstream/edit/release/7x/docs/modules/intro/pages/changelog.adoc">Edit this Page</a></div>
+  </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
@@ -476,13 +482,13 @@
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../misc/integrations/cdi.html" class="page">CDI Extension</a></p>
+<p><a href="../misc/integrations/cdi.html" class="xref page">CDI Extension</a></p>
 </li>
 <li>
-<p><a href="../misc/logging/index.html" class="page">Logging</a></p>
+<p><a href="../misc/logging/index.html" class="xref page">Logging</a></p>
 </li>
 <li>
-<p><a href="#misc:serializer/index.adoc" class="page unresolved">Serializer API</a></p>
+<p><a href="../serializer/index.html" class="xref page">Serializer API</a></p>
 </li>
 <li>
 <p><a href="https://github.com/microstream-one/microstream/pull/325">Android Type Handlers</a></p>
@@ -555,13 +561,13 @@
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../misc/integrations/spring-boot.html" class="page">Spring Boot Integration</a></p>
+<p><a href="../misc/integrations/spring-boot.html" class="xref page">Spring Boot Integration</a></p>
 </li>
 <li>
-<p><a href="../storage/addendum/specialized-type-handlers.html#jdk17" class="page">Specialized type handlers for Java 17 collection</a></p>
+<p><a href="../storage/addendum/specialized-type-handlers.html#jdk17" class="xref page">Specialized type handlers for Java 17 collection</a></p>
 </li>
 <li>
-<p><a href="../storage/storing-data/deep-copy.html" class="page">Deep-copy utility</a></p>
+<p><a href="../storage/storing-data/deep-copy.html" class="xref page">Deep-copy utility</a></p>
 </li>
 <li>
 <p>Examples included in reactor build</p>
@@ -1080,7 +1086,7 @@ For detailed information, see the migration guide below.</p>
 <div class="sect4">
 <h5 id="_storage"><a class="anchor" href="#_storage"></a>Storage</h5>
 <div class="paragraph">
-<p>The old storage configuration API is deprecated and should be migrated to the <a href="../storage/configuration/index.html" class="page">new one</a>.</p>
+<p>The old storage configuration API is deprecated and should be migrated to the <a href="../storage/configuration/index.html" class="xref page">new one</a>.</p>
 </div>
 <div class="paragraph">
 <p>The configuration property names have changed from camelCase to the dash-notation.</p>
@@ -1196,7 +1202,7 @@ For detailed information, see the migration guide below.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>API to create <a href="../storage/configuration/backup/full-backup.html" class="page">full backup</a> additional to <a href="../storage/configuration/backup/continuous-backup.html" class="page">continuous backup</a></p>
+<p>API to create <a href="../storage/configuration/backup/full-backup.html" class="xref page">full backup</a> additional to <a href="../storage/configuration/backup/continuous-backup.html" class="xref page">continuous backup</a></p>
 </li>
 <li>
 <p>Simplified usage of other NIO based file systems, e.g.
@@ -1206,7 +1212,7 @@ in-memory file systems for unit testing</p>
 <p>OSGi Headers are added in released jar files and a p2 update site is available next to the maven repository</p>
 </li>
 <li>
-<p>Additional <a href="../storage/storage-targets/index.html" class="page">storage targets</a></p>
+<p>Additional <a href="../storage/storage-targets/index.html" class="xref page">storage targets</a></p>
 <div class="ulist">
 <ul>
 <li>
@@ -1265,7 +1271,7 @@ in-memory file systems for unit testing</p>
 <div class="ulist">
 <ul>
 <li>
-<p>File System Abstraction to support a variety of <a href="../storage/storage-targets/index.html" class="page">storage targets</a>.</p>
+<p>File System Abstraction to support a variety of <a href="../storage/storage-targets/index.html" class="xref page">storage targets</a>.</p>
 </li>
 <li>
 <p>Exporter API for storage configuration.</p>
@@ -1290,7 +1296,7 @@ in-memory file systems for unit testing</p>
 <h3 id="4_0_migration-guide"><a class="anchor" href="#4_0_migration-guide"></a><strong>Migration guide</strong></h3>
 <div class="paragraph">
 <p>All configuration code, which includes file paths, may be rewritten to use the new Abstract File System.<br>
-For example see <a href="../storage/configuration/storage-files-and-directories.html" class="page">Storage Files</a> or <a href="../storage/configuration/backup/continuous-backup.html" class="page">Backup</a>.</p>
+For example see <a href="../storage/configuration/storage-files-and-directories.html" class="xref page">Storage Files</a> or <a href="../storage/configuration/backup/continuous-backup.html" class="xref page">Backup</a>.</p>
 </div>
 </div>
 </div>
@@ -1321,13 +1327,13 @@ For example see <a href="../storage/configuration/storage-files-and-directories.
 <div class="ulist">
 <ul>
 <li>
-<p>Added a convenience layer for defining <a href="../storage/customizing/custom-type-handler.html" class="page">custom type handlers</a></p>
+<p>Added a convenience layer for defining <a href="../storage/customizing/custom-type-handler.html" class="xref page">custom type handlers</a></p>
 </li>
 <li>
-<p>Fully automatic <a href="../storage/loading-data/lazy-loading/clearing-lazy-references.html#automatically" class="page">lazy reference managing</a> for clearing older <code>Lazy</code> references as free memory gets lower.</p>
+<p>Fully automatic <a href="../storage/loading-data/lazy-loading/clearing-lazy-references.html#automatically" class="xref page">lazy reference managing</a> for clearing older <code>Lazy</code> references as free memory gets lower.</p>
 </li>
 <li>
-<p>Completed optimized persistence handling for <a href="../storage/addendum/specialized-type-handlers.html" class="page">remaining types in JDK</a> that are reasonable to appear in entity graphs.
+<p>Completed optimized persistence handling for <a href="../storage/addendum/specialized-type-handlers.html" class="xref page">remaining types in JDK</a> that are reasonable to appear in entity graphs.
 E.g.
 <code>Currency</code>, <code>Locale</code>, <code>URI</code>, <code>URL</code>, <code>Path</code></p>
 </li>
@@ -1342,10 +1348,10 @@ E.g.
 legacy type mapping)</p>
 </li>
 <li>
-<p>JSR-107 compatible <a href="../cache/index.html" class="page">JCache provider</a> with additional <a href="../cache/use-cases/hibernate-second-level-cache.html" class="page">Hibernate cache region factory</a></p>
+<p>JSR-107 compatible <a href="../cache/index.html" class="xref page">JCache provider</a> with additional <a href="../cache/use-cases/hibernate-second-level-cache.html" class="xref page">Hibernate cache region factory</a></p>
 </li>
 <li>
-<p><a href="../storage/rest-interface/index.html" class="page">Storage REST Service and Client</a> are available to access the storage data via REST, a Java-Wrapper thereof and a Web-UI</p>
+<p><a href="../storage/rest-interface/index.html" class="xref page">Storage REST Service and Client</a> are available to access the storage data via REST, a Java-Wrapper thereof and a Web-UI</p>
 </li>
 </ul>
 </div>
@@ -1527,15 +1533,22 @@ This can be customized by the new interface <code>StorageThreadNameProvider</cod
   </div>
 </main>
 </div>
-<script>
-  window.antora = window.antora || {}
-  window.antora.basePath = '../..'
-  window.antora.pagePath = '/manual/intro/changelog.html'
-</script>
-<script src="../../_/js/site.js"></script>
-<script src="../../_/js/vendor/lunr.js"></script>
-<script src="../../_/js/vendor/search.js"></script>
-<script async src="../../_/../search-index.js"></script>
+<footer class="footer">
+© 2022 MicroStream Software. All rights reserved.
+&nbsp;
+&nbsp;
+&nbsp;
+<a href="https://microstream.one/imprint/">Imprint</a>
+<span class="link-separator">&nbsp;&#124;&nbsp;</span>
+<a href="https://microstream.one/terms-of-use/">Terms of use</a>
+<span class="link-separator">&nbsp;&#124;&nbsp;</span>
+<a href="https://microstream.one/privacy/">Privacy</a>
+<span class="link-separator">&nbsp;&#124;&nbsp;</span>
+<a href="https://microstream.one/legal-notice/">Legal notice</a>
+</footer><script src="../../_/js/site.js"></script>
 <script async src="../../_/js/vendor/highlight.js"></script>
+<script src="../../_/js/vendor/lunr.js"></script>
+<script src="../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../.." data-snippet-length="100" data-stylesheet="../../_/css/search.css"></script>
+<script async src="../../search-index.js"></script>
   </body>
 </html>

@@ -7,7 +7,7 @@
     <link rel="canonical" href="https://docs.microstream.one/manual/storage/import-export.html">
     <link rel="prev" href="legacy-type-mapping/user-interaction.html">
     <link rel="next" href="housekeeping.html">
-    <meta name="generator" content="Antora 2.3.4">
+    <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../../../_/css/site.css">
   <link rel="icon" type="image/png" sizes="32x32" href="https://www.microstream.one/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://www.microstream.one/favicon-16x16.png">
@@ -27,9 +27,11 @@
             </g>
         </svg>
       </a>
-        <div class="navbar-item">
-          <input id="search-input" type="text" placeholder="Search" class="input-field">
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
         </div>
+      </div>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -453,7 +455,8 @@
     <a class="version" href="../../5.0/storage/import-export.html">5.0</a>
   </div>
 </div>
-</div>
+  <div class="edit-this-page"><a href="https://github.com/microstream-one/microstream/edit/release/6.0.0/docs/modules/storage/pages/import-export.adoc">Edit this Page</a></div>
+  </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
@@ -467,7 +470,7 @@
 It is pretty much the same as writing and reading a backup.</p>
 </div>
 <div class="paragraph">
-<p>The records in the storage are distributed in lots of files and folders, depending on channel count and other <a href="configuration/properties.html" class="page">settings</a>.
+<p>The records in the storage are distributed in lots of files and folders, depending on channel count and other <a href="configuration/properties.html" class="xref page">settings</a>.
 To get order in the chaos the export produces one file per type.
 This files are used again by the import to read the data into the storage.</p>
 </div>
@@ -619,15 +622,22 @@ converter.convertCsv(fileSystem.ensureFilePath("type1.csv"));</code></pre>
   </div>
 </main>
 </div>
-<script>
-  window.antora = window.antora || {}
-  window.antora.basePath = '../../..'
-  window.antora.pagePath = '/manual/6.0/storage/import-export.html'
-</script>
-<script src="../../../_/js/site.js"></script>
-<script src="../../../_/js/vendor/lunr.js"></script>
-<script src="../../../_/js/vendor/search.js"></script>
-<script async src="../../../_/../search-index.js"></script>
+<footer class="footer">
+© 2022 MicroStream Software. All rights reserved.
+&nbsp;
+&nbsp;
+&nbsp;
+<a href="https://microstream.one/imprint/">Imprint</a>
+<span class="link-separator">&nbsp;&#124;&nbsp;</span>
+<a href="https://microstream.one/terms-of-use/">Terms of use</a>
+<span class="link-separator">&nbsp;&#124;&nbsp;</span>
+<a href="https://microstream.one/privacy/">Privacy</a>
+<span class="link-separator">&nbsp;&#124;&nbsp;</span>
+<a href="https://microstream.one/legal-notice/">Legal notice</a>
+</footer><script src="../../../_/js/site.js"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
   </body>
 </html>
