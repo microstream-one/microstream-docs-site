@@ -7,7 +7,7 @@
     <link rel="canonical" href="https://docs.microstream.one/manual/intro/installation.html">
     <link rel="prev" href="changelog.html">
     <link rel="next" href="../storage/index.html">
-    <meta name="generator" content="Antora 3.0.0">
+    <meta name="generator" content="Antora 3.0.3">
     <link rel="stylesheet" href="../../_/css/site.css">
   <link rel="icon" type="image/png" sizes="32x32" href="https://www.microstream.one/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://www.microstream.one/favicon-16x16.png">
@@ -126,9 +126,6 @@
     <a class="nav-link" href="../storage/storage-targets/sql-databases/mariadb.html">MariaDB</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../storage/storage-targets/sql-databases/mysql.html">MySQL</a>
-  </li>
-  <li class="nav-item" data-depth="4">
     <a class="nav-link" href="../storage/storage-targets/sql-databases/oracle.html">Oracle</a>
   </li>
   <li class="nav-item" data-depth="4">
@@ -165,16 +162,10 @@
     <a class="nav-link" href="../storage/storage-targets/blob-stores/kafka.html">Kafka</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../storage/storage-targets/blob-stores/mongodb.html">MongoDB</a>
-  </li>
-  <li class="nav-item" data-depth="4">
     <a class="nav-link" href="../storage/storage-targets/blob-stores/oracle-cloud-object-storage.html">Oracle Cloud Object Storage</a>
   </li>
   <li class="nav-item" data-depth="4">
     <a class="nav-link" href="../storage/storage-targets/blob-stores/oracle-coherence.html">Oracle Coherence</a>
-  </li>
-  <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../storage/storage-targets/blob-stores/oracle-nosql.html">Oracle NoSQL</a>
   </li>
   <li class="nav-item" data-depth="4">
     <a class="nav-link" href="../storage/storage-targets/blob-stores/redis.html">Redis</a>
@@ -487,7 +478,7 @@
 	&lt;dependency&gt;
 		&lt;groupId&gt;one.microstream&lt;/groupId&gt;
 		&lt;artifactId&gt;microstream-storage-embedded&lt;/artifactId&gt;
-		&lt;version&gt;07.00.00-MS-GA&lt;/version&gt;
+		&lt;version&gt;07.01.00-MS-GA&lt;/version&gt;
 	&lt;/dependency&gt;
 &lt;/dependencies&gt;</code></pre>
 </div>
@@ -496,7 +487,7 @@
 <div class="title">Gradle (Groovy) [build.gradle]</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">dependencies {
-	implementation 'one.microstream:microstream-storage-embedded:07.00.00-MS-GA'
+	implementation 'one.microstream:microstream-storage-embedded:07.01.00-MS-GA'
 }</code></pre>
 </div>
 </div>
@@ -504,14 +495,14 @@
 <div class="title">Gradle (Kotlin) [build.gradle.kts]</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">dependencies {
-	implementation("one.microstream:microstream-storage-embedded:07.00.00-MS-GA")
+	implementation("one.microstream:microstream-storage-embedded:07.01.00-MS-GA")
 }</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Scala SBT [build.sbt]</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-scala hljs" data-lang="scala">libraryDependencies += "one.microstream" % "microstream-storage-embedded" % "07.00.00-MS-GA"</code></pre>
+<pre class="highlightjs highlight"><code class="language-scala hljs" data-lang="scala">libraryDependencies += "one.microstream" % "microstream-storage-embedded" % "07.01.00-MS-GA"</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -520,7 +511,7 @@
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependencies&gt;
 	&lt;dependency org="one.microstream"
 		name="microstream-storage-embedded"
-		rev="07.00.00-MS-GA" /&gt;
+		rev="07.01.00-MS-GA" /&gt;
 &lt;/dependencies&gt;</code></pre>
 </div>
 </div>
@@ -528,7 +519,7 @@
 <div class="title">Apache Buildr [Buildfile]</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-ruby hljs" data-lang="ruby">define 'my-app' do
-	compile.with 'one.microstream:microstream-storage-embedded:07.00.00-MS-GA'
+	compile.with 'one.microstream:microstream-storage-embedded:07.01.00-MS-GA'
 end</code></pre>
 </div>
 </div>
@@ -551,7 +542,7 @@ load("@rules_jvm_external//:defs.bzl", "maven_install")
 
 maven_install(
 	artifacts = [
-		"one.microstream:microstream-storage-embedded:07.00.00-MS-GA"
+		"one.microstream:microstream-storage-embedded:07.01.00-MS-GA"
 	],
 )</code></pre>
 </div>
@@ -561,7 +552,7 @@ maven_install(
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">maven_jar(
 	name = "microstream",
-	artifact = "one.microstream:microstream-storage-embedded:07.00.00-MS-GA"
+	artifact = "one.microstream:microstream-storage-embedded:07.01.00-MS-GA"
 )</code></pre>
 </div>
 </div>
@@ -569,7 +560,7 @@ maven_install(
 <p>or in our P2 Update Site:</p>
 </div>
 <div class="paragraph">
-<p><a href="https://repo.microstream.one/repository/update-site/07.00.00-MS-GA" class="bare">https://repo.microstream.one/repository/update-site/07.00.00-MS-GA</a></p>
+<p><a href="https://repo.microstream.one/repository/update-site/07.01.00-MS-GA" class="bare">https://repo.microstream.one/repository/update-site/07.01.00-MS-GA</a></p>
 </div>
 </div>
 </div>
@@ -628,35 +619,35 @@ maven_install(
 <td class="tableblock halign-left valign-top"><p class="tableblock">Abstract file system (AFS) layer.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-aws-dynamodb</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-afs-aws-dynamodb</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">File system implementations for AWS DynamoDB.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-aws-s3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-afs-aws-s3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">File system implementations for AWS S3.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-azure-storage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-afs-azure-storage</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">File system implementations for Azure Cloud (Azure Storage).</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-blobstore</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-afs-blobstore</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Base for all blob store file system implementations.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-hazelcast</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-afs-hazelcast</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">File system implementation for Hazelcast.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-hibernate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-afs-hibernate</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Generic file system implementation for JPA / Hibernate.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-kafka</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-afs-kafka</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">File system implementation for Apache Kafka.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-mongodb</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-afs-mongodb</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">File system implementation for MongoDB.</p></td>
 </tr>
 <tr>
@@ -664,19 +655,19 @@ maven_install(
 <td class="tableblock halign-left valign-top"><p class="tableblock">File system implementation for the non-blocking IO implementation (java.nio.file) of the JDK.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-oraclecloud-objectstorage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-afs-oraclecloud-objectstorage</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">File system implementation for Oracle Cloud Services (Object Storage).</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-oracle-coherence</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-afs-oracle-coherence</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">File system implementation for Oracle Coherence.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-oracle-nosql</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-afs-oracle-nosql</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">File system implementation for Oracle NoSQL.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-afs-redis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-afs-redis</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">File system implementation for Redis.</p></td>
 </tr>
 <tr>

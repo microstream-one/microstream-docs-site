@@ -6,8 +6,8 @@
     <title>Oracle Coherence :: MicroStream Reference Manual</title>
     <link rel="canonical" href="https://docs.microstream.one/manual/storage/storage-targets/blob-stores/oracle-coherence.html">
     <link rel="prev" href="oracle-cloud-object-storage.html">
-    <link rel="next" href="oracle-nosql.html">
-    <meta name="generator" content="Antora 3.0.0">
+    <link rel="next" href="redis.html">
+    <meta name="generator" content="Antora 3.0.3">
     <link rel="stylesheet" href="../../../../_/css/site.css">
   <link rel="icon" type="image/png" sizes="32x32" href="https://www.microstream.one/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://www.microstream.one/favicon-16x16.png">
@@ -126,9 +126,6 @@
     <a class="nav-link" href="../sql-databases/mariadb.html">MariaDB</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../sql-databases/mysql.html">MySQL</a>
-  </li>
-  <li class="nav-item" data-depth="4">
     <a class="nav-link" href="../sql-databases/oracle.html">Oracle</a>
   </li>
   <li class="nav-item" data-depth="4">
@@ -165,16 +162,10 @@
     <a class="nav-link" href="kafka.html">Kafka</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="mongodb.html">MongoDB</a>
-  </li>
-  <li class="nav-item" data-depth="4">
     <a class="nav-link" href="oracle-cloud-object-storage.html">Oracle Cloud Object Storage</a>
   </li>
   <li class="nav-item is-current-page" data-depth="4">
     <a class="nav-link" href="oracle-coherence.html">Oracle Coherence</a>
-  </li>
-  <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="oracle-nosql.html">Oracle NoSQL</a>
   </li>
   <li class="nav-item" data-depth="4">
     <a class="nav-link" href="redis.html">Redis</a>
@@ -479,24 +470,12 @@
 <h1 class="page">Oracle Coherence</h1>
 <div id="preamble">
 <div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-This is an enterprise feature.
-</td>
-</tr>
-</table>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
 	&lt;groupId&gt;one.microstream&lt;/groupId&gt;
-	&lt;artifactId&gt;microstream-enterprise-afs-oracle-coherence&lt;/artifactId&gt;
-	&lt;version&gt;07.00.00-MS-GA&lt;/version&gt;
+	&lt;artifactId&gt;microstream-afs-oracle-coherence&lt;/artifactId&gt;
+	&lt;version&gt;07.01.00-MS-GA&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
 </div>
@@ -553,7 +532,7 @@ EmbeddedStorage.start(fileSystem.ensureDirectoryPath("microstream_storage"));</c
 </div>
 <nav class="pagination">
   <span class="prev"><a href="oracle-cloud-object-storage.html">Oracle Cloud Object Storage</a></span>
-  <span class="next"><a href="oracle-nosql.html">Oracle NoSQL</a></span>
+  <span class="next"><a href="redis.html">Redis</a></span>
 </nav>
 </article>
   </div>

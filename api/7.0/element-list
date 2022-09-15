@@ -1,6 +1,17 @@
 one.microstream
+one.microstream.afs.aws.dynamodb.types
+one.microstream.afs.aws.s3.types
+one.microstream.afs.aws.types
+one.microstream.afs.azure.storage.types
+one.microstream.afs.blobstore.types
 one.microstream.afs.exceptions
+one.microstream.afs.googlecloud.firestore.types
+one.microstream.afs.hazelcast.types
+one.microstream.afs.kafka.types
 one.microstream.afs.nio.types
+one.microstream.afs.oracle.coherence.types
+one.microstream.afs.oraclecloud.objectstorage.types
+one.microstream.afs.redis.types
 one.microstream.afs.sql.types
 one.microstream.afs.types
 one.microstream.branching
@@ -38,6 +49,7 @@ one.microstream.integrations.cdi.types.extension
 one.microstream.integrations.spring.boot.types
 one.microstream.integrations.spring.boot.types.aws
 one.microstream.integrations.spring.boot.types.azure
+one.microstream.integrations.spring.boot.types.config
 one.microstream.integrations.spring.boot.types.hazelcast
 one.microstream.integrations.spring.boot.types.mongodb
 one.microstream.integrations.spring.boot.types.oracle
@@ -46,6 +58,7 @@ one.microstream.integrations.spring.boot.types.oracle.nosql
 one.microstream.integrations.spring.boot.types.oraclecloud
 one.microstream.integrations.spring.boot.types.redis
 one.microstream.integrations.spring.boot.types.sql
+one.microstream.integrations.spring.boot.types.storage
 one.microstream.io
 one.microstream.math
 one.microstream.memory

@@ -7,7 +7,7 @@
     <link rel="canonical" href="https://docs.microstream.one/manual/storage/storage-targets/index.html">
     <link rel="prev" href="../configuration/lock-file.html">
     <link rel="next" href="local-file-system.html">
-    <meta name="generator" content="Antora 3.0.0">
+    <meta name="generator" content="Antora 3.0.3">
     <link rel="stylesheet" href="../../../_/css/site.css">
   <link rel="icon" type="image/png" sizes="32x32" href="https://www.microstream.one/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://www.microstream.one/favicon-16x16.png">
@@ -126,9 +126,6 @@
     <a class="nav-link" href="sql-databases/mariadb.html">MariaDB</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="sql-databases/mysql.html">MySQL</a>
-  </li>
-  <li class="nav-item" data-depth="4">
     <a class="nav-link" href="sql-databases/oracle.html">Oracle</a>
   </li>
   <li class="nav-item" data-depth="4">
@@ -165,16 +162,10 @@
     <a class="nav-link" href="blob-stores/kafka.html">Kafka</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="blob-stores/mongodb.html">MongoDB</a>
-  </li>
-  <li class="nav-item" data-depth="4">
     <a class="nav-link" href="blob-stores/oracle-cloud-object-storage.html">Oracle Cloud Object Storage</a>
   </li>
   <li class="nav-item" data-depth="4">
     <a class="nav-link" href="blob-stores/oracle-coherence.html">Oracle Coherence</a>
-  </li>
-  <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="blob-stores/oracle-nosql.html">Oracle NoSQL</a>
   </li>
   <li class="nav-item" data-depth="4">
     <a class="nav-link" href="blob-stores/redis.html">Redis</a>
@@ -503,42 +494,29 @@ EmbeddedStorage.start(fileSystem.ensureDirectoryPath("path", "to", "storage"));<
 </div>
 </div>
 <div class="paragraph">
-<p>The file system API is the same for all connectors, like for MySQL.<br>
+<p>The file system API is the same for all connectors, like for S3.<br>
 This is part of another module.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;!-- sql file system --&gt;
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;!-- S3 file system --&gt;
 &lt;dependency&gt;
 	&lt;groupId&gt;one.microstream&lt;/groupId&gt;
-	&lt;artifactId&gt;microstream-enterprise-filesystem-sql&lt;/artifactId&gt;
-	&lt;version&gt;07.00.00-MS-GA&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;!-- driver of your choice --&gt;
-&lt;dependency&gt;
-	&lt;groupId&gt;mysql&lt;/groupId&gt;
-	&lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
-	&lt;version&gt;8.0.21&lt;/version&gt;
+	&lt;artifactId&gt;microstream-afs-aws-s3&lt;/artifactId&gt;
+	&lt;version&gt;07.01.00-MS-GA&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// create JDBC data source
-MysqlDataSource dataSource = new MysqlDataSource();
-dataSource.setUrl("jdbc:mysql://host:3306/mydb");
-dataSource.setUser("user");
-dataSource.setPassword("secret");
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// create S3 client
+S3Client client = ...;
 
-// create sql file system
-SqlFileSystem fileSystem = SqlFileSystem.New(
+BlobStoreFileSystem fileSystem = BlobStoreFileSystem.New(
 	// use caching connector
-	SqlConnector.Caching(
-		SqlProviderMySql.New(dataSource)
-	)
+	S3Connector.Caching(client)
 );
-
-EmbeddedStorage.start(fileSystem.ensureDirectoryPath("path", "to", "storage"));</code></pre>
+EmbeddedStorage.start(fileSystem.ensureDirectoryPath("path", "to", "storage");</code></pre>
 </div>
 </div>
 <nav class="pagination">

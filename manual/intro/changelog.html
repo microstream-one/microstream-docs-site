@@ -7,7 +7,7 @@
     <link rel="canonical" href="https://docs.microstream.one/manual/intro/changelog.html">
     <link rel="prev" href="system-requirements.html">
     <link rel="next" href="installation.html">
-    <meta name="generator" content="Antora 3.0.0">
+    <meta name="generator" content="Antora 3.0.3">
     <link rel="stylesheet" href="../../_/css/site.css">
   <link rel="icon" type="image/png" sizes="32x32" href="https://www.microstream.one/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://www.microstream.one/favicon-16x16.png">
@@ -126,9 +126,6 @@
     <a class="nav-link" href="../storage/storage-targets/sql-databases/mariadb.html">MariaDB</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../storage/storage-targets/sql-databases/mysql.html">MySQL</a>
-  </li>
-  <li class="nav-item" data-depth="4">
     <a class="nav-link" href="../storage/storage-targets/sql-databases/oracle.html">Oracle</a>
   </li>
   <li class="nav-item" data-depth="4">
@@ -165,16 +162,10 @@
     <a class="nav-link" href="../storage/storage-targets/blob-stores/kafka.html">Kafka</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../storage/storage-targets/blob-stores/mongodb.html">MongoDB</a>
-  </li>
-  <li class="nav-item" data-depth="4">
     <a class="nav-link" href="../storage/storage-targets/blob-stores/oracle-cloud-object-storage.html">Oracle Cloud Object Storage</a>
   </li>
   <li class="nav-item" data-depth="4">
     <a class="nav-link" href="../storage/storage-targets/blob-stores/oracle-coherence.html">Oracle Coherence</a>
-  </li>
-  <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../storage/storage-targets/blob-stores/oracle-nosql.html">Oracle NoSQL</a>
   </li>
   <li class="nav-item" data-depth="4">
     <a class="nav-link" href="../storage/storage-targets/blob-stores/redis.html">Redis</a>
@@ -475,10 +466,93 @@
 <article class="doc">
 <h1 class="page">Changelog</h1>
 <div class="sect1">
-<h2 id="_7_0"><a class="anchor" href="#_7_0"></a>7.0</h2>
+<h2 id="_7_1"><a class="anchor" href="#_7_1"></a>7.1</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_features"><a class="anchor" href="#_features"></a><strong>Features</strong></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>New public AFS connectors</p>
+<div class="ulist">
+<ul>
+<li>
+<p>AWS S3 and DynamoDB</p>
+</li>
+<li>
+<p>Azure Storage</p>
+</li>
+<li>
+<p>Google Cloud Firestore</p>
+</li>
+<li>
+<p>Hazelcast</p>
+</li>
+<li>
+<p>Kafka</p>
+</li>
+<li>
+<p>Oracle Coherence, DB and Cloud Object Store</p>
+</li>
+<li>
+<p>Redis</p>
+</li>
+<li>
+<p>Hana DB</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Finalized storage garbage collector, activated by default <a href="https://github.com/microstream-one/microstream/pull/402">[402</a>]</p>
+</li>
+<li>
+<p>Improve CDI integration <a href="https://github.com/microstream-one/microstream/issues/377">[377</a>]</p>
+</li>
+<li>
+<p>CDI Integration: Allow customization of the EmbeddedStorageFoundation before StorageManager is created <a href="https://github.com/microstream-one/microstream/issues/388">[388</a>]<a href="https://github.com/microstream-one/microstream/pull/398">[398</a>]</p>
+</li>
+<li>
+<p>Spring Boot integration: Add interceptor logic to store marked objects at end of method <a href="https://github.com/microstream-one/microstream/issues/384">[384</a>]</p>
+</li>
+<li>
+<p>Clarification around cache expiry when using StorageManager <a href="https://github.com/microstream-one/microstream/pull/387">[387</a>]</p>
+</li>
+<li>
+<p>Store reference inside Lazy when Lazy is marked (CDI integration) <a href="https://github.com/microstream-one/microstream/pull/386">[386</a>]</p>
+</li>
+<li>
+<p>Enable microstream cache <a href="https://github.com/microstream-one/microstream/pull/351">[351</a>]</p>
+</li>
+<li>
+<p>Validate Channel Folders to Channel Count <a href="https://github.com/microstream-one/microstream/issues/192">[192</a>]</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bugfixes"><a class="anchor" href="#_bugfixes"></a><strong>Bugfixes</strong></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Remove @Store from CDI integration <a href="https://github.com/microstream-one/microstream/pull/397">[397</a>]<a href="https://github.com/microstream-one/microstream/issues/394">[394</a>]</p>
+</li>
+<li>
+<p>Fix CDI integration cache configuration keys <a href="https://github.com/microstream-one/microstream/pull/395">[395</a>]</p>
+</li>
+<li>
+<p>Active the test in the CDI extension <a href="https://github.com/microstream-one/microstream/pull/354">[354</a>]</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_7_0"><a class="anchor" href="#_7_0"></a>7.0</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_features_2"><a class="anchor" href="#_features_2"></a><strong>Features</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -497,7 +571,7 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_bugfixes"><a class="anchor" href="#_bugfixes"></a><strong>Bugfixes</strong></h3>
+<h3 id="_bugfixes_2"><a class="anchor" href="#_bugfixes_2"></a><strong>Bugfixes</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -536,7 +610,7 @@
 <p>Bugfix release.</p>
 </div>
 <div class="sect2">
-<h3 id="_bugfixes_2"><a class="anchor" href="#_bugfixes_2"></a><strong>Bugfixes</strong></h3>
+<h3 id="_bugfixes_3"><a class="anchor" href="#_bugfixes_3"></a><strong>Bugfixes</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -557,7 +631,7 @@
 <h2 id="_6_0"><a class="anchor" href="#_6_0"></a>6.0</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_features_2"><a class="anchor" href="#_features_2"></a><strong>Features</strong></h3>
+<h3 id="_features_3"><a class="anchor" href="#_features_3"></a><strong>Features</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -576,7 +650,7 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_bugfixes_3"><a class="anchor" href="#_bugfixes_3"></a><strong>Bugfixes</strong></h3>
+<h3 id="_bugfixes_4"><a class="anchor" href="#_bugfixes_4"></a><strong>Bugfixes</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -615,7 +689,7 @@
 <p>Bugfix release.</p>
 </div>
 <div class="sect2">
-<h3 id="_bugfixes_4"><a class="anchor" href="#_bugfixes_4"></a><strong>Bugfixes</strong></h3>
+<h3 id="_bugfixes_5"><a class="anchor" href="#_bugfixes_5"></a><strong>Bugfixes</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -633,7 +707,7 @@
 <p>Bugfix release.</p>
 </div>
 <div class="sect2">
-<h3 id="_bugfixes_5"><a class="anchor" href="#_bugfixes_5"></a><strong>Bugfixes</strong></h3>
+<h3 id="_bugfixes_6"><a class="anchor" href="#_bugfixes_6"></a><strong>Bugfixes</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -653,7 +727,7 @@ But don&#8217;t worry. Just change the dependency configuration and organize som
 For detailed information, see the migration guide below.</p>
 </div>
 <div class="sect2">
-<h3 id="_features_3"><a class="anchor" href="#_features_3"></a><strong>Features</strong></h3>
+<h3 id="_features_4"><a class="anchor" href="#_features_4"></a><strong>Features</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -691,7 +765,7 @@ For detailed information, see the migration guide below.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_bugfixes_6"><a class="anchor" href="#_bugfixes_6"></a><strong>Bugfixes</strong></h3>
+<h3 id="_bugfixes_7"><a class="anchor" href="#_bugfixes_7"></a><strong>Bugfixes</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1198,7 +1272,7 @@ For detailed information, see the migration guide below.</p>
 <h2 id="_4_1"><a class="anchor" href="#_4_1"></a>4.1</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_features_4"><a class="anchor" href="#_features_4"></a><strong>Features</strong></h3>
+<h3 id="_features_5"><a class="anchor" href="#_features_5"></a><strong>Features</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1243,7 +1317,7 @@ in-memory file systems for unit testing</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_bugfixes_7"><a class="anchor" href="#_bugfixes_7"></a><strong>Bugfixes</strong></h3>
+<h3 id="_bugfixes_8"><a class="anchor" href="#_bugfixes_8"></a><strong>Bugfixes</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1267,7 +1341,7 @@ in-memory file systems for unit testing</p>
 <h2 id="_4_0"><a class="anchor" href="#_4_0"></a>4.0</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_features_5"><a class="anchor" href="#_features_5"></a><strong>Features</strong></h3>
+<h3 id="_features_6"><a class="anchor" href="#_features_6"></a><strong>Features</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1280,7 +1354,7 @@ in-memory file systems for unit testing</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_bugfixes_8"><a class="anchor" href="#_bugfixes_8"></a><strong>Bugfixes</strong></h3>
+<h3 id="_bugfixes_9"><a class="anchor" href="#_bugfixes_9"></a><strong>Bugfixes</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1308,7 +1382,7 @@ For example see <a href="../storage/configuration/storage-files-and-directories.
 <p>Bugfix release for projects using an old non public version.</p>
 </div>
 <div class="sect2">
-<h3 id="_bugfixes_9"><a class="anchor" href="#_bugfixes_9"></a><strong>Bugfixes</strong></h3>
+<h3 id="_bugfixes_10"><a class="anchor" href="#_bugfixes_10"></a><strong>Bugfixes</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1323,7 +1397,7 @@ For example see <a href="../storage/configuration/storage-files-and-directories.
 <h2 id="_3_0"><a class="anchor" href="#_3_0"></a>3.0</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_features_6"><a class="anchor" href="#_features_6"></a><strong>Features</strong></h3>
+<h3 id="_features_7"><a class="anchor" href="#_features_7"></a><strong>Features</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1357,7 +1431,7 @@ legacy type mapping)</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_bugfixes_10"><a class="anchor" href="#_bugfixes_10"></a><strong>Bugfixes</strong></h3>
+<h3 id="_bugfixes_11"><a class="anchor" href="#_bugfixes_11"></a><strong>Bugfixes</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1402,7 +1476,7 @@ legacy type mapping)</p>
 <h2 id="_2_2"><a class="anchor" href="#_2_2"></a>2.2</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_features_7"><a class="anchor" href="#_features_7"></a>Features</h3>
+<h3 id="_features_8"><a class="anchor" href="#_features_8"></a>Features</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1439,7 +1513,7 @@ See <a href="#2_2_migration-guide">Migration Guide</a> below on how to adjust ex
 </div>
 </div>
 <div class="sect2">
-<h3 id="_bugfixes_11"><a class="anchor" href="#_bugfixes_11"></a>Bugfixes</h3>
+<h3 id="_bugfixes_12"><a class="anchor" href="#_bugfixes_12"></a>Bugfixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1466,7 +1540,7 @@ Modern IDEs provide a functionality to "auto-import" missing types or automatica
 <h2 id="_2_1"><a class="anchor" href="#_2_1"></a>2.1</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_features_8"><a class="anchor" href="#_features_8"></a>Features</h3>
+<h3 id="_features_9"><a class="anchor" href="#_features_9"></a>Features</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1486,7 +1560,7 @@ See Migration guide below.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_bugfixes_12"><a class="anchor" href="#_bugfixes_12"></a>Bugfixes</h3>
+<h3 id="_bugfixes_13"><a class="anchor" href="#_bugfixes_13"></a>Bugfixes</h3>
 <div class="ulist">
 <ul>
 <li>
