@@ -4,7 +4,7 @@ site:
   robots: allow
 content:
   sources:
-  - url: ../microstream
+  - url: ./microstream
     start_path: docs
 asciidoc:
   attributes:
