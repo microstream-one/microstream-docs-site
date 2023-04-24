@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Client GUI :: MicroStream Reference Manual</title>
-    <link rel="canonical" href="https://docs.microstream.one/manual/storage/rest-interface/client-gui.html">
-    <link rel="prev" href="rest-api.html">
-    <link rel="next" href="../faq/data-model.html">
-    <meta name="generator" content="Antora 3.0.0">
+    <title>Hana :: MicroStream Reference Manual</title>
+    <link rel="canonical" href="https://docs.microstream.one/manual/storage/storage-targets/sql-databases/hana.html">
+    <link rel="prev" href="../local-file-system.html">
+    <link rel="next" href="mariadb.html">
+    <meta name="generator" content="Antora 3.0.3">
     <link rel="stylesheet" href="../../../../_/css/site.css">
   <link rel="icon" type="image/png" sizes="32x32" href="https://www.microstream.one/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://www.microstream.one/favicon-16x16.png">
@@ -47,95 +47,95 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="manual" data-version="6.0">
+<div class="nav-container" data-component="manual" data-version="master">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
-    <h3 class="title"><a href="../../intro/welcome.html">MicroStream Reference Manual</a></h3>
+    <h3 class="title"><a href="../../../intro/welcome.html">MicroStream Reference Manual</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../intro/welcome.html">Welcome</a>
+    <a class="nav-link" href="../../../intro/welcome.html">Welcome</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../intro/system-requirements.html">System Requirements</a>
+    <a class="nav-link" href="../../../intro/system-requirements.html">System Requirements</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../intro/changelog.html">Changelog</a>
+    <a class="nav-link" href="../../../intro/changelog.html">Changelog</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../intro/installation.html">Installation</a>
+    <a class="nav-link" href="../../../intro/installation.html">Installation</a>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../index.html">Storage</a>
+    <a class="nav-link" href="../../index.html">Storage</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../getting-started.html">Getting Started</a>
+    <a class="nav-link" href="../../getting-started.html">Getting Started</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../root-instances.html">Root Instances</a>
+    <a class="nav-link" href="../../root-instances.html">Root Instances</a>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../configuration/index.html">Configuration</a>
+    <a class="nav-link" href="../../configuration/index.html">Configuration</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../configuration/properties.html">Properties</a>
+    <a class="nav-link" href="../../configuration/properties.html">Properties</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../configuration/storage-files-and-directories.html">Storage Files and Directories</a>
+    <a class="nav-link" href="../../configuration/storage-files-and-directories.html">Storage Files and Directories</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../configuration/using-channels.html">Using Channels</a>
+    <a class="nav-link" href="../../configuration/using-channels.html">Using Channels</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../configuration/housekeeping.html">Houskeeping</a>
+    <a class="nav-link" href="../../configuration/housekeeping.html">Houskeeping</a>
   </li>
   <li class="nav-item" data-depth="3">
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Backup</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../configuration/backup/continuous-backup.html">Continous Backup</a>
+    <a class="nav-link" href="../../configuration/backup/continuous-backup.html">Continous Backup</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../configuration/backup/full-backup.html">Full Backup</a>
+    <a class="nav-link" href="../../configuration/backup/full-backup.html">Full Backup</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../configuration/lock-file.html">Lock File</a>
+    <a class="nav-link" href="../../configuration/lock-file.html">Lock File</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../storage-targets/index.html">Storage Targets</a>
+    <a class="nav-link" href="../index.html">Storage Targets</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../storage-targets/local-file-system.html">Local File System</a>
+    <a class="nav-link" href="../local-file-system.html">Local File System</a>
   </li>
   <li class="nav-item" data-depth="3">
     <button class="nav-item-toggle"></button>
     <span class="nav-text">SQL Databases</span>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../storage-targets/sql-databases/mariadb.html">MariaDB</a>
+  <li class="nav-item is-current-page" data-depth="4">
+    <a class="nav-link" href="hana.html">Hana</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../storage-targets/sql-databases/mysql.html">MySQL</a>
+    <a class="nav-link" href="mariadb.html">MariaDB</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../storage-targets/sql-databases/oracle.html">Oracle</a>
+    <a class="nav-link" href="oracle.html">Oracle</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../storage-targets/sql-databases/postgresql.html">Postgres</a>
+    <a class="nav-link" href="postgresql.html">Postgres</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../storage-targets/sql-databases/sqlite.html">Sqlite</a>
+    <a class="nav-link" href="sqlite.html">Sqlite</a>
   </li>
 </ul>
   </li>
@@ -148,36 +148,33 @@
     <span class="nav-text">AWS</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="5">
-    <a class="nav-link" href="../storage-targets/blob-stores/aws-dynamodb.html">DynamoDB</a>
+    <a class="nav-link" href="../blob-stores/aws-dynamodb.html">DynamoDB</a>
   </li>
   <li class="nav-item" data-depth="5">
-    <a class="nav-link" href="../storage-targets/blob-stores/aws-s3.html">S3</a>
+    <a class="nav-link" href="../blob-stores/aws-s3.html">S3</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../storage-targets/blob-stores/azure-storage.html">Azure Storage</a>
+    <a class="nav-link" href="../blob-stores/azure-storage.html">Azure Storage</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../storage-targets/blob-stores/hazelcast.html">Hazelcast</a>
+    <a class="nav-link" href="../blob-stores/google-cloud-firestore.html">Google Cloud Firestore</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../storage-targets/blob-stores/kafka.html">Kafka</a>
+    <a class="nav-link" href="../blob-stores/hazelcast.html">Hazelcast</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../storage-targets/blob-stores/mongodb.html">MongoDB</a>
+    <a class="nav-link" href="../blob-stores/kafka.html">Kafka</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../storage-targets/blob-stores/oracle-cloud-object-storage.html">Oracle Cloud Object Storage</a>
+    <a class="nav-link" href="../blob-stores/oracle-cloud-object-storage.html">Oracle Cloud Object Storage</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../storage-targets/blob-stores/oracle-coherence.html">Oracle Coherence</a>
+    <a class="nav-link" href="../blob-stores/oracle-coherence.html">Oracle Coherence</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../storage-targets/blob-stores/oracle-nosql.html">Oracle NoSQL</a>
-  </li>
-  <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../storage-targets/blob-stores/redis.html">Redis</a>
+    <a class="nav-link" href="../blob-stores/redis.html">Redis</a>
   </li>
 </ul>
   </li>
@@ -185,97 +182,97 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../storing-data/index.html">Storing Data</a>
+    <a class="nav-link" href="../../storing-data/index.html">Storing Data</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../storing-data/transactions.html">Convenience Methods and Explicit Storing (Transactions)</a>
+    <a class="nav-link" href="../../storing-data/transactions.html">Convenience Methods and Explicit Storing (Transactions)</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../storing-data/lazy-eager-full.html">Lazy and Eager Storing</a>
+    <a class="nav-link" href="../../storing-data/lazy-eager-full.html">Lazy and Eager Storing</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../storing-data/transient-fields.html">Transient Fields</a>
+    <a class="nav-link" href="../../storing-data/transient-fields.html">Transient Fields</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../storing-data/best-practice.html">Best Practice</a>
+    <a class="nav-link" href="../../storing-data/best-practice.html">Best Practice</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../storing-data/deep-copy.html">Deep Copy Utility</a>
+    <a class="nav-link" href="../../storing-data/deep-copy.html">Deep Copy Utility</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../loading-data/index.html">Loading Data</a>
+    <a class="nav-link" href="../../loading-data/index.html">Loading Data</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../loading-data/lazy-loading/index.html">Lazy Loading</a>
+    <a class="nav-link" href="../../loading-data/lazy-loading/index.html">Lazy Loading</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../loading-data/lazy-loading/touched-timestamp-null-safe-variant.html">Touched Timestamp, Null-Safe Variant</a>
+    <a class="nav-link" href="../../loading-data/lazy-loading/touched-timestamp-null-safe-variant.html">Touched Timestamp, Null-Safe Variant</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../loading-data/lazy-loading/clearing-lazy-references.html">Clearing Lazy References</a>
+    <a class="nav-link" href="../../loading-data/lazy-loading/clearing-lazy-references.html">Clearing Lazy References</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../deleting-data.html">Deleting Data</a>
+    <a class="nav-link" href="../../deleting-data.html">Deleting Data</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../queries.html">Queries</a>
+    <a class="nav-link" href="../../queries.html">Queries</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../application-life-cycle.html">Application Life-Cycle</a>
+    <a class="nav-link" href="../../application-life-cycle.html">Application Life-Cycle</a>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../legacy-type-mapping/index.html">Legacy Type Mapping</a>
+    <a class="nav-link" href="../../legacy-type-mapping/index.html">Legacy Type Mapping</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../legacy-type-mapping/user-interaction.html">User Interaction</a>
+    <a class="nav-link" href="../../legacy-type-mapping/user-interaction.html">User Interaction</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../import-export.html">Import / Export</a>
+    <a class="nav-link" href="../../import-export.html">Import / Export</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../housekeeping.html">Housekeeping</a>
+    <a class="nav-link" href="../../housekeeping.html">Housekeeping</a>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Customizing</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../customizing/custom-type-handler.html">Custom Type Handler</a>
+    <a class="nav-link" href="../../customizing/custom-type-handler.html">Custom Type Handler</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../customizing/custom-legacy-type-handler.html">Custom Legacy Type Handler</a>
+    <a class="nav-link" href="../../customizing/custom-legacy-type-handler.html">Custom Legacy Type Handler</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../customizing/custom-class-loader.html">Custom Class Loader</a>
+    <a class="nav-link" href="../../customizing/custom-class-loader.html">Custom Class Loader</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../customizing/custom-storing-behavior.html">Custom Storing Behavior</a>
+    <a class="nav-link" href="../../customizing/custom-storing-behavior.html">Custom Storing Behavior</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../customizing/optional-storage-manager-reference-in-entities.html">Optional Storage Manager Reference in Entities</a>
+    <a class="nav-link" href="../../customizing/optional-storage-manager-reference-in-entities.html">Optional Storage Manager Reference in Entities</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="index.html">REST Interface</a>
+    <a class="nav-link" href="../../rest-interface/index.html">REST Interface</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="setup.html">Setup</a>
+    <a class="nav-link" href="../../rest-interface/setup.html">Setup</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="rest-api.html">REST API</a>
+    <a class="nav-link" href="../../rest-interface/rest-api.html">REST API</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="3">
-    <a class="nav-link" href="client-gui.html">Client GUI</a>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../rest-interface/client-gui.html">Client GUI</a>
   </li>
 </ul>
   </li>
@@ -284,19 +281,19 @@
     <span class="nav-text">FAQ</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../faq/data-model.html">Data Model</a>
+    <a class="nav-link" href="../../faq/data-model.html">Data Model</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../faq/data-management.html">Data Management</a>
+    <a class="nav-link" href="../../faq/data-management.html">Data Management</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../faq/file-storage.html">File Storage</a>
+    <a class="nav-link" href="../../faq/file-storage.html">File Storage</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../faq/java-features.html">Java Features</a>
+    <a class="nav-link" href="../../faq/java-features.html">Java Features</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../faq/miscellaneous.html">Miscellaneous</a>
+    <a class="nav-link" href="../../faq/miscellaneous.html">Miscellaneous</a>
   </li>
 </ul>
   </li>
@@ -305,34 +302,37 @@
     <span class="nav-text">Addendum</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../addendum/supported-java-features.html">Supported Java Features</a>
+    <a class="nav-link" href="../../addendum/supported-java-features.html">Supported Java Features</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../addendum/specialized-type-handlers.html">Specialized Type Handlers</a>
+    <a class="nav-link" href="../../addendum/specialized-type-handlers.html">Specialized Type Handlers</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../addendum/examples-and-demo-projects.html">Examples and Demo Projects</a>
+    <a class="nav-link" href="../../addendum/examples-and-demo-projects.html">Examples and Demo Projects</a>
   </li>
 </ul>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../../serializer/index.html">Serializer</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../cache/index.html">Cache</a>
+    <a class="nav-link" href="../../../cache/index.html">Cache</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../cache/getting-started.html">Getting Started</a>
+    <a class="nav-link" href="../../../cache/getting-started.html">Getting Started</a>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../cache/configuration/index.html">Configuration</a>
+    <a class="nav-link" href="../../../cache/configuration/index.html">Configuration</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../cache/configuration/properties.html">Properties</a>
+    <a class="nav-link" href="../../../cache/configuration/properties.html">Properties</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../cache/configuration/storage.html">Storage</a>
+    <a class="nav-link" href="../../../cache/configuration/storage.html">Storage</a>
   </li>
 </ul>
   </li>
@@ -341,67 +341,76 @@
     <span class="nav-text">Use Cases</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../cache/use-cases/hibernate-second-level-cache.html">Hibernate Second Level Cache</a>
+    <a class="nav-link" href="../../../cache/use-cases/hibernate-second-level-cache.html">Hibernate Second Level Cache</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../cache/use-cases/spring-cache.html">Spring Cache</a>
+    <a class="nav-link" href="../../../cache/use-cases/spring-cache.html">Spring Cache</a>
   </li>
 </ul>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../../communication/index.html">Communication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Miscellaneous</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../misc/logging/index.html">Logging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../misc/integrations/index.html">Integrations</a>
+    <a class="nav-link" href="../../../misc/integrations/index.html">Integrations</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../misc/integrations/helidon.html">Helidon</a>
+    <a class="nav-link" href="../../../misc/integrations/helidon.html">Helidon</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../misc/integrations/spring-boot.html">Spring-Boot</a>
+    <a class="nav-link" href="../../../misc/integrations/spring-boot.html">Spring-Boot</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../misc/integrations/cdi.html">CDI</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../misc/layered-entities/index.html">Layered Entities</a>
+    <a class="nav-link" href="../../../misc/layered-entities/index.html">Layered Entities</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../misc/layered-entities/configuration.html">Configuration</a>
+    <a class="nav-link" href="../../../misc/layered-entities/configuration.html">Configuration</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../misc/layered-entities/defining-entities.html">Defining Entities</a>
+    <a class="nav-link" href="../../../misc/layered-entities/defining-entities.html">Defining Entities</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../misc/layered-entities/creating-entities.html">Creating Entities</a>
+    <a class="nav-link" href="../../../misc/layered-entities/creating-entities.html">Creating Entities</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../misc/layered-entities/updating-entities.html">Updating Entities</a>
+    <a class="nav-link" href="../../../misc/layered-entities/updating-entities.html">Updating Entities</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../misc/layered-entities/versioning.html">Versioning</a>
+    <a class="nav-link" href="../../../misc/layered-entities/versioning.html">Versioning</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../misc/layered-entities/logging.html">Logging</a>
+    <a class="nav-link" href="../../../misc/layered-entities/logging.html">Logging</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../misc/layered-entities/multiple-layers.html">Multiple Layers</a>
+    <a class="nav-link" href="../../../misc/layered-entities/multiple-layers.html">Multiple Layers</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../misc/wrapping/index.html">Wrapping</a>
+    <a class="nav-link" href="../../../misc/wrapping/index.html">Wrapping</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../misc/wrapping/configuration.html">Configuration</a>
+    <a class="nav-link" href="../../../misc/wrapping/configuration.html">Configuration</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../misc/wrapping/usage.html">Usage</a>
+    <a class="nav-link" href="../../../misc/wrapping/usage.html">Usage</a>
   </li>
 </ul>
   </li>
@@ -415,20 +424,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">MicroStream Reference Manual</span>
-    <span class="version">6.0</span>
+    <span class="version">7.0</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <a class="title" href="../../../intro/welcome.html">MicroStream Reference Manual</a>
       <ul class="versions">
-        <li class="version is-latest">
+        <li class="version is-current is-latest">
           <a href="../../../intro/welcome.html">7.0</a>
-        </li>
-        <li class="version is-current">
-          <a href="../../intro/welcome.html">6.0</a>
-        </li>
-        <li class="version">
-          <a href="../../../5.0/intro/welcome.html">5.0</a>
         </li>
       </ul>
     </li>
@@ -442,98 +445,105 @@
 <button class="nav-toggle"></button>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
-    <li><a href="../../intro/welcome.html">MicroStream Reference Manual</a></li>
-    <li><a href="../index.html">Storage</a></li>
-    <li><a href="index.html">REST Interface</a></li>
-    <li><a href="client-gui.html">Client GUI</a></li>
+    <li><a href="../../../intro/welcome.html">MicroStream Reference Manual</a></li>
+    <li><a href="../../index.html">Storage</a></li>
+    <li><a href="../index.html">Storage Targets</a></li>
+    <li>SQL Databases</li>
+    <li><a href="hana.html">Hana</a></li>
   </ul>
 </nav>
-<div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">6.0</button>
-  <div class="version-menu">
-    <a class="version" href="../../../storage/rest-interface/client-gui.html">7.0</a>
-    <a class="version is-current" href="client-gui.html">6.0</a>
-    <a class="version" href="../../../5.0/storage/rest-interface/client-gui.html">5.0</a>
-  </div>
+  <div class="edit-this-page"><a href="file:///C:/Users/FlorianHabermann/workspaces/microstream/microstream/docs/modules/storage/pages/storage-targets/sql-databases/hana.adoc">Edit this Page</a></div>
 </div>
-  <div class="edit-this-page"><a href="https://github.com/microstream-one/microstream/edit/release/6.0.0/docs/modules/storage/pages/rest-interface/client-gui.adoc">Edit this Page</a></div>
-  </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Client GUI</h1>
-<div class="paragraph">
-<p>Based on the REST API we provide a client, which serves a convenient web user interface to browse through the storage data.</p>
-</div>
-<div class="paragraph">
-<p>It is a runnable jar which starts a simple web server which then can be accessed by a browser of your choice.</p>
-</div>
-<div class="paragraph">
-<p>To download it use maven</p>
-</div>
+<h1 class="page">Hana</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="listingblock">
-<div class="title">pom.xml</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependencies&gt;
-	&lt;dependency&gt;
-		&lt;groupId&gt;one.microstream&lt;/groupId&gt;
-		&lt;artifactId&gt;microstream-storage-restclient-app&lt;/artifactId&gt;
-		&lt;version&gt;06.01.00-MS-GA&lt;/version&gt;
-	&lt;/dependency&gt;
-&lt;/dependencies&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+	&lt;groupId&gt;one.microstream&lt;/groupId&gt;
+	&lt;artifactId&gt;microstream-afs-sql&lt;/artifactId&gt;
+	&lt;version&gt;07.01.00-MS-GA&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+	&lt;groupId&gt;com.sap.cloud.db.jdbc&lt;/groupId&gt;
+	&lt;artifactId&gt;ngdbc&lt;/artifactId&gt;
+	&lt;version&gt;2.14.7&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>or this direct link:</p>
-</div>
-<div class="paragraph">
-<p><a href="https://repo1.maven.org/maven2/one/microstream/microstream-storage-restclient-app/06.01.00-MS-GA/microstream-storage-restclient-app-06.01.00-MS-GA.jar" class="bare">https://repo1.maven.org/maven2/one/microstream/microstream-storage-restclient-app/06.01.00-MS-GA/microstream-storage-restclient-app-06.01.00-MS-GA.jar</a></p>
-</div>
-<div class="paragraph">
-<p>Start the client.
-The port parameter is optional, default port is 8080.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">java -jar storage.restclient.app-06.01.00-MS-GA.jar --port=80</code></pre>
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">HanaDataSource dataSource = new HanaDataSource();
+dataSource.setURL("jdbc:sap://dummy_host:0/?KEY=USER1UserKey&amp;encrypt=true&amp;validateCertificate=false");
+dataSource.setUser("user");
+dataSource.setPassword("secret");
+
+SqlFileSystem fileSystem = SqlFileSystem.New(
+	SqlConnector.Caching(
+		SqlProviderHana.New(dataSource)
+	)
+);
+
+EmbeddedStorage.start(fileSystem.ensureDirectoryPath("microstream_storage"));</code></pre>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration"><a class="anchor" href="#_configuration"></a>Configuration</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Then just open <a href="http://localhost" class="bare">http://localhost</a> in your browser, select the base URL of the REST service and click connect.</p>
+<p>When using <a href="../../configuration/index.html#external-configuration" class="xref page">external configuration</a> Hana can be set as follows.
+Please note that you have to define a data source provider.</p>
 </div>
-<div class="imageblock">
+<div class="listingblock">
+<div class="title">microstream-storage.properties</div>
 <div class="content">
-<img src="../_images/rest-client-gui.png" alt="rest client gui">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">storage-filesystem.sql.hana.data-source-provider=com.sample.MyDataSourceProvider
+storage-filesystem.sql.hana.store-type=row|column
+storage-filesystem.sql.hana.catalog=mycatalog
+storage-filesystem.sql.hana.schema=myschema
+storage-filesystem.sql.hana.url=jdbc:sap://dummy_host:0/?KEY=USER1UserKey&amp;encrypt=true&amp;validateCertificate=false
+storage-filesystem.sql.hana.user=username
+storage-filesystem.sql.hana.password=secret</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Now you can browse through the data of the storage:</p>
-</div>
-<div class="imageblock">
+<div class="listingblock">
+<div class="title">MyDataSourceProvider.java</div>
 <div class="content">
-<img src="../_images/rest-client-gui2.png" alt="rest client gui2">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package com.sample;
+
+import one.microstream.afs.sql.types.SqlDataSourceProvider
+
+public class MyDataSourceProvider implements SqlDataSourceProvider
+{
+	public DataSource provideDataSource(Configuration configuration)
+	{
+		String url      = configuration.get("url");
+		String user     = configuration.get("user");
+		String password = configuration.get("password");
+		// TODO: return data source of your choice, e.g. from a connection pool
+	}
+}</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Or view the statistics:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../_images/rest-client-gui3.png" alt="rest client gui3">
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="rest-api.html">REST API</a></span>
-  <span class="next"><a href="../faq/data-model.html">Data Model</a></span>
+  <span class="prev"><a href="../local-file-system.html">Local File System</a></span>
+  <span class="next"><a href="mariadb.html">MariaDB</a></span>
 </nav>
 </article>
   </div>
 </main>
 </div>
 <footer class="footer">
-© 2023 MicroStream Software. All rights reserved.
+© 2022 MicroStream Software. All rights reserved.
 &nbsp;
 &nbsp;
 &nbsp;
