@@ -1,0 +1,1 @@
+cmd.exe /X /C ""C:\Program Files\AdoptOpenJDK\jdk-14.0.2.12-hotspot\bin\javadoc.exe" @options @argfile"
