@@ -3,15 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Replication :: MicroStream Enterprise Reference Manual</title>
-    <link rel="canonical" href="https://docs.microstream.one/enterprise/manual/manual/storage/replication.html">
-    <link rel="prev" href="index.html">
-    <link rel="next" href="../cloud/frontend/index.html">
+    <title>The MicroStream Starter Templates :: MicroStream Enterprise Reference Manual</title>
+    <link rel="canonical" href="https://docs.microstream.one/enterprise/manual/manual/cloud/frontend/starter.html">
+    <link rel="prev" href="architecture.html">
     <meta name="generator" content="Antora 3.1.2">
-    <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/site.css">
   <link rel="icon" type="image/png" sizes="32x32" href="https://www.microstream.one/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://www.microstream.one/favicon-16x16.png">
-  <link rel="stylesheet" href="../../_/css/site-extra.css">    <script>var uiRootPath = '../../_'</script>
+  <link rel="stylesheet" href="../../../_/css/site-extra.css">    <script>var uiRootPath = '../../../_'</script>
   </head>
   <body class="article">
 <header class="header">
@@ -47,22 +46,22 @@
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
-    <h3 class="title"><a href="../intro/welcome.html">MicroStream Enterprise Reference Manual</a></h3>
+    <h3 class="title"><a href="../../intro/welcome.html">MicroStream Enterprise Reference Manual</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../intro/welcome.html">Welcome</a>
+    <a class="nav-link" href="../../intro/welcome.html">Welcome</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../intro/installation.html">Installation</a>
+    <a class="nav-link" href="../../intro/installation.html">Installation</a>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="index.html">Storage</a>
+    <a class="nav-link" href="../../storage/index.html">Storage</a>
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="2">
-    <a class="nav-link" href="replication.html">Replication</a>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../storage/replication.html">Replication</a>
   </li>
 </ul>
   </li>
@@ -71,19 +70,19 @@
     <span class="nav-text">Cloud</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../cloud/frontend/index.html">The Cloud Management Console</a>
+    <a class="nav-link" href="index.html">The Cloud Management Console</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../cloud/frontend/getting-started.html">Getting Started</a>
+    <a class="nav-link" href="getting-started.html">Getting Started</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../cloud/frontend/manage-cluster.html">Managing your MicroStream Cluster</a>
+    <a class="nav-link" href="manage-cluster.html">Managing your MicroStream Cluster</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../cloud/frontend/architecture.html">Architecture</a>
+    <a class="nav-link" href="architecture.html">Architecture</a>
   </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../cloud/frontend/starter.html">Starter Templates</a>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="starter.html">Starter Templates</a>
   </li>
 </ul>
   </li>
@@ -99,10 +98,10 @@
   </div>
   <ul class="components">
     <li class="component is-current">
-      <a class="title" href="../intro/welcome.html">MicroStream Enterprise Reference Manual</a>
+      <a class="title" href="../../intro/welcome.html">MicroStream Enterprise Reference Manual</a>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="../intro/welcome.html">8.0-EA1</a>
+          <a href="../../intro/welcome.html">8.0-EA1</a>
         </li>
       </ul>
     </li>
@@ -116,9 +115,9 @@
 <button class="nav-toggle"></button>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
-    <li><a href="../intro/welcome.html">MicroStream Enterprise Reference Manual</a></li>
-    <li><a href="index.html">Storage</a></li>
-    <li><a href="replication.html">Replication</a></li>
+    <li><a href="../../intro/welcome.html">MicroStream Enterprise Reference Manual</a></li>
+    <li>Cloud</li>
+    <li><a href="starter.html">Starter Templates</a></li>
   </ul>
 </nav>
 </div>
@@ -127,165 +126,71 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Replication</h1>
+<h1 class="page">The MicroStream Starter Templates</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>The enterprise replication feature enables you to automatically replicate multiple embedded instances.
-This is a single-master replication, which allows one node to write, and unlimited additional nodes to read.</p>
-</div>
-<div class="paragraph">
-<p>Every node itself runs just like a normal embedded storage instance and connects to a replication cluster.
-You can configure each node individually as well, e.g. different channel counts.
-The cluster utilizes a data distribution software to spread the data. By now we provide an adapter for Apache Kafka only.</p>
-</div>
-<div class="paragraph">
-<p>The reader nodes can connect and re-connect to the cluster at any time and will be updated automatically.
-The writer node can shutdown also and re-connect without any data loss.</p>
+<p>The MicroStream Cloud comes with Starter Templates, that allow you to quickly get started with deploying your own project into our cloud! Let’s go over the various Cluster parts of the template. The exact specifics of your project may change, depending on the framework and it’s version you’ve selected.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites</h2>
+<h2 id="_the_controller_package"><a class="anchor" href="#_the_controller_package"></a>The “controller” Package</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Add the dependencies to your project.</p>
+<p>This package contains all controllers, which will be available as an API of your cluster. You will be able to reach these endpoints using the Cluster URL you can find within the Cloud, once your cluster has been started.</p>
 </div>
-<div class="listingblock">
-<div class="title">Maven [pom.xml]</div>
+<div class="imageblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependencies&gt;
-	&lt;dependency&gt;
-		&lt;groupId&gt;one.microstream&lt;/groupId&gt;
-		&lt;artifactId&gt;microstream-enterprise-storage-distributed&lt;/artifactId&gt;
-		&lt;version&gt;08.00.00-MS-EA1&lt;/version&gt;
-	&lt;/dependency&gt;
-	&lt;dependency&gt;
-		&lt;groupId&gt;one.microstream&lt;/groupId&gt;
-		&lt;artifactId&gt;microstream-enterprise-storage-distributed-kafka&lt;/artifactId&gt;
-		&lt;version&gt;08.00.00-MS-EA1&lt;/version&gt;
-	&lt;/dependency&gt;
-&lt;/dependencies&gt;</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>In order to set a common ground for all nodes, every one of them has to be initialized with an identical root object once.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">final EmbeddedStorageManager storage = ...;
-if(storage.root() == null)
-{
-	storage.setRoot(new MyRoot());
-	storage.storeRoot();
-}</code></pre>
+<img src="../_images/controller-package.png" alt="controller package">
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_kafka"><a class="anchor" href="#_kafka"></a>Kafka</h2>
+<h2 id="_the_storage_package"><a class="anchor" href="#_the_storage_package"></a>The “storage” Package</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Connect the nodes to Kafka.</p>
+<p>This package contains a example MicroStream database. You can modify this section completing to your liking and your MicroStream implementation.</p>
 </div>
-<div class="sect2">
-<h3 id="_writer_setup"><a class="anchor" href="#_writer_setup"></a>Writer setup</h3>
-<div class="listingblock">
+<div class="imageblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// configure Kafka
-final Properties kafkaProperties = new Properties();
-kafkaProperties.setProperty(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, "kafka-server:9093");
-
-// specify the used Kafka topic
-final String kafkaTopic = "microstream";
-
-// create Kafka distributor
-final StorageBinaryDataDistributorKafka distributor = StorageBinaryDataDistributorKafka.New(
-	kafkaProperties,
-	kafkaTopic
-);
-
-// just decorate a default embedded storage configuration with a distributed one
-final EmbeddedStorageManager storage = DistributedStorage.configureWriting(
-	EmbeddedStorageConfiguration.Builder()
-		.setStorageDirectory(Paths.get("mystorage", "storage-writer").toString())
-		.createEmbeddedStorageFoundation(),
-	// use the caching wrapper for additional performance
-	StorageBinaryDataDistributor.Caching(distributor)
-)
-.start();
-
-// ensure initial root
-if(storage.root() == null)
-{
-	storage.setRoot(new MyRoot());
-	storage.storeRoot();
-}</code></pre>
+<img src="../_images/storage-package.png" alt="storage package">
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_reader_setup"><a class="anchor" href="#_reader_setup"></a>Reader setup</h3>
+</div>
+<div class="sect1">
+<h2 id="_required_classes"><a class="anchor" href="#_required_classes"></a>Required Classes</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Each reader has to ensure it connects to Kafka with a unique client id.</p>
+<p>A project in the MicroStream Cloud requires two specific classes, otherwise your Cluster will not be able to run as expected.</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_microstreamcontroller"><a class="anchor" href="#_the_microstreamcontroller"></a>The MicrostreamController</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>All incoming data will be imported automatically into the local storage of the node.
-The merge to the live object graph of the new data is handled by an update handler. You have to take care of the synchronization in order not to interfere with reading operations and to keep the object graph consistent.
-The default implementation <code>ObjectGraphUpdateHandler.Synchronized()</code> synchronizes via <code>XThreads.executeSynchronized</code>.</p>
+<p>Even though the class looks empty, this controller is critical for the functions of your cluster. It extends the class StorageClusterController, which in turn offers several endpoints which are used internally by our cloud.</p>
 </div>
-<div class="listingblock">
+<div class="imageblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// configure Kafka
-final Properties kafkaProperties = new Properties();
-kafkaProperties.setProperty(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, "kafka-server:9093");
-
-// specify the used Kafka topic
-final String kafkaTopic = "microstream";
-
-// ensure unique id for each reader
-final String readerId = ...;
-
-final EmbeddedStorageFoundation&lt;?&gt; foundation = EmbeddedStorageConfiguration.Builder()
-	.setStorageDirectory(Paths.get("mystorage", "storage-reader-" + readerId).toString())
-	.createEmbeddedStorageFoundation();
-final EmbeddedStorageManager storage = foundation.start();
-
-// ensure initial root
-if(storage.root() == null)
-{
-	storage.setRoot(new Root());
-	storage.storeRoot();
-}
-
-// create data merger
-final StorageBinaryDataMerger merger = StorageBinaryDataMerger.New(
-	foundation.getConnectionFoundation(),
-	storage,
-	// use synchronized update handler
-	ObjectGraphUpdateHandler.Synchronized()
-);
-
-// start the kafka client
-StorageBinaryDataClientKafka.New(
-	kafkaProperties,
-	kafkaTopic,
-	readerId,
-	merger
-)
-.start();</code></pre>
+<img src="../_images/microstream-controller.png" alt="microstream controller">
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_examplestoragemanagerprovider"><a class="anchor" href="#_the_examplestoragemanagerprovider"></a>The ExampleStorageManagerProvider</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Now the replication is set up and ready to use. Every update of the writer node will be distributed and merged by the reader nodes.</p>
-</div>
+<p>This class serves as the connection point between your own MicroStream Storage and the internal MicrostreamController. It allows the StorageManager to be read by the controller’s internal endpoints.</p>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="index.html">Storage</a></span>
-  <span class="next"><a href="../cloud/frontend/index.html">The Cloud Management Console</a></span>
+  <span class="prev"><a href="architecture.html">Architecture</a></span>
 </nav>
 </article>
   </div>
@@ -303,7 +208,7 @@ StorageBinaryDataClientKafka.New(
 <a href="https://microstream.one/privacy/">Privacy</a>
 <span class="link-separator">&nbsp;&#124;&nbsp;</span>
 <a href="https://microstream.one/legal-notice/">Legal notice</a>
-</footer><script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
-<script async src="../../_/js/vendor/highlight.js"></script>
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
   </body>
 </html>

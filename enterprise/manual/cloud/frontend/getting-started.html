@@ -3,15 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Replication :: MicroStream Enterprise Reference Manual</title>
-    <link rel="canonical" href="https://docs.microstream.one/enterprise/manual/manual/storage/replication.html">
+    <title>Getting Started with the MicroStream Cloud :: MicroStream Enterprise Reference Manual</title>
+    <link rel="canonical" href="https://docs.microstream.one/enterprise/manual/manual/cloud/frontend/getting-started.html">
     <link rel="prev" href="index.html">
-    <link rel="next" href="../cloud/frontend/index.html">
+    <link rel="next" href="manage-cluster.html">
     <meta name="generator" content="Antora 3.1.2">
-    <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/site.css">
   <link rel="icon" type="image/png" sizes="32x32" href="https://www.microstream.one/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://www.microstream.one/favicon-16x16.png">
-  <link rel="stylesheet" href="../../_/css/site-extra.css">    <script>var uiRootPath = '../../_'</script>
+  <link rel="stylesheet" href="../../../_/css/site-extra.css">    <script>var uiRootPath = '../../../_'</script>
   </head>
   <body class="article">
 <header class="header">
@@ -47,22 +47,22 @@
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
-    <h3 class="title"><a href="../intro/welcome.html">MicroStream Enterprise Reference Manual</a></h3>
+    <h3 class="title"><a href="../../intro/welcome.html">MicroStream Enterprise Reference Manual</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../intro/welcome.html">Welcome</a>
+    <a class="nav-link" href="../../intro/welcome.html">Welcome</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../intro/installation.html">Installation</a>
+    <a class="nav-link" href="../../intro/installation.html">Installation</a>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="index.html">Storage</a>
+    <a class="nav-link" href="../../storage/index.html">Storage</a>
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="2">
-    <a class="nav-link" href="replication.html">Replication</a>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../storage/replication.html">Replication</a>
   </li>
 </ul>
   </li>
@@ -71,19 +71,19 @@
     <span class="nav-text">Cloud</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../cloud/frontend/index.html">The Cloud Management Console</a>
+    <a class="nav-link" href="index.html">The Cloud Management Console</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="getting-started.html">Getting Started</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../cloud/frontend/getting-started.html">Getting Started</a>
+    <a class="nav-link" href="manage-cluster.html">Managing your MicroStream Cluster</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../cloud/frontend/manage-cluster.html">Managing your MicroStream Cluster</a>
+    <a class="nav-link" href="architecture.html">Architecture</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../cloud/frontend/architecture.html">Architecture</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../cloud/frontend/starter.html">Starter Templates</a>
+    <a class="nav-link" href="starter.html">Starter Templates</a>
   </li>
 </ul>
   </li>
@@ -99,10 +99,10 @@
   </div>
   <ul class="components">
     <li class="component is-current">
-      <a class="title" href="../intro/welcome.html">MicroStream Enterprise Reference Manual</a>
+      <a class="title" href="../../intro/welcome.html">MicroStream Enterprise Reference Manual</a>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="../intro/welcome.html">8.0-EA1</a>
+          <a href="../../intro/welcome.html">8.0-EA1</a>
         </li>
       </ul>
     </li>
@@ -116,9 +116,9 @@
 <button class="nav-toggle"></button>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
-    <li><a href="../intro/welcome.html">MicroStream Enterprise Reference Manual</a></li>
-    <li><a href="index.html">Storage</a></li>
-    <li><a href="replication.html">Replication</a></li>
+    <li><a href="../../intro/welcome.html">MicroStream Enterprise Reference Manual</a></li>
+    <li>Cloud</li>
+    <li><a href="getting-started.html">Getting Started</a></li>
   </ul>
 </nav>
 </div>
@@ -127,165 +127,197 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Replication</h1>
+<h1 class="page">Getting Started with the MicroStream Cloud</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>The enterprise replication feature enables you to automatically replicate multiple embedded instances.
-This is a single-master replication, which allows one node to write, and unlimited additional nodes to read.</p>
-</div>
-<div class="paragraph">
-<p>Every node itself runs just like a normal embedded storage instance and connects to a replication cluster.
-You can configure each node individually as well, e.g. different channel counts.
-The cluster utilizes a data distribution software to spread the data. By now we provide an adapter for Apache Kafka only.</p>
-</div>
-<div class="paragraph">
-<p>The reader nodes can connect and re-connect to the cluster at any time and will be updated automatically.
-The writer node can shutdown also and re-connect without any data loss.</p>
+<p>First of all, thanks for choosing the MicroStream Cloud! This page will help you in getting started with your first cluster online!</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites</h2>
+<h2 id="_register_your_account"><a class="anchor" href="#_register_your_account"></a>Register Your Account</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Add the dependencies to your project.</p>
+<p>In order to use our Cloud, you will first have to register your very own account! To start this process, simply head over to <a href="https://cloud.microstream.one" class="bare">https://cloud.microstream.one</a> and click the “Register”-Button at the bottom of the screen.</p>
 </div>
-<div class="listingblock">
-<div class="title">Maven [pom.xml]</div>
+<div class="paragraph">
+<p>During this process, you will be asked after some brief details about yourself, such as your first and lastname. Once completed, we will request you to verify your email. Therefore, please check your inbox for a message from <a href="mailto:noreply@microstream.one">noreply@microstream.one</a>. This message contains a verification link, which will expire 5 minutes after it was sent.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_complete_your_profile"><a class="anchor" href="#_complete_your_profile"></a>Complete Your Profile</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once registered, you will have to complete your profile by adding more information. The Cloud will guide you towards completing this step with a notification on your homepage. Before any clusters can be started, we will also require a payment method to be added to your account. We currently only accept credit cards such as Visa or MasterCard. Your payment details are stored by Stripe, an independent third-party payment provider.</p>
+</div>
+<div class="paragraph">
+<p>Once this step has been completed, the dashboard should display the following message:</p>
+</div>
+<div class="imageblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependencies&gt;
-	&lt;dependency&gt;
-		&lt;groupId&gt;one.microstream&lt;/groupId&gt;
-		&lt;artifactId&gt;microstream-enterprise-storage-distributed&lt;/artifactId&gt;
-		&lt;version&gt;08.00.00-MS-EA1&lt;/version&gt;
-	&lt;/dependency&gt;
-	&lt;dependency&gt;
-		&lt;groupId&gt;one.microstream&lt;/groupId&gt;
-		&lt;artifactId&gt;microstream-enterprise-storage-distributed-kafka&lt;/artifactId&gt;
-		&lt;version&gt;08.00.00-MS-EA1&lt;/version&gt;
-	&lt;/dependency&gt;
-&lt;/dependencies&gt;</code></pre>
+<img src="../_images/account-complete.png" alt="account complete">
 </div>
 </div>
 <div class="paragraph">
-<p>In order to set a common ground for all nodes, every one of them has to be initialized with an identical root object once.</p>
+<p>In case your contact details change, we’d recommend updating your profile as soon as possible. This allows us to reach out to you quickly, in case there are urgent issues with your cluster.</p>
 </div>
-<div class="listingblock">
+</div>
+</div>
+<div class="sect1">
+<h2 id="_preparing_your_project"><a class="anchor" href="#_preparing_your_project"></a>Preparing Your Project</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In order to get you started as easy as possible, we offer a Starter Template. To create a project using this template, simply head over to the “Starter”-Tab located on the sidebar.</p>
+</div>
+<div class="imageblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">final EmbeddedStorageManager storage = ...;
-if(storage.root() == null)
-{
-	storage.setRoot(new MyRoot());
-	storage.storeRoot();
-}</code></pre>
+<img src="../_images/starter-template.png" alt="starter template">
+</div>
+</div>
+<div class="paragraph">
+<p>This template contains several important files. We’ll go into more detail about how the template works, here: <a href="starter.html" class="xref page">The MicroStream Starter Template</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_your_first_cluster"><a class="anchor" href="#_creating_your_first_cluster"></a>Creating Your First Cluster</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once you have your deployable project, you can very easily deploy it into our cloud. To do so, simply visit the “Cluster” Tab in the sidebar menu, and then click “Create new Cluster”. From there, you will be guided through setting up your very own MicroStream Cluster! Let’s go through the creation progress, together:</p>
+</div>
+<div class="sect2">
+<h3 id="_selecting_the_correct_provider_and_region"><a class="anchor" href="#_selecting_the_correct_provider_and_region"></a>Selecting the Correct Provider and Region</h3>
+<div class="paragraph">
+<p>While creating your cluster, you will be asked to select a specific cloud provider and region. There are various factors to consider while doing so:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Costs, some regions and providers will cost more than others.</p>
+</li>
+<li>
+<p>Integrations, hosting all of your Infrastructure at one cloud provider may be cheaper by e.g. decreasing Internet data transfer costs.</p>
+</li>
+<li>
+<p>Legal Requirements, certain laws in your country regarding data privacy may limit your choices.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+During the beta, the MicroStream Cloud will only support AWS on the Frankfurt (eu-central-1) region.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_selecting_the_correct_cluster_tier"><a class="anchor" href="#_selecting_the_correct_cluster_tier"></a>Selecting the Correct Cluster Tier</h3>
+<div class="paragraph">
+<p>MicroStream Cloud supports various cluster tiers, which allow your cluster to start off small and grow as needed. Ideally, you would select the tier with the hardware you need at peak times in order to avoid any possible performance issues. However, this comes at a very large cost, as you will be paying for hardware that you may not actually need all the time.</p>
+</div>
+<div class="paragraph">
+<p>In order to combat these unneeded expenses, the MicroStream Cloud supports autoscaling your clusters. You may select tier limits, which allow your cluster to automatically change it’s own tier depending on the current situation. Enabling autoscaling is perfect for loads that change depending on the time of the day, as it results into less expenses when e.g. the usage is low during the night.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_provisioning_your_first_cluster"><a class="anchor" href="#_provisioning_your_first_cluster"></a>Provisioning Your First Cluster</h3>
+<div class="paragraph">
+<p>The MicroStream Cloud currently only supports application built with Micronaut or Helidon. Your project will need a REST controller which extends the class “StorageClusterController”. This controller will in turn be available via API endpoints that allow your infrastructure to access the data.</p>
+</div>
+<div class="paragraph">
+<p>In order to get your project into the cloud, you have two choices:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Cloning your project from Git</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Please note, your project - and therefore it’s source code - will have to be public.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Uploading a .jar file</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you’re using the MicroStream Starter Template, the “MicroStream controller path” would be “/my-microstream-path”. You can find this value within the MicrostreamController class in the storage package.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_securing_your_cluster"><a class="anchor" href="#_securing_your_cluster"></a>Securing Your Cluster</h3>
+<div class="paragraph">
+<p>In order to protect yourself against data loss, the MicroStream Cloud also comes with integrated Backup functionality! You will be able to select how frequently and how many backups are to be kept.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, to prevent any unauthorized person from accessing your cluster, you can also enable Basic Authentication! Doing so will prevent users without the correct username and password from connecting to the cluster.</p>
+</div>
+<div class="paragraph">
+<p>Please note, once the user and password has been created, you will no longer be able to view it again, for security reasons.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_proxy_settings"><a class="anchor" href="#_proxy_settings"></a>Proxy Settings</h3>
+<div class="paragraph">
+<p>The final tab allows you to modify the Cloud’s behavior. In most cases, you will not have to change anything here.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creating_the_cluster"><a class="anchor" href="#_creating_the_cluster"></a>Creating the Cluster</h3>
+<div class="paragraph">
+<p>As you’re going through the creation tabs, the individual tabs should start lighting up in Green with a checkmark:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/create-cluster.png" alt="create cluster">
+</div>
+</div>
+<div class="paragraph">
+<p>If they do not do so, you may have forgotten to fill a required field. You can go back by simply clicking on each tab. Once all tabs light up, you will be able to click the “Create“ button at the bottom. Doing so will immediately provision your cluster, although it isn’t reachable quite just yet.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_kafka"><a class="anchor" href="#_kafka"></a>Kafka</h2>
+<h2 id="_launching_and_accessing_your_cluster"><a class="anchor" href="#_launching_and_accessing_your_cluster"></a>Launching and Accessing your Cluster</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Connect the nodes to Kafka.</p>
+<p>In order to launch the cluster you’ve just provisioned, simply click the green “Deploy Cluster” button in the cluster tab!</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/deploy-cluster.png" alt="deploy cluster">
+</div>
+</div>
+<div class="paragraph">
+<p>Once clicked, your MicroStream Cluster will immediately begin starting up. The startup process can take up to two minutes, once completed, the status will change to “Running”. After the Cluster has successfully started, the endpoints defined in your Micronaut or Helidon Controller should become available via your individual Cluster URL. You can find your Cluster URL by clicking the “Cluster URL” button in the same screen.</p>
 </div>
 <div class="sect2">
-<h3 id="_writer_setup"><a class="anchor" href="#_writer_setup"></a>Writer setup</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// configure Kafka
-final Properties kafkaProperties = new Properties();
-kafkaProperties.setProperty(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, "kafka-server:9093");
-
-// specify the used Kafka topic
-final String kafkaTopic = "microstream";
-
-// create Kafka distributor
-final StorageBinaryDataDistributorKafka distributor = StorageBinaryDataDistributorKafka.New(
-	kafkaProperties,
-	kafkaTopic
-);
-
-// just decorate a default embedded storage configuration with a distributed one
-final EmbeddedStorageManager storage = DistributedStorage.configureWriting(
-	EmbeddedStorageConfiguration.Builder()
-		.setStorageDirectory(Paths.get("mystorage", "storage-writer").toString())
-		.createEmbeddedStorageFoundation(),
-	// use the caching wrapper for additional performance
-	StorageBinaryDataDistributor.Caching(distributor)
-)
-.start();
-
-// ensure initial root
-if(storage.root() == null)
-{
-	storage.setRoot(new MyRoot());
-	storage.storeRoot();
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_reader_setup"><a class="anchor" href="#_reader_setup"></a>Reader setup</h3>
+<h3 id="_whats_next"><a class="anchor" href="#_whats_next"></a>What’s next?</h3>
 <div class="paragraph">
-<p>Each reader has to ensure it connects to Kafka with a unique client id.</p>
+<p>First of all, congratulations! If you’ve followed this tutorial, you should now be able to have your very own Cluster in our MicroStream Cloud!</p>
 </div>
 <div class="paragraph">
-<p>All incoming data will be imported automatically into the local storage of the node.
-The merge to the live object graph of the new data is handled by an update handler. You have to take care of the synchronization in order not to interfere with reading operations and to keep the object graph consistent.
-The default implementation <code>ObjectGraphUpdateHandler.Synchronized()</code> synchronizes via <code>XThreads.executeSynchronized</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// configure Kafka
-final Properties kafkaProperties = new Properties();
-kafkaProperties.setProperty(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, "kafka-server:9093");
-
-// specify the used Kafka topic
-final String kafkaTopic = "microstream";
-
-// ensure unique id for each reader
-final String readerId = ...;
-
-final EmbeddedStorageFoundation&lt;?&gt; foundation = EmbeddedStorageConfiguration.Builder()
-	.setStorageDirectory(Paths.get("mystorage", "storage-reader-" + readerId).toString())
-	.createEmbeddedStorageFoundation();
-final EmbeddedStorageManager storage = foundation.start();
-
-// ensure initial root
-if(storage.root() == null)
-{
-	storage.setRoot(new Root());
-	storage.storeRoot();
-}
-
-// create data merger
-final StorageBinaryDataMerger merger = StorageBinaryDataMerger.New(
-	foundation.getConnectionFoundation(),
-	storage,
-	// use synchronized update handler
-	ObjectGraphUpdateHandler.Synchronized()
-);
-
-// start the kafka client
-StorageBinaryDataClientKafka.New(
-	kafkaProperties,
-	kafkaTopic,
-	readerId,
-	merger
-)
-.start();</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Now the replication is set up and ready to use. Every update of the writer node will be distributed and merged by the reader nodes.</p>
+<p>If you’re interested in learning how to manage your Cluster, please check out <a href="manage-cluster.html" class="xref page">Managing your MicroStream Cluster</a>. If you otherwise need help with MicroStream, please consider reaching out to our active Community on <a href="https://github.com/microstream-one/microstream/discussions">GitHub</a> and <a href="https://stackoverflow.com/search?q=microstream">StackOverflow</a>!</p>
 </div>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="index.html">Storage</a></span>
-  <span class="next"><a href="../cloud/frontend/index.html">The Cloud Management Console</a></span>
+  <span class="prev"><a href="index.html">The Cloud Management Console</a></span>
+  <span class="next"><a href="manage-cluster.html">Managing your MicroStream Cluster</a></span>
 </nav>
 </article>
   </div>
@@ -303,7 +335,7 @@ StorageBinaryDataClientKafka.New(
 <a href="https://microstream.one/privacy/">Privacy</a>
 <span class="link-separator">&nbsp;&#124;&nbsp;</span>
 <a href="https://microstream.one/legal-notice/">Legal notice</a>
-</footer><script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
-<script async src="../../_/js/vendor/highlight.js"></script>
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
   </body>
 </html>
