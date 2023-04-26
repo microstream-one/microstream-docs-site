@@ -123,6 +123,9 @@
     <span class="nav-text">SQL Databases</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="storage-targets/sql-databases/hana.html">Hana</a>
+  </li>
+  <li class="nav-item" data-depth="4">
     <a class="nav-link" href="storage-targets/sql-databases/mariadb.html">MariaDB</a>
   </li>
   <li class="nav-item" data-depth="4">
@@ -154,6 +157,9 @@
   </li>
   <li class="nav-item" data-depth="4">
     <a class="nav-link" href="storage-targets/blob-stores/azure-storage.html">Azure Storage</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="storage-targets/blob-stores/google-cloud-firestore.html">Google Cloud Firestore</a>
   </li>
   <li class="nav-item" data-depth="4">
     <a class="nav-link" href="storage-targets/blob-stores/hazelcast.html">Hazelcast</a>
@@ -201,6 +207,9 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="loading-data/lazy-loading/index.html">Lazy Loading</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="loading-data/lazy-loading/lazy-collections.html">Lazy Collections</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="loading-data/lazy-loading/touched-timestamp-null-safe-variant.html">Touched Timestamp, Null-Safe Variant</a>
@@ -367,6 +376,9 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../misc/integrations/cdi.html">CDI</a>
   </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../misc/integrations/quarkus.html">Quarkus</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
@@ -418,14 +430,17 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">MicroStream Reference Manual</span>
-    <span class="version">7.0</span>
+    <span class="version">8.0</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <a class="title" href="../intro/welcome.html">MicroStream Reference Manual</a>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="../intro/welcome.html">7.0</a>
+          <a href="../intro/welcome.html">8.0</a>
+        </li>
+        <li class="version">
+          <a href="../7.0/intro/welcome.html">7.0</a>
         </li>
         <li class="version">
           <a href="../6.0/intro/welcome.html">6.0</a>
@@ -451,14 +466,15 @@
   </ul>
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">7.0</button>
+  <button class="version-menu-toggle" title="Show other versions of page">8.0</button>
   <div class="version-menu">
-    <a class="version is-current" href="import-export.html">7.0</a>
+    <a class="version is-current" href="import-export.html">8.0</a>
+    <a class="version" href="../7.0/storage/import-export.html">7.0</a>
     <a class="version" href="../6.0/storage/import-export.html">6.0</a>
     <a class="version" href="../5.0/storage/import-export.html">5.0</a>
   </div>
 </div>
-  <div class="edit-this-page"><a href="https://github.com/microstream-one/microstream/edit/release/7x/docs/modules/storage/pages/import-export.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/microstream-one/microstream/edit/release/8x/docs/modules/storage/pages/import-export.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -495,42 +511,22 @@ The created binary type data files contain only records of the according type, n
 <div class="listingblock">
 <div class="title">Export</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">NioFileSystem          fileSystem = NioFileSystem.New();
-
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// Setup file system and storage, used in all examples below
+NioFileSystem          fileSystem = NioFileSystem.New();
 EmbeddedStorageManager storage    = EmbeddedStorage.start(
 	fileSystem.ensureDirectoryPath("storage")
 );
 
-String                            fileSuffix      = "bin";
-StorageConnection                 connection      = storage.createConnection();
-StorageEntityTypeExportStatistics exportResult    = connection.exportTypes(
-	new StorageEntityTypeExportFileProvider.Default(
-		fileSystem.ensureDirectoryPath("export-dir"),
-		fileSuffix
-	),
-	typeHandler -&gt; true // export all, customize if necessary
-);
-XSequence&lt;Path&gt; exportFiles = CQL
-	.from(exportResult.typeStatistics().values())
-	.project(s -&gt; Paths.get(s.file().identifier()))
-	.execute()
-;</code></pre>
+StorageConnection                 connection   = storage.createConnection();
+StorageEntityTypeExportStatistics exportResult = connection.exportTypes(
+	fileSystem.ensureDirectoryPath("export-dir")
+);</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Import</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">NioFileSystem          fileSystem = NioFileSystem.New();
-
-EmbeddedStorageManager storage    = EmbeddedStorage.start(
-	fileSystem.ensureDirectoryPath("storage")
-);
-
-StorageConnection      connection = storage.createConnection();
-connection.importFiles(X.Enum(
-	fileSystem.ensureFilePath("type1.bin"),
-	fileSystem.ensureFilePath("type2.bin")
-));</code></pre>
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">connection.importFiles(exportResult.files());</code></pre>
 </div>
 </div>
 </div>
@@ -565,52 +561,20 @@ The file&#8217;s size is at the possible minimum and the performance of the conv
 <div class="listingblock">
 <div class="title">Binary to CSV</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">NioFileSystem          fileSystem = NioFileSystem.New();
-
-EmbeddedStorageManager storage    = EmbeddedStorage.start(
-	fileSystem.ensureDirectoryPath("storage")
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">StorageDataConverterTypeBinaryToCsv converter = StorageDataConverterTypeBinaryToCsv.New(
+    fileSystem.ensureDirectoryPath("csv-dir"),
+    storage.typeDictionary()
 );
-
-StorageDataConverterTypeBinaryToCsv converter =
-	new StorageDataConverterTypeBinaryToCsv.UTF8(
-		StorageDataConverterCsvConfiguration.defaultConfiguration(),
-		new StorageEntityTypeConversionFileProvider.Default(
-			fileSystem.ensureDirectoryPath("csv-dir"),
-			"csv"
-		),
-		storage.typeDictionary(),
-		null, // no type name mapping
-		4096, // read buffer size
-		4096  // write buffer size
-);
-AReadableFile dataFile = fileSystem.ensureFilePath("type1.bin").useReading();
-try
-{
-	converter.convertDataFile(dataFile);
-}
-finally
-{
-	dataFile.close();
-}</code></pre>
+converter.convertDataFiles(exportResult.files());</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">CSV to Binary</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">NioFileSystem          fileSystem = NioFileSystem.New();
-
-EmbeddedStorageManager storage    = EmbeddedStorage.start(
-	fileSystem.ensureDirectoryPath("storage")
-);
-
-StorageDataConverterTypeCsvToBinary&lt;AFile&gt; converter =
-	StorageDataConverterTypeCsvToBinary.New(
-		StorageDataConverterCsvConfiguration.defaultConfiguration(),
-		storage.typeDictionary(),
-		new StorageEntityTypeConversionFileProvider.Default(
-			fileSystem.ensureDirectoryPath("bin-dir"),
-			"dat"
-		)
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">StorageDataConverterTypeCsvToBinary&lt;AFile&gt; converter =
+    StorageDataConverterTypeCsvToBinary.New(
+        storage.typeDictionary(),
+        fileSystem.ensureDirectoryPath("csv-dir")
 );
 converter.convertCsv(fileSystem.ensureFilePath("type1.csv"));</code></pre>
 </div>
