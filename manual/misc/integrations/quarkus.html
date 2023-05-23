@@ -95,6 +95,9 @@
     <a class="nav-link" href="../../storage/configuration/housekeeping.html">Houskeeping</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../storage/configuration/readonly.html">Read-only Manager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Backup</span>
 <ul class="nav-list">
@@ -198,6 +201,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../../storage/storing-data/deep-copy.html">Deep Copy Utility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../storage/storing-data/reloader.html">Reloading</a>
   </li>
 </ul>
   </li>
@@ -502,6 +508,18 @@
 </div>
 <div class="paragraph">
 <p>The extension requires Quarkus 2.11.1 as a minimal version.</p>
+</div>
+<div class="paragraph">
+<p>If you are running Quarkus 3, use the following command in your project:</p>
+</div>
+<div class="listingblock">
+<div class="title">Add Quarkus 3 extension</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mvn quarkus:add-extension -Dextensions="one.microstream:microstream-quarkus3-extension:09.00.00-MS-GA"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The migration from version 2 to 3 doesn&#8217;t require any code changes related to the MicroStream integration classes.</p>
 </div>
 </div>
 </div>

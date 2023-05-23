@@ -95,6 +95,9 @@
     <a class="nav-link" href="../storage/configuration/housekeeping.html">Houskeeping</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../storage/configuration/readonly.html">Read-only Manager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Backup</span>
 <ul class="nav-list">
@@ -198,6 +201,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../storage/storing-data/deep-copy.html">Deep Copy Utility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../storage/storing-data/reloader.html">Reloading</a>
   </li>
 </ul>
   </li>
@@ -494,7 +500,7 @@
 	&lt;dependency&gt;
 		&lt;groupId&gt;one.microstream&lt;/groupId&gt;
 		&lt;artifactId&gt;microstream-storage-embedded&lt;/artifactId&gt;
-		&lt;version&gt;08.00.00-MS-GA&lt;/version&gt;
+		&lt;version&gt;08.01.00-MS-GA&lt;/version&gt;
 	&lt;/dependency&gt;
 &lt;/dependencies&gt;</code></pre>
 </div>
@@ -503,7 +509,7 @@
 <div class="title">Gradle (Groovy) [build.gradle]</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">dependencies {
-	implementation 'one.microstream:microstream-storage-embedded:08.00.00-MS-GA'
+	implementation 'one.microstream:microstream-storage-embedded:08.01.00-MS-GA'
 }</code></pre>
 </div>
 </div>
@@ -511,14 +517,14 @@
 <div class="title">Gradle (Kotlin) [build.gradle.kts]</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">dependencies {
-	implementation("one.microstream:microstream-storage-embedded:08.00.00-MS-GA")
+	implementation("one.microstream:microstream-storage-embedded:08.01.00-MS-GA")
 }</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Scala SBT [build.sbt]</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-scala hljs" data-lang="scala">libraryDependencies += "one.microstream" % "microstream-storage-embedded" % "08.00.00-MS-GA"</code></pre>
+<pre class="highlightjs highlight"><code class="language-scala hljs" data-lang="scala">libraryDependencies += "one.microstream" % "microstream-storage-embedded" % "08.01.00-MS-GA"</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -527,7 +533,7 @@
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependencies&gt;
 	&lt;dependency org="one.microstream"
 		name="microstream-storage-embedded"
-		rev="08.00.00-MS-GA" /&gt;
+		rev="08.01.00-MS-GA" /&gt;
 &lt;/dependencies&gt;</code></pre>
 </div>
 </div>
@@ -535,7 +541,7 @@
 <div class="title">Apache Buildr [Buildfile]</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-ruby hljs" data-lang="ruby">define 'my-app' do
-	compile.with 'one.microstream:microstream-storage-embedded:08.00.00-MS-GA'
+	compile.with 'one.microstream:microstream-storage-embedded:08.01.00-MS-GA'
 end</code></pre>
 </div>
 </div>
@@ -558,7 +564,7 @@ load("@rules_jvm_external//:defs.bzl", "maven_install")
 
 maven_install(
 	artifacts = [
-		"one.microstream:microstream-storage-embedded:08.00.00-MS-GA"
+		"one.microstream:microstream-storage-embedded:08.01.00-MS-GA"
 	],
 )</code></pre>
 </div>
@@ -568,7 +574,7 @@ maven_install(
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">maven_jar(
 	name = "microstream",
-	artifact = "one.microstream:microstream-storage-embedded:08.00.00-MS-GA"
+	artifact = "one.microstream:microstream-storage-embedded:08.01.00-MS-GA"
 )</code></pre>
 </div>
 </div>
@@ -576,7 +582,7 @@ maven_install(
 <p>or in our P2 Update Site:</p>
 </div>
 <div class="paragraph">
-<p><a href="https://repo.microstream.one/repository/update-site/08.00.00-MS-GA" class="bare">https://repo.microstream.one/repository/update-site/08.00.00-MS-GA</a></p>
+<p><a href="https://repo.microstream.one/repository/update-site/08.01.00-MS-GA" class="bare">https://repo.microstream.one/repository/update-site/08.01.00-MS-GA</a></p>
 </div>
 </div>
 </div>

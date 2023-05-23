@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Storage :: MicroStream Reference Manual</title>
-    <link rel="canonical" href="https://docs.microstream.one/manual/cache/configuration/storage.html">
-    <link rel="prev" href="properties.html">
-    <link rel="next" href="../use-cases/hibernate-second-level-cache.html">
+    <title>Reloading :: MicroStream Reference Manual</title>
+    <link rel="canonical" href="https://docs.microstream.one/manual/storage/storing-data/reloader.html">
+    <link rel="prev" href="deep-copy.html">
+    <link rel="next" href="../loading-data/index.html">
     <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../../../_/css/site.css">
   <link rel="icon" type="image/png" sizes="32x32" href="https://www.microstream.one/favicon-32x32.png">
@@ -70,75 +70,75 @@
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../storage/index.html">Storage</a>
+    <a class="nav-link" href="../index.html">Storage</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../storage/getting-started.html">Getting Started</a>
+    <a class="nav-link" href="../getting-started.html">Getting Started</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../storage/root-instances.html">Root Instances</a>
+    <a class="nav-link" href="../root-instances.html">Root Instances</a>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../storage/configuration/index.html">Configuration</a>
+    <a class="nav-link" href="../configuration/index.html">Configuration</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/configuration/properties.html">Properties</a>
+    <a class="nav-link" href="../configuration/properties.html">Properties</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/configuration/storage-files-and-directories.html">Storage Files and Directories</a>
+    <a class="nav-link" href="../configuration/storage-files-and-directories.html">Storage Files and Directories</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/configuration/using-channels.html">Using Channels</a>
+    <a class="nav-link" href="../configuration/using-channels.html">Using Channels</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/configuration/housekeeping.html">Houskeeping</a>
+    <a class="nav-link" href="../configuration/housekeeping.html">Houskeeping</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/configuration/readonly.html">Read-only Manager</a>
+    <a class="nav-link" href="../configuration/readonly.html">Read-only Manager</a>
   </li>
   <li class="nav-item" data-depth="3">
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Backup</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../../storage/configuration/backup/continuous-backup.html">Continous Backup</a>
+    <a class="nav-link" href="../configuration/backup/continuous-backup.html">Continous Backup</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../../storage/configuration/backup/full-backup.html">Full Backup</a>
+    <a class="nav-link" href="../configuration/backup/full-backup.html">Full Backup</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/configuration/lock-file.html">Lock File</a>
+    <a class="nav-link" href="../configuration/lock-file.html">Lock File</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../storage/storage-targets/index.html">Storage Targets</a>
+    <a class="nav-link" href="../storage-targets/index.html">Storage Targets</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/storage-targets/local-file-system.html">Local File System</a>
+    <a class="nav-link" href="../storage-targets/local-file-system.html">Local File System</a>
   </li>
   <li class="nav-item" data-depth="3">
     <button class="nav-item-toggle"></button>
     <span class="nav-text">SQL Databases</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../../storage/storage-targets/sql-databases/hana.html">Hana</a>
+    <a class="nav-link" href="../storage-targets/sql-databases/hana.html">Hana</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../../storage/storage-targets/sql-databases/mariadb.html">MariaDB</a>
+    <a class="nav-link" href="../storage-targets/sql-databases/mariadb.html">MariaDB</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../../storage/storage-targets/sql-databases/oracle.html">Oracle</a>
+    <a class="nav-link" href="../storage-targets/sql-databases/oracle.html">Oracle</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../../storage/storage-targets/sql-databases/postgresql.html">Postgres</a>
+    <a class="nav-link" href="../storage-targets/sql-databases/postgresql.html">Postgres</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../../storage/storage-targets/sql-databases/sqlite.html">Sqlite</a>
+    <a class="nav-link" href="../storage-targets/sql-databases/sqlite.html">Sqlite</a>
   </li>
 </ul>
   </li>
@@ -151,137 +151,137 @@
     <span class="nav-text">AWS</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="5">
-    <a class="nav-link" href="../../storage/storage-targets/blob-stores/aws-dynamodb.html">DynamoDB</a>
+    <a class="nav-link" href="../storage-targets/blob-stores/aws-dynamodb.html">DynamoDB</a>
   </li>
   <li class="nav-item" data-depth="5">
-    <a class="nav-link" href="../../storage/storage-targets/blob-stores/aws-s3.html">S3</a>
+    <a class="nav-link" href="../storage-targets/blob-stores/aws-s3.html">S3</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../../storage/storage-targets/blob-stores/azure-storage.html">Azure Storage</a>
+    <a class="nav-link" href="../storage-targets/blob-stores/azure-storage.html">Azure Storage</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../../storage/storage-targets/blob-stores/google-cloud-firestore.html">Google Cloud Firestore</a>
+    <a class="nav-link" href="../storage-targets/blob-stores/google-cloud-firestore.html">Google Cloud Firestore</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../../storage/storage-targets/blob-stores/hazelcast.html">Hazelcast</a>
+    <a class="nav-link" href="../storage-targets/blob-stores/hazelcast.html">Hazelcast</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../../storage/storage-targets/blob-stores/kafka.html">Kafka</a>
+    <a class="nav-link" href="../storage-targets/blob-stores/kafka.html">Kafka</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../../storage/storage-targets/blob-stores/oracle-cloud-object-storage.html">Oracle Cloud Object Storage</a>
+    <a class="nav-link" href="../storage-targets/blob-stores/oracle-cloud-object-storage.html">Oracle Cloud Object Storage</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../../storage/storage-targets/blob-stores/oracle-coherence.html">Oracle Coherence</a>
+    <a class="nav-link" href="../storage-targets/blob-stores/oracle-coherence.html">Oracle Coherence</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../../storage/storage-targets/blob-stores/redis.html">Redis</a>
+    <a class="nav-link" href="../storage-targets/blob-stores/redis.html">Redis</a>
   </li>
 </ul>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../storage/storing-data/index.html">Storing Data</a>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/storing-data/transactions.html">Convenience Methods and Explicit Storing (Transactions)</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/storing-data/lazy-eager-full.html">Lazy and Eager Storing</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/storing-data/transient-fields.html">Transient Fields</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/storing-data/best-practice.html">Best Practice</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/storing-data/deep-copy.html">Deep Copy Utility</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/storing-data/reloader.html">Reloading</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../storage/loading-data/index.html">Loading Data</a>
+    <a class="nav-link" href="index.html">Storing Data</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/loading-data/lazy-loading/index.html">Lazy Loading</a>
+    <a class="nav-link" href="transactions.html">Convenience Methods and Explicit Storing (Transactions)</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/loading-data/lazy-loading/lazy-collections.html">Lazy Collections</a>
+    <a class="nav-link" href="lazy-eager-full.html">Lazy and Eager Storing</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/loading-data/lazy-loading/touched-timestamp-null-safe-variant.html">Touched Timestamp, Null-Safe Variant</a>
+    <a class="nav-link" href="transient-fields.html">Transient Fields</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/loading-data/lazy-loading/clearing-lazy-references.html">Clearing Lazy References</a>
+    <a class="nav-link" href="best-practice.html">Best Practice</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="deep-copy.html">Deep Copy Utility</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="reloader.html">Reloading</a>
   </li>
 </ul>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../storage/deleting-data.html">Deleting Data</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../storage/queries.html">Queries</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../storage/application-life-cycle.html">Application Life-Cycle</a>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../storage/legacy-type-mapping/index.html">Legacy Type Mapping</a>
+    <a class="nav-link" href="../loading-data/index.html">Loading Data</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/legacy-type-mapping/user-interaction.html">User Interaction</a>
+    <a class="nav-link" href="../loading-data/lazy-loading/index.html">Lazy Loading</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../loading-data/lazy-loading/lazy-collections.html">Lazy Collections</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../loading-data/lazy-loading/touched-timestamp-null-safe-variant.html">Touched Timestamp, Null-Safe Variant</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../loading-data/lazy-loading/clearing-lazy-references.html">Clearing Lazy References</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../storage/import-export.html">Import / Export</a>
+    <a class="nav-link" href="../deleting-data.html">Deleting Data</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../storage/housekeeping.html">Housekeeping</a>
+    <a class="nav-link" href="../queries.html">Queries</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../application-life-cycle.html">Application Life-Cycle</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../legacy-type-mapping/index.html">Legacy Type Mapping</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../legacy-type-mapping/user-interaction.html">User Interaction</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../import-export.html">Import / Export</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../housekeeping.html">Housekeeping</a>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Customizing</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/customizing/custom-type-handler.html">Custom Type Handler</a>
+    <a class="nav-link" href="../customizing/custom-type-handler.html">Custom Type Handler</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/customizing/custom-legacy-type-handler.html">Custom Legacy Type Handler</a>
+    <a class="nav-link" href="../customizing/custom-legacy-type-handler.html">Custom Legacy Type Handler</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/customizing/custom-class-loader.html">Custom Class Loader</a>
+    <a class="nav-link" href="../customizing/custom-class-loader.html">Custom Class Loader</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/customizing/custom-storing-behavior.html">Custom Storing Behavior</a>
+    <a class="nav-link" href="../customizing/custom-storing-behavior.html">Custom Storing Behavior</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/customizing/optional-storage-manager-reference-in-entities.html">Optional Storage Manager Reference in Entities</a>
+    <a class="nav-link" href="../customizing/optional-storage-manager-reference-in-entities.html">Optional Storage Manager Reference in Entities</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../storage/rest-interface/index.html">REST Interface</a>
+    <a class="nav-link" href="../rest-interface/index.html">REST Interface</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/rest-interface/setup.html">Setup</a>
+    <a class="nav-link" href="../rest-interface/setup.html">Setup</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/rest-interface/rest-api.html">REST API</a>
+    <a class="nav-link" href="../rest-interface/rest-api.html">REST API</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/rest-interface/client-gui.html">Client GUI</a>
+    <a class="nav-link" href="../rest-interface/client-gui.html">Client GUI</a>
   </li>
 </ul>
   </li>
@@ -290,19 +290,19 @@
     <span class="nav-text">FAQ</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/faq/data-model.html">Data Model</a>
+    <a class="nav-link" href="../faq/data-model.html">Data Model</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/faq/data-management.html">Data Management</a>
+    <a class="nav-link" href="../faq/data-management.html">Data Management</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/faq/file-storage.html">File Storage</a>
+    <a class="nav-link" href="../faq/file-storage.html">File Storage</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/faq/java-features.html">Java Features</a>
+    <a class="nav-link" href="../faq/java-features.html">Java Features</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/faq/miscellaneous.html">Miscellaneous</a>
+    <a class="nav-link" href="../faq/miscellaneous.html">Miscellaneous</a>
   </li>
 </ul>
   </li>
@@ -311,13 +311,13 @@
     <span class="nav-text">Addendum</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/addendum/supported-java-features.html">Supported Java Features</a>
+    <a class="nav-link" href="../addendum/supported-java-features.html">Supported Java Features</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/addendum/specialized-type-handlers.html">Specialized Type Handlers</a>
+    <a class="nav-link" href="../addendum/specialized-type-handlers.html">Specialized Type Handlers</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../storage/addendum/examples-and-demo-projects.html">Examples and Demo Projects</a>
+    <a class="nav-link" href="../addendum/examples-and-demo-projects.html">Examples and Demo Projects</a>
   </li>
 </ul>
   </li>
@@ -328,20 +328,20 @@
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../index.html">Cache</a>
+    <a class="nav-link" href="../../cache/index.html">Cache</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../getting-started.html">Getting Started</a>
+    <a class="nav-link" href="../../cache/getting-started.html">Getting Started</a>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="index.html">Configuration</a>
+    <a class="nav-link" href="../../cache/configuration/index.html">Configuration</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="properties.html">Properties</a>
+    <a class="nav-link" href="../../cache/configuration/properties.html">Properties</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="3">
-    <a class="nav-link" href="storage.html">Storage</a>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../cache/configuration/storage.html">Storage</a>
   </li>
 </ul>
   </li>
@@ -350,10 +350,10 @@
     <span class="nav-text">Use Cases</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../use-cases/hibernate-second-level-cache.html">Hibernate Second Level Cache</a>
+    <a class="nav-link" href="../../cache/use-cases/hibernate-second-level-cache.html">Hibernate Second Level Cache</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../use-cases/spring-cache.html">Spring Cache</a>
+    <a class="nav-link" href="../../cache/use-cases/spring-cache.html">Spring Cache</a>
   </li>
 </ul>
   </li>
@@ -467,148 +467,64 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../../intro/welcome.html">MicroStream Reference Manual</a></li>
-    <li><a href="../index.html">Cache</a></li>
-    <li><a href="index.html">Configuration</a></li>
-    <li><a href="storage.html">Storage</a></li>
+    <li><a href="../index.html">Storage</a></li>
+    <li><a href="index.html">Storing Data</a></li>
+    <li><a href="reloader.html">Reloading</a></li>
   </ul>
 </nav>
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">8.0</button>
   <div class="version-menu">
-    <a class="version is-current" href="storage.html">8.0</a>
-    <a class="version" href="../../7.0/cache/configuration/storage.html">7.0</a>
-    <a class="version" href="../../6.0/cache/configuration/storage.html">6.0</a>
-    <a class="version" href="../../5.0/cache/configuration/storage.html">5.0</a>
+    <a class="version is-current" href="reloader.html">8.0</a>
+    <a class="version is-missing" href="../../7.0/intro/welcome.html">7.0</a>
+    <a class="version is-missing" href="../../6.0/intro/welcome.html">6.0</a>
+    <a class="version is-missing" href="../../5.0/intro/welcome.html">5.0</a>
   </div>
 </div>
-  <div class="edit-this-page"><a href="https://github.com/microstream-one/microstream/edit/release/8x/docs/modules/cache/pages/configuration/storage.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/microstream-one/microstream/edit/release/8x/docs/modules/storage/pages/storing-data/reloader.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Storage</h1>
+<h1 class="page">Reloading</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>MicroStream&#8217;s storage can be used as a backing store for the cache.
-It functions as a CacheWriter as well as a CacheReader, depending on the writeThrough and readThrough configuration.
-Per default it is used for both.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">EmbeddedStorageManager storageManager = EmbeddedStorage.start();
-CachingProvider        provider       = Caching.getCachingProvider();
-CacheManager           cacheManager   = provider.getCacheManager();
-CacheConfiguration&lt;Integer, String&gt; configuration = CacheConfiguration
-	.Builder(Integer.class, String.class, "my-cache", storageManager)
-	.build();
-Cache&lt;Integer, String&gt; cache = cacheManager.createCache("jCache", configuration);</code></pre>
-</div>
+<p>New functionality since MicroStream v8.0</p>
 </div>
 <div class="paragraph">
-<p>If you prefer an external configuration, you can link the <a href="../../storage/configuration/index.html#external-configuration" class="xref page">storage configuration</a>:</p>
-</div>
-<div class="listingblock">
-<div class="title">cache-config.properties</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">key-type = java.lang.Integer
-value-type = java.lang.String
-
-read-through = true
-write-through = true
-
-storage-configuration-resource-name = microstream-storage.properties</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">microstream-storage.properties</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">storage-directory = ~/cache-data
-channel-count = 4</code></pre>
-</div>
+<p>When you have already changed your object within memory, but not yet stored through the <code>store()</code> method of the <em>StorageManager</em>, you can re-load the data from the storage using the <code>Reloader</code> class.</p>
 </div>
 <div class="paragraph">
-<p>Or you can embed the storage configuration within the cache configuration using the <code>storage.</code> prefix:</p>
-</div>
-<div class="listingblock">
-<div class="title">cache-config.properties</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">key-type = java.lang.Integer
-value-type = java.lang.String
-
-read-through = true
-write-through = true
-
-storage.storage-directory = ~/cache-data
-storage.channel-count = 4</code></pre>
-</div>
+<p>When using the "Reloader" on an instance that hasn&#8217;t yet been stored in MicroStream data storage through a call to <code>.store()</code>, there is no <em>Exception</em> thrown and instance is unaltered. So it only 'reverts' the content to the previous value if the instance was already stored.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_cache_expiry_and_storagemanager"><a class="anchor" href="#_cache_expiry_and_storagemanager"></a>Cache expiry and StorageManager</h2>
+<h2 id="_code"><a class="anchor" href="#_code"></a>Code</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Since the validity of a Cache entry is only determined when the value is retrieved, the expiry durations are not always respected when using the <code>StorageManager</code> when the application is restarted. An example makes this clear.</p>
+<p>The <code>Reloader</code> class makes the functionality that was already available within the <code>PersistenceLoader</code> class easier accessible.</p>
 </div>
 <div class="paragraph">
-<p>Suppose we have defined a cache where the <a href="https://github.com/jsr107/jsr107spec/blob/master/src/main/java/javax/cache/expiry/ExpiryPolicy.java">ExpiryPolicy</a> is set to 1 Minute.</p>
+<p>After you have created an instance of a <code>Reloader</code> instance, you can reload an object with the <code>reloadFlat()</code> method, or the entire object graph of this instance with the <code>reloadDeep()</code>.</p>
 </div>
 <div class="paragraph">
-<p>When we create an entry in this cache and we did not request the cache entry after the 1-minute expiry before we do shut down the application.</p>
-</div>
-<div class="paragraph">
-<p>When we start up the application again, When we request the cache entry, it is loaded from the MicroStream Storage Manager and 'created' with a new expiry of 1 minute.</p>
-</div>
-<div class="paragraph">
-<p>This means that even if the entry was already created more than 1 minute ago (even when we only take into consideration the application uptime), the entry is still returned to the calling code.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_spring_example"><a class="anchor" href="#_spring_example"></a>Spring example</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="title">application.properties</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">spring.jpa.properties.hibernate.cache.microstream.missing_cache_strategy = create
-spring.jpa.properties.hibernate.cache.microstream.readThrough = true
-spring.jpa.properties.hibernate.cache.microstreamwriteThrough = true
-spring.jpa.properties.hibernate.cache.microstream.storage.baseDirectory = ~/cache-data
-spring.jpa.properties.hibernate.cache.microstream.storage.channelCount = 4
-spring.jpa.properties.hibernate.cache.region.factory_class = one.microstream.cache.hibernate.types.CacheRegionFactory
-spring.jpa.properties.hibernate.cache.use_query_cache = true
-spring.jpa.properties.hibernate.cache.use_second_level_cache = true</code></pre>
-</div>
+<p>The following snippet shows an example of reloading a <em>List</em> where it restores the items as it is stored in the data storage.</p>
 </div>
 <div class="listingblock">
-<div class="title">application.yml</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">spring:
-	jpa:
-		properties:
-			hibernate:
-				cache:
-					microstream:
-						missing_cache_strategy: create
-						readThrough: true
-						writeThrough: true
-						storage:
-						baseDirectory: ~/cache-data
-						channelCount: 4
-					region:
-						factory_class: one.microstream.cache.hibernate.types.CacheRegionFactory
-					use_query_cache: true
-					use_second_level_cache: true</code></pre>
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    final Reloader reloader = Reloader.New(persistenceManager);
+    reloader.reloadFlat(root.getData());</code></pre>
 </div>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="properties.html">Properties</a></span>
-  <span class="next"><a href="../use-cases/hibernate-second-level-cache.html">Hibernate Second Level Cache</a></span>
+  <span class="prev"><a href="deep-copy.html">Deep Copy Utility</a></span>
+  <span class="next"><a href="../loading-data/index.html">Loading Data</a></span>
 </nav>
 </article>
   </div>
