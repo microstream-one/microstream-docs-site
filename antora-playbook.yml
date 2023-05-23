@@ -13,6 +13,9 @@ content:
   - url: https://github.com/microstream-one/microstream.git
     branches: release/7x
     start_path: docs
+  - url: https://github.com/microstream-one/microstream.git
+    branches: release/8x
+    start_path: docs
 asciidoc:
   attributes:
     page-pagination: ''
