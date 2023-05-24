@@ -7,23 +7,20 @@ jobs:
   antora:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: fusion-engineering/setup-git-credentials@v2
-      with:
-        credentials: ${{secrets.GIT_CREDENTIALS}}    
-    - name: Antora Site with Lunr Search
-      uses: ghost-420/antora-lunr-site-action@v1.0
-      with:
-        antora_playbook: antora-playbook.yml
-        site_sources_path: ""
-      env:
-        GIT_CREDENTIALS: ${{secrets.GIT_CREDENTIALS}}
-    - name: Deploy to site branch
-      uses: JamesIves/github-pages-deploy-action@4.1.2
-      with:
-        branch: site # The branch the action should deploy to.
-        folder: site # The folder the action should deploy.
-        clean-exclude: >
-          index.html
-          api/
-        token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v2
+
+      - name: repo.microstream.one:18081 docker registry login
+        run: echo "${{ secrets.DOCKER_REPO_PASSWORD }}" | docker login repo.microstream.one:18081 -u "${{ secrets.DOCKER_REPO_USER }}" --password-stdin
+
+      - name: generate antora
+        run: |
+          docker run -u $(id -u) -v $PWD:/antora:Z --rm -t repo.microstream.one:18081/antora:0.1 antora-playbook.yml
+      - name: Deploy to site branch
+        uses: JamesIves/github-pages-deploy-action@4.1.2
+        with:
+          branch: site # The branch the action should deploy to.
+          folder: site # The folder the action should deploy.
+          clean-exclude: >
+            index.html
+            api/
+          token: ${{ secrets.GITHUB_TOKEN }}
