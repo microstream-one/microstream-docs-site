@@ -3,15 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Replication :: MicroStream Enterprise Reference Manual</title>
-    <link rel="canonical" href="https://docs.microstream.one/enterprise/manual/manual/storage/replication.html">
-    <link rel="prev" href="index.html">
-    <link rel="next" href="../cloud/index.html">
+    <title>The MicroStream Starter Templates :: MicroStream Enterprise Reference Manual</title>
+    <link rel="canonical" href="https://docs.microstream.one/enterprise/manual/manual/cloud/starter-templates/index.html">
+    <link rel="prev" href="../architecture.html">
+    <link rel="next" href="micronaut.html">
     <meta name="generator" content="Antora 3.1.2">
-    <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/site.css">
   <link rel="icon" type="image/png" sizes="32x32" href="https://www.microstream.one/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://www.microstream.one/favicon-16x16.png">
-  <link rel="stylesheet" href="../../_/css/site-extra.css">  </head>
+  <link rel="stylesheet" href="../../../_/css/site-extra.css">  </head>
   <body class="article">
 <header class="header">
   <nav class="navbar">
@@ -47,50 +47,50 @@
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
     <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
-    <h3 class="title"><a href="../intro/welcome.html">MicroStream Enterprise Reference Manual</a></h3>
+    <h3 class="title"><a href="../../intro/welcome.html">MicroStream Enterprise Reference Manual</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../intro/welcome.html">Welcome</a>
+    <a class="nav-link" href="../../intro/welcome.html">Welcome</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../intro/installation.html">Installation</a>
+    <a class="nav-link" href="../../intro/installation.html">Installation</a>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="index.html">Storage</a>
+    <a class="nav-link" href="../../storage/index.html">Storage</a>
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="2">
-    <a class="nav-link" href="replication.html">Replication</a>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../storage/replication.html">Replication</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../cloud/index.html">Cloud</a>
+    <a class="nav-link" href="../index.html">Cloud</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../cloud/getting-started.html">Getting Started</a>
+    <a class="nav-link" href="../getting-started.html">Getting Started</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../cloud/management-console.html">The Cloud Management Console</a>
+    <a class="nav-link" href="../management-console.html">The Cloud Management Console</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../cloud/managing-your-cluster.html">Managing your MicroStream Cluster</a>
+    <a class="nav-link" href="../managing-your-cluster.html">Managing your MicroStream Cluster</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../cloud/architecture.html">Architecture</a>
+    <a class="nav-link" href="../architecture.html">Architecture</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../cloud/starter-templates/index.html">Starter Templates</a>
+    <a class="nav-link" href="index.html">Starter Templates</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../cloud/starter-templates/micronaut.html">Micronaut</a>
+    <a class="nav-link" href="micronaut.html">Micronaut</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../cloud/starter-templates/helidon.html">Helidon</a>
+    <a class="nav-link" href="helidon.html">Helidon</a>
   </li>
 </ul>
   </li>
@@ -108,10 +108,10 @@
   </div>
   <ul class="components">
     <li class="component is-current">
-      <div class="title"><a href="../intro/welcome.html">MicroStream Enterprise Reference Manual</a></div>
+      <div class="title"><a href="../../intro/welcome.html">MicroStream Enterprise Reference Manual</a></div>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="../intro/welcome.html">1.0</a>
+          <a href="../../intro/welcome.html">1.0</a>
         </li>
       </ul>
     </li>
@@ -125,177 +125,113 @@
 <button class="nav-toggle"></button>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
-    <li><a href="../intro/welcome.html">MicroStream Enterprise Reference Manual</a></li>
-    <li><a href="index.html">Storage</a></li>
-    <li><a href="replication.html">Replication</a></li>
+    <li><a href="../../intro/welcome.html">MicroStream Enterprise Reference Manual</a></li>
+    <li><a href="../index.html">Cloud</a></li>
+    <li><a href="index.html">Starter Templates</a></li>
   </ul>
 </nav>
-<div class="edit-this-page"><a href="https://github.com/microstream-one/microstream-private/edit/release/1.x/enterprise/docs/modules/storage/pages/replication.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://github.com/microstream-one/microstream-private/edit/release/1.x/enterprise/docs/modules/cloud/pages/starter-templates/index.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Replication</h1>
+<h1 class="page">The MicroStream Starter Templates</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>The enterprise replication feature enables you to automatically replicate multiple embedded instances.
-This is a single-master replication, which allows one node to write, and unlimited additional nodes to read.</p>
+<p>The MicroStream Cloud comes with Starter Templates, that allow you to quickly get started with building your project! You can choose from a list of supported frameworks. Choose one you are comfortable with.</p>
 </div>
 <div class="paragraph">
-<p>Every node itself runs just like a normal embedded storage instance and connects to a replication cluster.
-You can configure each node individually as well, e.g. different channel counts.
-The cluster utilizes a data distribution software to spread the data. By now we provide an adapter for Apache Kafka only.</p>
-</div>
-<div class="paragraph">
-<p>The reader nodes can connect and re-connect to the cluster at any time and will be updated automatically.
-The writer node can shutdown also and re-connect without any data loss.</p>
+<p>There are small differences that apply between frameworks. You can read up on these by clicking your chosen framework in the navigation bar.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites</h2>
+<h2 id="_the_controller_package"><a class="anchor" href="#_the_controller_package"></a>The “controller” Package</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="../_images/controller-package.png" alt="controller package">
+</div>
+</div>
+<div class="paragraph">
+<p>This package contains an example controller returning a timestamp on when the DataRoot-Object was created. Here you can add your REST-Endpoints that you want to reach from outside your cluster. You can add endpoints for example to read, write or update a list of customers.</p>
+</div>
+<div class="paragraph">
+<p>When you input the url gained by click the "Cluster URL" button in <a href="../management-console.html#cluster-tab" class="xref page">the cluster tab</a>, you should be greeted by an empty page, showing the creation timestamp of the DataRoot-Object, as defined by the example controller.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_storage_package"><a class="anchor" href="#_the_storage_package"></a>The “storage” Package</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Add the dependencies to your project.</p>
+<p>This package contains all the files required for you to access your MicroStream storage.</p>
 </div>
-<div class="listingblock">
-<div class="title">Maven [pom.xml]</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependencies&gt;
-	&lt;dependency&gt;
-		&lt;groupId&gt;one.microstream&lt;/groupId&gt;
-		&lt;artifactId&gt;microstream-enterprise-storage-distributed&lt;/artifactId&gt;
-		&lt;version&gt;1.0.0&lt;/version&gt;
-	&lt;/dependency&gt;
-	&lt;dependency&gt;
-		&lt;groupId&gt;one.microstream&lt;/groupId&gt;
-		&lt;artifactId&gt;microstream-enterprise-storage-distributed-kafka&lt;/artifactId&gt;
-		&lt;version&gt;1.0.0&lt;/version&gt;
-	&lt;/dependency&gt;
-&lt;/dependencies&gt;</code></pre>
-</div>
-</div>
+<div class="sect2">
+<h3 id="_dataroot"><a class="anchor" href="#_dataroot"></a>DataRoot</h3>
 <div class="paragraph">
-<p>In order to set a common ground for all nodes, every one of them has to be initialized with an identical root object once.</p>
+<p>The DataRoot class is the Root of your Object-Graph. Here all the data like a list of customers, a collection of books, etc. is declared. In the Starter-Template this will only contain a single String field called <code>data</code> that is initialized with a timestamp, assigned in the constructor.</p>
 </div>
-<div class="listingblock">
+<div class="imageblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">final EmbeddedStorageManager storage = ...;
-if(storage.root() == null)
-{
-	storage.setRoot(new MyRoot());
-	storage.storeRoot();
-}</code></pre>
+<img src="../_images/data-root.png" alt="data root">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_microstream"><a class="anchor" href="#_microstream"></a>MicroStream</h3>
+<div class="paragraph">
+<p>This class contains the MicroStream instance. Here we have a static root and storage manager reference. These can be accessed by calling <code>MicroStream.root()</code> and <code>MicroStream.storage()</code> respecitively.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/storage-package.png" alt="storage package">
+</div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_kafka"><a class="anchor" href="#_kafka"></a>Kafka</h2>
+<h2 id="_required_classes"><a class="anchor" href="#_required_classes"></a>Required Classes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Connect the nodes to Kafka.</p>
+<p>Some other classes are necessary for the project to work in the MicroStream Cloud.</p>
 </div>
 <div class="sect2">
-<h3 id="_writer_setup"><a class="anchor" href="#_writer_setup"></a>Writer setup</h3>
-<div class="listingblock">
+<h3 id="_storagemanagerprovider"><a class="anchor" href="#_storagemanagerprovider"></a>StorageManagerProvider</h3>
+<div class="paragraph">
+<p>This class is required for the cluster to have access to your storage. This is needed for features like Backups and Storage Up/Downloads. Take note of the fully-qualified class name (e.g. com.example.example.ExampleStorageManagerProvider) as it will need to match the class name inside the <code>/src/main/resources/META-INF/services/one.microstream.enterprise.cluster.nodelibrary.common.spi.ClusterStorageManagerProvider</code> file.</p>
+</div>
+<div class="imageblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// configure Kafka
-final Properties kafkaProperties = new Properties();
-kafkaProperties.setProperty(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, "kafka-server:9093");
-
-// specify the used Kafka topic
-final String kafkaTopic = "microstream";
-
-// create Kafka distributor
-final StorageBinaryDataDistributorKafka distributor = StorageBinaryDataDistributorKafka.New(
-	kafkaProperties,
-	kafkaTopic
-);
-
-// just decorate a default embedded storage configuration with a distributed one
-final EmbeddedStorageManager storage = DistributedStorage.configureWriting(
-	EmbeddedStorageConfiguration.Builder()
-		.setStorageDirectory(Paths.get("mystorage", "storage-writer").toString())
-		.createEmbeddedStorageFoundation(),
-	// use the caching wrapper for additional performance
-	StorageBinaryDataDistributor.Caching(distributor)
-)
-.start();
-
-// ensure initial root
-if(storage.root() == null)
-{
-	storage.setRoot(new MyRoot());
-	storage.storeRoot();
-}</code></pre>
+<img src="../_images/storage-manager-provider.png" alt="storage manager provider">
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_reader_setup"><a class="anchor" href="#_reader_setup"></a>Reader setup</h3>
+<h3 id="_framework_differences"><a class="anchor" href="#_framework_differences"></a>Framework differences</h3>
 <div class="paragraph">
-<p>Each reader has to ensure it connects to Kafka with a unique client id.</p>
+<p>Depending on the framework there might be more required classes. Check out their respective documentations by clicking one of the links below.</p>
 </div>
-<div class="paragraph">
-<p>All incoming data will be imported automatically into the local storage of the node.
-The merge to the live object graph of the new data is handled by an update handler. You have to take care of the synchronization in order not to interfere with reading operations and to keep the object graph consistent.
-The default implementation <code>ObjectGraphUpdateHandler.Synchronized()</code> synchronizes via <code>XThreads.executeSynchronized</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// configure Kafka
-final Properties kafkaProperties = new Properties();
-kafkaProperties.setProperty(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, "kafka-server:9093");
-
-// specify the used Kafka topic
-final String kafkaTopic = "microstream";
-
-// ensure unique id for each reader
-final String readerId = ...;
-
-final EmbeddedStorageFoundation&lt;?&gt; foundation = EmbeddedStorageConfiguration.Builder()
-	.setStorageDirectory(Paths.get("mystorage", "storage-reader-" + readerId).toString())
-	.createEmbeddedStorageFoundation();
-final EmbeddedStorageManager storage = foundation.start();
-
-// ensure initial root
-if(storage.root() == null)
-{
-	storage.setRoot(new Root());
-	storage.storeRoot();
-}
-
-// create data merger
-final StorageBinaryDataMerger merger = StorageBinaryDataMerger.New(
-	foundation.getConnectionFoundation(),
-	storage,
-	// use synchronized update handler
-	ObjectGraphUpdateHandler.Synchronized()
-);
-
-// start the kafka client
-StorageBinaryDataClientKafka.New(
-	kafkaProperties,
-	kafkaTopic,
-	readerId,
-	merger
-)
-.start();</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Now the replication is set up and ready to use. Every update of the writer node will be distributed and merged by the reader nodes.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="micronaut.html" class="xref page">Micronaut</a></p>
+</li>
+<li>
+<p><a href="helidon.html" class="xref page">Helidon</a></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="index.html">Storage</a></span>
-  <span class="next"><a href="../cloud/index.html">Cloud</a></span>
+  <span class="prev"><a href="../architecture.html">Architecture</a></span>
+  <span class="next"><a href="micronaut.html">Micronaut</a></span>
 </nav>
 </article>
   </div>
@@ -313,7 +249,7 @@ StorageBinaryDataClientKafka.New(
 <a href="https://microstream.one/privacy/">Privacy</a>
 <span class="link-separator">&nbsp;&#124;&nbsp;</span>
 <a href="https://microstream.one/legal-notice/">Legal notice</a>
-</footer><script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
-<script async src="../../_/js/vendor/highlight.js"></script>
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
   </body>
 </html>
