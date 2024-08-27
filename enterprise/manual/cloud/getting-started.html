@@ -90,6 +90,9 @@
     <a class="nav-link" href="starter-templates/micronaut.html">Micronaut</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="starter-templates/spring-boot.html">Spring-Boot</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="starter-templates/helidon.html">Helidon</a>
   </li>
 </ul>
@@ -246,7 +249,22 @@ The process to create the platform can take up to 30 minutes!
 <p>Once you have your deployable project, you can very easily deploy it into our cloud. To do so, simply visit the “Platform” Tab in the sidebar menu, select the running platform which is going to host the cluster and then click “Create new Cluster”. From there, you will be guided through setting up your very own MicroStream Cluster! Let’s go through the creation progress, together:</p>
 </div>
 <div class="sect2">
-<h3 id="_selecting_the_correct_cluster_tier"><a class="anchor" href="#_selecting_the_correct_cluster_tier"></a>Selecting the Correct Cluster Tier</h3>
+<h3 id="_selecting_the_correct_cluster_framework"><a class="anchor" href="#_selecting_the_correct_cluster_framework"></a>Selecting the Correct Cluster Framework</h3>
+<div class="paragraph">
+<p>First you need to select the framework of your cluster nodelibrary. If you have created your project with the Micronaut Starter Template, then you are using the Micronaut nodelibrary. You can check this dependency in your <code>pom.xml</code>. For Micronaut it will look something like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;one.microstream&lt;/groupId&gt;
+    &lt;artifactId&gt;microstream-enterprise-cluster-nodelibrary-micronaut&lt;/artifactId&gt;
+    &lt;version&gt;${microstream.nodelibrary.version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_choosing_a_cluster_tier"><a class="anchor" href="#_choosing_a_cluster_tier"></a>Choosing A Cluster Tier</h3>
 <div class="sect3">
 <h4 id="_cluster_base_tier"><a class="anchor" href="#_cluster_base_tier"></a>Cluster Base Tier</h4>
 <div class="paragraph">
@@ -256,13 +274,10 @@ These tiers will set the foundation of the available configuration by:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Available Node Amount</p>
+<p>Making the background data distribution more powerful</p>
 </li>
 <li>
-<p>Availbale Storage Space (in GB)</p>
-</li>
-<li>
-<p>The possible Storage Node Tiers</p>
+<p>Giving you access to more powerful Storage Nodes</p>
 </li>
 </ul>
 </div>
@@ -270,19 +285,19 @@ These tiers will set the foundation of the available configuration by:</p>
 <div class="sect3">
 <h4 id="_storage_node_tier"><a class="anchor" href="#_storage_node_tier"></a>Storage Node Tier</h4>
 <div class="paragraph">
-<p>Here you can configure the hardware specification for each node in your cluster.
+<p>Here you can configure the hardware specification for each storage node in your cluster.
 You can decide by the three given factors:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>CPU (Millicores)</p>
+<p>CPU (1000 Millicores is equivalent to 1 full CPU core)</p>
 </li>
 <li>
-<p>Memory Space (in GB)</p>
+<p>Memory Space (The more memory space, the more data you can have available without loading data)</p>
 </li>
 <li>
-<p>Storage Space (in GB)</p>
+<p>Storage Space (The more storage space, the more data you can store in total)</p>
 </li>
 </ul>
 </div>
@@ -290,7 +305,7 @@ You can decide by the three given factors:</p>
 <div class="sect3">
 <h4 id="_storage_node_amount"><a class="anchor" href="#_storage_node_amount"></a>Storage Node Amount</h4>
 <div class="paragraph">
-<p>This option allows you to select the amount of storage nodes - depending on your selected base tier - you wish your cluster to have.</p>
+<p>This option allows you to select the amount of storage nodes running at any given time and during heavy loads. The Min Storage Node Count decides how many Storage Nodes will always be running at any given time and the Max Storage Node Count decides how many Nodes can join in when we need to scale up due to heavy loads.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -299,7 +314,7 @@ You can decide by the three given factors:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Depending on the set configuration, your costs for the cluster will vary in the price per hour.
+Depending on the set configuration, your costs for the cluster will vary in the price per hour depending on how many nodes are running.
 </td>
 </tr>
 </table>
@@ -308,55 +323,132 @@ Depending on the set configuration, your costs for the cluster will vary in the 
 </div>
 <div class="sect2">
 <h3 id="_provisioning_your_first_cluster"><a class="anchor" href="#_provisioning_your_first_cluster"></a>Provisioning Your First Cluster</h3>
+<div class="sect3">
+<h4 id="_storage_project"><a class="anchor" href="#_storage_project"></a>Storage Project</h4>
 <div class="paragraph">
-<p>The MicroStream Cloud currently only supports application built with Micronaut or Helidon. Your project will need a REST controller which extends the class “StorageClusterController”. This controller will in turn be available via API endpoints that allow your infrastructure to access the data.</p>
-</div>
-<div class="paragraph">
-<p>In order to get your project into the cloud, you have two choices:</p>
+<p>Now we need to get your storage project into the cluster. In the <strong>Provisioning</strong> tab (depending on your selected nodelibrary) you get different choices on how to upload your project. You can&#8230;&#8203;</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Cloning your project from Git</p>
-<div class="ulist">
-<ul>
+<p>Let the cluster clone your project via git and build it for you</p>
+</li>
 <li>
-<p>For private github access, you will need to give read permission to the MicroStream-Cluster-Robot account.</p>
+<p>Or build the project yourself and upload the resulting fat jar</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>Uploading a .jar file</p>
-</li>
-</ul>
 </div>
+<div class="sect3">
+<h4 id="_environment_variables"><a class="anchor" href="#_environment_variables"></a>Environment Variables</h4>
 <div class="paragraph">
-<p>If you’re using the MicroStream Starter Template, the “MicroStream controller path” would be “/my-microstream-path”. You can find this value within the MicrostreamController class in the storage package.</p>
+<p>If your application requires some special environment variables then you can specify them here!
+Click "Add" to add new variables, to edit existing variables you can simply double click them in the table. If you want to delete one select it by clicking once and then pressing "Delete".</p>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_securing_your_cluster"><a class="anchor" href="#_securing_your_cluster"></a>Securing Your Cluster</h3>
+<div class="sect3">
+<h4 id="_backups"><a class="anchor" href="#_backups"></a>Backups</h4>
 <div class="paragraph">
-<p>In order to protect yourself against data loss, the MicroStream Cloud also comes with integrated Backup functionality! You will be able to select how frequently and how many backups are to be kept.</p>
+<p>In order to protect yourself against data loss, the MicroStream Cloud also comes with integrated Backup functionality. You will be able to select how frequently and how many backups are kept.</p>
 </div>
-<div class="paragraph">
-<p>Additionally, to prevent any unauthorized person from accessing your cluster, you can also enable Basic Authentication! Doing so will prevent users without the correct username and password from connecting to the cluster.</p>
 </div>
+<div class="sect3">
+<h4 id="_basic_auth"><a class="anchor" href="#_basic_auth"></a>Basic Auth</h4>
 <div class="paragraph">
-<p>Please note, once the user and password has been created, you will no longer be able to view it again, for security reasons.</p>
+<p>Additionally, to prevent any unauthorized person from accessing your cluster, you can also enable Basic Authentication. Doing so will prevent users without the correct username and password from accessing your endpoints. Create a username and click generate. Store the password somewhere safe as you will need it to access your cluster.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+After creation you will not be able to view these credentials again.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_aws_private_link"><a class="anchor" href="#_aws_private_link"></a>AWS Private Link</h4>
+<div class="paragraph">
+<p>You can enable AWS Private Link to only allow other services you have deployed in AWS to access your cluster! <a href="https://aws.amazon.com/privatelink/">Click here for more Information</a></p>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_proxy_settings"><a class="anchor" href="#_proxy_settings"></a>Proxy Settings</h3>
 <div class="paragraph">
-<p>The final tab allows you to modify the Cloud’s behavior. In most cases, you will not have to change anything here.</p>
+<p>The proxy tab allows you to specify what requests will go to your writer node. All other requests will be evenly distributed across all storage nodes.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Any request that calls StorageManager.store() and similar are required to be sent to the writer node, or else an exception is thrown!
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_routing_via_http_methods"><a class="anchor" href="#_routing_via_http_methods"></a>Routing via HTTP Methods</h4>
+<div class="paragraph">
+<p>This option will decide depending on the http method of the http request which requests should go to the writer node. If "POST" is selected then any request that has the POST http method will be sent to the writer node.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_routing_via_url_path"><a class="anchor" href="#_routing_via_url_path"></a>Routing via URL Path</h4>
+<div class="paragraph">
+<p>This option will decide depending on a path prefix in the http request which requests should go to the writer node. If "/edit" is set then any requests that contain /edit in the path will be sent to the writer node.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_routing_via_header_value"><a class="anchor" href="#_routing_via_header_value"></a>Routing via Header Value</h4>
+<div class="paragraph">
+<p>This option will decide depending on a Header-Key-Value-Pair in the http request header which requests should go to the writer node. If "Is-Modifying" is set then any requests that contain the Key-Value-Pair "Is-Modifying: true" in the http request header will be sent to the writer node.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_uploading_your_pre_existing_storage"><a class="anchor" href="#_uploading_your_pre_existing_storage"></a>Uploading your pre-existing storage</h3>
+<div class="paragraph">
+<p>If you already have a storage that you want to deploy in the cloud then you can upload your storage in this tab. Click "Start cluster with an already existing database", choose your storage.zip file and click the Upload button.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Your storage.zip file root should contain the storage root directly as shown in this screenshot
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/storage-zip-root.png" alt="storage zip root">
+</div>
+</div>
+<div class="sect3">
+<h4 id="_startup_settings"><a class="anchor" href="#_startup_settings"></a>Startup Settings</h4>
+<div class="paragraph">
+<p>Depending on the size of your pre-existing storage you will have to set a longer startup-time. An empty storage will take around 60 seconds to start-up, but a huge storage might take up to 30 minutes (1800 seconds).</p>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_creating_the_cluster"><a class="anchor" href="#_creating_the_cluster"></a>Creating the Cluster</h3>
 <div class="paragraph">
-<p>As you’re going through the creation tabs, the individual tabs should start lighting up in Green with a checkmark:</p>
+<p>As you’re going through the creation tabs, the individual tabs should start light up green with checkmarks:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -364,7 +456,7 @@ Depending on the set configuration, your costs for the cluster will vary in the 
 </div>
 </div>
 <div class="paragraph">
-<p>If they do not do so, you may have forgotten to fill a required field. You can go back by simply clicking on each tab. Once all tabs light up, you will be able to click the “Create“ button at the bottom. Doing so will immediately provision your cluster, although it isn’t reachable quite just yet.</p>
+<p>If they do not do so, you may have forgotten to fill in a required field. You can go back by simply clicking on each tab. Once all tabs are green, you will be able to click the “Create“ button at the bottom. Doing so will provision your cluster. In this state it is fully configured but not yet actually deployed and running.</p>
 </div>
 </div>
 </div>
@@ -373,7 +465,7 @@ Depending on the set configuration, your costs for the cluster will vary in the 
 <h2 id="_launching_and_accessing_your_cluster"><a class="anchor" href="#_launching_and_accessing_your_cluster"></a>Launching and Accessing your Cluster</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In order to launch the cluster you’ve just provisioned, simply click the green “Deploy Cluster” button in the cluster tab!</p>
+<p>In order to launch the cluster you’ve just provisioned, simply click the green “Deploy Cluster” button!</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -381,7 +473,7 @@ Depending on the set configuration, your costs for the cluster will vary in the 
 </div>
 </div>
 <div class="paragraph">
-<p>Once clicked, your MicroStream Cluster will immediately begin starting up. The startup process can take up to two minutes, once completed, the status will change to “Running”. After the Cluster has successfully started, the endpoints defined in your Micronaut or Helidon Controller should become available via your individual Cluster URL. You can find your Cluster URL by clicking the “Cluster URL” button in the same screen.</p>
+<p>Once clicked, your MicroStream Cluster will create itself in the background. The startup process can take a couple minutes for an empty storage. If you have a lot of data, this step will take longer. Once completed, the status will change to “Running”. In this state the endpoints defined in your Micronaut or Helidon Controller are available. To access them click the “Cluster URL” button on your cluster.</p>
 </div>
 <div class="sect2">
 <h3 id="_whats_next"><a class="anchor" href="#_whats_next"></a>What’s next?</h3>

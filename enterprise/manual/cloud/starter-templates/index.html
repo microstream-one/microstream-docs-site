@@ -90,6 +90,9 @@
     <a class="nav-link" href="micronaut.html">Micronaut</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="spring-boot.html">Spring-Boot</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="helidon.html">Helidon</a>
   </li>
 </ul>
@@ -144,7 +147,7 @@
 <p>The MicroStream Cloud comes with Starter Templates, that allow you to quickly get started with building your project! You can choose from a list of supported frameworks. Choose one you are comfortable with.</p>
 </div>
 <div class="paragraph">
-<p>There are small differences that apply between frameworks. You can read up on these by clicking your chosen framework in the navigation bar.</p>
+<p>There are small differences that apply between frameworks. You can read up on your specific framework by clicking it in the navigaton bar on the left.</p>
 </div>
 </div>
 </div>
@@ -160,7 +163,7 @@
 <p>This package contains an example controller returning a timestamp on when the DataRoot-Object was created. Here you can add your REST-Endpoints that you want to reach from outside your cluster. You can add endpoints for example to read, write or update a list of customers.</p>
 </div>
 <div class="paragraph">
-<p>When you input the url gained by click the "Cluster URL" button in <a href="../management-console.html#cluster-tab" class="xref page">the cluster tab</a>, you should be greeted by an empty page, showing the creation timestamp of the DataRoot-Object, as defined by the example controller.</p>
+<p>When you input the url gained by click the "Cluster URL" button in <a href="../management-console.html#cluster-tab" class="xref page">the platform tab</a>, you should be greeted by an empty page, showing the creation timestamp of the DataRoot-Object, as defined by the example controller.</p>
 </div>
 </div>
 </div>
@@ -181,17 +184,6 @@
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_microstream"><a class="anchor" href="#_microstream"></a>MicroStream</h3>
-<div class="paragraph">
-<p>This class contains the MicroStream instance. Here we have a static root and storage manager reference. These can be accessed by calling <code>MicroStream.root()</code> and <code>MicroStream.storage()</code> respecitively.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../_images/storage-package.png" alt="storage package">
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -201,18 +193,21 @@
 <p>Some other classes are necessary for the project to work in the MicroStream Cloud.</p>
 </div>
 <div class="sect2">
-<h3 id="_storagemanagerprovider"><a class="anchor" href="#_storagemanagerprovider"></a>StorageManagerProvider</h3>
+<h3 id="_rootprovider"><a class="anchor" href="#_rootprovider"></a>RootProvider</h3>
 <div class="paragraph">
-<p>This class is required for the cluster to have access to your storage. This is needed for features like Backups and Storage Up/Downloads. Take note of the fully-qualified class name (e.g. com.example.example.ExampleStorageManagerProvider) as it will need to match the class name inside the <code>/src/main/resources/META-INF/services/one.microstream.enterprise.cluster.nodelibrary.common.spi.ClusterStorageManagerProvider</code> file.</p>
+<p>This class is required for the cluster to have access to your root class. The cluster storage manager will use the created object to initialize its storage root if no data has been stored yet.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../_images/storage-manager-provider.png" alt="storage manager provider">
+<img src="../_images/root-provider.png" alt="root provider">
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_framework_differences"><a class="anchor" href="#_framework_differences"></a>Framework differences</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_framework_differences"><a class="anchor" href="#_framework_differences"></a>Framework differences</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Depending on the framework there might be more required classes. Check out their respective documentations by clicking one of the links below.</p>
 </div>
@@ -222,10 +217,12 @@
 <p><a href="micronaut.html" class="xref page">Micronaut</a></p>
 </li>
 <li>
+<p><a href="spring-boot.html" class="xref page">Spring-Boot</a></p>
+</li>
+<li>
 <p><a href="helidon.html" class="xref page">Helidon</a></p>
 </li>
 </ul>
-</div>
 </div>
 </div>
 </div>
