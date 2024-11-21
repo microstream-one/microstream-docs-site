@@ -3,16 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>The Cloud Management Console :: MicroStream Enterprise Reference Manual</title>
-    <link rel="canonical" href="https://docs.microstream.one/enterprise/manual/manual/cloud/frontend/index.html">
-    <link rel="prev" href="../../storage/replication.html">
-    <link rel="next" href="getting-started.html">
+    <title>MicroStream On-Premises on AWS/EKS :: MicroStream Enterprise Reference Manual</title>
+    <link rel="canonical" href="https://docs.microstream.one/enterprise/manual/manual/on-premises/on-prem-aws-eks.html">
+    <link rel="prev" href="on-prem-overview.html">
+    <link rel="next" href="on-prem-selfhosted-kubernetes.html">
     <meta name="generator" content="Antora 3.1.2">
-    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../_/css/site.css">
   <link rel="icon" type="image/png" sizes="32x32" href="https://www.microstream.one/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://www.microstream.one/favicon-16x16.png">
-  <link rel="stylesheet" href="../../../_/css/site-extra.css">    <script>var uiRootPath = '../../../_'</script>
-  </head>
+  <link rel="stylesheet" href="../../_/css/site-extra.css">  </head>
   <body class="article">
 <header class="header">
   <nav class="navbar">
@@ -47,43 +46,62 @@
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
-    <h3 class="title"><a href="../../intro/welcome.html">MicroStream Enterprise Reference Manual</a></h3>
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../intro/welcome.html">MicroStream Enterprise Reference Manual</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../intro/welcome.html">Welcome</a>
+    <a class="nav-link" href="../intro/welcome.html">Welcome</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../intro/installation.html">Installation</a>
+    <a class="nav-link" href="../intro/installation.html">Installation</a>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../storage/index.html">Storage</a>
+    <a class="nav-link" href="../cloud/index.html">MicroStream SaaS Cluster</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../storage/replication.html">Replication</a>
+    <a class="nav-link" href="../cloud/architecture.html">Architecture</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cloud/getting-started.html">Getting Started</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cloud/management-console.html">The Cloud Management Console</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cloud/managing-your-cluster.html">Managing your MicroStream SaaS Cluster</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../cloud/starter-templates/index.html">Starter Templates</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cloud/starter-templates/micronaut.html">Micronaut</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cloud/starter-templates/spring-boot.html">Spring-Boot</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cloud/starter-templates/helidon.html">Helidon</a>
+  </li>
+</ul>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">Cloud</span>
+    <a class="nav-link" href="on-prem-cluster.html">MicroStream On-Premises Cluster</a>
 <ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="on-prem-overview.html">Overview</a>
+  </li>
   <li class="nav-item is-current-page" data-depth="2">
-    <a class="nav-link" href="index.html">The Cloud Management Console</a>
+    <a class="nav-link" href="on-prem-aws-eks.html">On-Premises AWS/EKS</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="getting-started.html">Getting Started</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="manage-cluster.html">Managing your MicroStream Cluster</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="architecture.html">Architecture</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="starter.html">Starter Templates</a>
+    <a class="nav-link" href="on-prem-selfhosted-kubernetes.html">On-Premises Selfhosted Kubernetes</a>
   </li>
 </ul>
   </li>
@@ -95,14 +113,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">MicroStream Enterprise Reference Manual</span>
-    <span class="version">8.0-EA1</span>
+    <span class="version">1.0</span>
   </div>
   <ul class="components">
     <li class="component is-current">
-      <a class="title" href="../../intro/welcome.html">MicroStream Enterprise Reference Manual</a>
+      <div class="title"><a href="../intro/welcome.html">MicroStream Enterprise Reference Manual</a></div>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="../../intro/welcome.html">8.0-EA1</a>
+          <a href="../intro/welcome.html">1.0</a>
         </li>
       </ul>
     </li>
@@ -116,94 +134,32 @@
 <button class="nav-toggle"></button>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
-    <li><a href="../../intro/welcome.html">MicroStream Enterprise Reference Manual</a></li>
-    <li>Cloud</li>
-    <li><a href="index.html">The Cloud Management Console</a></li>
+    <li><a href="../intro/welcome.html">MicroStream Enterprise Reference Manual</a></li>
+    <li><a href="on-prem-cluster.html">MicroStream On-Premises Cluster</a></li>
+    <li><a href="on-prem-aws-eks.html">On-Premises AWS/EKS</a></li>
   </ul>
 </nav>
+<div class="edit-this-page"><a href="https://github.com/microstream-one/microstream-private/edit/master/enterprise/docs/modules/on-premises/pages/on-prem-aws-eks.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">The Cloud Management Console</h1>
-<div id="preamble">
-<div class="sectionbody">
+<h1 class="page">MicroStream On-Premises on AWS/EKS</h1>
 <div class="paragraph">
-<p>Thanks for choosing the MicroStream Cloud! This page will give you a run down of all the features that the MicroStream Cloud offers.</p>
-</div>
-<div class="paragraph">
-<p>First of all, let’s go over the individual sections of the Cloud Management Console.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_the_homepage"><a class="anchor" href="#_the_homepage"></a>The Homepage</h2>
-<div class="sectionbody">
-<div class="imageblock">
-<div class="content">
-<img src="../_images/homepage.png" alt="homepage">
-</div>
-</div>
-<div class="paragraph">
-<p>The Homepage is the central point of the MicroStream Cloud Management Console. It will inform you about urgent issues of your cluster, but also serve you with news and tutorials for our Cloud. You can also reach out our expert support team here, in case you have any questions. The section below acts as a quick jump platform to your account’s billing and audit logs.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_the_cluster_tab"><a class="anchor" href="#_the_cluster_tab"></a>The “Cluster” Tab</h2>
-<div class="sectionbody">
-<div class="imageblock">
-<div class="content">
-<img src="../_images/cluster-tab.png" alt="cluster tab">
-</div>
-</div>
-<div class="paragraph">
-<p>This tab allows you to create new clusters and manage your existing ones. We’ve gone over everything you can do in this tab, in more detail here. If you’re looking to create your very own MicroStream cluster but don’t know how to get started, check out this page.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_the_profile_tab"><a class="anchor" href="#_the_profile_tab"></a>The “Profile” Tab</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This tab allows you to edit your details, but also manage your expenses and view the audit log trail. We recommend keeping your contact information up to date, in case we have to reach out about an urgent issue with your cluster.</p>
-</div>
-<div class="sect2">
-<h3 id="_managing_your_expenses"><a class="anchor" href="#_managing_your_expenses"></a>Managing Your Expenses</h3>
-<div class="imageblock">
-<div class="content">
-<img src="../_images/billing.png" alt="billing">
-</div>
-</div>
-<div class="paragraph">
-<p>The “Billing” section of this tab allows you to view your current bill and the relevant clusters that influenced the invoice amount. You can also view your past invoices if neccessary. Additionally, this section also allows you to add new credit cards and remove existing ones, although we require you to keep at least one credit card active as the standard payment method.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_viewing_the_audit_logs"><a class="anchor" href="#_viewing_the_audit_logs"></a>Viewing the Audit Logs</h3>
-<div class="imageblock">
-<div class="content">
-<img src="../_images/auditing-logs.png" alt="auditing logs">
-</div>
-</div>
-<div class="paragraph">
-<p>The MicroStream Cloud Management Console also comes with it’s own Audit Logs. These logs allow you to go back in history, reflecting on previous changes to your profile and clusters. You will also be able to use this area to view and monitor past logins of your account. If you notice any login sessions that you do not recognize, then please reach out to our <a href="https://microstream.one/about-us/contact/">expert support team</a> immediately to secure your account as soon as possible.</p>
-</div>
-</div>
-</div>
+<p>Documentation is coming soon.</p>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="../../storage/replication.html">Replication</a></span>
-  <span class="next"><a href="getting-started.html">Getting Started</a></span>
+  <span class="prev"><a href="on-prem-overview.html">Overview</a></span>
+  <span class="next"><a href="on-prem-selfhosted-kubernetes.html">On-Premises Selfhosted Kubernetes</a></span>
 </nav>
 </article>
   </div>
 </main>
 </div>
 <footer class="footer">
-© 2022 MicroStream Software. All rights reserved.
+© 2024 MicroStream Software. All rights reserved.
 &nbsp;
 &nbsp;
 &nbsp;
@@ -214,7 +170,7 @@
 <a href="https://microstream.one/privacy/">Privacy</a>
 <span class="link-separator">&nbsp;&#124;&nbsp;</span>
 <a href="https://microstream.one/legal-notice/">Legal notice</a>
-</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
-<script async src="../../../_/js/vendor/highlight.js"></script>
+</footer><script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
   </body>
 </html>

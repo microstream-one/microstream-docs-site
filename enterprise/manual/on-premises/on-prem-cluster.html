@@ -3,16 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>How does a Cluster in the MicroStream Cloud work? :: MicroStream Enterprise Reference Manual</title>
-    <link rel="canonical" href="https://docs.microstream.one/enterprise/manual/manual/cloud/frontend/architecture.html">
-    <link rel="prev" href="manage-cluster.html">
-    <link rel="next" href="starter.html">
+    <title>MicroStream On-Premises Cluster :: MicroStream Enterprise Reference Manual</title>
+    <link rel="canonical" href="https://docs.microstream.one/enterprise/manual/manual/on-premises/on-prem-cluster.html">
+    <link rel="prev" href="../cloud/starter-templates/helidon.html">
+    <link rel="next" href="on-prem-overview.html">
     <meta name="generator" content="Antora 3.1.2">
-    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../_/css/site.css">
   <link rel="icon" type="image/png" sizes="32x32" href="https://www.microstream.one/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://www.microstream.one/favicon-16x16.png">
-  <link rel="stylesheet" href="../../../_/css/site-extra.css">    <script>var uiRootPath = '../../../_'</script>
-  </head>
+  <link rel="stylesheet" href="../../_/css/site-extra.css">  </head>
   <body class="article">
 <header class="header">
   <nav class="navbar">
@@ -47,43 +46,62 @@
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
-    <h3 class="title"><a href="../../intro/welcome.html">MicroStream Enterprise Reference Manual</a></h3>
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../intro/welcome.html">MicroStream Enterprise Reference Manual</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../intro/welcome.html">Welcome</a>
+    <a class="nav-link" href="../intro/welcome.html">Welcome</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../intro/installation.html">Installation</a>
+    <a class="nav-link" href="../intro/installation.html">Installation</a>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../storage/index.html">Storage</a>
+    <a class="nav-link" href="../cloud/index.html">MicroStream SaaS Cluster</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../storage/replication.html">Replication</a>
+    <a class="nav-link" href="../cloud/architecture.html">Architecture</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cloud/getting-started.html">Getting Started</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cloud/management-console.html">The Cloud Management Console</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cloud/managing-your-cluster.html">Managing your MicroStream SaaS Cluster</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../cloud/starter-templates/index.html">Starter Templates</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cloud/starter-templates/micronaut.html">Micronaut</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cloud/starter-templates/spring-boot.html">Spring-Boot</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cloud/starter-templates/helidon.html">Helidon</a>
   </li>
 </ul>
   </li>
-  <li class="nav-item" data-depth="1">
+</ul>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">Cloud</span>
+    <a class="nav-link" href="on-prem-cluster.html">MicroStream On-Premises Cluster</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="index.html">The Cloud Management Console</a>
+    <a class="nav-link" href="on-prem-overview.html">Overview</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="getting-started.html">Getting Started</a>
+    <a class="nav-link" href="on-prem-aws-eks.html">On-Premises AWS/EKS</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="manage-cluster.html">Managing your MicroStream Cluster</a>
-  </li>
-  <li class="nav-item is-current-page" data-depth="2">
-    <a class="nav-link" href="architecture.html">Architecture</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="starter.html">Starter Templates</a>
+    <a class="nav-link" href="on-prem-selfhosted-kubernetes.html">On-Premises Selfhosted Kubernetes</a>
   </li>
 </ul>
   </li>
@@ -95,14 +113,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">MicroStream Enterprise Reference Manual</span>
-    <span class="version">8.0-EA1</span>
+    <span class="version">1.0</span>
   </div>
   <ul class="components">
     <li class="component is-current">
-      <a class="title" href="../../intro/welcome.html">MicroStream Enterprise Reference Manual</a>
+      <div class="title"><a href="../intro/welcome.html">MicroStream Enterprise Reference Manual</a></div>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="../../intro/welcome.html">8.0-EA1</a>
+          <a href="../intro/welcome.html">1.0</a>
         </li>
       </ul>
     </li>
@@ -116,62 +134,31 @@
 <button class="nav-toggle"></button>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
-    <li><a href="../../intro/welcome.html">MicroStream Enterprise Reference Manual</a></li>
-    <li>Cloud</li>
-    <li><a href="architecture.html">Architecture</a></li>
+    <li><a href="../intro/welcome.html">MicroStream Enterprise Reference Manual</a></li>
+    <li><a href="on-prem-cluster.html">MicroStream On-Premises Cluster</a></li>
   </ul>
 </nav>
+<div class="edit-this-page"><a href="https://github.com/microstream-one/microstream-private/edit/master/enterprise/docs/modules/on-premises/pages/on-prem-cluster.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">How does a Cluster in the MicroStream Cloud work?</h1>
-<div id="preamble">
-<div class="sectionbody">
+<h1 class="page">MicroStream On-Premises Cluster</h1>
 <div class="paragraph">
-<p>The MicroStream Cluster may seem complicated at first, but once understood it is fairly simple.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_your_project"><a class="anchor" href="#_your_project"></a>Your Project</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Your Project has to be either a Micronaut or Helidon application. You can use our Launch Platform to create a template for your own code. Once ready for the cloud, simply either upload the .jar or attach a Git repository to the cloud. For more information on how to get started with the cloud, please check this page.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_the_microstream_nodes"><a class="anchor" href="#_the_microstream_nodes"></a>The MicroStream Nodes</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The MicroStream nodes in your namespace are designated into two roles. One node will be designated the “Writer” role and therefore handle all writing actions. All other nodes will be designated as “Readers” and will be used for reading data only. However, all nodes are able to be promoted to become the “Writer” node at any time. This could, for example, happen when the previous “Writer” node goes offline.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_apache_kafka"><a class="anchor" href="#_apache_kafka"></a>Apache Kafka</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>In order to connect the nodes with each other, we use Apache Kafka and Zookeeper for communication. The “Writer” node simply sends the new data that needs to be replicated, onto a specific topic to the shared Kafka cluster in the background. The new data within the topic will then be synchronized to all nodes in order to ensure eventual consistency.</p>
-</div>
-<div class="paragraph">
-<p>To save expenses, the kafka server will be shared amongst many customers of the MicroStream Cloud, however we still ensure data security by confirming that every cluster is only able to access it’s own topic.</p>
-</div>
-</div>
+<p>Documentation is coming soon.</p>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="manage-cluster.html">Managing your MicroStream Cluster</a></span>
-  <span class="next"><a href="starter.html">Starter Templates</a></span>
+  <span class="prev"><a href="../cloud/starter-templates/helidon.html">Helidon</a></span>
+  <span class="next"><a href="on-prem-overview.html">Overview</a></span>
 </nav>
 </article>
   </div>
 </main>
 </div>
 <footer class="footer">
-© 2022 MicroStream Software. All rights reserved.
+© 2024 MicroStream Software. All rights reserved.
 &nbsp;
 &nbsp;
 &nbsp;
@@ -182,7 +169,7 @@
 <a href="https://microstream.one/privacy/">Privacy</a>
 <span class="link-separator">&nbsp;&#124;&nbsp;</span>
 <a href="https://microstream.one/legal-notice/">Legal notice</a>
-</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
-<script async src="../../../_/js/vendor/highlight.js"></script>
+</footer><script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
   </body>
 </html>
