@@ -133,7 +133,7 @@
     <li><a href="architecture.html">Architecture</a></li>
   </ul>
 </nav>
-<div class="edit-this-page"><a href="https://github.com/microstream-one/microstream-private/edit/release/1.x/enterprise/docs/modules/cloud/pages/architecture.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://github.com/microstream-one/microstream-private/edit/master/enterprise/docs/modules/cloud/pages/architecture.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -159,19 +159,372 @@
 <div class="sect1">
 <h2 id="_the_microstream_nodes"><a class="anchor" href="#_the_microstream_nodes"></a>The MicroStream Nodes</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_single_writer_architecture"><a class="anchor" href="#_single_writer_architecture"></a>Single Writer Architecture</h3>
 <div class="paragraph">
-<p>The MicroStream nodes are where your project will run on. One node will be designated to be the <strong>Writer</strong> and therefore handle all writing actions. The <strong>Writer</strong> as well as all other nodes will be able to handle the read requests. When the <strong>Writer</strong> becomes unresponsive, a new node will be elected as the <strong>Writer</strong> automatically, ensuring that no write-request is dropped. The more nodes your cluster has the more requests it can handle.</p>
+<p>MicroStream Cluster employs a single-writer architecture, where a dedicated Writer node is responsible for handling all write operations. This design offers several advantages:</p>
+</div>
+<div class="paragraph">
+<p><strong>Benefits of Single-Writer Architecture:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Simplified Consistency:</strong> The single-writer approach ensures strong consistency, as only one node can modify data at a time. This eliminates the complexities of distributed consensus algorithms and simplifies data management.</p>
+</li>
+<li>
+<p><strong>Optimized Write Performance:</strong> By centralizing write operations to a single node, the cluster can achieve high write throughput and low latency. The Writer node can be optimized for write performance, including hardware and software configurations.</p>
+</li>
+<li>
+<p><strong>Efficient Replication:</strong> The Writer node replicates data to Reader nodes through an efficient event stream mechanism. This ensures data consistency across all nodes and minimizes the impact of node failures.</p>
+</li>
+<li>
+<p><strong>Simplified Failure Recovery:</strong> In the event of a Writer node failure, the cluster can seamlessly elect a new Writer node from among the existing Reader nodes. This ensures minimal downtime and maintains the overall system&#8217;s availability.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>By adopting this architecture, MicroStream Cluster provides a reliable, scalable, and high-performance platform for data-intensive applications.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/single-writer-architecture.png" alt="single writer architecture">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_reader_node"><a class="anchor" href="#_reader_node"></a>Reader Node</h3>
+<div class="paragraph">
+<p>Reader nodes are dedicated to handling read requests. They efficiently retrieve object references from storage (if not already cached in memory) and deliver the data to the requesting client. By default, GET, TRACE, OPTIONS, CONNECT and HEAD requests are considered read requests. This can be changed within the settings of your MicroStream Cluster.</p>
+</div>
+<div class="paragraph">
+<p><strong>Read Request Workflow:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Client Request</strong>: A client sends a read request to the MicroStream Cluster.</p>
+</li>
+<li>
+<p><strong>Load Balancing</strong>: The load balancer forwards the request to a suitable Reader node.</p>
+</li>
+<li>
+<p><strong>Request Processing</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The Reader node receives the read request.</p>
+</li>
+<li>
+<p>The node retrieves the required data from storage, either directly or from the cache.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Response</strong>: The Reader node sends the requested data or search results back to the client.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>If the request includes search criteria, we&#8217;d recommend leveraging the Java Streams API to efficently filter, sort, or perform other operations as needed. For large datasets, the MicroStream GigaMap, an enterprise feature, may also be used.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/reader-node.png" alt="reader node">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/reader-self-request.png" alt="reader self request">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_writer_node"><a class="anchor" href="#_writer_node"></a>Writer Node</h3>
+<div class="paragraph">
+<p>The Writer node is responsible for processing write requests. It ensures data durability and consistency by storing data locally and replicating it to Reader nodes. By default, PUT, POST, DELETE and PATCH requests are considered write requests. This can be changed within the settings of your MicroStream cluster.</p>
+</div>
+<div class="paragraph">
+<p><strong>Write Request Workflow:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Write Request:</strong> A client or your application sends a Write request to the MicroStream Cluster.</p>
+</li>
+<li>
+<p><strong>Load Balancing:</strong> The load balancer forwards the request to the Writer node.</p>
+</li>
+<li>
+<p><strong>Data Persistence and Replication:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Local Storage</strong>: The Writer node stores the data in its local storage using an atomic, all-or-nothing operation to guarantee data integrity.</p>
+</li>
+<li>
+<p><strong>Event Stream</strong>: The write request is appended to an event stream, ensuring durability and providing a reliable source for replication.</p>
+</li>
+<li>
+<p><strong>Commit</strong>: Once the data is successfully persisted in both, the local storage and the event stream, the write operation is committed.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Replication to Reader Nodes:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Event Stream Consumption:</strong> Reader nodes consume the write events from the event stream.</p>
+</li>
+<li>
+<p><strong>Local Storage Update:</strong> Each Reader node updates its local object graph and persists the data in its local storage using an atomic, all-or-nothing operation.</p>
+</li>
+<li>
+<p><strong>Commit:</strong> Once the data is successfully persisted locally, the Reader node commits the write operation.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/writer-node.png" alt="Each external Write request is forwarded to the Writer node.">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/reader-writer-request.png" alt="Each Write request executed by your application is also forwarded and executed on the Writer node.">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/writer-node-commit.png" alt="After the Write request is successfully executed on the Writer node, and stored in the event stream successfully, the Writer node will commit.">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/writer-ideal-scenario.png" alt="After the Write request is successfully executed on the Writer node, and stored in the event stream successfully, the Writer node will commit.">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/writer-real-world-scenario.png" alt="Real-world scenario: While the goal is to achieve eventual consistency, there will inevitably be periods where nodes are in different states. However, the system is designed to converge towards a consistent state over time.">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_writerreader_node"><a class="anchor" href="#_writerreader_node"></a>Writer/Reader Node</h3>
+<div class="paragraph">
+<p>To optimize performance, especially under heavy write loads, the Load Balancer is configured by default to route Read requests to dedicated Reader nodes and Write requests to the dedicatedWriter node. This configuration minimizes latency and maximizes throughput. However, a Writer node can be configured to handle both Read and Write requests, providing flexibility and efficient resource utilization. When the Write load is low, the Writer node can also process Read requests, further optimizing overall system performance.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_writer_proxy_node"><a class="anchor" href="#_writer_proxy_node"></a>Writer Proxy Node</h3>
+<div class="paragraph">
+<p>MicroStream Cluster includes a Writer proxy node, which is a dedicated Java process running between the Load Balancer and the Writer node. The Writer Proxy is responsible for forwarding Write requests to the dedicated Writer node.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_clients_and_communication"><a class="anchor" href="#_clients_and_communication"></a>Clients and Communication</h3>
+<div class="paragraph">
+<p>MicroStream Cluster can be accessed by any external application or service (clients), including desktop, web, mobile or IoT devices, as long as they can send REST requests to the MicroStream Cluster. This also includes any node of your clustered application. By default, REST requests of the type PUT, POST, DELETE and PATCH are forwarded to the elected Writer node, although this behaviour can be modified in your MicroStream Cluster settings.</p>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_apache_kafka"><a class="anchor" href="#_apache_kafka"></a>Apache Kafka</h2>
+<h2 id="_consistency_in_microstream_cluster"><a class="anchor" href="#_consistency_in_microstream_cluster"></a>Consistency in MicroStream Cluster</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Kafka is used for the <strong>Writer</strong> node to push updates to all other nodes. For now only the shared Kafka instance is available. This instance is shared with all other cloud users. Your messages can only be read by your cluster, ensuring data security.</p>
+<p>While MicroStream Cluster employs a single-writer architecture to ensure strong consistency for write operations, the overall standard consistency model of the cluster is eventual consistency. This means that while data is eventually replicated across all nodes, there might be a delay between the time a write operation is committed on the Writer node and the time it&#8217;s reflected on all Reader nodes.</p>
+</div>
+<div class="sect2">
+<h3 id="_eventual_consistency"><a class="anchor" href="#_eventual_consistency"></a>Eventual Consistency:</h3>
+<div class="paragraph">
+<p>Eventual consistency is a common strategy in distributed systems, especially those that prioritize high availability and scalability. It&#8217;s particularly well-suited for use cases where:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>High Availability</strong>: Ensuring that the system remains available even in the face of network partitions or node failures.</p>
+</li>
+<li>
+<p><strong>Scalability</strong>: Allowing the system to scale horizontally to handle increasing workloads.</p>
+</li>
+<li>
+<p><strong>Reduced Latency</strong>: Avoiding the performance overhead of strong consistency, especially for large-scale systems.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>In the future you will be able to selected Cluster Tiers that provide their own Kafka instance.</p>
+<p><strong>Common Use Cases:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Content Delivery Networks (CDNs):</strong> Ensuring that content is replicated across multiple servers for faster delivery.</p>
+</li>
+<li>
+<p><strong>Distributed Databases:</strong> Replicating data across multiple data centers for redundancy and disaster recovery.</p>
+</li>
+<li>
+<p><strong>Microservices Architectures:</strong> Coordinating data updates across multiple services.</p>
+</li>
+<li>
+<p><strong>Real-time Analytics:</strong> Processing large volumes of data in real-time, even if there are slight delays in data consistency.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>By adopting eventual consistency, MicroStream Cluster balances data consistency with system performance and availability, making it a suitable choice for a wide range of applications.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_strong_consistency"><a class="anchor" href="#_strong_consistency"></a>Strong Consistency:</h3>
+<div class="paragraph">
+<p>While MicroStream Cluster primarily operates on an eventual consistency model, it provides flexibility to implement stronger consistency guarantees for specific use cases. By understanding the trade-offs between consistency, availability, and partition tolerance (the CAP theorem), you can tailor the cluster&#8217;s behavior to meet your application&#8217;s unique requirements.</p>
+</div>
+<div class="paragraph">
+<p>Strong consistency ensures that a read always returns the most recent write. However, achieving strong consistency in a distributed system can be challenging and often involves significant overhead. There are various approaches to strong consistency, each with its own trade-offs:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Two-Phase Commit (2PC):</strong> A classic protocol that requires coordination between multiple nodes to ensure atomic commits. While it provides strong consistency, it can be complex and prone to performance issues.</p>
+</li>
+<li>
+<p><strong>Paxos:</strong> A consensus algorithm that can be used to achieve strong consistency, but it&#8217;s complex to implement and may introduce significant latency.</p>
+</li>
+<li>
+<p><strong>Raft:</strong> A more recent consensus algorithm that is simpler to implement than Paxos and offers better performance. However, it still requires coordination between multiple nodes.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The choice of a strong consistency model depends on the specific requirements of your application. Factors such as the level of consistency needed, the desired performance, and the tolerance for failures should be carefully considered.</p>
+</div>
+<div class="paragraph">
+<p>By offering a flexible approach to consistency, MicroStream Cluster empowers you to balance the needs of your application with the complexities of distributed systems. You can choose to leverage the simplicity and scalability of eventual consistency for most use cases while implementing stronger consistency guarantees for critical data or operations.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_customizing_service"><a class="anchor" href="#_customizing_service"></a>Customizing Service</h3>
+<div class="paragraph">
+<p>MicroStream Cluster provides a flexible foundation for building scalable and reliable distributed applications. While the default behavior is eventual consistency, we offer consulting and customization services to help you achieve the optimal level of consistency for your specific use case. Whether you need strong consistency for critical data or the flexibility of eventual consistency for general-purpose workloads, our experts can work with you to design and implement the best solution.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_kubernetes_as_the_foundation"><a class="anchor" href="#_kubernetes_as_the_foundation"></a>Kubernetes as the Foundation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>MicroStream Cluster runs on Kubernetes. If you run a MicroStream Cluster On-Prem, you&#8217;ll need first of all a Kubernetes environment. Kubernetes is a sophisticated platform that manages and orchestrates containerized applications. It ensures that your MicroStream Cluster components are always running, healthy, and scaled appropriately.</p>
+</div>
+<div class="paragraph">
+<p><strong>How it Works:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Containerization:</strong> Your MicroStream application is packaged into a container, a standardized unit of software that includes everything it needs to run: code, libraries, and configurations.</p>
+</li>
+<li>
+<p><strong>Kubernetes Deployment:</strong> Kubernetes takes these containers and deploys them across multiple nodes (physical or virtual machines) in your cluster.</p>
+</li>
+<li>
+<p><strong>Cluster Management:</strong> Kubernetes handles tasks like:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Scheduling: Assigning containers to available nodes.</p>
+</li>
+<li>
+<p>Scaling: Automatically adding or removing containers based on workload.</p>
+</li>
+<li>
+<p>Self-Healing: Restarting failed containers and replacing faulty nodes.</p>
+</li>
+<li>
+<p>Load Balancing: Distributing traffic evenly across multiple instances of your application.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>By leveraging Kubernetes, you can ensure the high availability, scalability, and efficient management of your MicroStream Cluster.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_load_balancer"><a class="anchor" href="#_load_balancer"></a>Load Balancer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>MicroStream Cluster leverages the underlying platform&#8217;s Load Balancer (nginx) (e.g., AWS) to strictly separate read and write requests.</p>
+</div>
+<div class="paragraph">
+<p><strong>Read Requests:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Distributed across multiple Reader nodes for optimal performance and scalability.</p>
+</li>
+<li>
+<p>The Load Balancer directs read requests to the most suitable Reader node based on factors like load and availability.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Write Requests:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>All write requests are ultimately processed by a dedicated Writer node.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Load Balancer Requirements:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To ensure optimal performance and reliability of your MicroStream Cluster <strong>On-Premises</strong>, it&#8217;s crucial to employ a highly available load balancer. This guarantees seamless distribution of traffic across multiple nodes, minimizing downtime and maximizing system responsiveness.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_troubleshooting"><a class="anchor" href="#_troubleshooting"></a>Troubleshooting</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_reader_node_crashes"><a class="anchor" href="#_reader_node_crashes"></a>Reader node crashes</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>If a Reader node fails, the Load Balancer will automatically route incoming read requests to other available Reader nodes. Additionally, the system will initiate the process of starting a new Reader node to replace the failed one, ensuring uninterrupted service.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_writer_node_crashes"><a class="anchor" href="#_writer_node_crashes"></a>Writer node crashes</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>If the Writer node becomes unavailable, the system automatically elects a new Writer node from among the existing Reader nodes. Any write operations that cannot be processed immediately due to this transition will result in an exception being thrown. Additionally, the system will initiate the process of starting a new Reader node to replace the failed one, ensuring uninterrupted service.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>

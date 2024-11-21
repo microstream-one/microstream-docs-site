@@ -132,7 +132,7 @@
     <li><a href="index.html">Cloud</a></li>
   </ul>
 </nav>
-<div class="edit-this-page"><a href="https://github.com/microstream-one/microstream-private/edit/release/1.x/enterprise/docs/modules/cloud/pages/index.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://github.com/microstream-one/microstream-private/edit/master/enterprise/docs/modules/cloud/pages/index.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -140,8 +140,229 @@
 </aside>
 <article class="doc">
 <h1 class="page">Cloud</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
-<p>MicroStream Storage-Cluster in the Cloud. Featuring fault-tolerance, node scaling and more!</p>
+<p>MicroStream Cluster is a powerful, enterprise-grade platform designed to run EclipseStore applications in a distributed, highly available, and scalable manner. By leveraging the power of Kubernetes and more, MicroStream Cluster provides a robust and efficient infrastructure for your data-intensive mission-critical applications.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_key_features"><a class="anchor" href="#_key_features"></a>Key Features</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Distributed Architecture:</strong> Distributes your EclipseStore application across multiple nodes for improved performance and scalability.</p>
+</li>
+<li>
+<p><strong>High Availability:</strong> Ensures continuous operation through redundancy and automatic failover mechanisms.</p>
+</li>
+<li>
+<p><strong>Data Redundancy:</strong> Protects your data by replicating it across multiple nodes. For more details on backups and data storage, see <a href="#backup_process">here</a>.</p>
+</li>
+<li>
+<p><strong>Flexible Scaling:</strong> Automatically scales your cluster up or down based on workload demands. For more details, see <a href="#horizontal_scaling">here</a>.</p>
+</li>
+<li>
+<p><strong>Robust Security:</strong> Implements stringent security measures to safeguard your data and applications.</p>
+</li>
+<li>
+<p><strong>Comprehensive Monitoring and Alerting:</strong> Provides real-time insights into your cluster&#8217;s health and performance.</p>
+</li>
+<li>
+<p><strong>User-Friendly Management:</strong> Offers a convenient UI for easy setup, configuration, and management.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_deployment_options"><a class="anchor" href="#_deployment_options"></a>Deployment Options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>MicroStream Cluster is available as SaaS and On-Prem, so you have the flexibility to deploy your MicroStream Cluster in two ways:</p>
+</div>
+<div class="paragraph">
+<p><strong>1. SaaS:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Fully Managed:</strong> MicroStream Cluster is a fully managed service, where you do not have to worry about the underlying infrastructure, including Kubernetes, network configuration, and security.</p>
+</li>
+<li>
+<p><strong>Simplified Deployment:</strong> Deploy your application as a simple JAR file without the need for Kubernetes expertise.</p>
+</li>
+<li>
+<p><strong>Elastic Scaling:</strong> Automatically scale your cluster to handle varying workloads.</p>
+</li>
+<li>
+<p><strong>Built-in Monitoring and Alerting:</strong> Gain valuable insights into your cluster&#8217;s performance and receive timely notifications.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>2. On-Premise:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Self-Managed:</strong> Take full control over your infrastructure, deploying and managing Kubernetes and other components on your own premises.</p>
+</li>
+<li>
+<p><strong>Expert Support:</strong> Leverage MicroStream&#8217;s consulting and professional support services for guidance on setup, maintenance, and optimization.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>MicroStream Cluster runs also with only one single node. To achieve high availability and data redundancy, you must run at least 2 nodes, 1 Writer and 1 Reader node.</p>
+</div>
+<div class="paragraph">
+<p>Choose the deployment option that best aligns with your specific needs and preferences.</p>
+</div>
+<div class="paragraph">
+<p>While EclipseStore is an open-source project, MicroStream Cluster is a proprietary enterprise software solution that provides advanced features, enterprise support, and security.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="horizontal_scaling"><a class="anchor" href="#horizontal_scaling"></a>Elastic Horizontal Scaling</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>MicroStream Cluster offers seamless horizontal scaling, allowing you to dynamically adjust the number of nodes in your cluster to accommodate changing workloads. This ensures optimal performance and resource utilization.</p>
+</div>
+<div class="sect2">
+<h3 id="_key_advantages_of_elastic_scaling"><a class="anchor" href="#_key_advantages_of_elastic_scaling"></a>Key Advantages of Elastic Scaling:</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Scalability:</strong> Easily handle increased traffic and data volumes by adding more nodes to the cluster.</p>
+</li>
+<li>
+<p><strong>Cost-Efficiency:</strong> Scale down the cluster during periods of low demand to reduce infrastructure costs.</p>
+</li>
+<li>
+<p><strong>Resilience:</strong> Distribute the workload across multiple nodes, minimizing the impact of individual node failures.</p>
+</li>
+<li>
+<p><strong>Performance Optimization:</strong> Adapt to varying workloads by dynamically adjusting the cluster size.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_on_premises_benefits_of_elastic_scaling"><a class="anchor" href="#_on_premises_benefits_of_elastic_scaling"></a>On-Premises Benefits of Elastic Scaling:</h3>
+<div class="paragraph">
+<p>Even in on-premises environments, elastic scaling offers significant advantages:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Adaptability to Changing Demands:</strong> Respond to sudden spikes in traffic or data growth by automatically scaling the cluster.</p>
+</li>
+<li>
+<p><strong>Resource Optimization:</strong> Avoid overprovisioning resources and reduce operational costs by scaling down during off-peak hours.</p>
+</li>
+<li>
+<p><strong>Improved Performance:</strong> Distribute the workload across multiple nodes to improve response times and throughput.</p>
+</li>
+<li>
+<p><strong>Enhanced Reliability:</strong> Mitigate the risk of single-point failures by maintaining a redundant cluster.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>By leveraging elastic scaling, you can ensure that your MicroStream Cluster remains highly available, performant, and cost-effective, regardless of the deployment environment.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="backup_process"><a class="anchor" href="#backup_process"></a>Backup Process</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>MicroStream Cluster employs an <strong>event-based backup</strong> strategy. This approach involves capturing changes to the data as they occur and storing them in an event stream. To create a backup, the system replays these events, incrementally building a complete copy of the data.</p>
+</div>
+<div class="paragraph">
+<p><strong>Advantages of Event-Based Backup:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Efficiency:</strong> Only the latest changes are captured, reducing the backup size and transfer time.</p>
+</li>
+<li>
+<p><strong>Incremental Backups:</strong> Backups can be created incrementally, minimizing the impact on system performance.</p>
+</li>
+<li>
+<p><strong>Point-in-Time Recovery:</strong> By replaying events up to a specific point in time, it&#8217;s possible to restore the system to a previous state.</p>
+</li>
+<li>
+<p><strong>Faster Recovery:</strong> Incremental backups can be restored more quickly, as only the changes since the last full backup need to be applied.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This event-based approach provides a robust and efficient backup solution for MicroStream Cluster.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="data_storage"><a class="anchor" href="#data_storage"></a>Data Storage and Replication</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Each node in the MicroStream Cluster maintains its complete copy of the data. This distributed storage approach offers several advantages:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>High Availability:</strong> If a node fails, the data can be recovered from other nodes in the cluster, minimizing downtime.</p>
+</li>
+<li>
+<p><strong>Scalability:</strong> The cluster can be scaled horizontally by adding more nodes, increasing both storage capacity and processing power.</p>
+</li>
+<li>
+<p><strong>Performance:</strong> By distributing data across multiple nodes, the cluster can achieve high read and write performance. Additionally, having a full copy of the data on each node eliminates the network latency associated with accessing data from a shared storage system, leading to faster data access and reduced response times.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_sharding"><a class="anchor" href="#_sharding"></a>Sharding</h3>
+<div class="paragraph">
+<p>While MicroStream Cluster doesn&#8217;t implement automatic sharding, it supports logical sharding at the application level. By carefully designing your data model and partitioning strategies, you can distribute data across nodes based on specific criteria, such as user ID, geographic location, or other relevant factors. This allows you to scale your cluster efficiently and optimize performance.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_storage_options"><a class="anchor" href="#_storage_options"></a>Storage Options</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>SaaS on AWS:</strong> Leverages Amazon Elastic File Store (EFS) as the default storage option. EFS provides durable and reliable block storage for high-performance applications.</p>
+</li>
+<li>
+<p><strong>On-Premises:</strong> Offers flexibility in storage choices, including:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Traditional Storage:</strong> HDDs and SSDs for general-purpose storage needs.</p>
+</li>
+<li>
+<p><strong>Object Storage:</strong> S3-compatible solutions like MinIO.</p>
+</li>
+<li>
+<p><strong>Persistent Memory:</strong> High-performance memory devices for accelerating data access and reducing latency.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The optimal storage solution depends on factors such as performance requirements, cost considerations, and data durability needs.</p>
+</div>
+</div>
+</div>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="../storage/replication.html">Replication</a></span>
