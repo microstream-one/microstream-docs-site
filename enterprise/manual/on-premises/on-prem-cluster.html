@@ -6,7 +6,7 @@
     <title>MicroStream On-Premises Cluster :: MicroStream Enterprise Reference Manual</title>
     <link rel="canonical" href="https://docs.microstream.one/enterprise/manual/manual/on-premises/on-prem-cluster.html">
     <link rel="prev" href="../cloud/starter-templates/helidon.html">
-    <link rel="next" href="on-prem-overview.html">
+    <link rel="next" href="on-prem-aws-eks.html">
     <meta name="generator" content="Antora 3.1.2">
     <link rel="stylesheet" href="../../_/css/site.css">
   <link rel="icon" type="image/png" sizes="32x32" href="https://www.microstream.one/favicon-32x32.png">
@@ -95,13 +95,22 @@
     <a class="nav-link" href="on-prem-cluster.html">MicroStream On-Premises Cluster</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="on-prem-overview.html">Overview</a>
+    <a class="nav-link" href="on-prem-aws-eks.html">1. On-Premises: Multiple clusters managed via a console frontend <strong>Coming soon</strong></a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="on-prem-aws-eks.html">On-Premises AWS/EKS</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="on-prem-selfhosted-kubernetes.html">2. On-Premises: Single cluster installation without console frontend</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="aws_eks_onprem_setup/architecture_stand_alone.html">Architecture</a>
   </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="on-prem-selfhosted-kubernetes.html">On-Premises Selfhosted Kubernetes</a>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="aws_eks_onprem_setup/requirements_stand_alone.html">Requirements</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="aws_eks_onprem_setup/installation-stand-alone.html">Installation</a>
+  </li>
+</ul>
   </li>
 </ul>
   </li>
@@ -146,12 +155,99 @@
 </aside>
 <article class="doc">
 <h1 class="page">MicroStream On-Premises Cluster</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
-<p>Documentation is coming soon.</p>
+<p>The MicroStream On-Premises Cluster solution allows you to host our high availability cluster directly within your own IT infrastructure. A true horizontal scaling solution always requires a suitable underlying infrastructure such as Kubernetes or at least Docker. Due to the complexity of such a system, it is always important to know your own requirements and the capabilities of a MicroStream cluster. This is the reason why we mostly offer our on-premises solution in combination with maintenance and consulting. Please do not hesitate to contact us.</p>
+</div>
+<div class="paragraph">
+<p>There are several ways to host a MicroStream on-premises cluster:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>1. Hosting with the Cluster Console Front-end</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>This front-end allows you to provide a SaaS system to everyone in your on-premises infrastructure.</p>
+</li>
+<li>
+<p>It allows you to create, start, stop and delete many different clusters with different configurations. Each organisational unit of your company could have its own cluster solution.</p>
+</li>
+<li>
+<p>See our SaaS solution for a better understanding. Your on-premises system will end up working very similarly.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>2. Hosting a single standalone cluster without a console front end</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>If you only need a single cluster for a specific use case, this could be the right choice.</p>
+</li>
+<li>
+<p>We will provide you with all the necessary knowledge, Helm charts and examples to enable you to deploy a single cluster setup within the infrastructure of your choice.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_supported_underlying_infrastructures"><a class="anchor" href="#_supported_underlying_infrastructures"></a>Supported underlying infrastructures</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>No matter if you choose option one or two from above, both can be deployed to different systems:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cloud Provider / Infrastructure</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Cluster console frontend</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Single stand alone cluster</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>AWS / EKS</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Coming soon</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Available</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>AZURE / AKS</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Coming soon</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Available</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Google / GKE</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Coming soon</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Available</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Self Hosted Kubernetes</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Not supported</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Available</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Self Hosted Docker</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Not supported</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Comming soon with restrictions</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="../cloud/starter-templates/helidon.html">Helidon</a></span>
-  <span class="next"><a href="on-prem-overview.html">Overview</a></span>
+  <span class="next"><a href="on-prem-aws-eks.html">1. On-Premises: Multiple clusters managed via a console frontend <strong>Coming soon</strong></a></span>
 </nav>
 </article>
   </div>
