@@ -3,13 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Page Not Found :: MicroStream Enterprise Reference Manual</title>
+    <title>Rationale :: MicroStream Enterprise Reference Manual</title>
+    <link rel="canonical" href="https://docs.microstream.one/enterprise/gigamap/1/rationale.html">
+    <link rel="prev" href="welcome.html">
+    <link rel="next" href="getting-started.html">
     <meta name="generator" content="Antora 3.1.2">
-    <link rel="stylesheet" href="/enterprise/_/css/site.css">
+    <link rel="stylesheet" href="../../_/css/site.css">
   <link rel="icon" type="image/png" sizes="32x32" href="https://www.microstream.one/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://www.microstream.one/favicon-16x16.png">
-  <link rel="stylesheet" href="/enterprise/_/css/site-extra.css">  </head>
-  <body class="status-404">
+  <link rel="stylesheet" href="../../_/css/site-extra.css">  </head>
+  <body class="article">
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
@@ -38,24 +41,76 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container">
+<div class="nav-container" data-component="gigamap" data-version="1">
   <aside class="nav">
     <div class="panels">
-<div class="nav-panel-explore is-active" data-panel="explore">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="welcome.html">GigaMap Reference Manual</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="welcome.html">Welcome</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="rationale.html">Rationale</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="getting-started.html">Getting Started</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="indexing/index.html">Indexing</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="indexing/types.html">Index Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="indexing/defining.html">Defining Indices</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="queries/index.html">Queries</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="queries/defining.html">Defining Queries</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="queries/executing.html">Executing Queries</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="persistence.html">Persistence</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">GigaMap Reference Manual</span>
+    <span class="version">1.0</span>
+  </div>
   <ul class="components">
-    <li class="component">
-      <div class="title"><a href="/enterprise/gigamap/1/welcome.html">GigaMap Reference Manual</a></div>
+    <li class="component is-current">
+      <div class="title"><a href="welcome.html">GigaMap Reference Manual</a></div>
       <ul class="versions">
-        <li class="version is-latest">
-          <a href="/enterprise/gigamap/1/welcome.html">1.0</a>
+        <li class="version is-current is-latest">
+          <a href="welcome.html">1.0</a>
         </li>
       </ul>
     </li>
     <li class="component">
-      <div class="title"><a href="/enterprise/manual/1/welcome.html">MicroStream Enterprise Reference Manual</a></div>
+      <div class="title"><a href="../../manual/1/welcome.html">MicroStream Enterprise Reference Manual</a></div>
       <ul class="versions">
         <li class="version is-latest">
-          <a href="/enterprise/manual/1/welcome.html">1.0</a>
+          <a href="../../manual/1/welcome.html">1.0</a>
         </li>
       </ul>
     </li>
@@ -68,18 +123,77 @@
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="welcome.html">GigaMap Reference Manual</a></li>
+    <li><a href="rationale.html">Rationale</a></li>
+  </ul>
 </nav>
+<div class="edit-this-page"><a href="https://github.com/microstream-one/gigamap/edit/docs/docs/modules/ROOT/pages/rationale.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
 <article class="doc">
-<h1 class="page">Page Not Found</h1>
+<h1 class="page">Rationale</h1>
+<div class="sect1">
+<h2 id="_gigamap"><a class="anchor" href="#_gigamap"></a>GigaMap</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>The page you&#8217;re looking for does not exist. It may have been moved. You can follow one of the links in the navigation to the left.</p>
+<p>GigaMap is a specialized collection aimed at optimizing performance and memory usage in EclipseStore. It utilizes off-heap bitmap indexing to facilitate lightning-fast searches and lazy loading of objects, eliminating the need for manual reference management.</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>Off-Heap Bitmap Index: GigaMap employs the off-heap bitmap index concept to enable quick object lookups based on specific criteria.</p>
+</li>
+<li>
+<p>Automated Lazy-Loading: When an object is accessed for the first time, GigaMap effectively retrieves and loads it from the underlying storage, reducing memory usage and enhancing startup time.</p>
+</li>
+<li>
+<p>Transparent Integration: GigaMap effortlessly integrates with EclipseStore’s data model, ensuring ease of use and maintenance.</p>
+</li>
+<li>
+<p>Scalability: GigaMap can manage massive datasets due to its efficient indexing and lazy-loading mechanisms.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_indexing"><a class="anchor" href="#_indexing"></a>Indexing</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>If you arrived on this page by clicking on a link, please notify the owner of the site that the link is broken.
-If you typed the URL of this page manually, please double check that you entered the address correctly.</p>
+<p>Indexing is a data structure technique that optimizes search performance in EclipseStore, similar to the indexing concepts used in database systems. It generates a sorted list of values along with their corresponding objects, enabling EclipseStore to quickly locate specific objects without scanning the entire collection. Think of it like an index in a book: it directs you to the exact page where a particular topic is discussed, saving you the time of flipping through every page.</p>
 </div>
+<div class="sect2">
+<h3 id="_off_heap_bitmap_indexing_a_speed_demon"><a class="anchor" href="#_off_heap_bitmap_indexing_a_speed_demon"></a>Off-Heap Bitmap Indexing: A Speed Demon</h3>
+<div class="paragraph">
+<p>Bitmap indexes are a specialized data structure that utilizes bitmaps to indicate the presence or absence of a specific value within a collection. Each bit in the bitmap corresponds to an element in that collection. If a value exists in the element, the bit is set to 1; otherwise, it is set to 0. The GigaMap bitmap index operates off-heap.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_why_off_heap_management_makes_it_lightning_fast"><a class="anchor" href="#_why_off_heap_management_makes_it_lightning_fast"></a>Why Off-Heap Management Makes it Lightning-Fast</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Direct Memory Access: By managing the bitmap index off-heap, the index data is stored directly in system memory, bypassing the Java heap. This eliminates the overhead of garbage collection, which is a major performance bottleneck in traditional Java applications.</p>
+</li>
+<li>
+<p>Reduced GC Pressure: Off-heap storage reduces the memory footprint of the Java heap, resulting in fewer garbage collection cycles and improved overall performance.</p>
+</li>
+<li>
+<p>Optimized Read/Write Operations: Direct memory access enables faster read and write operations on the bitmap index, further speeding up search queries.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="welcome.html">Welcome</a></span>
+  <span class="next"><a href="getting-started.html">Getting Started</a></span>
+</nav>
 </article>
   </div>
 </main>
@@ -96,7 +210,7 @@ If you typed the URL of this page manually, please double check that you entered
 <a href="https://microstream.one/privacy/">Privacy</a>
 <span class="link-separator">&nbsp;&#124;&nbsp;</span>
 <a href="https://microstream.one/legal-notice/">Legal notice</a>
-</footer><script id="site-script" src="/enterprise/_/js/site.js" data-ui-root-path="/enterprise/_"></script>
-<script async src="/enterprise/_/js/vendor/highlight.js"></script>
+</footer><script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
   </body>
 </html>

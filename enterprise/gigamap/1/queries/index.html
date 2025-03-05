@@ -3,13 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Page Not Found :: MicroStream Enterprise Reference Manual</title>
+    <title>Queries :: MicroStream Enterprise Reference Manual</title>
+    <link rel="canonical" href="https://docs.microstream.one/enterprise/gigamap/1/queries/index.html">
+    <link rel="prev" href="../indexing/defining.html">
+    <link rel="next" href="defining.html">
     <meta name="generator" content="Antora 3.1.2">
-    <link rel="stylesheet" href="/enterprise/_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/site.css">
   <link rel="icon" type="image/png" sizes="32x32" href="https://www.microstream.one/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://www.microstream.one/favicon-16x16.png">
-  <link rel="stylesheet" href="/enterprise/_/css/site-extra.css">  </head>
-  <body class="status-404">
+  <link rel="stylesheet" href="../../../_/css/site-extra.css">  </head>
+  <body class="article">
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
@@ -38,24 +41,76 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container">
+<div class="nav-container" data-component="gigamap" data-version="1">
   <aside class="nav">
     <div class="panels">
-<div class="nav-panel-explore is-active" data-panel="explore">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../welcome.html">GigaMap Reference Manual</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../welcome.html">Welcome</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../rationale.html">Rationale</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../getting-started.html">Getting Started</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../indexing/index.html">Indexing</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../indexing/types.html">Index Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../indexing/defining.html">Defining Indices</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Queries</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="defining.html">Defining Queries</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="executing.html">Executing Queries</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../persistence.html">Persistence</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">GigaMap Reference Manual</span>
+    <span class="version">1.0</span>
+  </div>
   <ul class="components">
-    <li class="component">
-      <div class="title"><a href="/enterprise/gigamap/1/welcome.html">GigaMap Reference Manual</a></div>
+    <li class="component is-current">
+      <div class="title"><a href="../welcome.html">GigaMap Reference Manual</a></div>
       <ul class="versions">
-        <li class="version is-latest">
-          <a href="/enterprise/gigamap/1/welcome.html">1.0</a>
+        <li class="version is-current is-latest">
+          <a href="../welcome.html">1.0</a>
         </li>
       </ul>
     </li>
     <li class="component">
-      <div class="title"><a href="/enterprise/manual/1/welcome.html">MicroStream Enterprise Reference Manual</a></div>
+      <div class="title"><a href="../../../manual/1/welcome.html">MicroStream Enterprise Reference Manual</a></div>
       <ul class="versions">
         <li class="version is-latest">
-          <a href="/enterprise/manual/1/welcome.html">1.0</a>
+          <a href="../../../manual/1/welcome.html">1.0</a>
         </li>
       </ul>
     </li>
@@ -68,18 +123,353 @@
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../welcome.html">GigaMap Reference Manual</a></li>
+    <li><a href="index.html">Queries</a></li>
+  </ul>
 </nav>
+<div class="edit-this-page"><a href="https://github.com/microstream-one/gigamap/edit/docs/docs/modules/ROOT/pages/queries/index.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
 <article class="doc">
-<h1 class="page">Page Not Found</h1>
+<h1 class="page">Queries</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
-<p>The page you&#8217;re looking for does not exist. It may have been moved. You can follow one of the links in the navigation to the left.</p>
+<p>One of the key features of GigaMap is that you can query data before it is loaded.</p>
 </div>
 <div class="paragraph">
-<p>If you arrived on this page by clicking on a link, please notify the owner of the site that the link is broken.
-If you typed the URL of this page manually, please double check that you entered the address correctly.</p>
+<p>Queries are executed on the index; then, while traversing the results, all relevant segments of GigaMap&#8217;s data are loaded lazily.</p>
 </div>
+<div class="paragraph">
+<p>The <a href="../indexing/index.html#_indexers" class="xref page">indexer</a> instances are utilized to create query conditions.</p>
+</div>
+<div class="paragraph">
+<p>Each of them comes with specialized query methods.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_query_methods"><a class="anchor" href="#_query_methods"></a>Query methods</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_common"><a class="anchor" href="#_common"></a>Common</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Method</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">is(K key)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">equality condition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">not(K key)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inequality condition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">isNull()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">null check condition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">notNull()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">negated null check condition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">like(E sample)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">equality condition which compares the key of this index with the same key of given sample, not to confuse with SQL-like</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unlike(E sample)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inequality condition, see like</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in(K&#8230;&#8203; keys)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">equality condition which checks against a collection of keys</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">notIn(K&#8230;&#8203; keys)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inequality condition which checks against a collection of keys</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">is(Predicate&lt;K&gt; predicate)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">equality condition with a custom predicate</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_string"><a class="anchor" href="#_string"></a>String</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Method</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">contains(String search)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">case-sensitive contains condition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">containsIgnoreCase(String search)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">case-insensitive contains condition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">startsWith(String prefix)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">case-sensitive starts with condition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">startsWithIgnoreCase(String prefix)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">case-insensitive starts with condition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">endsWith(String suffix)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">case-sensitive ends with condition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">endsWithIgnoreCase(String suffix)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">case-insensitive ends with condition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">isEmpty()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">checks for null or empty String</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">isBlank()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">checks for null or blank String</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_numeric"><a class="anchor" href="#_numeric"></a>Numeric</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Method</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lessThan(K boundExclusive)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">numeric condition &lt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lessThanEqual(K boundInclusive)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">numeric condition &#8656;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">greaterThan(K boundExclusive)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">numeric condition &gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">greaterThanEqual(K boundInclusive)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">numeric condition &gt;=</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">between(K startInclusive, K endInclusive)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">numeric condition, startInclusive &#8656; key &#8656; endInclusive</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_common_temporal"><a class="anchor" href="#_common_temporal"></a>Common Temporal</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Method</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">before(K boundExclusive)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">temporal condition &lt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">beforeEqual(K boundInclusive)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">temporal condition &#8656;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">after(K boundExclusive)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">temporal condition &gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">afterEqual(K boundInclusive)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">temporal condition &gt;=</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">between(K startInclusive, K endInclusive)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">temporal condition, startInclusive &#8656; key &#8656; endInclusive</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_date"><a class="anchor" href="#_date"></a>Date</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Method</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">isDate(int year, int month, int day)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">date equality check</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">isYear(int year)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">compares only the year</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">isMonth(int month)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">compares only the month</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">isDay(int day)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">compares only the day</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_time"><a class="anchor" href="#_time"></a>Time</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Method</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">isTime(int hour, int minute, int second)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">time equality check</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">isHour(int hour)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">compares only the hour</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">isMinute(int minute)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">compares only the minute</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">isSecond(int second)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">compares only the second</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_datetime"><a class="anchor" href="#_datetime"></a>DateTime</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Method</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">isDateTime(int year, int month, int day, int hour, int minute, int second)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">date and time equality check</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_boolean"><a class="anchor" href="#_boolean"></a>Boolean</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Method</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">isTrue()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">checks if key is true</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">isFalse()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">checks if key is false</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_multi_value"><a class="anchor" href="#_multi_value"></a>Multi-value</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Method</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all(K&#8230;&#8203; keys)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">equality condition which checks against a collection of keys</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../indexing/defining.html">Defining Indices</a></span>
+  <span class="next"><a href="defining.html">Defining Queries</a></span>
+</nav>
 </article>
   </div>
 </main>
@@ -96,7 +486,7 @@ If you typed the URL of this page manually, please double check that you entered
 <a href="https://microstream.one/privacy/">Privacy</a>
 <span class="link-separator">&nbsp;&#124;&nbsp;</span>
 <a href="https://microstream.one/legal-notice/">Legal notice</a>
-</footer><script id="site-script" src="/enterprise/_/js/site.js" data-ui-root-path="/enterprise/_"></script>
-<script async src="/enterprise/_/js/vendor/highlight.js"></script>
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
   </body>
 </html>

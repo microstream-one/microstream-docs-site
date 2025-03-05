@@ -3,13 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Page Not Found :: MicroStream Enterprise Reference Manual</title>
+    <title>Defining Queries :: MicroStream Enterprise Reference Manual</title>
+    <link rel="canonical" href="https://docs.microstream.one/enterprise/gigamap/1/queries/defining.html">
+    <link rel="prev" href="index.html">
+    <link rel="next" href="executing.html">
     <meta name="generator" content="Antora 3.1.2">
-    <link rel="stylesheet" href="/enterprise/_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/site.css">
   <link rel="icon" type="image/png" sizes="32x32" href="https://www.microstream.one/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://www.microstream.one/favicon-16x16.png">
-  <link rel="stylesheet" href="/enterprise/_/css/site-extra.css">  </head>
-  <body class="status-404">
+  <link rel="stylesheet" href="../../../_/css/site-extra.css">  </head>
+  <body class="article">
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
@@ -38,24 +41,76 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container">
+<div class="nav-container" data-component="gigamap" data-version="1">
   <aside class="nav">
     <div class="panels">
-<div class="nav-panel-explore is-active" data-panel="explore">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../welcome.html">GigaMap Reference Manual</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../welcome.html">Welcome</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../rationale.html">Rationale</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../getting-started.html">Getting Started</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../indexing/index.html">Indexing</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../indexing/types.html">Index Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../indexing/defining.html">Defining Indices</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Queries</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="defining.html">Defining Queries</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="executing.html">Executing Queries</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../persistence.html">Persistence</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">GigaMap Reference Manual</span>
+    <span class="version">1.0</span>
+  </div>
   <ul class="components">
-    <li class="component">
-      <div class="title"><a href="/enterprise/gigamap/1/welcome.html">GigaMap Reference Manual</a></div>
+    <li class="component is-current">
+      <div class="title"><a href="../welcome.html">GigaMap Reference Manual</a></div>
       <ul class="versions">
-        <li class="version is-latest">
-          <a href="/enterprise/gigamap/1/welcome.html">1.0</a>
+        <li class="version is-current is-latest">
+          <a href="../welcome.html">1.0</a>
         </li>
       </ul>
     </li>
     <li class="component">
-      <div class="title"><a href="/enterprise/manual/1/welcome.html">MicroStream Enterprise Reference Manual</a></div>
+      <div class="title"><a href="../../../manual/1/welcome.html">MicroStream Enterprise Reference Manual</a></div>
       <ul class="versions">
         <li class="version is-latest">
-          <a href="/enterprise/manual/1/welcome.html">1.0</a>
+          <a href="../../../manual/1/welcome.html">1.0</a>
         </li>
       </ul>
     </li>
@@ -68,18 +123,63 @@
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../welcome.html">GigaMap Reference Manual</a></li>
+    <li><a href="index.html">Queries</a></li>
+    <li><a href="defining.html">Defining Queries</a></li>
+  </ul>
 </nav>
+<div class="edit-this-page"><a href="https://github.com/microstream-one/gigamap/edit/docs/docs/modules/ROOT/pages/queries/defining.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
 <article class="doc">
-<h1 class="page">Page Not Found</h1>
+<h1 class="page">Defining Queries</h1>
 <div class="paragraph">
-<p>The page you&#8217;re looking for does not exist. It may have been moved. You can follow one of the links in the navigation to the left.</p>
+<p>Given these <a href="../indexing/defining.html" class="xref page">example indexers</a>, it is straightforward to define queries, just use the self-explanatory API.</p>
 </div>
 <div class="paragraph">
-<p>If you arrived on this page by clicking on a link, please notify the owner of the site that the link is broken.
-If you typed the URL of this page manually, please double check that you entered the address correctly.</p>
+<p>This query searches for persons called 'John', <code>firstName</code> is a static imported field from the class where we defined our indices before.</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">gigaMap.query(firstName.is("John"));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Conditions can be linked with <code>and</code> and <code>or</code>, respectively.</p>
+</div>
+<div class="paragraph">
+<p>This one searches for all persons called 'John' or 'Jim'.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">gigaMap.query(firstName.is("John").or(firstName.is("Jim")));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or use the <code>in</code> condition instead.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">gigaMap.query(firstName.in("John", "Jim"));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is possible to compare to fixed values, but we can also use predicates.
+This enables us to use any custom logic inside query definitions if the predefined ones are not sufficient.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">gigaMap.query(firstName.is(name -&gt; name.length() &gt; 3));</code></pre>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="index.html">Queries</a></span>
+  <span class="next"><a href="executing.html">Executing Queries</a></span>
+</nav>
 </article>
   </div>
 </main>
@@ -96,7 +196,7 @@ If you typed the URL of this page manually, please double check that you entered
 <a href="https://microstream.one/privacy/">Privacy</a>
 <span class="link-separator">&nbsp;&#124;&nbsp;</span>
 <a href="https://microstream.one/legal-notice/">Legal notice</a>
-</footer><script id="site-script" src="/enterprise/_/js/site.js" data-ui-root-path="/enterprise/_"></script>
-<script async src="/enterprise/_/js/vendor/highlight.js"></script>
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
   </body>
 </html>
