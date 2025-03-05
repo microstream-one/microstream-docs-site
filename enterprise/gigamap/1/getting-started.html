@@ -128,7 +128,7 @@
     <li><a href="getting-started.html">Getting Started</a></li>
   </ul>
 </nav>
-<div class="edit-this-page"><a href="https://github.com/microstream-one/gigamap/edit/docs/docs/modules/ROOT/pages/getting-started.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://github.com/microstream-one/gigamap/edit/main/docs/modules/ROOT/pages/getting-started.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -142,7 +142,13 @@
 <div class="listingblock">
 <div class="title">Maven [pom.xml]</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;repository&gt;
+    &lt;id&gt;ms-ee&lt;/id&gt;
+    &lt;name&gt;Microstream Enterprise Releases&lt;/name&gt;
+    &lt;url&gt;https://repo.microstream.one/repository/ms-ee/&lt;/url&gt;
+&lt;/repository&gt;
+
+&lt;dependency&gt;
     &lt;groupId&gt;one.microstream&lt;/groupId&gt;
     &lt;artifactId&gt;gigamap&lt;/artifactId&gt;
     &lt;version&gt;1.0.0&lt;/version&gt;
