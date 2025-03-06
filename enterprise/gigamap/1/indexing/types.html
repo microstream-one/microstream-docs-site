@@ -85,6 +85,9 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../crud.html">CRUD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../persistence.html">Persistence</a>
   </li>
 </ul>
@@ -150,6 +153,22 @@
 <div class="paragraph">
 <p>This is just a standard index that can include duplicate values. In fact, this is the most efficient type, as the bitmap index can compress this dataset and minimize memory overhead.</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// use the builder
+final GigaMap&lt;Person&gt; gigaMap = GigaMap.&lt;Person&gt;Builder()
+    .withBitmapIndex(PersonIndices.firstName)
+    .withBitmapIndex(PersonIndices.lastName)
+    ...
+    .build();
+
+// or register it after creating
+GigaMap&lt;Person&gt; gigaMap = GigaMap.New();
+gigaMap.index().bitmap().ensure(PersonIndices.firstName);
+gigaMap.index().bitmap().ensure(PersonIndices.lastName);
+...</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -158,16 +177,46 @@
 <div class="paragraph">
 <p>Index with a unique constraint.</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// use the builder
+final GigaMap&lt;Person&gt; gigaMap = GigaMap.&lt;Person&gt;Builder()
+    .withBitmapUniqueIndex(PersonIndices.id)
+    ...
+    .build();
+
+// or register it after creating
+GigaMap&lt;Person&gt; gigaMap = GigaMap.New();
+gigaMap.index().bitmap().addUniqueConstraint(PersonIndices.id);
+...</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_identifier_index"><a class="anchor" href="#_identifier_index"></a>Identifier Index</h2>
+<h2 id="_identity_index"><a class="anchor" href="#_identity_index"></a>Identity Index</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Unique index, which will be used exclusively to identify an entity.</p>
+<p>Unique index, which will be used exclusively to identify an entity. It can consist of one or more indexers.</p>
 </div>
 <div class="paragraph">
 <p>To elaborate on that: When looking up or removing entities, the GigaMap doesn&#8217;t traverse all data, as that would be too inefficient. Instead, it creates an internal query based on the index definitions to look up entries. If no identifier index is provided, a compound one will be created using all standard indices.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// use the builder
+final GigaMap&lt;Person&gt; gigaMap = GigaMap.&lt;Person&gt;Builder()
+    .withBitmapIdentityIndex(PersonIndices.id)
+    ...
+    .build();
+
+// or register it after creating
+GigaMap&lt;Person&gt; gigaMap = GigaMap.New();
+final BitmapIndices&lt;E&gt; bitmap = this.gigaMap.index().bitmap();
+bitmap.ensure(PersonIndices.id); // add index first
+bitmap.setIdentityIndices(PersonIndices.id); // set as identity
+...</code></pre>
+</div>
 </div>
 </div>
 </div>
