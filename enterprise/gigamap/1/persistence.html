@@ -64,10 +64,19 @@
     <a class="nav-link" href="indexing/index.html">Indexing</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="indexing/types.html">Index Types</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="indexing/bitmap/index.html">Bitmap Index</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="indexing/bitmap/types.html">Index Types</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="indexing/bitmap/defining.html">Defining Indices</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="indexing/defining.html">Defining Indices</a>
+    <a class="nav-link" href="indexing/lucene/index.html">Lucene Index</a>
   </li>
 </ul>
   </li>
@@ -97,14 +106,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">GigaMap Reference Manual</span>
-    <span class="version">1.0</span>
+    <span class="version">1</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <div class="title"><a href="welcome.html">GigaMap Reference Manual</a></div>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="welcome.html">1.0</a>
+          <a href="welcome.html">1</a>
         </li>
       </ul>
     </li>
@@ -174,6 +183,24 @@
 </div>
 <div class="paragraph">
 <p>The GigaMap monitors changes internally, ensuring that only the modified parts are written to the storage.</p>
+</div>
+<div class="paragraph">
+<p>This applies to all internal changes of the GigaMap as well as to added and removed entities.</p>
+</div>
+<div class="paragraph">
+<p>But when entities have been modified, not only the GigaMap has to be stored, but the entities itself as well. This is the same behavior as with normal collections.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s say we update an entity where the update affects the indices, then we have to store both, the GigaMap and the entity.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">gigaMap.update(person, p -&gt; {
+    p.setLastName("Smith"),
+    p.setAddress(newAddress)
+});
+storageManager.storeAll(gigaMap, person);</code></pre>
+</div>
 </div>
 </div>
 </div>

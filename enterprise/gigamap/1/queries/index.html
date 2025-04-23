@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Queries :: MicroStream Enterprise Reference Manual</title>
     <link rel="canonical" href="https://docs.microstream.one/enterprise/gigamap/1/queries/index.html">
-    <link rel="prev" href="../indexing/defining.html">
+    <link rel="prev" href="../indexing/lucene/index.html">
     <link rel="next" href="defining.html">
     <meta name="generator" content="Antora 3.1.2">
     <link rel="stylesheet" href="../../../_/css/site.css">
@@ -65,10 +65,19 @@
     <a class="nav-link" href="../indexing/index.html">Indexing</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../indexing/types.html">Index Types</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../indexing/bitmap/index.html">Bitmap Index</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../indexing/bitmap/types.html">Index Types</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../indexing/bitmap/defining.html">Defining Indices</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../indexing/defining.html">Defining Indices</a>
+    <a class="nav-link" href="../indexing/lucene/index.html">Lucene Index</a>
   </li>
 </ul>
   </li>
@@ -98,14 +107,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">GigaMap Reference Manual</span>
-    <span class="version">1.0</span>
+    <span class="version">1</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <div class="title"><a href="../welcome.html">GigaMap Reference Manual</a></div>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="../welcome.html">1.0</a>
+          <a href="../welcome.html">1</a>
         </li>
       </ul>
     </li>
@@ -148,7 +157,7 @@
 <p>Queries are executed on the index; then, while traversing the results, all relevant segments of GigaMap&#8217;s data are loaded lazily.</p>
 </div>
 <div class="paragraph">
-<p>The <a href="../indexing/index.html#_indexers" class="xref page">indexer</a> instances are utilized to create query conditions.</p>
+<p>The <a href="../indexing/bitmap/index.html#_indexers" class="xref page">indexer</a> instances are utilized to create query conditions.</p>
 </div>
 <div class="paragraph">
 <p>Each of them comes with specialized query methods.</p>
@@ -470,7 +479,7 @@
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="../indexing/defining.html">Defining Indices</a></span>
+  <span class="prev"><a href="../indexing/lucene/index.html">Lucene Index</a></span>
   <span class="next"><a href="defining.html">Defining Queries</a></span>
 </nav>
 </article>

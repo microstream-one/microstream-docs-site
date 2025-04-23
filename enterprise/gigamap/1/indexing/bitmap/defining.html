@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Installation - Stand alone cluster :: MicroStream Enterprise Reference Manual</title>
-    <link rel="canonical" href="https://docs.microstream.one/enterprise/manual/1/on-premises/aws_eks_onprem_setup/installation-stand-alone.html">
-    <link rel="prev" href="requirements_stand_alone.html">
+    <title>Defining Indices :: MicroStream Enterprise Reference Manual</title>
+    <link rel="canonical" href="https://docs.microstream.one/enterprise/gigamap/1/indexing/bitmap/defining.html">
+    <link rel="prev" href="types.html">
+    <link rel="next" href="../lucene/index.html">
     <meta name="generator" content="Antora 3.1.2">
     <link rel="stylesheet" href="../../../../_/css/site.css">
   <link rel="icon" type="image/png" sizes="32x32" href="https://www.microstream.one/favicon-32x32.png">
@@ -40,13 +41,13 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="manual" data-version="1">
+<div class="nav-container" data-component="gigamap" data-version="1">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
     <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
-    <h3 class="title"><a href="../../welcome.html">MicroStream Enterprise Reference Manual</a></h3>
+    <h3 class="title"><a href="../../welcome.html">GigaMap Reference Manual</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
@@ -54,64 +55,49 @@
     <a class="nav-link" href="../../welcome.html">Welcome</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../installation.html">Installation</a>
+    <a class="nav-link" href="../../rationale.html">Rationale</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../getting-started.html">Getting Started</a>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../cloud/index.html">MicroStream SaaS Cluster</a>
+    <a class="nav-link" href="../index.html">Indexing</a>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../cloud/architecture.html">Architecture</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../cloud/getting-started.html">Getting Started</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../cloud/management-console.html">The Cloud Management Console</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../cloud/managing-your-cluster.html">Managing your MicroStream SaaS Cluster</a>
-  </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../cloud/starter-templates/index.html">Starter Templates</a>
+    <a class="nav-link" href="index.html">Bitmap Index</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../cloud/starter-templates/micronaut.html">Micronaut</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../cloud/starter-templates/spring-boot.html">Spring-Boot</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../cloud/starter-templates/helidon.html">Helidon</a>
-  </li>
-</ul>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../on-prem-cluster.html">MicroStream On-Premises Cluster</a>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../on-prem-multi-cluster-console.html">Multiple clusters managed via a console frontend <strong>Coming soon</strong></a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../on-prem-single-cluster.html">Single cluster installation without console frontend</a>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="architecture_stand_alone.html">Architecture</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="requirements_stand_alone.html">Requirements</a>
+    <a class="nav-link" href="types.html">Index Types</a>
   </li>
   <li class="nav-item is-current-page" data-depth="3">
-    <a class="nav-link" href="installation-stand-alone.html">Installation</a>
+    <a class="nav-link" href="defining.html">Defining Indices</a>
   </li>
 </ul>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lucene/index.html">Lucene Index</a>
+  </li>
 </ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../queries/index.html">Queries</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../queries/defining.html">Defining Queries</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../queries/executing.html">Executing Queries</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../crud.html">CRUD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../persistence.html">Persistence</a>
   </li>
 </ul>
   </li>
@@ -120,23 +106,23 @@
 </div>
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
-    <span class="title">MicroStream Enterprise Reference Manual</span>
-    <span class="version">1.0</span>
+    <span class="title">GigaMap Reference Manual</span>
+    <span class="version">1</span>
   </div>
   <ul class="components">
-    <li class="component">
-      <div class="title"><a href="../../../../gigamap/1/welcome.html">GigaMap Reference Manual</a></div>
+    <li class="component is-current">
+      <div class="title"><a href="../../welcome.html">GigaMap Reference Manual</a></div>
       <ul class="versions">
-        <li class="version is-latest">
-          <a href="../../../../gigamap/1/welcome.html">1</a>
+        <li class="version is-current is-latest">
+          <a href="../../welcome.html">1</a>
         </li>
       </ul>
     </li>
-    <li class="component is-current">
-      <div class="title"><a href="../../welcome.html">MicroStream Enterprise Reference Manual</a></div>
+    <li class="component">
+      <div class="title"><a href="../../../../manual/1/welcome.html">MicroStream Enterprise Reference Manual</a></div>
       <ul class="versions">
-        <li class="version is-current is-latest">
-          <a href="../../welcome.html">1.0</a>
+        <li class="version is-latest">
+          <a href="../../../../manual/1/welcome.html">1.0</a>
         </li>
       </ul>
     </li>
@@ -150,375 +136,272 @@
 <button class="nav-toggle"></button>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
-    <li><a href="../../welcome.html">MicroStream Enterprise Reference Manual</a></li>
-    <li><a href="../on-prem-cluster.html">MicroStream On-Premises Cluster</a></li>
-    <li><a href="../on-prem-single-cluster.html">Single cluster installation without console frontend</a></li>
-    <li><a href="installation-stand-alone.html">Installation</a></li>
+    <li><a href="../../welcome.html">GigaMap Reference Manual</a></li>
+    <li><a href="../index.html">Indexing</a></li>
+    <li><a href="index.html">Bitmap Index</a></li>
+    <li><a href="defining.html">Defining Indices</a></li>
   </ul>
 </nav>
-<div class="edit-this-page"><a href="https://github.com/microstream-one/microstream-private/edit/docs/fh/enterprise/docs/modules/on-premises/pages/aws_eks_onprem_setup/installation-stand-alone.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://github.com/microstream-one/gigamap/edit/main/docs/modules/ROOT/pages/indexing/bitmap/defining.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Installation - Stand alone cluster</h1>
-<div class="sect1">
-<h2 id="_1_create_the_namespace_to_contain_all_cluster_resources"><a class="anchor" href="#_1_create_the_namespace_to_contain_all_cluster_resources"></a>1. Create the namespace to contain all cluster resources</h2>
+<h1 class="page">Defining Indices</h1>
+<div id="preamble">
 <div class="sectionbody">
+<div class="paragraph">
+<p>There are two different ways to define indices for the GigaMap; by implementing or by annotating. Or use both in combination.</p>
+</div>
+<div class="paragraph">
+<p>The following entities are given:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl create namespace my-microstream-cluster</code></pre>
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class Person
+{
+    private long           id           ;
+    private String         firstName    ;
+    private String         lastName     ;
+    private LocalDate      dateOfBirth  ;
+    private Address        address      ;
+    private MaritalStatus  maritalStatus;
+    private List&lt;Interest&gt; interests    ;
+
+    // ...
+}
+
+public class Address
+{
+    private String street ;
+    private String city   ;
+    private String country;
+
+    // ...
+}
+
+public enum MaritalStatus
+{
+    MARRIED,
+    WIDOWED,
+    SEPARATED,
+    DIVORCED,
+    SINGLE
+}
+
+public enum Interest
+{
+    SPORTS,
+    LITERATURE,
+    PARTY,
+    CHARITY
+}</code></pre>
 </div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>If it says created successful all is good. If not there might be some permission / io or other problems on the user side.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_2_switch_into_the_namespace"><a class="anchor" href="#_2_switch_into_the_namespace"></a>2. Switch into the namespace</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl config set-context --namespace='my-microstream-cluster' --current</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>This just makes it so when the user types in kubectl commands, they are issued to the specified namespace (so <code>kubectl create</code> actually does <code>kubectl create --namespace my-microstream-cluster</code>)</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_3_save_the_latest_version_in_a_variable"><a class="anchor" href="#_3_save_the_latest_version_in_a_variable"></a>3. Save the latest version in a variable</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">VERSION=$(curl --silent https://api.github.com/repos/microstream-one/microstream-cluster-kubernetes-files/releases/latest | grep tag_name | awk -F'"' '{print $4}')</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>There might be problems with our server (if it doesn&#8217;t exit for example&#8230;&#8203;). This will be important for all other steps as we pull all the required resources from that server. Should say nothing if it was successful.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_4_create_the_docker_registry_credential_secret"><a class="anchor" href="#_4_create_the_docker_registry_credential_secret"></a>4. Create the docker registry credential secret</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl create secret docker-registry microstream-ocir-credentials --docker-server='https://ocir.microstream.one/onprem' --docker-username='DOCKER_USER' --docker-password='DOCKER_PASSWORD</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>If this fails then our ocir might be down or the user doesn&#8217;t have access. Illegal password/user etc.</p>
-</li>
-<li>
-<p>Replace "DOCKER_USER" and "DOCKER_PASSWORD" with your own credencials.</p>
-</li>
-</ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_5_create_the_kafka_cluster"><a class="anchor" href="#_5_create_the_kafka_cluster"></a>5. Create the kafka cluster</h2>
+<h2 id="_by_implementation"><a class="anchor" href="#_by_implementation"></a>By Implementation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Distributes data from the writer storage node to other storage nodes and the master node</p>
+<p>Implementing indices requires a bit more initial work when defining them compared to using annotations; however, it becomes easier later on when you work with them, such as when creating queries.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Create the kafka service. This allows the storage and master pods to communicate with kafka</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>We define several indices for the properties of <code>Person</code>. A good practice is to keep the indexer instances as singletons, allowing for easy access later on.</p>
+</div>
+<div class="paragraph">
+<p>Either define them directly in the entity class or separately.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Indexer</code> implementations must at least override the method that extracts the key value. By default, the name of the index is derived from its declaration; for example, when written as a constant, the fully qualified name of the constant will be used. If you want to provide a name yourself, simply override the <code>name()</code> method.</p>
+</div>
+<div class="paragraph">
+<p>The predefined indexers are usually sufficient; just extend from their <code>Abstract</code> base type.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.0.0/kafka_service.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class PersonIndices
+{
+    public final static BinaryIndexer&lt;Person&gt; idIndex = new BinaryIndexer.Abstract&lt;&gt;()
+    {
+        // good practice to provide a custom name, but not absolutely necessary
+        public String name()
+        {
+            return "id";
+        }
+
+        @Override
+        protected long indexEntity_long(final Person entity)
+        {
+            return entity.getId();
+        }
+    };
+
+	// ...
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Check that the created resource exists with <code>kubectl get service</code></p>
+<p>If you want to index a custom type for which there is no predefined indexer available, simply extend from the 'Indexer.Abstract' base type.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Create the kafka statefulset. This uses our wrapped kafka image that converts envars to config values and interprets some envar template things</p>
-</li>
-</ul>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Keep in mind that indexers use value equality by default, so when using a custom key type make sure to implement <code>equals</code> and <code>hashCode</code>. In this case we are using an <code>enum</code> which implements it by default.
+</td>
+</tr>
+</table>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.0.0/kafka_statefulset.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public final static Indexer&lt;Person, MaritalStatus&gt; maritalStatus = new Indexer.Abstract&lt;&gt;()
+{
+    @Override
+    public Class&lt;MaritalStatus&gt; keyType()
+    {
+        return MaritalStatus.class;
+    }
+
+    @Override
+    public MaritalStatus indexEntity(Person person)
+    {
+        return person.getMaritalStatus();
+    }
+};</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Check that the created resource exists with <code>kubectl get pod</code>. It&#8217;s fully up and running when it says Ready 1/1<br>
-If something goes wrong, check the event log with <code>kubectl describe deployment/kafka</code> (at the bottom)<br>
-Check the stdout/stderr logs with <code>kubectl logs deployment/kafka</code><br>
-Check that the pvc is created and ok with  <code>kubectl get pvc</code> and the event log with <code>kubectl describe pvc/logs-kafka-0</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Now we need to create the topic on the kafka. Default topic name is "storage-data"</p>
-</li>
-</ul>
+<p>Collections can also be indexed. In fact, everything that implements <code>Iterable</code> is supported.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl exec pod/kafka-0 -ti -- /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --topic storage-data --create</code></pre>
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public final static IndexerMultiValue&lt;Person, Interest&gt; interests = new IndexerMultiValue.Abstract&lt;&gt;()
+{
+    @Override
+    public Class&lt;Interest&gt; keyType()
+    {
+        return Interest.class;
+    }
+
+    @Override
+    public Iterable&lt;? extends Interest&gt; indexEntityMultiValue(Person entity)
+    {
+        return entity.getInterests();
+    }
+};</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This command will spit out an error if something goes wrong. If it succeeds it&#8217;s all good!</p>
+<p>With custom logic, you can define any indexer you can imagine, not just returning values from the entity. For instance, this one creates a generation index.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">enum Generation {BOOMER, GEN_X, GEN_Y, GEN_Z, GEN_ALPHA, GEN_BETA}
+
+public final static Indexer&lt;Person, Generation&gt; generation = new Indexer.Abstract&lt;&gt;()
+{
+    @Override
+    public Class&lt;Generation&gt; keyType()
+    {
+        return Generation.class;
+    }
+
+    @Override
+    public Generation indexEntity(Person person)
+    {
+        int year = person.getDateOfBirth().getYear();
+        if(year &lt;= 1964) return Generation.BOOMER;
+        if(year &lt;= 1980) return Generation.GEN_X;
+        // and so on
+    }
+};</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_registration"><a class="anchor" href="#_registration"></a>Registration</h3>
+<div class="paragraph">
+<p>When creating the GigaMap, the previously defined indices must be registered.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">GigaMap&lt;Person&gt; gigaMap = GigaMap.&lt;Person&gt;Builder()
+    .withBitmapIdentityIndex(PersonIndices.id)
+    .withBitmapIndex(PersonIndices.maritalStatus)
+    .withBitmapIndex(PersonIndices.interests)
+    // ...
+    .build();</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_6_create_the_master_node"><a class="anchor" href="#_6_create_the_master_node"></a>6. Create the master node</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>This holds the storage in a persistent volume and provides it to newly started storage nodes.</p>
-</li>
-<li>
-<p>Create the masternode storage persistent volume claim. This creates a dynamic persistent volume handle with the given storage capacity in the pre-configured storage backend. Note: It must support ReadWriteMany.</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.0.0/masternode_pvclaim.yaml"</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Check that the created resource exists with <code>kubectl get pvc</code>. Check there are no errors in the event log with <code>kubectl describe pvc/masternode-storage</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Create the masternode pod. It is used to update the storage from pulling updates from kafka.</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.0.0/masternode_pod.yaml</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Import your rest service application. Import the jar file with:</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl cp -c prepare-masternode /path/to/jar masternode:/storage/project/project.jar</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Import the libs folder (if you have one. Fatjars don&#8217;t have a libs folder) with:</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl cp -c prepare-masternode /path/to/libs masternode:/storage/project</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Tell the masternode that the user project is good to go with:</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl exec -ti -c prepare-masternode pod/masternode -- touch /storage/project/ready</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Check that the created resource exists with <code>kubectl get pod</code>. It&#8217;s fully up and running when it says Ready 1/1
-If something goes wrong, check the event log with <code>kubectl describe pod/masternode</code> (at the bottom)<br>
-Check the stdout/stderr logs of the init container with <code>kubectl logs -c prepare-masternode pod/masternode</code>.<br>
-Check the normal logs with <code>kubectl logs -c masternode pod/masternode</code></p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_7_create_the_storage_nodes"><a class="anchor" href="#_7_create_the_storage_nodes"></a>7. Create the storage nodes</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>These hold copies of the storage data and process the read and write requests. One special node is a writer node that processes all write requests.</p>
-</li>
-<li>
-<p>Create the storagenode and storagenode-headless service. These are accessed by the proxy pods.</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.0.0/storagenode_service.yaml"</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Check that the created resource exists with <code>kubectl get service</code>. There should be a node-headless and a storagenode service.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Create the storagenode statefulset. This contains the information for replication count for the storagenode pods.</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.0.0/storagenode_statefulset.yaml"</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Check that the created resource exists with <code>kubectl get pod</code>. It&#8217;s fully up and running when it says Ready 1/1<br>
-If something goes wrong, check the event log with <code>kubectl describe statefulset/storagenode</code> (at the bottom)<br>
-Check the stdout/stderr logs of the init container with <code>kubectl logs -c prepare-storagenode statefulset/storagenode</code>.<br>
-Check the normal logs with <code>kubectl logs -c storagenode statefulset/storagenode</code></p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_8_create_the_proxy"><a class="anchor" href="#_8_create_the_proxy"></a>8. Create the proxy</h2>
+<h2 id="_with_annotations"><a class="anchor" href="#_with_annotations"></a>With Annotations</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Use this service to access your cluster.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Create the nginx config as a configmap. Please keep in mind, that the name of the namespace appears several times in the config map. If your name is different you have to change that.</p>
-</li>
-</ul>
+<p>Alternatively, indices can be defined by annotating the relevant fields of the entity.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.0.0/proxy_configmap.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class Person
+{
+	@Index @Identity
+    private long           id           ;
+
+    @Index
+    private String         firstName    ;
+
+    @Index
+    private String         lastName     ;
+
+    @Index
+    private LocalDate      dateOfBirth  ;
+
+    private Address        address      ;
+
+    private MaritalStatus  maritalStatus;
+
+    @Index
+    private List&lt;Interest&gt; interests    ;
+
+    // ...
+}</code></pre>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_registration_2"><a class="anchor" href="#_registration_2"></a>Registration</h3>
 <div class="paragraph">
-<p>Check that the created resource exists with <code>kubectl get configmap</code><br>
-Check the contents with <code>kubectl describe configmap/proxy</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Create the proxy service. This allows other pods and services to reach the proxy pods</p>
-</li>
-</ul>
+<p>When creating the GigaMap, the indices must also be registered.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.0.0/proxy_service.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">GigaMap&lt;Person&gt; gigaMap = GigaMap.New();
+BitmapIndices&lt;Person&gt; bitmapIndices = gigaMap.index().bitmap();
+IndexerGenerator.AnnotationBased(Person.class).generateIndices(bitmapIndices);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Check that the created resource exists with <code>kubectl get service</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Create the proxy deployment. Automatically manages the scaling of proxy pods</p>
-</li>
-</ul>
+<p>Since there are no constants in your code, you need to reference the generated indexers.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.0.0/proxy_deployment.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">BitmapIndices&lt;Person&gt; bitmapIndices = gigaMap.index().bitmap();
+IndexerString&lt;Person&gt; firstNameIndex = bitmapIndices.getStringIndex("firstName");
+// ...</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Check that the created resource exists with <code>kubectl get pod</code>. It&#8217;s fully up and running when it says Ready 1/1.<br>
-If something goes wrong, check the event log with <code>kubectl describe deploy/proxy</code> (at the bottom).<br>
-Check the stdout/stderr logs with <code>kubectl logs deploy/proxy</code></p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_9_create_the_writerproxy"><a class="anchor" href="#_9_create_the_writerproxy"></a>9. Create the writerproxy.</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Stores the current writer and elects new ones when old ones go down. Proxies requests from the proxy to the storage nodes</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Create the writerproxy service. This allows the proxy pods to reach the writerproxy pod</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.0.0/writerproxy_service.yaml"</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Create the writerproxy rbac resources. These give the writerproxy access to list all pods in the namespace. This is needed so the writerproxy knows what storagenodes are running.</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.0.0/writerproxy_rbac.yaml"</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Check the resources exist with <code>kubectl get sa,role,rolebinding</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Create the writerproxy pod</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.0.0/writerproxy_pod.yaml"</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Check that the created resource exists with <code>kubectl get pod</code>. It&#8217;s fully up and running when it says Ready 1/1.<br>
-If something goes wrong, check the event log with <code>kubectl describe pod/writerproxy</code> (at the bottom)<br>
-Check the stdout/stderr logs with <code>kubectl logs pod/writerproxy</code></p>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="requirements_stand_alone.html">Requirements</a></span>
+  <span class="prev"><a href="types.html">Index Types</a></span>
+  <span class="next"><a href="../lucene/index.html">Lucene Index</a></span>
 </nav>
 </article>
   </div>
