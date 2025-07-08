@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>How does a Cluster in the MicroStream Cloud work? :: MicroStream Enterprise Reference Manual</title>
+    <title>How does a Cluster in Eclipse Data Grid work? :: MicroStream Enterprise Reference Manual</title>
     <link rel="canonical" href="https://docs.microstream.one/enterprise/manual/1/cloud/architecture.html">
     <link rel="prev" href="index.html">
     <link rel="next" href="getting-started.html">
@@ -47,7 +47,7 @@
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
     <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
-    <h3 class="title"><a href="../welcome.html">MicroStream Enterprise Reference Manual</a></h3>
+    <h3 class="title"><a href="../welcome.html">Eclipse Data Grid Reference Manual</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
@@ -59,7 +59,7 @@
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="index.html">MicroStream SaaS Cluster</a>
+    <a class="nav-link" href="index.html">Eclipse Data Grid SaaS</a>
 <ul class="nav-list">
   <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="architecture.html">Architecture</a>
@@ -71,7 +71,7 @@
     <a class="nav-link" href="management-console.html">The Cloud Management Console</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="managing-your-cluster.html">Managing your MicroStream SaaS Cluster</a>
+    <a class="nav-link" href="managing-your-cluster.html">Managing your Eclipse Data Grid SaaS Cluster</a>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
@@ -92,7 +92,7 @@
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../on-premises/on-prem-cluster.html">MicroStream On-Premises Cluster</a>
+    <a class="nav-link" href="../on-premises/on-prem-cluster.html">Eclipse Data Grid On-Premises Cluster</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../on-premises/on-prem-multi-cluster-console.html">Multiple clusters managed via a console frontend <strong>Coming soon</strong></a>
@@ -121,23 +121,23 @@
 </div>
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
-    <span class="title">MicroStream Enterprise Reference Manual</span>
+    <span class="title">Eclipse Data Grid Reference Manual</span>
     <span class="version">1.0</span>
   </div>
   <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../welcome.html">Eclipse Data Grid Reference Manual</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../welcome.html">1.0</a>
+        </li>
+      </ul>
+    </li>
     <li class="component">
       <div class="title"><a href="../../../gigamap/1/welcome.html">GigaMap Reference Manual</a></div>
       <ul class="versions">
         <li class="version is-latest">
           <a href="../../../gigamap/1/welcome.html">1</a>
-        </li>
-      </ul>
-    </li>
-    <li class="component is-current">
-      <div class="title"><a href="../welcome.html">MicroStream Enterprise Reference Manual</a></div>
-      <ul class="versions">
-        <li class="version is-current is-latest">
-          <a href="../welcome.html">1.0</a>
         </li>
       </ul>
     </li>
@@ -151,34 +151,34 @@
 <button class="nav-toggle"></button>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
-    <li><a href="../welcome.html">MicroStream Enterprise Reference Manual</a></li>
-    <li><a href="index.html">MicroStream SaaS Cluster</a></li>
+    <li><a href="../welcome.html">Eclipse Data Grid Reference Manual</a></li>
+    <li><a href="index.html">Eclipse Data Grid SaaS</a></li>
     <li><a href="architecture.html">Architecture</a></li>
   </ul>
 </nav>
-<div class="edit-this-page"><a href="https://github.com/microstream-one/microstream-private/edit/docs/fh/enterprise/docs/modules/cloud/pages/architecture.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://github.com/microstream-one/microstream-private/edit/master/enterprise/docs/modules/cloud/pages/architecture.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">How does a Cluster in the MicroStream Cloud work?</h1>
+<h1 class="page">How does a Cluster in Eclipse Data Grid work?</h1>
 <div class="sect1">
 <h2 id="_your_project"><a class="anchor" href="#_your_project"></a>Your Project</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Your project acts as the entrypoint for your cluster. It needs to contain REST-Endpoints for getting data and storing data. After ClusterStorageManager.store(Object) is called, the MicroStream nodes will synchronize themselves, making the stored data available on all the nodes. For more information on how your project should look, you can check out the <a href="starter-templates/index.html" class="xref page">Starter Templates</a></p>
+<p>Your project acts as the entrypoint for your cluster. It needs to contain REST-Endpoints for getting data and storing data. After ClusterStorageManager.store(Object) is called, the storage nodes will synchronize themselves, making the stored data available on all the nodes. For more information on how your project should look, you can check out the <a href="starter-templates/index.html" class="xref page">Starter Templates</a></p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_the_microstream_nodes"><a class="anchor" href="#_the_microstream_nodes"></a>The MicroStream Nodes</h2>
+<h2 id="_the_storage_nodes"><a class="anchor" href="#_the_storage_nodes"></a>The Storage Nodes</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_single_writer_architecture"><a class="anchor" href="#_single_writer_architecture"></a>Single Writer Architecture</h3>
 <div class="paragraph">
-<p>MicroStream Cluster employs a single-writer architecture, where a dedicated Writer node is responsible for handling all write operations. This design offers several advantages:</p>
+<p>Eclipse Data Grid employs a single-writer architecture, where a dedicated Writer node is responsible for handling all write operations. This design offers several advantages:</p>
 </div>
 <div class="paragraph">
 <p><strong>Benefits of Single-Writer Architecture:</strong></p>
@@ -200,7 +200,7 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>By adopting this architecture, MicroStream Cluster provides a reliable, scalable, and high-performance platform for data-intensive applications.</p>
+<p>By adopting this architecture, Eclipse Data Grid provides a reliable, scalable, and high-performance platform for data-intensive applications.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -211,7 +211,7 @@
 <div class="sect2">
 <h3 id="_reader_node"><a class="anchor" href="#_reader_node"></a>Reader Node</h3>
 <div class="paragraph">
-<p>Reader nodes are dedicated to handling read requests. They efficiently retrieve object references from storage (if not already cached in memory) and deliver the data to the requesting client. By default, GET, TRACE, OPTIONS, CONNECT and HEAD requests are considered read requests. This can be changed within the settings of your MicroStream Cluster.</p>
+<p>Reader nodes are dedicated to handling read requests. They efficiently retrieve object references from storage (if not already cached in memory) and deliver the data to the requesting client. By default, GET, TRACE, OPTIONS, CONNECT and HEAD requests are considered read requests. This can be changed within the settings of your Cluster.</p>
 </div>
 <div class="paragraph">
 <p><strong>Read Request Workflow:</strong></p>
@@ -219,7 +219,7 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>Client Request</strong>: A client sends a read request to the MicroStream Cluster.</p>
+<p><strong>Client Request</strong>: A client sends a read request to the Cluster.</p>
 </li>
 <li>
 <p><strong>Load Balancing</strong>: The load balancer forwards the request to a suitable Reader node.</p>
@@ -243,7 +243,7 @@
 </ol>
 </div>
 <div class="paragraph">
-<p>If the request includes search criteria, we&#8217;d recommend leveraging the Java Streams API to efficently filter, sort, or perform other operations as needed. For large datasets, the MicroStream GigaMap, an enterprise feature, may also be used.</p>
+<p>If the request includes search criteria, we&#8217;d recommend leveraging the Java Streams API to efficently filter, sort, or perform other operations as needed. For large datasets, the GigaMap may also be used.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -259,7 +259,7 @@
 <div class="sect2">
 <h3 id="_writer_node"><a class="anchor" href="#_writer_node"></a>Writer Node</h3>
 <div class="paragraph">
-<p>The Writer node is responsible for processing write requests. It ensures data durability and consistency by storing data locally and replicating it to Reader nodes. By default, PUT, POST, DELETE and PATCH requests are considered write requests. This can be changed within the settings of your MicroStream cluster.</p>
+<p>The Writer node is responsible for processing write requests. It ensures data durability and consistency by storing data locally and replicating it to Reader nodes. By default, PUT, POST, DELETE and PATCH requests are considered write requests. This can be changed within the settings of your cluster.</p>
 </div>
 <div class="paragraph">
 <p><strong>Write Request Workflow:</strong></p>
@@ -267,7 +267,7 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>Write Request:</strong> A client or your application sends a Write request to the MicroStream Cluster.</p>
+<p><strong>Write Request:</strong> A client or your application sends a Write request to the cluster.</p>
 </li>
 <li>
 <p><strong>Load Balancing:</strong> The load balancer forwards the request to the Writer node.</p>
@@ -341,22 +341,22 @@
 <div class="sect2">
 <h3 id="_writer_proxy_node"><a class="anchor" href="#_writer_proxy_node"></a>Writer Proxy Node</h3>
 <div class="paragraph">
-<p>MicroStream Cluster includes a Writer proxy node, which is a dedicated Java process running between the Load Balancer and the Writer node. The Writer Proxy is responsible for forwarding Write requests to the dedicated Writer node.</p>
+<p>Clusters includes a Writer proxy node, which is a dedicated Java process running between the Load Balancer and the Writer node. The Writer Proxy is responsible for forwarding Write requests to the dedicated Writer node.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_clients_and_communication"><a class="anchor" href="#_clients_and_communication"></a>Clients and Communication</h3>
 <div class="paragraph">
-<p>MicroStream Cluster can be accessed by any external application or service (clients), including desktop, web, mobile or IoT devices, as long as they can send REST requests to the MicroStream Cluster. This also includes any node of your clustered application. By default, REST requests of the type PUT, POST, DELETE and PATCH are forwarded to the elected Writer node, although this behaviour can be modified in your MicroStream Cluster settings.</p>
+<p>Clusters can be accessed by any external application or service (clients), including desktop, web, mobile or IoT devices, as long as they can send REST requests to the cluster. This also includes any node of your clustered application. By default, REST requests of the type PUT, POST, DELETE and PATCH are forwarded to the elected Writer node, although this behaviour can be modified in your cluster settings.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_consistency_in_microstream_cluster"><a class="anchor" href="#_consistency_in_microstream_cluster"></a>Consistency in MicroStream Cluster</h2>
+<h2 id="_consistency_in_eclipse_data_grid"><a class="anchor" href="#_consistency_in_eclipse_data_grid"></a>Consistency in Eclipse Data Grid</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>While MicroStream Cluster employs a single-writer architecture to ensure strong consistency for write operations, the overall standard consistency model of the cluster is eventual consistency. This means that while data is eventually replicated across all nodes, there might be a delay between the time a write operation is committed on the Writer node and the time it&#8217;s reflected on all Reader nodes.</p>
+<p>While Eclipse Data Grid employs a single-writer architecture to ensure strong consistency for write operations, the overall standard consistency model of the cluster is eventual consistency. This means that while data is eventually replicated across all nodes, there might be a delay between the time a write operation is committed on the Writer node and the time it&#8217;s reflected on all Reader nodes.</p>
 </div>
 <div class="sect2">
 <h3 id="_eventual_consistency"><a class="anchor" href="#_eventual_consistency"></a>Eventual Consistency:</h3>
@@ -396,13 +396,13 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>By adopting eventual consistency, MicroStream Cluster balances data consistency with system performance and availability, making it a suitable choice for a wide range of applications.</p>
+<p>By adopting eventual consistency, Eclipse Data Grid balances data consistency with system performance and availability, making it a suitable choice for a wide range of applications.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_strong_consistency"><a class="anchor" href="#_strong_consistency"></a>Strong Consistency:</h3>
 <div class="paragraph">
-<p>While MicroStream Cluster primarily operates on an eventual consistency model, it provides flexibility to implement stronger consistency guarantees for specific use cases. By understanding the trade-offs between consistency, availability, and partition tolerance (the CAP theorem), you can tailor the cluster&#8217;s behavior to meet your application&#8217;s unique requirements.</p>
+<p>While Eclipse Data Grid primarily operates on an eventual consistency model, it provides flexibility to implement stronger consistency guarantees for specific use cases. By understanding the trade-offs between consistency, availability, and partition tolerance (the CAP theorem), you can tailor the cluster&#8217;s behavior to meet your application&#8217;s unique requirements.</p>
 </div>
 <div class="paragraph">
 <p>Strong consistency ensures that a read always returns the most recent write. However, achieving strong consistency in a distributed system can be challenging and often involves significant overhead. There are various approaches to strong consistency, each with its own trade-offs:</p>
@@ -424,13 +424,13 @@
 <p>The choice of a strong consistency model depends on the specific requirements of your application. Factors such as the level of consistency needed, the desired performance, and the tolerance for failures should be carefully considered.</p>
 </div>
 <div class="paragraph">
-<p>By offering a flexible approach to consistency, MicroStream Cluster empowers you to balance the needs of your application with the complexities of distributed systems. You can choose to leverage the simplicity and scalability of eventual consistency for most use cases while implementing stronger consistency guarantees for critical data or operations.</p>
+<p>By offering a flexible approach to consistency, Eclipse Data Grid empowers you to balance the needs of your application with the complexities of distributed systems. You can choose to leverage the simplicity and scalability of eventual consistency for most use cases while implementing stronger consistency guarantees for critical data or operations.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_customizing_service"><a class="anchor" href="#_customizing_service"></a>Customizing Service</h3>
 <div class="paragraph">
-<p>MicroStream Cluster provides a flexible foundation for building scalable and reliable distributed applications. While the default behavior is eventual consistency, we offer consulting and customization services to help you achieve the optimal level of consistency for your specific use case. Whether you need strong consistency for critical data or the flexibility of eventual consistency for general-purpose workloads, our experts can work with you to design and implement the best solution.</p>
+<p>Eclipse Data Grid provides a flexible foundation for building scalable and reliable distributed applications. While the default behavior is eventual consistency, we offer consulting and customization services to help you achieve the optimal level of consistency for your specific use case. Whether you need strong consistency for critical data or the flexibility of eventual consistency for general-purpose workloads, our experts can work with you to design and implement the best solution.</p>
 </div>
 </div>
 </div>
@@ -439,7 +439,7 @@
 <h2 id="_kubernetes_as_the_foundation"><a class="anchor" href="#_kubernetes_as_the_foundation"></a>Kubernetes as the Foundation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>MicroStream Cluster runs on Kubernetes. If you run a MicroStream Cluster On-Prem, you&#8217;ll need first of all a Kubernetes environment. Kubernetes is a sophisticated platform that manages and orchestrates containerized applications. It ensures that your MicroStream Cluster components are always running, healthy, and scaled appropriately.</p>
+<p>Eclipse Data Grid runs on Kubernetes. If you run a Eclipse Data Grid On-Premises, you&#8217;ll need first of all a Kubernetes environment. Kubernetes is a sophisticated platform that manages and orchestrates containerized applications. It ensures that your Eclipse Data Grid components are always running, healthy, and scaled appropriately.</p>
 </div>
 <div class="paragraph">
 <p><strong>How it Works:</strong></p>
@@ -447,7 +447,7 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>Containerization:</strong> Your MicroStream application is packaged into a container, a standardized unit of software that includes everything it needs to run: code, libraries, and configurations.</p>
+<p><strong>Containerization:</strong> Your Eclipse Data Grid application is packaged into a container, a standardized unit of software that includes everything it needs to run: code, libraries, and configurations.</p>
 </li>
 <li>
 <p><strong>Kubernetes Deployment:</strong> Kubernetes takes these containers and deploys them across multiple nodes (physical or virtual machines) in your cluster.</p>
@@ -474,7 +474,7 @@
 </ol>
 </div>
 <div class="paragraph">
-<p>By leveraging Kubernetes, you can ensure the high availability, scalability, and efficient management of your MicroStream Cluster.</p>
+<p>By leveraging Kubernetes, you can ensure the high availability, scalability, and efficient management of your Eclipse Data Grid.</p>
 </div>
 </div>
 </div>
@@ -482,7 +482,7 @@
 <h2 id="_load_balancer"><a class="anchor" href="#_load_balancer"></a>Load Balancer</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>MicroStream Cluster leverages the underlying platform&#8217;s Load Balancer (nginx) (e.g., AWS) to strictly separate read and write requests.</p>
+<p>Eclipse Data Grid leverages the underlying platform&#8217;s Load Balancer (nginx) (e.g., AWS) to strictly separate read and write requests.</p>
 </div>
 <div class="paragraph">
 <p><strong>Read Requests:</strong></p>
@@ -513,7 +513,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>To ensure optimal performance and reliability of your MicroStream Cluster <strong>On-Premises</strong>, it&#8217;s crucial to employ a highly available load balancer. This guarantees seamless distribution of traffic across multiple nodes, minimizing downtime and maximizing system responsiveness.</p>
+<p>To ensure optimal performance and reliability of your Eclipse Data Grid <strong>On-Premises</strong>, it&#8217;s crucial to employ a highly available load balancer. This guarantees seamless distribution of traffic across multiple nodes, minimizing downtime and maximizing system responsiveness.</p>
 </li>
 </ul>
 </div>
@@ -545,7 +545,7 @@
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="index.html">MicroStream SaaS Cluster</a></span>
+  <span class="prev"><a href="index.html">Eclipse Data Grid SaaS</a></span>
   <span class="next"><a href="getting-started.html">Getting Started</a></span>
 </nav>
 </article>
