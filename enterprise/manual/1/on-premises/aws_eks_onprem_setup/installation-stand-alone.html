@@ -132,14 +132,6 @@
         </li>
       </ul>
     </li>
-    <li class="component">
-      <div class="title"><a href="../../../../gigamap/1/welcome.html">GigaMap Reference Manual</a></div>
-      <ul class="versions">
-        <li class="version is-latest">
-          <a href="../../../../gigamap/1/welcome.html">1</a>
-        </li>
-      </ul>
-    </li>
   </ul>
 </div>
     </div>
@@ -250,7 +242,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.0.0/kafka_service.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/kafka_service.yaml"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -265,7 +257,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.0.0/kafka_statefulset.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/kafka_statefulset.yaml"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -300,17 +292,65 @@ Check that the pvc is created and ok with  <code>kubectl get pvc</code> and the 
 <p>This holds the storage in a persistent volume and provides it to newly started storage nodes.</p>
 </li>
 <li>
+<p>It periodically writes backups into a backup volume which the storage nodes use as a starting point.</p>
+</li>
+<li>
+<p>Create the user-app Persistent Volume Claim. This creates a persistent volume which will be used to contain your java application jar file.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/user_app_pvclaim.yaml"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Check that the created resource exists with <code>kubectl get pvc</code>. Check there are no errors in the event log with <code>kubectl describe pvc/user-app</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create the storage-backups Persistent Volume Claim. This creates a persistent volume which will be used to contain the backups of your storage. The storage nodes will also use the latest backup from this volume to start from.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/storage_backups_pvclaim.yaml"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Check that the created resource exists with <code>kubectl get pvc</code>. Check there are no errors in the event log with <code>kubectl describe pvc/storage-backups</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
 <p>Create the masternode storage persistent volume claim. This creates a dynamic persistent volume handle with the given storage capacity in the pre-configured storage backend. Note: It must support ReadWriteMany.</p>
 </li>
 </ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.0.0/masternode_pvclaim.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/masternode_pvclaim.yaml"</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Check that the created resource exists with <code>kubectl get pvc</code>. Check there are no errors in the event log with <code>kubectl describe pvc/masternode-storage</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create the masternode service. This will allow the backup cronjob to access the REST-Endpoints of the masternode. This will be used to start/stop pulling kafka updates and to create backups into the storage-backups volume.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.0.0/masternode_service.yaml"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Check that the created resource exists with <code>kubectl get svc</code>. Check there are no errors in the event log with <code>kubectl describe svc/masternode</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -321,7 +361,7 @@ Check that the pvc is created and ok with  <code>kubectl get pvc</code> and the 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.0.0/masternode_pod.yaml</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/masternode_pod.yaml</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -333,7 +373,7 @@ Check that the pvc is created and ok with  <code>kubectl get pvc</code> and the 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl cp -c prepare-masternode /path/to/jar masternode:/storage/project/project.jar</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl cp -c prepare-masternode /path/to/app masternode:/app/application.jar</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -345,7 +385,7 @@ Check that the pvc is created and ok with  <code>kubectl get pvc</code> and the 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl cp -c prepare-masternode /path/to/libs masternode:/storage/project</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl cp -c prepare-masternode /path/to/libs masternode:/app</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -357,7 +397,7 @@ Check that the pvc is created and ok with  <code>kubectl get pvc</code> and the 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl exec -ti -c prepare-masternode pod/masternode -- touch /storage/project/ready</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl exec -ti -c prepare-masternode pod/masternode -- touch /app/ready</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -383,7 +423,7 @@ Check the normal logs with <code>kubectl logs -c masternode pod/masternode</code
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.0.0/storagenode_service.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/storagenode_service.yaml"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -398,7 +438,7 @@ Check the normal logs with <code>kubectl logs -c masternode pod/masternode</code
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.0.0/storagenode_statefulset.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/storagenode_statefulset.yaml"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -424,7 +464,7 @@ Check the normal logs with <code>kubectl logs -c storagenode statefulset/storage
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.0.0/proxy_configmap.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/proxy_configmap.yaml"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -440,7 +480,7 @@ Check the contents with <code>kubectl describe configmap/proxy</code></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.0.0/proxy_service.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/proxy_service.yaml"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -455,7 +495,7 @@ Check the contents with <code>kubectl describe configmap/proxy</code></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.0.0/proxy_deployment.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/proxy_deployment.yaml"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -480,7 +520,7 @@ Check the stdout/stderr logs with <code>kubectl logs deploy/proxy</code></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.0.0/writerproxy_service.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/writerproxy_service.yaml"</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -492,7 +532,7 @@ Check the stdout/stderr logs with <code>kubectl logs deploy/proxy</code></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.0.0/writerproxy_rbac.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/writerproxy_rbac.yaml"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -507,13 +547,52 @@ Check the stdout/stderr logs with <code>kubectl logs deploy/proxy</code></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.0.0/writerproxy_pod.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/writerproxy_pod.yaml"</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Check that the created resource exists with <code>kubectl get pod</code>. It&#8217;s fully up and running when it says Ready 1/1.<br>
 If something goes wrong, check the event log with <code>kubectl describe pod/writerproxy</code> (at the bottom)<br>
 Check the stdout/stderr logs with <code>kubectl logs pod/writerproxy</code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_10_create_the_backup_cronjob_and_create_starting_backup"><a class="anchor" href="#_10_create_the_backup_cronjob_and_create_starting_backup"></a>10. Create the backup CronJob and create starting backup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Periodically a job will be spawned from this CronJob which in turn launches pods to execute the attached shell script. This script will simply<br>
+call the REST-Endpoints of the masternode to stop pulling updates, creating a backup and to resume the updates. An inital backup will have<br>
+to be created which the storage-nodes will use to start up.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create the cronjob</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/backup_cronjob.yaml"</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create an inital backup-job so the storage-nodes can start up</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl create job --from=cronjob/storage-backup storage-backup</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Check the job with <code>kubectl get job/storage-backup</code> and <code>kubectl describe job/storage-backup</code> and the logs with <code>kubectl logs job/storage-backup</code>.<br>
+The logs and descriptions can also be checked from individual job pods that might have been created by listing all pods with <code>kubectl get pod</code><br>
+and then using the pod name like this: <code>kubectl logs pod/PODNAME</code></p>
 </div>
 </div>
 </div>
