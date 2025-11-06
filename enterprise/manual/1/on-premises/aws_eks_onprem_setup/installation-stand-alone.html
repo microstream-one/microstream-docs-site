@@ -193,7 +193,7 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_4_create_the_docker_registry_credential_secret"><a class="anchor" href="#_4_create_the_docker_registry_credential_secret"></a>4. Create the docker registry credential secret</h3>
+<h3 id="_3_create_the_docker_registry_credential_secret"><a class="anchor" href="#_3_create_the_docker_registry_credential_secret"></a>3. Create the docker registry credential secret</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl create secret docker-registry microstream-ocir-credentials --docker-server='https://ocir.microstream.one/onprem' --docker-username='DOCKER_USER' --docker-password='DOCKER_PASSWORD</code></pre>
@@ -211,7 +211,7 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_5_save_the_latest_version_in_a_variable"><a class="anchor" href="#_5_save_the_latest_version_in_a_variable"></a>5. Save the latest version in a variable</h3>
+<h3 id="_4_save_the_latest_version_in_a_variable"><a class="anchor" href="#_4_save_the_latest_version_in_a_variable"></a>4. Save the latest version in a variable</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">VERSION=$(curl --silent https://api.github.com/repos/microstream-one/microstream-cluster-kubernetes-files/releases/latest | grep tag_name | awk -F'"' '{print $4}')-helm</code></pre>
@@ -226,7 +226,7 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_6_install_the_helm_chart"><a class="anchor" href="#_6_install_the_helm_chart"></a>6. Install the helm chart</h3>
+<h3 id="_5_install_the_helm_chart"><a class="anchor" href="#_5_install_the_helm_chart"></a>5. Install the helm chart</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">helm install my-microstream-cluster "https://github.com/microstream-one/microstream-cluster-kubernetes-files/archive/refs/tags/$VERSION.tar.gz"</code></pre>
@@ -257,7 +257,7 @@ You can customize the configuration with <code>--set</code>. To print all availa
 </div>
 </div>
 <div class="sect2">
-<h3 id="_5_create_the_kafka_topic"><a class="anchor" href="#_5_create_the_kafka_topic"></a>5. Create the kafka topic</h3>
+<h3 id="_6_create_the_kafka_topic"><a class="anchor" href="#_6_create_the_kafka_topic"></a>6. Create the kafka topic</h3>
 <div class="paragraph">
 <p>Find the kafka pod with <code>kubectl get pod -l app.kubernetes.io/component=kafka</code>
 Then execute the following comamnd, substituting <code>my-microstream-cluster-es-cluster-kafka-0</code> for the pod name of the previous command.</p>
@@ -272,7 +272,7 @@ Then execute the following comamnd, substituting <code>my-microstream-cluster-es
 </div>
 </div>
 <div class="sect2">
-<h3 id="_6_upload_your_application"><a class="anchor" href="#_6_upload_your_application"></a>6. Upload your application</h3>
+<h3 id="_7_upload_your_application"><a class="anchor" href="#_7_upload_your_application"></a>7. Upload your application</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -367,7 +367,7 @@ Check the normal logs with <code>kubectl logs -c masternode pod/masternode</code
 </div>
 </div>
 <div class="sect2">
-<h3 id="_4_create_the_docker_registry_credential_secret_2"><a class="anchor" href="#_4_create_the_docker_registry_credential_secret_2"></a>4. Create the docker registry credential secret</h3>
+<h3 id="_4_create_the_docker_registry_credential_secret"><a class="anchor" href="#_4_create_the_docker_registry_credential_secret"></a>4. Create the docker registry credential secret</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl create secret docker-registry microstream-ocir-credentials --docker-server='https://ocir.microstream.one/onprem' --docker-username='DOCKER_USER' --docker-password='DOCKER_PASSWORD</code></pre>
