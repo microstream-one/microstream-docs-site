@@ -157,8 +157,13 @@
 <article class="doc">
 <h1 class="page">Installation - Stand alone cluster</h1>
 <div class="sect1">
-<h2 id="_1_create_the_namespace_to_contain_all_cluster_resources"><a class="anchor" href="#_1_create_the_namespace_to_contain_all_cluster_resources"></a>1. Create the namespace to contain all cluster resources</h2>
+<h2 id="_using_helm"><a class="anchor" href="#_using_helm"></a>Using Helm</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>To install the chart you first have to prepare some required kubernetes resources and then we can install the helm chart.</p>
+</div>
+<div class="sect2">
+<h3 id="_1_create_the_namespace_to_contain_all_cluster_resources"><a class="anchor" href="#_1_create_the_namespace_to_contain_all_cluster_resources"></a>1. Create the namespace to contain all cluster resources</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl create namespace my-microstream-cluster</code></pre>
@@ -172,10 +177,8 @@
 </ul>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_2_switch_into_the_namespace"><a class="anchor" href="#_2_switch_into_the_namespace"></a>2. Switch into the namespace</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_2_switch_into_the_namespace"><a class="anchor" href="#_2_switch_into_the_namespace"></a>2. Switch into the namespace</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl config set-context --namespace='my-microstream-cluster' --current</code></pre>
@@ -184,32 +187,13 @@
 <div class="ulist">
 <ul>
 <li>
-<p>This just makes it so when the user types in kubectl commands, they are issued to the specified namespace (so <code>kubectl create</code> actually does <code>kubectl create --namespace my-microstream-cluster</code>)</p>
+<p>This just makes it so when the user types in kubectl and helm commands, they are issued to the specified namespace (so <code>kubectl create</code> actually does <code>kubectl create --namespace my-microstream-cluster</code>)</p>
 </li>
 </ul>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_3_save_the_latest_version_in_a_variable"><a class="anchor" href="#_3_save_the_latest_version_in_a_variable"></a>3. Save the latest version in a variable</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">VERSION=$(curl --silent https://api.github.com/repos/microstream-one/microstream-cluster-kubernetes-files/releases/latest | grep tag_name | awk -F'"' '{print $4}')</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>There might be problems with our server (if it doesn&#8217;t exit for example&#8230;&#8203;). This will be important for all other steps as we pull all the required resources from that server. Should say nothing if it was successful.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_4_create_the_docker_registry_credential_secret"><a class="anchor" href="#_4_create_the_docker_registry_credential_secret"></a>4. Create the docker registry credential secret</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_4_create_the_docker_registry_credential_secret"><a class="anchor" href="#_4_create_the_docker_registry_credential_secret"></a>4. Create the docker registry credential secret</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl create secret docker-registry microstream-ocir-credentials --docker-server='https://ocir.microstream.one/onprem' --docker-username='DOCKER_USER' --docker-password='DOCKER_PASSWORD</code></pre>
@@ -226,10 +210,182 @@
 </ul>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_5_save_the_latest_version_in_a_variable"><a class="anchor" href="#_5_save_the_latest_version_in_a_variable"></a>5. Save the latest version in a variable</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">VERSION=$(curl --silent https://api.github.com/repos/microstream-one/microstream-cluster-kubernetes-files/releases/latest | grep tag_name | awk -F'"' '{print $4}')-helm</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>There might be problems with our server (if it doesn&#8217;t exit for example&#8230;&#8203;). This will be important for all other steps as we pull all the required resources from that server. Should say nothing if it was successful.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_install_the_helm_chart"><a class="anchor" href="#_6_install_the_helm_chart"></a>6. Install the helm chart</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">helm install my-microstream-cluster "https://github.com/microstream-one/microstream-cluster-kubernetes-files/archive/refs/tags/$VERSION.tar.gz"</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The helm output will explain if something went wrong. If everything worked then we can move on to the next steps.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Installing with custom configuration (optional)</strong>
+You can customize the configuration with <code>--set</code>. To print all available values you can execute</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">helm show values "https://github.com/microstream-one/microstream-cluster-kubernetes-files/archive/refs/tags/$VERSION.tar.gz"</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For example if you wanted to start 3 storage nodes instead of 2 then you can just append <code>--set storageNode.replicas=3</code> to the install command.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_5_create_the_kafka_topic"><a class="anchor" href="#_5_create_the_kafka_topic"></a>5. Create the kafka topic</h3>
+<div class="paragraph">
+<p>Find the kafka pod with <code>kubectl get pod -l app.kubernetes.io/component=kafka</code>
+Then execute the following comamnd, substituting <code>my-microstream-cluster-es-cluster-kafka-0</code> for the pod name of the previous command.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl exec pod/my-microstream-cluster-es-cluster-kafka-0 -ti -- /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --topic storage-data --create</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This command will spit out an error if something goes wrong. If it succeeds it&#8217;s all good!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_upload_your_application"><a class="anchor" href="#_6_upload_your_application"></a>6. Upload your application</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Then all that&#8217;s left is to import your application. Import the jar file with the following commands, substituting the <code>masternode</code> with the name of your masternode pod. You can find the masternode pod name by executing: <code>kubectl get pod -l app.kubernetes.io/component=master-node</code>:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl cp -c prepare-masternode /path/to/app my-microstream-cluster-es-cluster-master-node:/app/application.jar</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Import the libs folder (if you have one. Fatjars don&#8217;t have a libs folder) with:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl cp -c prepare-masternode /path/to/libs my-microstream-cluster-es-cluster-master-node:/app</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Tell the masternode that the user project is good to go with:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl exec -ti -c prepare-masternode pod/my-microstream-cluster-es-cluster-master-node -- touch /app/ready</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Check that the created resource exists with <code>kubectl get pod</code>. It&#8217;s fully up and running when it says Ready 1/1
+If something goes wrong, check the event log with <code>kubectl describe pod/masternode</code> (at the bottom)<br>
+Check the stdout/stderr logs of the init container with <code>kubectl logs -c prepare-masternode pod/masternode</code>.<br>
+Check the normal logs with <code>kubectl logs -c masternode pod/masternode</code></p>
+</div>
+</div>
+</div>
 </div>
 <div class="sect1">
-<h2 id="_5_create_the_kafka_cluster"><a class="anchor" href="#_5_create_the_kafka_cluster"></a>5. Create the kafka cluster</h2>
+<h2 id="_using_kubectl"><a class="anchor" href="#_using_kubectl"></a>Using kubectl</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_1_create_the_namespace_to_contain_all_cluster_resources_2"><a class="anchor" href="#_1_create_the_namespace_to_contain_all_cluster_resources_2"></a>1. Create the namespace to contain all cluster resources</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl create namespace my-microstream-cluster</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If it says created successful all is good. If not there might be some permission / io or other problems on the user side.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_switch_into_the_namespace_2"><a class="anchor" href="#_2_switch_into_the_namespace_2"></a>2. Switch into the namespace</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl config set-context --namespace='my-microstream-cluster' --current</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>This just makes it so when the user types in kubectl commands, they are issued to the specified namespace (so <code>kubectl create</code> actually does <code>kubectl create --namespace my-microstream-cluster</code>)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_3_save_the_latest_version_in_a_variable"><a class="anchor" href="#_3_save_the_latest_version_in_a_variable"></a>3. Save the latest version in a variable</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">VERSION=$(curl --silent https://api.github.com/repos/microstream-one/microstream-cluster-kubernetes-files/releases/latest | grep tag_name | awk -F'"' '{print $4}')</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>There might be problems with our server (if it doesn&#8217;t exit for example&#8230;&#8203;). This will be important for all other steps as we pull all the required resources from that server. Should say nothing if it was successful.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_4_create_the_docker_registry_credential_secret_2"><a class="anchor" href="#_4_create_the_docker_registry_credential_secret_2"></a>4. Create the docker registry credential secret</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl create secret docker-registry microstream-ocir-credentials --docker-server='https://ocir.microstream.one/onprem' --docker-username='DOCKER_USER' --docker-password='DOCKER_PASSWORD</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If this fails then our ocir might be down or the user doesn&#8217;t have access. Illegal password/user etc.</p>
+</li>
+<li>
+<p>Replace "DOCKER_USER" and "DOCKER_PASSWORD" with your own credencials.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_5_create_the_kafka_cluster"><a class="anchor" href="#_5_create_the_kafka_cluster"></a>5. Create the kafka cluster</h3>
 <div class="paragraph">
 <p>Distributes data from the writer storage node to other storage nodes and the master node</p>
 </div>
@@ -242,7 +398,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/kafka_service.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/kafka_service.yaml"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -257,7 +413,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/kafka_statefulset.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/kafka_statefulset.yaml"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -282,10 +438,8 @@ Check that the pvc is created and ok with  <code>kubectl get pvc</code> and the 
 <p>This command will spit out an error if something goes wrong. If it succeeds it&#8217;s all good!</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_6_create_the_master_node"><a class="anchor" href="#_6_create_the_master_node"></a>6. Create the master node</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_6_create_the_master_node"><a class="anchor" href="#_6_create_the_master_node"></a>6. Create the master node</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -301,7 +455,7 @@ Check that the pvc is created and ok with  <code>kubectl get pvc</code> and the 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/user_app_pvclaim.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/user_app_pvclaim.yaml"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -316,7 +470,7 @@ Check that the pvc is created and ok with  <code>kubectl get pvc</code> and the 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/storage_backups_pvclaim.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/storage_backups_pvclaim.yaml"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -331,26 +485,11 @@ Check that the pvc is created and ok with  <code>kubectl get pvc</code> and the 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/masternode_pvclaim.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/masternode_pvclaim.yaml"</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Check that the created resource exists with <code>kubectl get pvc</code>. Check there are no errors in the event log with <code>kubectl describe pvc/masternode-storage</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Create the masternode service. This will allow the backup cronjob to access the REST-Endpoints of the masternode. This will be used to start/stop pulling kafka updates and to create backups into the storage-backups volume.</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.0.0/masternode_service.yaml"</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Check that the created resource exists with <code>kubectl get svc</code>. Check there are no errors in the event log with <code>kubectl describe svc/masternode</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -361,7 +500,7 @@ Check that the pvc is created and ok with  <code>kubectl get pvc</code> and the 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/masternode_pod.yaml</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/masternode_pod.yaml"</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -407,10 +546,8 @@ Check the stdout/stderr logs of the init container with <code>kubectl logs -c pr
 Check the normal logs with <code>kubectl logs -c masternode pod/masternode</code></p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_7_create_the_storage_nodes"><a class="anchor" href="#_7_create_the_storage_nodes"></a>7. Create the storage nodes</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_7_create_the_storage_nodes"><a class="anchor" href="#_7_create_the_storage_nodes"></a>7. Create the storage nodes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -423,7 +560,7 @@ Check the normal logs with <code>kubectl logs -c masternode pod/masternode</code
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/storagenode_service.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/storagenode_service.yaml"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -438,7 +575,7 @@ Check the normal logs with <code>kubectl logs -c masternode pod/masternode</code
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/storagenode_statefulset.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/storagenode_statefulset.yaml"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -448,10 +585,8 @@ Check the stdout/stderr logs of the init container with <code>kubectl logs -c pr
 Check the normal logs with <code>kubectl logs -c storagenode statefulset/storagenode</code></p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_8_create_the_proxy"><a class="anchor" href="#_8_create_the_proxy"></a>8. Create the proxy</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_8_create_the_proxy"><a class="anchor" href="#_8_create_the_proxy"></a>8. Create the proxy</h3>
 <div class="paragraph">
 <p>Use this service to access your cluster.</p>
 </div>
@@ -464,7 +599,7 @@ Check the normal logs with <code>kubectl logs -c storagenode statefulset/storage
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/proxy_configmap.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/proxy_configmap.yaml"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -480,7 +615,7 @@ Check the contents with <code>kubectl describe configmap/proxy</code></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/proxy_service.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/proxy_service.yaml"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -495,7 +630,7 @@ Check the contents with <code>kubectl describe configmap/proxy</code></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/proxy_deployment.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/proxy_deployment.yaml"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -504,10 +639,8 @@ If something goes wrong, check the event log with <code>kubectl describe deploy/
 Check the stdout/stderr logs with <code>kubectl logs deploy/proxy</code></p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_9_create_the_writerproxy"><a class="anchor" href="#_9_create_the_writerproxy"></a>9. Create the writerproxy.</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_9_create_the_writerproxy"><a class="anchor" href="#_9_create_the_writerproxy"></a>9. Create the writerproxy.</h3>
 <div class="paragraph">
 <p>Stores the current writer and elects new ones when old ones go down. Proxies requests from the proxy to the storage nodes</p>
 </div>
@@ -520,7 +653,7 @@ Check the stdout/stderr logs with <code>kubectl logs deploy/proxy</code></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/writerproxy_service.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/writerproxy_service.yaml"</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -532,7 +665,7 @@ Check the stdout/stderr logs with <code>kubectl logs deploy/proxy</code></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/writerproxy_rbac.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/writerproxy_rbac.yaml"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -547,7 +680,7 @@ Check the stdout/stderr logs with <code>kubectl logs deploy/proxy</code></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/writerproxy_pod.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/writerproxy_pod.yaml"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -555,44 +688,6 @@ Check the stdout/stderr logs with <code>kubectl logs deploy/proxy</code></p>
 If something goes wrong, check the event log with <code>kubectl describe pod/writerproxy</code> (at the bottom)<br>
 Check the stdout/stderr logs with <code>kubectl logs pod/writerproxy</code></p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_10_create_the_backup_cronjob_and_create_starting_backup"><a class="anchor" href="#_10_create_the_backup_cronjob_and_create_starting_backup"></a>10. Create the backup CronJob and create starting backup</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Periodically a job will be spawned from this CronJob which in turn launches pods to execute the attached shell script. This script will simply<br>
-call the REST-Endpoints of the masternode to stop pulling updates, creating a backup and to resume the updates. An inital backup will have<br>
-to be created which the storage-nodes will use to start up.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Create the cronjob</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/v1.1.0/backup_cronjob.yaml"</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Create an inital backup-job so the storage-nodes can start up</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl create job --from=cronjob/storage-backup storage-backup</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Check the job with <code>kubectl get job/storage-backup</code> and <code>kubectl describe job/storage-backup</code> and the logs with <code>kubectl logs job/storage-backup</code>.<br>
-The logs and descriptions can also be checked from individual job pods that might have been created by listing all pods with <code>kubectl get pod</code><br>
-and then using the pod name like this: <code>kubectl logs pod/PODNAME</code></p>
 </div>
 </div>
 </div>
