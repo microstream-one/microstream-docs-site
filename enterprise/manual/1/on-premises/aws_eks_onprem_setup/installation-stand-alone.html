@@ -196,7 +196,7 @@
 <h3 id="_3_create_the_docker_registry_credential_secret"><a class="anchor" href="#_3_create_the_docker_registry_credential_secret"></a>3. Create the docker registry credential secret</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl create secret docker-registry microstream-ocir-credentials --docker-server='https://ocir.microstream.one/onprem' --docker-username='DOCKER_USER' --docker-password='DOCKER_PASSWORD</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl create secret docker-registry microstream-ocir-credentials --docker-server='https://ocir.microstream.one/onprem' --docker-username='DOCKER_USER' --docker-password='DOCKER_PASSWORD'</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -370,7 +370,7 @@ Check the normal logs with <code>kubectl logs -c masternode pod/masternode</code
 <h3 id="_4_create_the_docker_registry_credential_secret"><a class="anchor" href="#_4_create_the_docker_registry_credential_secret"></a>4. Create the docker registry credential secret</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl create secret docker-registry microstream-ocir-credentials --docker-server='https://ocir.microstream.one/onprem' --docker-username='DOCKER_USER' --docker-password='DOCKER_PASSWORD</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl create secret docker-registry microstream-ocir-credentials --docker-server='https://ocir.microstream.one/onprem' --docker-username='DOCKER_USER' --docker-password='DOCKER_PASSWORD'</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -688,6 +688,20 @@ Check the stdout/stderr logs with <code>kubectl logs deploy/proxy</code></p>
 If something goes wrong, check the event log with <code>kubectl describe pod/writerproxy</code> (at the bottom)<br>
 Check the stdout/stderr logs with <code>kubectl logs pod/writerproxy</code></p>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_accessing_the_cluster"><a class="anchor" href="#_accessing_the_cluster"></a>Accessing the Cluster</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After the installation is complete we will need to wait for all the nodes to be ready. To do this check with <code>kubectl get pod</code> the current status or watch for changes with <code>kubectl get pod -w</code>.</p>
+</div>
+<div class="paragraph">
+<p>Any traffic will need to go through the proxy, so for this preferrably an ingress should be created. To test the cluster on the local machine the proxy service can be forwarded with <code>kubectl port-forward</code>. To find the proxy service name <code>kubectl get service</code> can be used. In the case of the helm installation it would be <code>kubectl port-forward svc/my-microstream-cluster-es-cluster-proxy 8080:80</code>.</p>
+</div>
+<div class="paragraph">
+<p>Now any REST-Requests sent to <a href="http://localhost:8080/" class="bare">http://localhost:8080/</a> will reach the cluster.</p>
 </div>
 </div>
 </div>
