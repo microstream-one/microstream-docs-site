@@ -178,7 +178,7 @@
 <h2 id="_modules"><a class="anchor" href="#_modules"></a>Modules</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>These are the different modules that make up MicroStream.</p>
+<p>These are the different modules that make up Eclipse Data Grid.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -193,27 +193,43 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-storage-distributed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">storage-distributed</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Storage replication feature</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-storage-distributed-kafka</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">storage-distributed-kafka</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Kafka adapter for the storage replication</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-cluster-nodelibrary</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Node library base for replication nodes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cluster-nodelibrary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Storage replication node base</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-cluster-nodelibrary-helidon</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Helidon node library for replication nodes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cluster-nodelibrary-micronaut</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Micronaut adapter for the node library</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">microstream-enterprise-cluster-nodelibrary-micronaut</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Micronaut node library for replication nodes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cluster-nodelibrary-helidon</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Helidon adapter for the node library</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cluster-nodelibrary-springboot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Spring-Boot adapter for the node library</p></td>
 </tr>
 </tbody>
 </table>
+<div class="listingblock">
+<div class="title">Example Maven Dependency</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependencies&gt;
+	&lt;dependency&gt;
+		&lt;groupId&gt;org.eclipse.datagrid&lt;/groupId&gt;
+		&lt;artifactId&gt;cluster-nodelibrary-micronaut&lt;/artifactId&gt;
+		&lt;version&gt;${org.eclipse.datagrid.version}&lt;/version&gt;
+	&lt;/dependency&gt;
+&lt;/dependencies&gt;</code></pre>
+</div>
+</div>
 </div>
 </div>
 <nav class="pagination">
