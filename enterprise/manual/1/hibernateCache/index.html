@@ -3,15 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>The Helidon Starter-Template :: MicroStream Enterprise Reference Manual</title>
-    <link rel="canonical" href="https://docs.microstream.one/enterprise/manual/1/cloud/starter-templates/helidon.html">
-    <link rel="prev" href="spring-boot.html">
-    <link rel="next" href="../../on-premises/on-prem-cluster.html">
+    <title>Replicated Hibernate Second-Level Cache :: MicroStream Enterprise Reference Manual</title>
+    <link rel="canonical" href="https://docs.microstream.one/enterprise/manual/1/hibernateCache/index.html">
+    <link rel="prev" href="../on-premises/aws_eks_onprem_setup/installation-stand-alone.html">
+    <link rel="next" href="configuration.html">
     <meta name="generator" content="Antora 3.1.2">
-    <link rel="stylesheet" href="../../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/site.css">
   <link rel="icon" type="image/png" sizes="32x32" href="https://www.microstream.one/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://www.microstream.one/favicon-16x16.png">
-  <link rel="stylesheet" href="../../../../_/css/site-extra.css">  </head>
+  <link rel="stylesheet" href="../../../_/css/site-extra.css">  </head>
   <body class="article">
 <header class="header">
   <nav class="navbar">
@@ -47,44 +47,44 @@
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
     <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
-    <h3 class="title"><a href="../../welcome.html">Eclipse Data Grid Reference Manual</a></h3>
+    <h3 class="title"><a href="../welcome.html">Eclipse Data Grid Reference Manual</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../welcome.html">Welcome</a>
+    <a class="nav-link" href="../welcome.html">Welcome</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../installation.html">Installation</a>
+    <a class="nav-link" href="../installation.html">Installation</a>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../index.html">Eclipse Data Grid SaaS</a>
+    <a class="nav-link" href="../cloud/index.html">Eclipse Data Grid SaaS</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../architecture.html">Architecture</a>
+    <a class="nav-link" href="../cloud/architecture.html">Architecture</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../getting-started.html">Getting Started</a>
+    <a class="nav-link" href="../cloud/getting-started.html">Getting Started</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../management-console.html">The Cloud Management Console</a>
+    <a class="nav-link" href="../cloud/management-console.html">The Cloud Management Console</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../managing-your-cluster.html">Managing your Eclipse Data Grid SaaS Cluster</a>
+    <a class="nav-link" href="../cloud/managing-your-cluster.html">Managing your Eclipse Data Grid SaaS Cluster</a>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="index.html">Starter Templates</a>
+    <a class="nav-link" href="../cloud/starter-templates/index.html">Starter Templates</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="micronaut.html">Micronaut</a>
+    <a class="nav-link" href="../cloud/starter-templates/micronaut.html">Micronaut</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="spring-boot.html">Spring-Boot</a>
+    <a class="nav-link" href="../cloud/starter-templates/spring-boot.html">Spring-Boot</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="3">
-    <a class="nav-link" href="helidon.html">Helidon</a>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cloud/starter-templates/helidon.html">Helidon</a>
   </li>
 </ul>
   </li>
@@ -92,37 +92,37 @@
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../on-premises/on-prem-cluster.html">Eclipse Data Grid On-Premises Cluster</a>
+    <a class="nav-link" href="../on-premises/on-prem-cluster.html">Eclipse Data Grid On-Premises Cluster</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../on-premises/on-prem-multi-cluster-console.html">Multiple clusters managed via a console frontend <strong>Coming soon</strong></a>
+    <a class="nav-link" href="../on-premises/on-prem-multi-cluster-console.html">Multiple clusters managed via a console frontend <strong>Coming soon</strong></a>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../on-premises/on-prem-single-cluster.html">Single cluster installation without console frontend</a>
+    <a class="nav-link" href="../on-premises/on-prem-single-cluster.html">Single cluster installation without console frontend</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../on-premises/aws_eks_onprem_setup/architecture_stand_alone.html">Architecture</a>
+    <a class="nav-link" href="../on-premises/aws_eks_onprem_setup/architecture_stand_alone.html">Architecture</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../on-premises/aws_eks_onprem_setup/requirements_stand_alone.html">Requirements</a>
+    <a class="nav-link" href="../on-premises/aws_eks_onprem_setup/requirements_stand_alone.html">Requirements</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../on-premises/aws_eks_onprem_setup/installation-stand-alone.html">Installation</a>
+    <a class="nav-link" href="../on-premises/aws_eks_onprem_setup/installation-stand-alone.html">Installation</a>
   </li>
 </ul>
   </li>
 </ul>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../hibernateCache/index.html">Replicated Hibernate Second-Level Cache</a>
+    <a class="nav-link" href="index.html">Replicated Hibernate Second-Level Cache</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../hibernateCache/configuration.html">Configuration</a>
+    <a class="nav-link" href="configuration.html">Configuration</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../hibernateCache/deployment.html">Deployment</a>
+    <a class="nav-link" href="deployment.html">Deployment</a>
   </li>
 </ul>
   </li>
@@ -138,10 +138,10 @@
   </div>
   <ul class="components">
     <li class="component is-current">
-      <div class="title"><a href="../../welcome.html">Eclipse Data Grid Reference Manual</a></div>
+      <div class="title"><a href="../welcome.html">Eclipse Data Grid Reference Manual</a></div>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="../../welcome.html">1.0</a>
+          <a href="../welcome.html">1.0</a>
         </li>
       </ul>
     </li>
@@ -155,29 +155,124 @@
 <button class="nav-toggle"></button>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
-    <li><a href="../../welcome.html">Eclipse Data Grid Reference Manual</a></li>
-    <li><a href="../index.html">Eclipse Data Grid SaaS</a></li>
-    <li><a href="index.html">Starter Templates</a></li>
-    <li><a href="helidon.html">Helidon</a></li>
+    <li><a href="../welcome.html">Eclipse Data Grid Reference Manual</a></li>
+    <li><a href="index.html">Replicated Hibernate Second-Level Cache</a></li>
   </ul>
 </nav>
-<div class="edit-this-page"><a href="https://github.com/microstream-one/microstream-private/edit/master/enterprise/docs/modules/cloud/pages/starter-templates/helidon.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://github.com/microstream-one/microstream-private/edit/master/enterprise/docs/modules/hibernateCache/pages/index.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">The Helidon Starter-Template</h1>
+<h1 class="page">Replicated Hibernate Second-Level Cache</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
-<p>For more information you can check out their docs.</p>
+<p>The EclipseStore Hibernate Second-Level Cache can be extended with cache replication when deployed in an Eclipse Data Grid cluster.
+In a clustered environment, each application node maintains its own local cache.
+Without replication, cache invalidation on one node would not propagate to other nodes, leading to stale data.
+The clustered cache module solves this by using Apache Kafka as a messaging backbone to replicate cache events across all nodes.</p>
 </div>
 <div class="paragraph">
-<p><a href="https://helidon.io/docs/v3/#/mp/introduction">Helidon MP Docs</a></p>
+<p>For the basic, non-replicated Hibernate Second-Level Cache setup, see the <a href="https://docs.eclipsestore.io/manual/cache/use-cases/hibernate-second-level-cache.html">EclipseStore documentation</a>.</p>
+</div>
+<div class="paragraph">
+<p>A full working demo application is available at <a href="https://github.com/eclipse-datagrid/demos/tree/main/cluster-hibernate-cache-demo">cluster-hibernate-cache-demo</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_it_works"><a class="anchor" href="#_how_it_works"></a>How it works</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Each application node runs its own EclipseStore-backed Hibernate cache.
+When a cache entry is created, updated or evicted on one node, the change event is published to a Kafka topic.
+All other nodes consume these events and update their local caches accordingly, ensuring consistency across the cluster.</p>
+</div>
+<div class="sect2">
+<h3 id="_insert"><a class="anchor" href="#_insert"></a>Insert</h3>
+<div class="paragraph">
+<p>When a new entity is persisted, it is added to the local cache and the insert event is replicated to all other nodes via Kafka.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/ES-Hibernate-Cache%20Architecture%20Insert.png" alt="Cache Replication on Insert">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_update"><a class="anchor" href="#_update"></a>Update</h3>
+<div class="paragraph">
+<p>When an entity is updated, the local cache entry is invalidated and the update event is propagated to all other nodes, which also invalidate their cached copy.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/ES-Hibernate-Cache%20Architecture%20Update.png" alt="Cache Replication on Update">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_delete"><a class="anchor" href="#_delete"></a>Delete</h3>
+<div class="paragraph">
+<p>When an entity is deleted, it is removed from the local cache and the delete event is sent to all other nodes to evict the entry.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/ES-Hibernate-Cache%20Architecture%20Delete.png" alt="Cache Replication on Delete">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cache_invalidation_flow"><a class="anchor" href="#_cache_invalidation_flow"></a>Cache Invalidation Flow</h3>
+<div class="paragraph">
+<p>The following example illustrates how the query cache is kept consistent across nodes when an entity is updated:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A user sends an <strong>update book</strong> request that reaches <strong>Server 1</strong>.</p>
+</li>
+<li>
+<p>Server 1 executes the update query against the database.</p>
+</li>
+<li>
+<p>Hibernate updates its local <code>update-timestamps-region</code> cache with a new entry: the affected table name mapped to the current unix timestamp.</p>
+</li>
+<li>
+<p>This cache update emits an event that triggers the Kafka sender.</p>
+</li>
+<li>
+<p>The sender publishes a message to the Kafka server containing the table name and the new update timestamp.</p>
+</li>
+<li>
+<p>All other cache servers poll Kafka for new messages and receive the update.</p>
+</li>
+<li>
+<p>Each server inserts the new table update timestamp into its own <code>update-timestamps-region</code> cache.</p>
+</li>
+<li>
+<p>When the next <strong>find all books</strong> request arrives:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If it reaches <strong>Server 1</strong>, the result is served directly from the query cache (the cache is already up to date).</p>
+</li>
+<li>
+<p>If it reaches <strong>Server 2</strong>, Hibernate compares the cached query result timestamp against the <code>update-timestamps-region</code>. Since the table was updated after the cached query result was stored, the query cache entry is considered stale. Server 2 re-executes the query against the database and caches the fresh result.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="spring-boot.html">Spring-Boot</a></span>
-  <span class="next"><a href="../../on-premises/on-prem-cluster.html">Eclipse Data Grid On-Premises Cluster</a></span>
+  <span class="prev"><a href="../on-premises/aws_eks_onprem_setup/installation-stand-alone.html">Installation</a></span>
+  <span class="next"><a href="configuration.html">Configuration</a></span>
 </nav>
 </article>
   </div>
@@ -195,7 +290,7 @@
 <a href="https://microstream.one/privacy/">Privacy</a>
 <span class="link-separator">&nbsp;&#124;&nbsp;</span>
 <a href="https://microstream.one/legal-notice/">Legal notice</a>
-</footer><script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
-<script async src="../../../../_/js/vendor/highlight.js"></script>
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
   </body>
 </html>
