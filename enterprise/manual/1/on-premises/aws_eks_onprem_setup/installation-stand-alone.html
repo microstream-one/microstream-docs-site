@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Installation - Stand alone cluster :: MicroStream Enterprise Reference Manual</title>
+    <title>Installation - Standalone cluster :: MicroStream Enterprise Reference Manual</title>
     <link rel="canonical" href="https://docs.microstream.one/enterprise/manual/1/on-premises/aws_eks_onprem_setup/installation-stand-alone.html">
     <link rel="prev" href="requirements_stand_alone.html">
     <link rel="next" href="../../hibernateCache/index.html">
@@ -168,12 +168,12 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Installation - Stand alone cluster</h1>
+<h1 class="page">Installation - Standalone cluster</h1>
 <div class="sect1">
 <h2 id="_using_helm"><a class="anchor" href="#_using_helm"></a>Using Helm</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To install the chart you first have to prepare some required kubernetes resources and then we can install the helm chart.</p>
+<p>To install the chart you first have to prepare some required kubernetes resources, and then we can install the helm chart.</p>
 </div>
 <div class="sect2">
 <h3 id="_1_create_the_namespace_to_contain_all_cluster_resources"><a class="anchor" href="#_1_create_the_namespace_to_contain_all_cluster_resources"></a>1. Create the namespace to contain all cluster resources</h3>
@@ -215,10 +215,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>If this fails then our ocir might be down or the user doesn&#8217;t have access. Illegal password/user etc.</p>
+<p>If this fails then our container registry might be down or the user doesn&#8217;t have access. Illegal password/user etc.</p>
 </li>
 <li>
-<p>Replace "DOCKER_USER" and "DOCKER_PASSWORD" with your own credencials.</p>
+<p>Replace "DOCKER_USER" and "DOCKER_PASSWORD" with your own credentials.</p>
 </li>
 </ul>
 </div>
@@ -276,50 +276,47 @@ You can customize the configuration with <code>--set</code>. To print all availa
 <div class="ulist">
 <ul>
 <li>
-<p>For example if you wanted to start 3 storage nodes instead of 2 then you can just append <code>--set storageNode.replicas=3</code> to the install command.</p>
+<p>For example if you wanted to start 3 storage nodes instead of 2 then you can just append <code>--set storageNode.replicas=3</code> to the <code>helm install</code> command.</p>
 </li>
 </ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<a href="https://strimzi.io" target="_blank" rel="noopener">Strimzi</a> will be deployed as a dependency. If you have your own cluster-wide strimzi-operator installed, you can disable the dependency with <code>--set strimzi-kafka-operator.enabled=false</code>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_6_create_the_kafka_topic"><a class="anchor" href="#_6_create_the_kafka_topic"></a>6. Create the kafka topic</h3>
-<div class="paragraph">
-<p>Find the kafka pod with <code>kubectl get pod -l app.kubernetes.io/component=kafka</code>
-Then execute the following comamnd, substituting <code>my-microstream-cluster-es-cluster-kafka-0</code> for the pod name of the previous command.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl exec pod/my-microstream-cluster-es-cluster-kafka-0 -ti -- /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --topic storage-data --create</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This command will spit out an error if something goes wrong. If it succeeds it&#8217;s all good!</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_7_upload_your_application"><a class="anchor" href="#_7_upload_your_application"></a>7. Upload your application</h3>
+<h3 id="_6_upload_your_application"><a class="anchor" href="#_6_upload_your_application"></a>6. Upload your application</h3>
 <div class="ulist">
 <ul>
 <li>
-<p>Then all that&#8217;s left is to import your application. Import the jar file with the following commands, substituting the <code>masternode</code> with the name of your masternode pod. You can find the masternode pod name by executing: <code>kubectl get pod -l app.kubernetes.io/component=master-node</code>:</p>
+<p>Then all that&#8217;s left is to import your application. Import the jar file with the following commands, substituting the <code>my-microstream-cluster-es-cluster-master-node-d69f5c79c-lvxxj</code> with the name of your masternode pod. You can find the masternode pod name by executing: <code>kubectl get pod -l app.kubernetes.io/component=master-node</code>:</p>
 </li>
 </ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl cp -c prepare-masternode /path/to/app my-microstream-cluster-es-cluster-master-node:/app/application.jar</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl cp -c prepare-masternode /path/to/app my-microstream-cluster-es-cluster-master-node-d69f5c79c-lvxxj:/app/application.jar</code></pre>
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Import the libs folder (if you have one. Fatjars don&#8217;t have a libs folder) with:</p>
+<p>Import the libs folder (if you have one. Fat jars don&#8217;t have a libs folder) with:</p>
 </li>
 </ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl cp -c prepare-masternode /path/to/libs my-microstream-cluster-es-cluster-master-node:/app</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl cp -c prepare-masternode /path/to/libs my-microstream-cluster-es-cluster-master-node-d69f5c79c-lvxxj:/app</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -331,7 +328,7 @@ Then execute the following comamnd, substituting <code>my-microstream-cluster-es
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl exec -ti -c prepare-masternode pod/my-microstream-cluster-es-cluster-master-node -- touch /app/ready</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl exec -ti -c prepare-masternode pod/my-microstream-cluster-es-cluster-master-node-d69f5c79c-lvxxj -- touch /app/ready</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -401,10 +398,10 @@ Check the normal logs with <code>kubectl logs -c masternode pod/masternode</code
 <div class="ulist">
 <ul>
 <li>
-<p>If this fails then our ocir might be down or the user doesn&#8217;t have access. Illegal password/user etc.</p>
+<p>If this fails then our container registry might be down or the user doesn&#8217;t have access. Illegal password/user etc.</p>
 </li>
 <li>
-<p>Replace "DOCKER_USER" and "DOCKER_PASSWORD" with your own credencials.</p>
+<p>Replace "DOCKER_USER" and "DOCKER_PASSWORD" with your own credentials.</p>
 </li>
 </ul>
 </div>
@@ -422,146 +419,112 @@ If you don&#8217;t have the credentials yet, and you want to try out the on-prem
 </div>
 </div>
 <div class="sect2">
-<h3 id="_5_create_the_kafka_cluster"><a class="anchor" href="#_5_create_the_kafka_cluster"></a>5. Create the kafka cluster</h3>
+<h3 id="_5_apply_the_kubernetes_resources"><a class="anchor" href="#_5_apply_the_kubernetes_resources"></a>5. Apply the Kubernetes Resources</h3>
 <div class="paragraph">
-<p>Distributes data from the writer storage node to other storage nodes and the master node</p>
+<p>For the Kafka cluster you can either use your own Kafka deployment or use <a href="https://strimzi.io" target="_blank" rel="noopener">Strimzi</a>. We provide the required Strimzi resources with the <code>kafka.yaml</code> file and the client configurations in <code>kafka-config.yaml</code>.</p>
 </div>
+<div class="sect3">
+<h4 id="_5_1_install_the_strimzi_kafka_operator"><a class="anchor" href="#_5_1_install_the_strimzi_kafka_operator"></a>5.1 Install the strimzi-kafka-operator</h4>
 <div class="ulist">
 <ul>
 <li>
-<p>Create the kafka service. This allows the storage and master pods to communicate with kafka</p>
+<p>Install the Strimzi CRDs by downloading <a href="https://github.com/strimzi/strimzi-kafka-operator/releases/download/0.45.2/strimzi-crds-0.45.2.yaml" target="_blank" rel="noopener">this file</a> and running</p>
 </li>
 </ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/kafka_service.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">`kubectl apply -f strimzi-crds-0.45.2.yaml`</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>Check that the created resource exists with <code>kubectl get service</code></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Create the kafka statefulset. This uses our wrapped kafka image that converts envars to config values and interprets some envar template things</p>
+<p>Install the strimzi-kafka-operator by downloading <a href="https://github.com/strimzi/strimzi-kafka-operator/releases/download/0.45.2/strimzi-cluster-operator-0.45.2.yaml" target="_blank" rel="noopener">this file</a> and running</p>
 </li>
 </ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/kafka_statefulset.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f strimzi-cluster-operator-0.45.2.yaml</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Check that the created resource exists with <code>kubectl get pod</code>. It&#8217;s fully up and running when it says Ready 1/1<br>
-If something goes wrong, check the event log with <code>kubectl describe deployment/kafka</code> (at the bottom)<br>
-Check the stdout/stderr logs with <code>kubectl logs deployment/kafka</code><br>
-Check that the pvc is created and ok with  <code>kubectl get pvc</code> and the event log with <code>kubectl describe pvc/logs-kafka-0</code></p>
 </div>
+<div class="sect3">
+<h4 id="_5_2_install_the_cluster"><a class="anchor" href="#_5_2_install_the_cluster"></a>5.2 Install the cluster</h4>
 <div class="ulist">
 <ul>
 <li>
-<p>Now we need to create the topic on the kafka. Default topic name is "storage-data"</p>
+<p>Install the Kafka cluster for the message distribution by running</p>
 </li>
 </ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl exec pod/kafka-0 -ti -- /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --topic storage-data --create</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/kafka.yaml"</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Install the Kafka client configuration by running</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/kafka-config.yaml"</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Then to install the actual eclipse-store cluster by running</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/cluster.yaml"</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This command will spit out an error if something goes wrong. If it succeeds it&#8217;s all good!</p>
+<p>By applying the resources you will deploy all the necessary cluster components like the storage-node deployments, pods, services, persistent volume-claims etc. which will run the programs and configure the routing between and the persisting of storage data.</p>
+</div>
+<div class="paragraph">
+<p><strong>For the Kafka Deployment:</strong></p>
+</div>
+<div class="paragraph">
+<p>Check that the created resource exists with <code>kubectl get pod</code>. It&#8217;s fully up and running when it says Ready 1/1.<br>
+If something goes wrong, check the event log with <code>kubectl describe pod/PODNAME</code> (at the bottom).<br>
+Check the stdout/stderr logs with <code>kubectl logs pod/PODNAME</code>.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_6_create_the_master_node"><a class="anchor" href="#_6_create_the_master_node"></a>6. Create the master node</h3>
+<h3 id="_6_upload_your_application_2"><a class="anchor" href="#_6_upload_your_application_2"></a>6. Upload your application</h3>
 <div class="ulist">
 <ul>
 <li>
-<p>This holds the storage in a persistent volume and provides it to newly started storage nodes.</p>
-</li>
-<li>
-<p>It periodically writes backups into a backup volume which the storage nodes use as a starting point.</p>
-</li>
-<li>
-<p>Create the user-app Persistent Volume Claim. This creates a persistent volume which will be used to contain your java application jar file.</p>
+<p>Then all that&#8217;s left is to import your application. Import the jar file with the following commands, substituting the <code>masternode-7964c6f844-zntt8</code> with the name of your masternode pod. You can find the masternode pod name by executing: <code>kubectl get pod -l microstream.one/cluster-component=masternode</code>:</p>
 </li>
 </ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/user_app_pvclaim.yaml"</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Check that the created resource exists with <code>kubectl get pvc</code>. Check there are no errors in the event log with <code>kubectl describe pvc/user-app</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Create the storage-backups Persistent Volume Claim. This creates a persistent volume which will be used to contain the backups of your storage. The storage nodes will also use the latest backup from this volume to start from.</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/storage_backups_pvclaim.yaml"</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Check that the created resource exists with <code>kubectl get pvc</code>. Check there are no errors in the event log with <code>kubectl describe pvc/storage-backups</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Create the masternode storage persistent volume claim. This creates a dynamic persistent volume handle with the given storage capacity in the pre-configured storage backend. Note: It must support ReadWriteMany.</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/masternode_pvclaim.yaml"</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Check that the created resource exists with <code>kubectl get pvc</code>. Check there are no errors in the event log with <code>kubectl describe pvc/masternode-storage</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Create the masternode pod. It is used to update the storage from pulling updates from kafka.</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/masternode_pod.yaml"</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl cp -c prepare-masternode /path/to/app masternode-7964c6f844-zntt8:/app/application.jar</code></pre>
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Import your rest service application. Import the jar file with:</p>
+<p>Import the libs folder (if you have one. Fat jars don&#8217;t have a libs folder) with:</p>
 </li>
 </ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl cp -c prepare-masternode /path/to/app masternode:/app/application.jar</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Import the libs folder (if you have one. Fatjars don&#8217;t have a libs folder) with:</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl cp -c prepare-masternode /path/to/libs masternode:/app</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl cp -c prepare-masternode /path/to/libs masternode-7964c6f844-zntt8:/app</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -573,157 +536,14 @@ Check that the pvc is created and ok with  <code>kubectl get pvc</code> and the 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl exec -ti -c prepare-masternode pod/masternode -- touch /app/ready</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl exec -ti -c prepare-masternode pod/masternode-7964c6f844-zntt8 -- touch /app/ready</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Check that the created resource exists with <code>kubectl get pod</code>. It&#8217;s fully up and running when it says Ready 1/1
-If something goes wrong, check the event log with <code>kubectl describe pod/masternode</code> (at the bottom)<br>
-Check the stdout/stderr logs of the init container with <code>kubectl logs -c prepare-masternode pod/masternode</code>.<br>
-Check the normal logs with <code>kubectl logs -c masternode pod/masternode</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_7_create_the_storage_nodes"><a class="anchor" href="#_7_create_the_storage_nodes"></a>7. Create the storage nodes</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>These hold copies of the storage data and process the read and write requests. One special node is a writer node that processes all write requests.</p>
-</li>
-<li>
-<p>Create the storagenode and storagenode-headless service. These are accessed by the proxy pods.</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/storagenode_service.yaml"</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Check that the created resource exists with <code>kubectl get service</code>. There should be a node-headless and a storagenode service.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Create the storagenode statefulset. This contains the information for replication count for the storagenode pods.</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/storagenode_statefulset.yaml"</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Check that the created resource exists with <code>kubectl get pod</code>. It&#8217;s fully up and running when it says Ready 1/1<br>
-If something goes wrong, check the event log with <code>kubectl describe statefulset/storagenode</code> (at the bottom)<br>
-Check the stdout/stderr logs of the init container with <code>kubectl logs -c prepare-storagenode statefulset/storagenode</code>.<br>
-Check the normal logs with <code>kubectl logs -c storagenode statefulset/storagenode</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_8_create_the_proxy"><a class="anchor" href="#_8_create_the_proxy"></a>8. Create the proxy</h3>
-<div class="paragraph">
-<p>Use this service to access your cluster.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Create the nginx config as a configmap. Please keep in mind, that the name of the namespace appears several times in the config map. If your name is different you have to change that.</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/proxy_configmap.yaml"</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Check that the created resource exists with <code>kubectl get configmap</code><br>
-Check the contents with <code>kubectl describe configmap/proxy</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Create the proxy service. This allows other pods and services to reach the proxy pods</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/proxy_service.yaml"</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Check that the created resource exists with <code>kubectl get service</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Create the proxy deployment. Automatically manages the scaling of proxy pods</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/proxy_deployment.yaml"</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Check that the created resource exists with <code>kubectl get pod</code>. It&#8217;s fully up and running when it says Ready 1/1.<br>
-If something goes wrong, check the event log with <code>kubectl describe deploy/proxy</code> (at the bottom).<br>
-Check the stdout/stderr logs with <code>kubectl logs deploy/proxy</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_9_create_the_writerproxy"><a class="anchor" href="#_9_create_the_writerproxy"></a>9. Create the writerproxy.</h3>
-<div class="paragraph">
-<p>Stores the current writer and elects new ones when old ones go down. Proxies requests from the proxy to the storage nodes</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Create the writerproxy service. This allows the proxy pods to reach the writerproxy pod</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/writerproxy_service.yaml"</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Create the writerproxy rbac resources. These give the writerproxy access to list all pods in the namespace. This is needed so the writerproxy knows what storagenodes are running.</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/writerproxy_rbac.yaml"</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Check the resources exist with <code>kubectl get sa,role,rolebinding</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Create the writerproxy pod</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">kubectl apply -f "https://raw.githubusercontent.com/microstream-one/microstream-cluster-kubernetes-files/refs/tags/$VERSION/writerproxy_pod.yaml"</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Check that the created resource exists with <code>kubectl get pod</code>. It&#8217;s fully up and running when it says Ready 1/1.<br>
-If something goes wrong, check the event log with <code>kubectl describe pod/writerproxy</code> (at the bottom)<br>
-Check the stdout/stderr logs with <code>kubectl logs pod/writerproxy</code></p>
+If something goes wrong, check the event log with <code>kubectl describe pod/masternode-7964c6f844-zntt8</code> (at the bottom)<br>
+Check the stdout/stderr logs of the init container with <code>kubectl logs -c prepare-masternode pod/masternode-7964c6f844-zntt8</code>.<br>
+Check the normal logs with <code>kubectl logs -c masternode pod/masternode-7964c6f844-zntt8</code></p>
 </div>
 </div>
 </div>
@@ -735,7 +555,7 @@ Check the stdout/stderr logs with <code>kubectl logs pod/writerproxy</code></p>
 <p>After the installation is complete we will need to wait for all the nodes to be ready. To do this check with <code>kubectl get pod</code> the current status or watch for changes with <code>kubectl get pod -w</code>.</p>
 </div>
 <div class="paragraph">
-<p>Any traffic will need to go through the proxy, so for this preferrably an ingress should be created. To test the cluster on the local machine the proxy service can be forwarded with <code>kubectl port-forward</code>. To find the proxy service name <code>kubectl get service</code> can be used. In the case of the helm installation it would be <code>kubectl port-forward svc/my-microstream-cluster-es-cluster-proxy 8080:80</code>.</p>
+<p>Any traffic will need to go through the proxy, so for this preferably an ingress should be created. To test the cluster on the local machine the proxy service can be forwarded with <code>kubectl port-forward</code>. To find the proxy service name <code>kubectl get service</code> can be used. In the case of the helm installation it would be <code>kubectl port-forward svc/my-microstream-cluster-es-cluster-proxy 8080:80</code>.</p>
 </div>
 <div class="paragraph">
 <p>Now any REST-Requests sent to <a href="http://localhost:8080/" class="bare">http://localhost:8080/</a> will reach the cluster.</p>

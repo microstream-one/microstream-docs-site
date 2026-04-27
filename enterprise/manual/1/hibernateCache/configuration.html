@@ -171,16 +171,11 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>In addition to the standard <code>cache-hibernate</code> dependency, the clustered setup requires the <code>cache-clustered-kafka</code> module:</p>
+<p>Instead of the standard <code>cache-hibernate</code> dependency, the clustered setup requires the <code>cache-clustered-kafka</code> module:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
-    &lt;groupId&gt;org.eclipse.store&lt;/groupId&gt;
-    &lt;artifactId&gt;cache-hibernate&lt;/artifactId&gt;
-    &lt;version&gt;${eclipsestore-version}&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
     &lt;groupId&gt;org.eclipse.store&lt;/groupId&gt;
     &lt;artifactId&gt;cache-clustered-kafka&lt;/artifactId&gt;
     &lt;version&gt;${eclipsestore-version}&lt;/version&gt;
